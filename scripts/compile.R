@@ -1,4 +1,5 @@
 library(plyr)
+library(dplyr)
 
 compile <- function(dir, key, headername) {
   fnames <- list.files(dir, key, full.names=TRUE)
