@@ -1,27 +1,12 @@
+library(AICcmodavg)
+library(lme4)
 library(dplyr)
 
-# Set SAVE_AS if running as a script
-SAVE_AS <- FALSE
+source("models/question_first/feat_type/accuracy.R")
 
-# ------------------------------------------------------------------------------
-# Summarize data. 
-# - experiment: property verification with question first, mask last
-
-feature <- read.csv("./feature-last/feature-last-final.csv", 
-                    stringsAsFactors = FALSE)
-feature <- filter(feature, subj_id != "MWPF214")
-
-feature <- read.csv("./feature-first/feature-first-final.csv",
-                    stringsAsFactors = FALSE)
-
-library(lme4)
-errors <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), 
-                data = feature, family = binomial)
-
-library(AICcmodavg)
 dv_columns <- c("feat_type", "feat_c", "mask_type", "mask_c")
-points <- feature[, dv_columns] %>% unique()
-error_rates <- predictSE(errors, points, se.fit = TRUE, type = "response") %>%
+points <- question_first[, dv_columns] %>% unique()
+error_rates <- predictSE(feat_type_error_mod, points, se.fit = TRUE, type = "response") %>%
   as.data.frame() %>% select(rate = fit, se = se.fit) %>% 
   cbind(points, .)
 
@@ -35,7 +20,7 @@ error_rates <- error_rates %>% mutate(
 # ------------------------------------------------------------------------------
 # Create grobs from images to use as axis labels.
 
-source("./new-graphs/axis-icons.R")
+source("plots/axis-icons.R")
 
 get_icon <- function(x) {
   icon_width <- 0.2
@@ -61,7 +46,7 @@ right_pos <- get_pos(right_pos_x)
 
 # ------------------------------------------------------------------------------
 # Load color scheme.
-source("./new-graphs/colorscheme.R")
+source("plots/colorscheme.R")
 
 # ------------------------------------------------------------------------------
 
@@ -119,10 +104,6 @@ errorbars <- function() {
 
 grid.draw(errorbars())
 
-# ------------------------------------------------------------------------------
-# png
-if (SAVE_AS == "png") {
-  png("./new-graphs/errorbars-1b.png", width = 6, height = 6, units = "in", res = 200)
-  grid.draw(errorbars())
-  dev.off()
-}
+png("plots/question_first/feat_type/errorbars.png", width = 6, height = 6, units = "in", res = 200)
+grid.draw(errorbars())
+dev.off()

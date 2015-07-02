@@ -12,12 +12,12 @@ png_to_grob <- function(png_image, alpha = 0.2) {
 }
 
 grob_icon <- function(name) {
-  full_name <- file.path("./new-graphs/annotations/", paste(name, "png", sep = "."))
+  full_name <- file.path("plots/annotations/", paste(name, "png", sep = "."))
   png_to_grob(full_name, alpha = 1.0)
 }
 
-blank_screen <- png_to_grob("./new-graphs/annotations/blank.png", alpha = 1.0)
-with_interference <- png_to_grob("./new-graphs/annotations/interference.png", alpha = 1.0)
+blank_screen <- png_to_grob("plots/annotations/blank.png", alpha = 1.0)
+with_interference <- png_to_grob("plots/annotations/interference.png", alpha = 1.0)
 
 left_icon_x <- -0.5
 right_icon_x <- 0.5
