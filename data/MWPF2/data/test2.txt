@@ -1,4 +1,0 @@
-test2	209	PME 	2015_May_13_1619	MWPF2	Pierces-MacBook-Pro.local	-1	-18	alligator	alligator_1.wav	mask	visual	yes	visual-yes	3	Does it have scales?	7.20405697823	yes	1138.38791847	1
-test2	209	PME 	2015_May_13_1619	MWPF2	Pierces-MacBook-Pro.local	-1	-17	swan	swan_3.wav	nomask	nonvisual	no	nonvisual-no	2	Does it grow on trees?	14.6476311684	timeout	2000.0	0
-test2	209	PME 	2015_May_13_1619	MWPF2	Pierces-MacBook-Pro.local	-1	-16	chicken	chicken_2.wav	nomask	visual	yes	visual-yes	3	Does it have a beak?	20.7195219994	timeout	2000.0	0
-test2	209	PME 	2015_May_13_1619	MWPF2	Pierces-MacBook-Pro.local	-1	-15	deer	deer_2.wav	nomask	visual	no	visual-no	2	Is it green?	27.295374155	timeout	2000.0	0

@@ -1,2 +1,0 @@
-test7	216	PME 	2015_May_13_2053	MWPF2	Pierces-MacBook-Pro.local	-1	-18	deer	deer_2.wav	mask	visual	yes	visual-yes	5	Does it have a white tail?	6.49607610703	timeout	2000.0	0
-test7	216	PME 	2015_May_13_2053	MWPF2	Pierces-MacBook-Pro.local	-1	-17	tiger	tiger_2.wav	nomask	visual	yes	visual-yes	5	Does it have large teeth?	13.247756958	timeout	2000.0	0
