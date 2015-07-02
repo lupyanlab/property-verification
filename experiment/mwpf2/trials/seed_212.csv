@@ -1,0 +1,210 @@
+block_ix,trial_ix,cue,cue_file,cue_mask,ftype,response,qtype,qid,question
+-1,-17,strawberry,strawberry_3.wav,mask,nonvisual,yes,nonvisual-yes,4,Does it taste good?
+-1,-16,chicken,chicken_3.wav,nomask,nonvisual,no,nonvisual-no,5,Is it comfortable?
+-1,-15,dog,dog_2.wav,nomask,visual,yes,visual-yes,5,Does it have a nose?
+-1,-14,tiger,tiger_4.wav,nomask,visual,yes,visual-yes,4,Does it have whiskers?
+-1,-13,penguin,penguin_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it a bird?
+-1,-12,rabbit,rabbit_4.wav,nomask,visual,yes,visual-yes,2,Does it have feet?
+-1,-11,pineapple,pineapple_2.wav,mask,visual,yes,visual-yes,3,Does it have skin?
+-1,-10,lion,lion_1.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it live in jungles?
+-1,-9,camel,camel_2.wav,nomask,visual,yes,visual-yes,2,Is it brown?
+-1,-8,table,table_2.wav,nomask,visual,yes,visual-yes,3,Does it have legs?
+-1,-7,deer,deer_4.wav,mask,nonvisual,yes,nonvisual-yes,4,Is it an herbivore?
+-1,-6,raccoon,raccoon_3.wav,nomask,visual,yes,visual-yes,3,Does it have eyes?
+-1,-5,swan,swan_4.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live on water?
+-1,-4,pig,pig_1.wav,nomask,nonvisual,yes,nonvisual-yes,3,Is it eaten as bacon?
+-1,-3,alligator,alligator_4.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live in swamps?
+-1,-2,giraffe,giraffe_1.wav,nomask,nonvisual,yes,nonvisual-yes,3,Does it live in zoos?
+-1,-1,donkey,donkey_4.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it make noises?
+0,0,chicken,chicken_4.wav,mask,nonvisual,yes,nonvisual-yes,4,Is it eaten by frying?
+0,1,rabbit,rabbit_2.wav,mask,visual,yes,visual-yes,3,Does it have whiskers?
+0,2,deer,deer_4.wav,mask,visual,yes,visual-yes,1,Does it have antlers?
+0,3,table,table_2.wav,nomask,visual,yes,visual-yes,3,Does it have legs?
+0,4,pineapple,pineapple_1.wav,mask,visual,no,visual-no,3,Does it have whiskers?
+0,5,strawberry,strawberry_3.wav,mask,nonvisual,yes,nonvisual-yes,4,Does it taste good?
+0,6,dog,dog_1.wav,mask,nonvisual,no,nonvisual-no,2,Is it eaten in pies?
+0,7,table,table_3.wav,mask,nonvisual,yes,nonvisual-yes,3,Is it found in dining rooms?
+0,8,giraffe,giraffe_2.wav,nomask,visual,yes,visual-yes,2,Is it tall?
+0,9,pig,pig_2.wav,mask,visual,yes,visual-yes,1,Is it pink?
+0,10,lion,lion_4.wav,nomask,visual,no,visual-no,2,Does it have long legs?
+0,11,alligator,alligator_2.wav,nomask,nonvisual,no,nonvisual-no,4,Is it found in summer?
+0,12,pig,pig_3.wav,mask,nonvisual,yes,nonvisual-yes,5,Does it like mud?
+0,13,raccoon,raccoon_2.wav,nomask,visual,no,visual-no,4,Does it have a long neck?
+0,14,tiger,tiger_4.wav,nomask,visual,yes,visual-yes,1,Does it have stripes?
+0,15,chicken,chicken_2.wav,nomask,visual,yes,visual-yes,3,Does it have a beak?
+0,16,table,table_4.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it found in kitchens?
+0,17,tiger,tiger_2.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it a carnivore?
+0,18,lion,lion_2.wav,mask,visual,yes,visual-yes,2,Does it have fur?
+0,19,raccoon,raccoon_4.wav,mask,visual,yes,visual-yes,2,Does it have a tail?
+0,20,alligator,alligator_4.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live in swamps?
+0,21,deer,deer_1.wav,mask,visual,no,visual-no,3,Does it have a lid?
+0,22,swan,swan_3.wav,nomask,visual,yes,visual-yes,1,Does it have a long neck?
+0,23,camel,camel_4.wav,mask,visual,yes,visual-yes,4,Is it large?
+0,24,penguin,penguin_1.wav,nomask,nonvisual,yes,nonvisual-yes,2,Is it unable to fly?
+0,25,strawberry,strawberry_2.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it a fruit?
+0,26,dog,dog_1.wav,nomask,visual,yes,visual-yes,3,Does it have a tail?
+0,27,strawberry,strawberry_1.wav,mask,nonvisual,yes,nonvisual-yes,3,Is it used for making jam?
+0,28,tiger,tiger_1.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live in Africa?
+0,29,pig,pig_1.wav,mask,visual,no,visual-no,4,Does it have feathers?
+0,30,lion,lion_3.wav,mask,visual,yes,visual-yes,4,Does it have teeth?
+0,31,deer,deer_3.wav,mask,visual,yes,visual-yes,5,Does it have a white tail?
+0,32,dog,dog_3.wav,nomask,nonvisual,yes,nonvisual-yes,4,Is it used for protection?
+0,33,donkey,donkey_3.wav,mask,visual,yes,visual-yes,1,Does it have legs?
+0,34,alligator,alligator_2.wav,nomask,visual,yes,visual-yes,4,Does it have a tail?
+0,35,deer,deer_4.wav,nomask,nonvisual,yes,nonvisual-yes,3,Is it a mammal?
+0,36,swan,swan_3.wav,mask,visual,yes,visual-yes,4,Does it have wings?
+0,37,donkey,donkey_2.wav,nomask,nonvisual,yes,nonvisual-yes,4,Is it furry?
+0,38,pig,pig_3.wav,mask,nonvisual,no,nonvisual-no,2,Is it a bird?
+0,39,lion,lion_1.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it live in jungles?
+0,40,penguin,penguin_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it a bird?
+0,41,pineapple,pineapple_2.wav,mask,visual,yes,visual-yes,3,Does it have skin?
+0,42,swan,swan_3.wav,nomask,visual,no,visual-no,2,Does it have a tail?
+0,43,giraffe,giraffe_1.wav,mask,visual,no,visual-no,4,Does it have antennae?
+0,44,strawberry,strawberry_4.wav,nomask,visual,yes,visual-yes,1,Is it red?
+0,45,donkey,donkey_1.wav,mask,visual,yes,visual-yes,2,Does it have four legs?
+0,46,giraffe,giraffe_1.wav,nomask,nonvisual,yes,nonvisual-yes,3,Does it live in zoos?
+0,47,camel,camel_4.wav,nomask,visual,yes,visual-yes,5,Is it beige?
+0,48,rabbit,rabbit_4.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it a pet?
+0,49,donkey,donkey_3.wav,mask,visual,no,visual-no,3,Does it have stripes?
+0,50,pineapple,pineapple_1.wav,nomask,visual,yes,visual-yes,2,Does it have an inside?
+0,51,penguin,penguin_1.wav,nomask,visual,no,visual-no,3,Does it have four legs?
+0,52,giraffe,giraffe_4.wav,mask,nonvisual,yes,nonvisual-yes,1,Does it eat leaves?
+0,53,raccoon,raccoon_3.wav,nomask,visual,yes,visual-yes,4,Does it have stripes?
+0,54,camel,camel_2.wav,mask,visual,yes,visual-yes,1,Does it have a hump?
+0,55,deer,deer_4.wav,mask,nonvisual,yes,nonvisual-yes,4,Is it an herbivore?
+0,56,rabbit,rabbit_1.wav,mask,nonvisual,no,nonvisual-no,1,Does it live in zoos?
+0,57,alligator,alligator_1.wav,nomask,visual,yes,visual-yes,1,Is it green?
+0,58,pineapple,pineapple_2.wav,nomask,nonvisual,yes,nonvisual-yes,3,Does it grow on trees?
+0,59,chicken,chicken_2.wav,nomask,nonvisual,yes,nonvisual-yes,2,Does it live on a farm?
+0,60,dog,dog_2.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it an animal?
+0,61,raccoon,raccoon_1.wav,mask,visual,no,visual-no,5,Does it have a beak?
+0,62,pig,pig_1.wav,nomask,visual,no,visual-no,5,Does it have fur?
+0,63,swan,swan_4.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live on water?
+1,64,pineapple,pineapple_4.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it grow in Hawaii?
+1,65,pig,pig_4.wav,nomask,nonvisual,yes,nonvisual-yes,4,Is it smelly?
+1,66,swan,swan_4.wav,nomask,visual,no,visual-no,4,Is it made of wood?
+1,67,donkey,donkey_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it an animal?
+1,68,pineapple,pineapple_3.wav,nomask,visual,yes,visual-yes,1,Is it yellow?
+1,69,strawberry,strawberry_4.wav,nomask,visual,yes,visual-yes,2,Does it have seeds?
+1,70,lion,lion_1.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it a carnivore?
+1,71,giraffe,giraffe_1.wav,mask,nonvisual,no,nonvisual-no,3,Does it live in grass?
+1,72,pig,pig_3.wav,nomask,visual,no,visual-no,2,Does it have wings?
+1,73,giraffe,giraffe_3.wav,mask,visual,yes,visual-yes,1,Does it have spots?
+1,74,swan,swan_4.wav,mask,nonvisual,yes,nonvisual-yes,4,Does it lay eggs?
+1,75,tiger,tiger_4.wav,nomask,visual,yes,visual-yes,3,Is it orange?
+1,76,rabbit,rabbit_4.wav,nomask,visual,yes,visual-yes,4,Does it have a tail?
+1,77,penguin,penguin_2.wav,nomask,visual,yes,visual-yes,4,Does it have wings?
+1,78,camel,camel_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Does it live in the desert?
+1,79,penguin,penguin_3.wav,nomask,visual,yes,visual-yes,3,Does it have feet?
+1,80,dog,dog_1.wav,nomask,nonvisual,yes,nonvisual-yes,3,Is it a pet?
+1,81,camel,camel_1.wav,mask,nonvisual,yes,nonvisual-yes,2,Does it drink water?
+1,82,tiger,tiger_1.wav,mask,visual,yes,visual-yes,5,Does it have large teeth?
+1,83,rabbit,rabbit_1.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it eat carrots?
+1,84,donkey,donkey_3.wav,mask,nonvisual,yes,nonvisual-yes,3,Is it a mammal?
+1,85,table,table_4.wav,mask,visual,yes,visual-yes,4,Is it flat?
+1,86,chicken,chicken_2.wav,nomask,visual,yes,visual-yes,4,Does it have legs?
+1,87,raccoon,raccoon_2.wav,nomask,visual,yes,visual-yes,1,Is it black?
+1,88,deer,deer_1.wav,mask,visual,yes,visual-yes,2,Does it have four legs?
+1,89,donkey,donkey_4.wav,nomask,visual,no,visual-no,1,Is it round?
+1,90,alligator,alligator_3.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it live in water?
+1,91,tiger,tiger_4.wav,nomask,visual,yes,visual-yes,4,Does it have whiskers?
+1,92,deer,deer_2.wav,mask,visual,yes,visual-yes,3,Does it have eyes?
+1,93,raccoon,raccoon_1.wav,nomask,visual,yes,visual-yes,5,Does it have a mask?
+1,94,penguin,penguin_4.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it lay eggs?
+1,95,lion,lion_2.wav,mask,visual,yes,visual-yes,3,Does it have a tail?
+1,96,penguin,penguin_3.wav,mask,visual,yes,visual-yes,1,Is it black?
+1,97,giraffe,giraffe_2.wav,mask,nonvisual,yes,nonvisual-yes,4,Is it a mammal?
+1,98,raccoon,raccoon_2.wav,mask,nonvisual,yes,nonvisual-yes,1,Does it eat garbage?
+1,99,pig,pig_3.wav,mask,visual,yes,visual-yes,2,Does it have a tail?
+1,100,chicken,chicken_3.wav,nomask,nonvisual,yes,nonvisual-yes,3,Does it eat grain?
+1,101,alligator,alligator_4.wav,nomask,visual,yes,visual-yes,3,Does it have scales?
+1,102,strawberry,strawberry_3.wav,nomask,visual,yes,visual-yes,3,Does it have green leaves?
+1,103,deer,deer_2.wav,nomask,nonvisual,yes,nonvisual-yes,5,Is it timid?
+1,104,swan,swan_2.wav,mask,nonvisual,no,nonvisual-no,2,Does it grow on trees?
+1,105,penguin,penguin_3.wav,nomask,nonvisual,no,nonvisual-no,5,Does it eat grain?
+1,106,camel,camel_2.wav,nomask,visual,yes,visual-yes,2,Is it brown?
+1,107,pineapple,pineapple_4.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it juicy?
+1,108,deer,deer_2.wav,nomask,nonvisual,no,nonvisual-no,5,Is it used for cider?
+1,109,donkey,donkey_3.wav,mask,nonvisual,no,nonvisual-no,2,Does it grow on trees?
+1,110,deer,deer_2.wav,nomask,nonvisual,no,nonvisual-no,4,Does it eat people?
+1,111,pig,pig_4.wav,mask,visual,no,visual-no,3,Does it have whiskers?
+1,112,rabbit,rabbit_2.wav,nomask,nonvisual,yes,nonvisual-yes,4,Is it hunted by people?
+1,113,pineapple,pineapple_1.wav,nomask,nonvisual,no,nonvisual-no,5,Is it a pet?
+1,114,swan,swan_1.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it graceful?
+1,115,table,table_3.wav,mask,nonvisual,no,nonvisual-no,4,Does it grow in Hawaii?
+1,116,dog,dog_2.wav,mask,visual,yes,visual-yes,1,Does it have four legs?
+1,117,table,table_1.wav,nomask,visual,no,visual-no,1,Does it have a neck?
+1,118,alligator,alligator_2.wav,mask,visual,yes,visual-yes,2,Is it long?
+1,119,chicken,chicken_1.wav,nomask,visual,yes,visual-yes,1,Does it have feathers?
+1,120,table,table_1.wav,mask,nonvisual,no,nonvisual-no,3,Is it healthy?
+1,121,pineapple,pineapple_3.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it tropical?
+1,122,dog,dog_3.wav,nomask,nonvisual,no,nonvisual-no,5,Does it lay eggs?
+1,123,alligator,alligator_1.wav,mask,visual,yes,visual-yes,5,Does it have jaws?
+1,124,dog,dog_4.wav,nomask,visual,no,visual-no,5,Does it have a mask?
+1,125,lion,lion_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it an animal?
+1,126,donkey,donkey_4.wav,mask,nonvisual,no,nonvisual-no,3,Is it furniture?
+1,127,raccoon,raccoon_1.wav,nomask,nonvisual,no,nonvisual-no,2,Is it used for protection?
+2,128,swan,swan_1.wav,mask,nonvisual,yes,nonvisual-yes,2,Is it a bird?
+2,129,penguin,penguin_4.wav,mask,nonvisual,yes,nonvisual-yes,3,Does it live in the Arctic?
+2,130,pig,pig_2.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it an animal?
+2,131,raccoon,raccoon_4.wav,nomask,nonvisual,yes,nonvisual-yes,2,Is it furry?
+2,132,swan,swan_1.wav,nomask,visual,yes,visual-yes,3,Does it have feathers?
+2,133,strawberry,strawberry_1.wav,mask,visual,no,visual-no,3,Does it have a mane?
+2,134,pig,pig_4.wav,mask,visual,yes,visual-yes,4,Does it have legs?
+2,135,rabbit,rabbit_2.wav,mask,nonvisual,yes,nonvisual-yes,3,Is it edible?
+2,136,pineapple,pineapple_3.wav,nomask,nonvisual,yes,nonvisual-yes,5,Is it prickly?
+2,137,tiger,tiger_2.wav,nomask,nonvisual,yes,nonvisual-yes,4,Does it live in zoos?
+2,138,donkey,donkey_4.wav,mask,nonvisual,no,nonvisual-no,4,Does it chase cats?
+2,139,alligator,alligator_3.wav,nomask,visual,no,visual-no,4,Is it small?
+2,140,chicken,chicken_3.wav,mask,nonvisual,yes,nonvisual-yes,5,Does it live in a coop?
+2,141,swan,swan_2.wav,nomask,visual,yes,visual-yes,2,Does it have a beak?
+2,142,donkey,donkey_4.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it make noises?
+2,143,alligator,alligator_3.wav,nomask,nonvisual,yes,nonvisual-yes,2,Is it a reptile?
+2,144,pineapple,pineapple_4.wav,mask,visual,yes,visual-yes,5,Does it have a core?
+2,145,camel,camel_1.wav,mask,nonvisual,yes,nonvisual-yes,3,Is it used by riding?
+2,146,penguin,penguin_2.wav,mask,nonvisual,yes,nonvisual-yes,5,Does it waddle?
+2,147,chicken,chicken_1.wav,mask,visual,yes,visual-yes,2,Does it have wings?
+2,148,dog,dog_4.wav,nomask,visual,yes,visual-yes,4,Does it have hair?
+2,149,pig,pig_2.wav,mask,visual,yes,visual-yes,3,Does it have a snout?
+2,150,lion,lion_2.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it roar?
+2,151,pineapple,pineapple_3.wav,mask,nonvisual,no,nonvisual-no,4,Is it used for racing?
+2,152,alligator,alligator_4.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it eat people?
+2,153,tiger,tiger_3.wav,nomask,visual,yes,visual-yes,2,Does it have teeth?
+2,154,rabbit,rabbit_4.wav,nomask,visual,yes,visual-yes,2,Does it have feet?
+2,155,tiger,tiger_2.wav,nomask,nonvisual,no,nonvisual-no,1,Is it used for sitting on?
+2,156,alligator,alligator_1.wav,nomask,nonvisual,yes,nonvisual-yes,1,Is it an animal?
+2,157,pineapple,pineapple_2.wav,mask,visual,yes,visual-yes,4,Is it yellow inside?
+2,158,dog,dog_2.wav,nomask,visual,yes,visual-yes,5,Does it have a nose?
+2,159,rabbit,rabbit_3.wav,mask,visual,yes,visual-yes,1,Does it have ears?
+2,160,lion,lion_4.wav,nomask,nonvisual,no,nonvisual-no,2,Does it eat cheese?
+2,161,rabbit,rabbit_3.wav,mask,nonvisual,yes,nonvisual-yes,1,Does it hop?
+2,162,raccoon,raccoon_3.wav,nomask,visual,yes,visual-yes,3,Does it have eyes?
+2,163,chicken,chicken_3.wav,nomask,nonvisual,no,nonvisual-no,5,Is it comfortable?
+2,164,dog,dog_4.wav,mask,nonvisual,yes,nonvisual-yes,5,Does it chase cats?
+2,165,deer,deer_4.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it hunted by people?
+2,166,camel,camel_3.wav,mask,visual,no,visual-no,1,Does it have stripes?
+2,167,dog,dog_3.wav,nomask,visual,yes,visual-yes,2,Does it have legs?
+2,168,giraffe,giraffe_4.wav,mask,visual,yes,visual-yes,4,Is it brown?
+2,169,table,table_1.wav,mask,nonvisual,yes,nonvisual-yes,1,Is it used for eating on?
+2,170,lion,lion_3.wav,nomask,nonvisual,yes,nonvisual-yes,3,Is it a mammal?
+2,171,table,table_2.wav,mask,visual,yes,visual-yes,1,Is it made of wood?
+2,172,lion,lion_4.wav,mask,visual,yes,visual-yes,1,Does it have a mane?
+2,173,pig,pig_1.wav,nomask,nonvisual,yes,nonvisual-yes,3,Is it eaten as bacon?
+2,174,donkey,donkey_2.wav,nomask,visual,yes,visual-yes,3,Does it have a tail?
+2,175,tiger,tiger_3.wav,nomask,nonvisual,yes,nonvisual-yes,5,Does it live in India?
+2,176,swan,swan_2.wav,mask,visual,no,visual-no,1,Does it have a hump?
+2,177,pig,pig_1.wav,nomask,nonvisual,yes,nonvisual-yes,2,Does it live on farms?
+2,178,giraffe,giraffe_3.wav,mask,nonvisual,yes,nonvisual-yes,2,Does it live in Africa?
+2,179,raccoon,raccoon_4.wav,mask,visual,no,visual-no,2,Does it have seeds?
+2,180,strawberry,strawberry_2.wav,mask,visual,yes,visual-yes,4,Is it small?
+2,181,donkey,donkey_1.wav,mask,visual,yes,visual-yes,4,Does it have hooves?
+2,182,deer,deer_3.wav,nomask,nonvisual,yes,nonvisual-yes,2,Is it fast?
+2,183,donkey,donkey_2.wav,nomask,nonvisual,yes,nonvisual-yes,2,Is it like a horse?
+2,184,penguin,penguin_4.wav,nomask,nonvisual,no,nonvisual-no,4,Does it like mud?
+2,185,raccoon,raccoon_3.wav,nomask,nonvisual,no,nonvisual-no,4,Does it spit?
+2,186,giraffe,giraffe_4.wav,nomask,visual,yes,visual-yes,3,Does it have long legs?
+2,187,chicken,chicken_4.wav,mask,nonvisual,no,nonvisual-no,3,Is it used for making jam?
+2,188,deer,deer_3.wav,mask,visual,yes,visual-yes,4,Does it have hooves?
+2,189,strawberry,strawberry_4.wav,nomask,visual,no,visual-no,1,Does it have four legs?
+2,190,deer,deer_1.wav,mask,visual,no,visual-no,1,Is it yellow?
+2,191,camel,camel_3.wav,mask,nonvisual,yes,nonvisual-yes,5,Does it spit?

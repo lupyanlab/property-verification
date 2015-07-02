@@ -1,0 +1,109 @@
+# Feature Meta
+
+```{r setup, message = FALSE, warning = FALSE, echo = FALSE, cache = FALSE}
+library(knitr)
+opts_chunk$set(cache = FALSE, cache.path = "feature-meta.cache/", 
+               warning = FALSE, message = FALSE,
+               tidy = TRUE, tidy.opts = list(width.cutoff = 100))
+
+knit_hooks$set(htmlcap = function(before, options, envir) {
+  if(!before) {
+    paste('<p class="caption" align="center">',options$htmlcap,"</p>",sep="")
+  }
+})
+
+library(dplyr)
+library(lme4)
+library(reshape2)
+library(AICcmodavg)
+library(ggplot2)
+library(grid)
+library(gridExtra)
+library(scales)
+library(RColorBrewer)
+
+source("./helper/report-stats.R")       # formatting lmer model output
+source("./helper/within-subj-error.R")  # computing within-subject error
+source("./helper/helper-funcs.R")       # import `%nin%` function for filtering
+source("./helper/lmer-help.R")          # import `get_estimates` for plotting
+```
+
+```{r load-data, echo = FALSE}
+df1 <- read.csv("./feature-last/feature-last-senses.csv", stringsAsFactors = FALSE)
+df1 <- df1 %.% filter(subj_id != "MWPF214") %.% mutate(version = "last", version_c = 0.5)
+
+df2 <- read.csv("./feature-first/feature-first-senses.csv", stringsAsFactors = FALSE)
+df2 <- mutate(df2, version = "first", version_c = -0.5)
+
+df <- plyr::rbind.fill(df1, df2)
+```
+
+# Discrete question type by experiment
+
+```{r mod-discrete-exp, echo = c(1)}
+mod_discrete_exp_err <- glmer(is_error ~ feat_c * mask_c * version_c + (1|version_c/subj_id), data = df, family = binomial)
+summarize_glmer(mod_discrete_exp_err, vars = c("feat_c", "mask_c", "version_c",
+                                               "feat_c:mask_c",
+                                               "feat_c:mask_c:version_c"))
+```
+
+# Continuous question type by experiment
+
+```{r mod-imag, echo = 1}
+mod_imag_err <- glmer(is_error ~ imagery_z * mask_c * version_c + (1|version_c/subj_id), data = df, family = binomial)
+summarize_glmer(mod_imag_err, vars = c("imagery_z", "mask_c", "version_c",
+                                       "imagery_z:mask_c",
+                                       "imagery_z:mask_c:version_c"))
+```
+
+```{r mod-facs, echo = 1}
+mod_facts_err <- glmer(is_error ~ facts_z * mask_c * version_c + (1|version_c/subj_id), data = df, family = binomial)
+summarize_glmer(mod_facts_err, vars = c("facts_z", "mask_c", "version_c",
+                                        "facts_z:mask_c",
+                                        "facts_z:mask_c:version_c"))
+
+```
+
+```{r}
+senses <- read.csv("./feature-norms-senses/feature_norms_senses.csv")
+senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
+head(senses)
+
+senses %>% group_by(ftype) %>%
+  summarize(senses = mean(senses_mean, na.rm = T))
+
+summary(lm(senses_mean ~ ftype, data = senses))
+
+ratings <- read.csv("./feature-norms/feature_norms_merged.csv")
+
+all_ratings <- merge(senses, ratings)
+
+cor(all_ratings[,c("imagery_mean", "senses_mean")], use = 'pairwise.complete.obs')
+cor(all_ratings[,c("facts_mean", "senses_mean")], use = 'pairwise.complete.obs')
+```
+
+```{r}
+mod_senses <- glmer(is_error ~ senses_mean + (1|subj_id), data = df1, family = binomial)
+summary(mod_senses)
+
+mod_senses_diff <- glmer(is_error ~ senses_mean + diff_mean + (1|subj_id), data = df1, family = binomial)
+summary(mod_senses_diff)
+```
+
+```{r}
+mod_senses_inter <- glmer(is_error ~ senses_mean * mask_c + (1|subj_id), data = df1, family = binomial)
+summary(mod_senses_inter)
+confint(mod_senses_inter, method = "Wald")
+
+mod_imagery <- glmer(is_error ~ imagery_mean * mask_c + (1|subj_id), data = df1, family = binomial)
+summary(mod_imagery)
+
+mod_inter <- glmer(is_error ~ (senses_mean + imagery_mean) * mask_c + (1|subj_id), data = df1, family = binomial)
+summary(mod_inter)
+
+mod_senses <- glmer(is_error ~ senses_mean * mask_c + (1|subj_id), data = df2, family = binomial)
+summary(mod_senses)
+
+mod_imagery <- glmer(is_error ~ imagery_mean * mask_c + (1|subj_id), data = df2, family = binomial)
+summary(mod_imagery)
+```

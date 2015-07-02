@@ -1,0 +1,10 @@
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-18	alligator	alligator_1.wav	mask	visual	yes	visual-yes	3	Does it have scales?	7.22477367211	yes	761.242501405	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-17	swan	swan_3.wav	nomask	nonvisual	no	nonvisual-no	2	Does it grow on trees?	14.6119578465	no	666.063481418	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-16	chicken	chicken_2.wav	nomask	visual	yes	visual-yes	3	Does it have a beak?	21.6321150168	yes	1203.65219911	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-15	deer	deer_2.wav	nomask	visual	no	visual-no	2	Is it green?	28.8212517709	no	1122.57769739	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-14	penguin	penguin_3.wav	mask	nonvisual	no	nonvisual-no	5	Does it eat grain?	35.9214362158	no	1013.84096681	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-13	strawberry	strawberry_2.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it taste sweet?	43.2036066318	yes	1006.18360669	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-12	zebra	zebra_2.wav	nomask	visual	no	visual-no	3	Does it have jaws?	50.4006794865	yes	334.309267364	0
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-11	rabbit	rabbit_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it hop?	57.4549411176	yes	388.891922146	1
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-10	lion	lion_4.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	64.4429918098	no	892.440219592	0
+testing2	209	PME 	2015_May_13_1556	MWPF2	LupyanLab-PC	-1	-9	raccoon	raccoon_3.wav	mask	visual	no	visual-no	2	Does it have seeds?	71.2526374645	timeout	2000.0	0

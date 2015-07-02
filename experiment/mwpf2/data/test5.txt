@@ -1,0 +1,4 @@
+test5	211	PME 	2015_May_13_2048	MWPF2	Pierces-MacBook-Pro.local	-1	-18	rabbit	rabbit_2.wav	nomask	visual	yes	visual-yes	1	Does it have ears?	6.54404211044	timeout	2000.0	0
+test5	211	PME 	2015_May_13_2048	MWPF2	Pierces-MacBook-Pro.local	-1	-17	donkey	donkey_2.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it make noises?	13.2718582153	timeout	2000.0	0
+test5	211	PME 	2015_May_13_2048	MWPF2	Pierces-MacBook-Pro.local	-1	-16	swan	swan_4.wav	mask	visual	yes	visual-yes	1	Does it have a long neck?	21.8876051903	timeout	2000.0	0
+test5	211	PME 	2015_May_13_2048	MWPF2	Pierces-MacBook-Pro.local	-1	-15	chicken	chicken_1.wav	mask	visual	yes	visual-yes	3	Does it have a beak?	29.0875840187	timeout	2000.0	0

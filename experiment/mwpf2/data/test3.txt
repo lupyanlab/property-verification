@@ -1,0 +1,3 @@
+test3	209	PME 	2015_May_13_1636	MWPF2	Pierces-MacBook-Pro.local	-1	-18	alligator	alligator_1.wav	mask	visual	yes	visual-yes	3	Does it have scales?	7.27349901199	no	1309.26513672	0
+test3	209	PME 	2015_May_13_1636	MWPF2	Pierces-MacBook-Pro.local	-1	-17	swan	swan_3.wav	nomask	nonvisual	no	nonvisual-no	2	Does it grow on trees?	14.6250860691	no	765.634059906	1
+test3	209	PME 	2015_May_13_1636	MWPF2	Pierces-MacBook-Pro.local	-1	-16	chicken	chicken_2.wav	nomask	visual	yes	visual-yes	3	Does it have a beak?	21.6218791008	yes	1095.08085251	1

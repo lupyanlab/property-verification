@@ -1,0 +1,4 @@
+testing3	209	PME 	2015_May_13_1612	MWPF2	LupyanLab-PC	-1	-18	alligator	alligator_1.wav	mask	visual	yes	visual-yes	3	Does it have scales?	7.23656246806	yes	594.441938014	1
+testing3	209	PME 	2015_May_13_1612	MWPF2	LupyanLab-PC	-1	-17	swan	swan_3.wav	nomask	nonvisual	no	nonvisual-no	2	Does it grow on trees?	14.6057598718	no	949.770870338	1
+testing3	209	PME 	2015_May_13_1612	MWPF2	LupyanLab-PC	-1	-16	chicken	chicken_2.wav	nomask	visual	yes	visual-yes	3	Does it have a beak?	21.8029645022	yes	943.955086233	1
+testing3	209	PME 	2015_May_13_1612	MWPF2	LupyanLab-PC	-1	-15	deer	deer_2.wav	nomask	visual	no	visual-no	2	Is it green?	29.0671124326	no	522.085570476	1

@@ -1,0 +1,9 @@
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-11	camel	camel_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it drink water?	7.10236346536	no	1131.73097883	0
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-10	strawberry	strawberry_1.wav	nomask	visual	yes	visual-yes	4	Is it small?	14.3944433338	yes	1513.12974736	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-9	apple	apple_4.wav	nomask	nonvisual	yes	nonvisual-yes	5	Is it used for cider?	21.4518392566	yes	1081.63814057	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-8	raccoon	raccoon_2.wav	nomask	visual	no	visual-no	5	Does it have a beak?	28.6138868625	no	628.970462123	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-7	grasshopper	grasshopper_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it live in grass?	35.819098613	yes	414.747468862	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-6	dog	dog_2.wav	nomask	visual	yes	visual-yes	4	Does it have hair?	42.8811744214	yes	1010.82654579	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-5	giraffe	giraffe_1.wav	nomask	visual	yes	visual-yes	3	Does it have long legs?	50.090349296	yes	643.123010796	1
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-4	zebra	zebra_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it run fast?	56.5890103971	timeout	2000.0	0
+testing	300	PME 	2015_May_13_1543	MWPF2	LupyanLab-PC	-1	-3	chicken	chicken_1.wav	nomask	visual	yes	visual-yes	1	Does it have feathers?	63.9505992922	timeout	2000.0	0

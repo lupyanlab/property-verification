@@ -1,0 +1,1 @@
+test	146	cpb 	2014_Apr_30_1333	MWPF1	dyn-72-33-222-22.uwnet.wisc.edu	-1	-19	table	table_4.wav	mask	nonvisual	no	nonvisual-no	1	Is it an animal?	3.91301679611	yes	708.088159561	0

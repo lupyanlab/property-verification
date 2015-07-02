@@ -1,0 +1,243 @@
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-19	dog	dog_2.wav	nomask	visual	yes	visual-yes	3	Does it have a tail?	14.1682017345	timeout	2000.0	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-18	elephant	elephant_4.wav	nomask	visual	yes	visual-yes	2	Does it have ears?	18.4965029621	yes	1233.42362687	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-17	pig	pig_1.wav	mask	visual	yes	visual-yes	2	Does it have a tail?	22.7952467423	yes	1272.28662258	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-16	chicken	chicken_2.wav	mask	visual	yes	visual-yes	3	Does it have a beak?	26.7014180385	yes	827.793350938	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-15	swan	swan_2.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it lay eggs?	31.608553228	yes	1466.66203957	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-14	donkey	donkey_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it like a horse?	36.6983087804	no	1972.6635626	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-13	zebra	zebra_1.wav	nomask	visual	yes	visual-yes	2	Does it have four legs?	40.7939326967	yes	854.178762471	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-12	penguin	penguin_4.wav	mask	visual	yes	visual-yes	3	Does it have feet?	44.6874154595	yes	726.621978713	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-11	apple	apple_2.wav	nomask	visual	yes	visual-yes	5	Does it have a core?	48.9109786754	yes	952.09231542	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-10	lion	lion_1.wav	nomask	nonvisual	no	nonvisual-no	1	Is it found in kitchens?	53.0505431843	no	964.235734311	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-9	tiger	tiger_4.wav	mask	nonvisual	no	nonvisual-no	3	Does it grow underground?	57.0328850631	no	916.654416535	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-8	mouse	mouse_1.wav	nomask	nonvisual	no	nonvisual-no	4	Does it live on water?	61.49765012	no	1248.80029977	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-7	bottle	bottle_1.wav	mask	nonvisual	no	nonvisual-no	3	Is it a carnivore?	65.5053702353	no	766.800579731	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-6	raccoon	raccoon_3.wav	nomask	visual	yes	visual-yes	3	Does it have eyes?	69.3705378502	yes	673.866752652	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-5	grasshopper	grasshopper_3.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it found in summer?	73.6184990324	yes	997.870232328	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-4	chair	chair_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it furniture?	77.7346438956	yes	786.411052948	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-3	alligator	alligator_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it live in water?	81.9747983993	yes	969.630339881	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-2	giraffe	giraffe_2.wav	mask	nonvisual	no	nonvisual-no	3	Does it live in grass?	86.555771877	yes	1280.09876006	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	-1	-1	pineapple	pineapple_1.wav	mask	visual	yes	visual-yes	1	Is it yellow?	90.6211310228	yes	762.446682696	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	0	apple	apple_2.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it a fruit?	102.625771514	yes	608.512285922	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	1	pineapple	pineapple_3.wav	nomask	visual	yes	visual-yes	5	Does it have a core?	106.49093523	yes	540.193223191	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	2	penguin	penguin_2.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it unable to fly?	110.889294584	no	1191.93799887	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	3	mouse	mouse_4.wav	nomask	visual	no	visual-no	4	Does it have a white tail?	114.879453279	yes	843.774406851	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	4	pineapple	pineapple_1.wav	mask	visual	yes	visual-yes	4	Is it yellow inside?	118.902807028	yes	719.246166729	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	5	chicken	chicken_3.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it live in a coop?	123.076565576	yes	996.734382265	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	6	grasshopper	grasshopper_1.wav	nomask	visual	yes	visual-yes	2	Does it have legs?	127.183904774	yes	810.550109396	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	7	alligator	alligator_2.wav	nomask	nonvisual	no	nonvisual-no	1	Is it a mammal?	131.348864676	yes	905.001522653	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	8	mouse	mouse_3.wav	nomask	visual	yes	visual-yes	3	Does it have fur?	135.197430086	yes	654.471907706	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	9	chicken	chicken_4.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it lay eggs?	138.837996116	yes	570.81633425	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	10	tiger	tiger_2.wav	nomask	visual	yes	visual-yes	4	Does it have whiskers?	143.16114722	no	992.25375973	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	11	chair	chair_4.wav	mask	nonvisual	no	nonvisual-no	1	Is it a fruit?	147.043879764	no	631.716693344	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	12	giraffe	giraffe_4.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it live in zoos?	150.892436595	yes	639.474631316	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	13	zebra	zebra_4.wav	nomask	visual	yes	visual-yes	1	Does it have stripes?	154.707797983	yes	590.181544947	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	14	lion	lion_1.wav	nomask	visual	yes	visual-yes	1	Does it have a mane?	158.84737263	yes	960.883553344	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	15	zebra	zebra_4.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it travel in herds?	162.855110292	yes	787.057547801	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	16	chair	chair_4.wav	nomask	nonvisual	yes	nonvisual-yes	5	Is it found at tables?	166.661666015	yes	646.471046755	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	17	bottle	bottle_2.wav	nomask	visual	yes	visual-yes	2	Is it made of plastic?	170.443837419	yes	623.504493298	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	18	donkey	donkey_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it like a horse?	174.125396602	no	554.849705542	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	19	raccoon	raccoon_1.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it furry?	178.091144464	yes	782.783975184	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	20	lion	lion_4.wav	mask	visual	yes	visual-yes	2	Does it have fur?	181.981696554	yes	821.909000195	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	21	alligator	alligator_4.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it eat people?	186.155449643	yes	849.706328358	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	22	elephant	elephant_4.wav	nomask	visual	yes	visual-yes	2	Does it have ears?	189.870219087	yes	595.979722362	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	23	mouse	mouse_3.wav	mask	visual	yes	visual-yes	4	Does it have whiskers?	193.644556127	yes	548.826931597	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	24	lion	lion_3.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it roar?	197.401335257	yes	543.590635411	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	25	pig	pig_3.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it eaten as bacon?	201.433486483	yes	910.160613799	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	26	tiger	tiger_4.wav	mask	nonvisual	no	nonvisual-no	3	Does it grow underground?	205.256645581	no	735.600770335	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	27	donkey	donkey_4.wav	mask	visual	yes	visual-yes	4	Does it have hooves?	209.230202461	yes	904.571046005	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	28	raccoon	raccoon_2.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it produce offspring?	213.254540378	yes	821.750300907	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	29	pineapple	pineapple_2.wav	mask	visual	yes	visual-yes	3	Does it have skin?	217.394110736	yes	750.987191364	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	30	donkey	donkey_4.wav	mask	visual	yes	visual-yes	1	Does it have legs?	221.060062801	yes	583.040467551	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	31	chicken	chicken_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it live on a farm?	224.808046014	yes	661.285838461	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	32	grasshopper	grasshopper_2.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it live in grass?	228.681996289	yes	601.375497703	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	33	mouse	mouse_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it used in experiments?	232.797143335	yes	931.097220251	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	34	apple	apple_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it grow on trees?	236.629103419	yes	656.233976537	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	35	zebra	zebra_2.wav	nomask	visual	yes	visual-yes	3	Does it have hooves?	240.586065112	yes	709.595535212	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	36	elephant	elephant_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it live in Africa?	244.384820395	yes	652.661488217	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	37	pig	pig_4.wav	mask	visual	yes	visual-yes	4	Does it have legs?	247.992182014	yes	620.347664517	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	38	tiger	tiger_4.wav	nomask	nonvisual	no	nonvisual-no	5	Is it used for relaxing?	252.149330558	no	1057.65891666	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	39	alligator	alligator_4.wav	nomask	nonvisual	no	nonvisual-no	4	Is it found in summer?	256.014486475	yes	572.252036276	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	40	tiger	tiger_1.wav	nomask	nonvisual	no	nonvisual-no	4	Is it worn in winter?	260.046672014	no	888.847340277	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	41	penguin	penguin_1.wav	mask	visual	no	visual-no	1	Is it red?	264.452839216	no	1190.23168925	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	42	chair	chair_1.wav	mask	visual	yes	visual-yes	3	Does it have armrests?	268.70956902	yes	1047.59067597	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	43	bottle	bottle_4.wav	mask	visual	yes	visual-yes	4	Does it have a neck?	272.725121159	yes	856.887957925	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	44	elephant	elephant_1.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	276.573675651	yes	656.13415587	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	45	dog	dog_1.wav	nomask	visual	yes	visual-yes	4	Does it have hair?	280.79722288	yes	981.975349743	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	46	chair	chair_4.wav	nomask	nonvisual	no	nonvisual-no	4	Is it used in circuses?	285.162375093	yes	1193.28011904	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	47	raccoon	raccoon_3.wav	nomask	visual	yes	visual-yes	3	Does it have eyes?	288.919137846	yes	596.204318892	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	48	zebra	zebra_3.wav	nomask	visual	no	visual-no	1	Is it red?	292.801878578	no	661.020689789	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	49	alligator	alligator_1.wav	nomask	visual	yes	visual-yes	1	Is it green?	296.908252713	yes	791.482801025	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	50	pineapple	pineapple_3.wav	mask	visual	yes	visual-yes	2	Does it have an inside?	301.090785343	yes	860.25495606	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	51	donkey	donkey_2.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it furry?	304.897365631	yes	586.405905953	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	52	swan	swan_2.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it lay eggs?	309.354307243	yes	1027.19450486	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	53	grasshopper	grasshopper_3.wav	nomask	visual	yes	visual-yes	4	Does it have antennae?	313.952849159	yes	1353.63852204	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	54	alligator	alligator_2.wav	mask	visual	yes	visual-yes	5	Does it have jaws?	317.960593839	yes	764.846278122	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	55	dog	dog_2.wav	nomask	visual	yes	visual-yes	3	Does it have a tail?	321.749580734	yes	640.086422849	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	56	bottle	bottle_4.wav	nomask	visual	yes	visual-yes	3	Does it have a lid?	325.557134663	yes	708.080288576	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	57	chair	chair_3.wav	nomask	nonvisual	no	nonvisual-no	5	Is it an animal?	329.521903814	no	642.945349333	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	58	bottle	bottle_1.wav	nomask	visual	no	visual-no	4	Does it have eyes?	333.546240562	no	786.274969316	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	59	pig	pig_1.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it live on farms?	337.219994627	yes	609.64540657	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	60	swan	swan_4.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it graceful?	341.300977268	yes	757.744193164	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	61	elephant	elephant_2.wav	mask	nonvisual	no	nonvisual-no	1	Is it a rodent?	345.257936231	no	827.504416869	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	62	bottle	bottle_3.wav	mask	visual	yes	visual-yes	1	Is it made of glass?	349.515665412	no	1051.56283692	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	63	swan	swan_1.wav	nomask	visual	yes	visual-yes	4	Does it have wings?	353.622039547	yes	682.241941133	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	64	penguin	penguin_1.wav	mask	visual	yes	visual-yes	4	Does it have wings?	357.50379845	yes	679.921110481	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	65	pig	pig_4.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	360.994949698	yes	502.588513831	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	66	giraffe	giraffe_1.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it eat leaves?	365.268305883	yes	1000.90774425	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	67	dog	dog_3.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it chase cats?	369.608070501	yes	1179.76923488	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	68	elephant	elephant_2.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it eat peanuts?	373.940012844	yes	1192.63440405	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	69	giraffe	giraffe_1.wav	nomask	visual	yes	visual-yes	1	Does it have spots?	377.855958768	yes	630.928655912	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	70	pineapple	pineapple_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it grow in Hawaii?	381.812930988	yes	700.990681187	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	71	alligator	alligator_1.wav	nomask	nonvisual	no	nonvisual-no	5	Is it a pet?	385.944675171	no	813.415274664	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	72	bottle	bottle_3.wav	mask	nonvisual	no	nonvisual-no	2	Is it juicy?	389.734648185	yes	590.454492107	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	73	raccoon	raccoon_1.wav	nomask	nonvisual	no	nonvisual-no	1	Does it hop?	393.825387517	no	837.861201697	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	0	74	apple	apple_2.wav	mask	visual	yes	visual-yes	1	Is it red?	397.748167647	yes	634.356092312	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	75	tiger	tiger_1.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it live in zoos?	408.086838527	yes	557.454401249	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	76	chicken	chicken_2.wav	nomask	visual	no	visual-no	1	Is it orange?	411.886032085	no	717.079356255	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	77	bottle	bottle_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it breakable?	415.542750348	yes	532.733187516	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	78	raccoon	raccoon_4.wav	mask	visual	yes	visual-yes	1	Is it black?	419.166697016	yes	441.456539615	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	79	bottle	bottle_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it used for holding things?	423.023069104	yes	673.716241814	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	80	elephant	elephant_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in zoos?	426.663632014	yes	481.472542102	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	81	apple	apple_4.wav	mask	visual	yes	visual-yes	2	Is it green?	430.420405685	yes	659.76084373	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	82	pig	pig_3.wav	nomask	visual	no	visual-no	5	Does it have fur?	434.094154681	yes	558.015892544	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	83	dog	dog_2.wav	mask	visual	yes	visual-yes	1	Does it have four legs?	437.909519578	yes	683.787991817	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	84	elephant	elephant_1.wav	nomask	nonvisual	no	nonvisual-no	5	Does it lay eggs?	441.891857947	no	777.487240703	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	85	chair	chair_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it furniture?	446.356624954	yes	1151.30591567	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	86	tiger	tiger_2.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it an animal?	450.221781651	yes	500.138228235	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	87	donkey	donkey_2.wav	nomask	visual	yes	visual-yes	2	Does it have four legs?	453.962936896	yes	470.578441309	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	88	penguin	penguin_2.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it lay eggs?	457.594691802	yes	420.625992585	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	89	tiger	tiger_4.wav	mask	visual	yes	visual-yes	2	Does it have teeth?	461.277247632	yes	568.543464324	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	90	bottle	bottle_2.wav	nomask	visual	yes	visual-yes	5	Does it have a cork?	465.683408595	yes	1219.47095823	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	91	grasshopper	grasshopper_1.wav	mask	visual	yes	visual-yes	1	Is it green?	469.490958236	yes	470.838910871	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	92	giraffe	giraffe_2.wav	mask	nonvisual	no	nonvisual-no	3	Does it live in grass?	473.380540973	yes	585.217805987	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	93	penguin	penguin_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in the Arctic?	477.5708912	no	978.583006567	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	94	elephant	elephant_3.wav	nomask	visual	no	visual-no	3	Is it beige?	482.202659363	yes	1487.11981875	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	95	dog	dog_1.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it an animal?	485.959397161	yes	565.420948842	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	96	lion	lion_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	489.592145595	yes	449.067086127	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	97	bottle	bottle_2.wav	mask	nonvisual	no	nonvisual-no	4	Does it fly?	493.573514612	no	826.049218595	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	98	chair	chair_1.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it used for relaxing?	497.388880679	yes	643.600032607	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	99	penguin	penguin_3.wav	nomask	visual	yes	visual-yes	2	Does it have a beak?	501.121229869	yes	597.489899956	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	100	apple	apple_3.wav	mask	visual	yes	visual-yes	3	Does it have seeds?	504.853584518	yes	551.822331676	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	101	grasshopper	grasshopper_2.wav	nomask	visual	no	visual-no	4	Is it long?	509.276354705	yes	1152.2023521	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	102	giraffe	giraffe_3.wav	nomask	visual	yes	visual-yes	3	Does it have long legs?	513.400298838	yes	865.120434028	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	103	alligator	alligator_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in swamps?	517.357252732	yes	576.995857817	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	104	elephant	elephant_4.wav	mask	visual	yes	visual-yes	3	Does it have four legs?	520.981213047	yes	518.912703323	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	105	swan	swan_2.wav	mask	visual	no	visual-no	2	Does it have a tail?	525.304377409	no	873.503420997	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	106	pineapple	pineapple_4.wav	mask	nonvisual	no	nonvisual-no	3	Is it a carnivore?	529.336524346	yes	757.20804694	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	107	raccoon	raccoon_3.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it nocturnal?	533.227080725	yes	629.54637353	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	108	alligator	alligator_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it live in water?	536.975068617	yes	483.388241206	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	109	dog	dog_4.wav	nomask	visual	yes	visual-yes	2	Does it have legs?	540.565812823	yes	443.335195887	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	110	alligator	alligator_2.wav	nomask	visual	yes	visual-yes	3	Does it have scales?	544.756152521	yes	911.692627182	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	111	pineapple	pineapple_1.wav	mask	visual	yes	visual-yes	1	Is it yellow?	548.69686372	yes	632.568678382	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	112	zebra	zebra_3.wav	mask	nonvisual	no	nonvisual-no	5	Does it live in jungles?	552.486484242	yes	550.953579863	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	113	pig	pig_1.wav	mask	visual	yes	visual-yes	2	Does it have a tail?	556.10262969	yes	576.593065838	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	114	tiger	tiger_3.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it live in India?	559.925787618	yes	576.94555755	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	115	mouse	mouse_1.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it a rodent?	563.691354867	yes	571.328695049	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	116	apple	apple_4.wav	mask	nonvisual	no	nonvisual-no	2	Does it live in Africa?	567.473508334	no	689.956987422	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	117	dog	dog_4.wav	nomask	visual	yes	visual-yes	5	Does it have a nose?	571.197064336	yes	602.956641553	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	118	lion	lion_4.wav	mask	visual	no	visual-no	5	Does it have a long neck?	575.162824676	no	905.657375668	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	119	alligator	alligator_3.wav	nomask	visual	yes	visual-yes	2	Is it long?	579.368787869	yes	940.122022992	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	120	dog	dog_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it used for protection?	583.834536705	yes	1297.25582831	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	121	grasshopper	grasshopper_1.wav	nomask	visual	yes	visual-yes	3	Does it have long legs?	587.691878145	yes	530.008005153	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	122	mouse	mouse_1.wav	nomask	nonvisual	no	nonvisual-no	4	Does it live on water?	591.739677431	no	854.231402249	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	123	tiger	tiger_1.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a carnivore?	595.588216325	yes	686.968605994	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	124	alligator	alligator_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it a reptile?	599.454346664	yes	542.164681479	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	125	pig	pig_2.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it like mud?	602.994325039	yes	556.039365212	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	126	mouse	mouse_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it an animal?	606.618884278	yes	464.700719283	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	127	pineapple	pineapple_1.wav	mask	visual	no	visual-no	4	Does it have legs?	610.525443939	no	595.13865519	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	128	pig	pig_2.wav	nomask	visual	yes	visual-yes	3	Does it have a snout?	614.357568961	yes	828.30025279	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	129	chicken	chicken_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it eaten by frying?	618.455941455	yes	1034.13594092	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	130	bottle	bottle_4.wav	nomask	visual	no	visual-no	3	Does it have armrests?	622.43732061	no	852.9738957	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	131	donkey	donkey_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	626.552481304	yes	991.406453773	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	132	penguin	penguin_1.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it waddle?	630.451822683	yes	696.847343381	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	133	apple	apple_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it nutritious?	634.408775017	yes	850.228437281	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	134	raccoon	raccoon_3.wav	mask	visual	yes	visual-yes	4	Does it have stripes?	638.182136856	yes	611.026519153	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	135	mouse	mouse_4.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it eat cheese?	642.188903996	yes	853.685897891	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	136	giraffe	giraffe_2.wav	nomask	visual	yes	visual-yes	2	Is it tall?	645.987663958	yes	505.141349597	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	137	zebra	zebra_1.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	649.703405874	yes	493.521989207	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	138	giraffe	giraffe_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it live in Africa?	653.476793838	yes	529.242583347	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	139	raccoon	raccoon_1.wav	mask	visual	yes	visual-yes	5	Does it have a mask?	657.341949755	yes	677.878295974	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	140	swan	swan_3.wav	mask	visual	yes	visual-yes	1	Does it have a long neck?	661.74908475	yes	970.720568788	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	141	chair	chair_2.wav	nomask	visual	no	visual-no	2	Does it have a tail?	666.055651975	no	876.280073397	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	142	pineapple	pineapple_2.wav	nomask	visual	no	visual-no	2	Does it have a seat?	670.204983313	no	763.131780055	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	143	bottle	bottle_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it used for holding liquids?	674.303535562	yes	918.912859284	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	144	lion	lion_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it a mammal?	678.110104933	yes	628.391807055	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	145	swan	swan_1.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it a bird?	682.08367273	yes	564.476941596	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	146	apple	apple_1.wav	mask	visual	no	visual-no	5	Does it have eyes?	685.941031327	no	629.811132269	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	147	chair	chair_2.wav	nomask	visual	yes	visual-yes	1	Does it have legs?	689.806179056	yes	503.606996645	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	148	zebra	zebra_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in Africa?	693.746533474	yes	715.758292034	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	1	149	donkey	donkey_3.wav	mask	visual	no	visual-no	2	Does it have a pointed end?	698.361687344	yes	1483.32702307	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	150	elephant	elephant_2.wav	mask	visual	yes	visual-yes	5	Does it have large ears?	709.324376248	yes	438.983248459	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	151	dog	dog_3.wav	mask	visual	no	visual-no	4	Does it have a top?	713.314531044	no	832.566026889	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	152	penguin	penguin_4.wav	mask	visual	no	visual-no	3	Does it have four legs?	716.962898293	yes	489.988103393	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	153	raccoon	raccoon_1.wav	nomask	visual	no	visual-no	3	Does it have green leaves?	720.886654795	no	736.3143322	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	154	pig	pig_4.wav	mask	visual	yes	visual-yes	5	Is it muddy?	724.361205397	yes	492.974535184	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	155	chicken	chicken_2.wav	mask	visual	yes	visual-yes	3	Does it have a beak?	728.250780336	yes	807.116824115	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	156	donkey	donkey_1.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it make noises?	732.532931269	yes	996.743350523	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	157	grasshopper	grasshopper_4.wav	mask	visual	no	visual-no	2	Does it have teeth?	736.515284456	yes	740.970810642	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	158	pineapple	pineapple_2.wav	nomask	nonvisual	yes	nonvisual-yes	5	Is it prickly?	740.563053327	no	673.428867449	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	159	elephant	elephant_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it used in circuses?	744.420406465	yes	689.128007944	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	160	tiger	tiger_3.wav	mask	nonvisual	no	nonvisual-no	1	Is it used for sitting on?	748.902738011	yes	1203.91180064	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	161	zebra	zebra_2.wav	nomask	visual	no	visual-no	2	Does it have antennae?	753.575504007	no	1360.9597446	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	162	chicken	chicken_1.wav	mask	visual	yes	visual-yes	2	Does it have wings?	757.315664944	yes	673.128625582	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	163	apple	apple_1.wav	nomask	visual	yes	visual-yes	4	Is it round?	761.198406067	yes	654.386904149	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	164	raccoon	raccoon_4.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it eat garbage?	765.313559352	yes	934.572227445	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	165	zebra	zebra_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it run fast?	769.195328003	yes	666.050325992	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	166	mouse	mouse_2.wav	mask	visual	yes	visual-yes	1	Does it have a tail?	773.119077095	yes	687.118337024	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	167	tiger	tiger_3.wav	nomask	visual	yes	visual-yes	1	Does it have stripes?	777.458850682	yes	1074.52159189	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	168	alligator	alligator_4.wav	mask	visual	yes	visual-yes	4	Does it have a tail?	781.516394961	yes	748.433185829	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	169	bottle	bottle_1.wav	mask	nonvisual	yes	nonvisual-yes	5	Is it used for holding beer?	786.363954365	yes	1589.56897355	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	170	penguin	penguin_4.wav	mask	visual	yes	visual-yes	3	Does it have feet?	790.754498851	yes	1200.25313899	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	171	apple	apple_1.wav	nomask	visual	no	visual-no	3	Does it have a beak?	794.770045142	no	751.188392431	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	172	bottle	bottle_1.wav	mask	visual	no	visual-no	5	Does it have teeth?	798.626422688	no	616.944013454	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	173	pig	pig_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it smelly?	802.575560546	yes	828.479618067	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	174	lion	lion_2.wav	nomask	visual	no	visual-no	3	Does it have wings?	806.507138153	no	774.735543469	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	175	chair	chair_2.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it comfortable?	810.430886856	yes	562.517570972	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	176	alligator	alligator_1.wav	mask	visual	no	visual-no	1	Does it have a long tongue?	814.737446283	yes	992.920920573	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	177	swan	swan_2.wav	mask	visual	yes	visual-yes	3	Does it have feathers?	818.870188673	yes	705.50444728	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	178	alligator	alligator_2.wav	mask	nonvisual	no	nonvisual-no	3	Is it used for freight?	823.176759018	yes	1060.98302308	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	179	bottle	bottle_4.wav	nomask	nonvisual	no	nonvisual-no	5	Is it an amphibian?	827.083888748	no	791.533491196	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	180	giraffe	giraffe_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it a mammal?	830.782068074	yes	471.752893907	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	181	penguin	penguin_3.wav	nomask	visual	yes	visual-yes	1	Is it black?	834.614031667	yes	705.265423574	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	182	grasshopper	grasshopper_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it fly?	838.570988681	no	725.141825271	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	183	tiger	tiger_4.wav	nomask	visual	yes	visual-yes	5	Does it have large teeth?	842.311150398	yes	662.282095553	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	184	dog	dog_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it bark?	846.068896151	yes	540.722740669	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	185	chair	chair_1.wav	nomask	visual	yes	visual-yes	4	Does it have a seat?	849.917448303	yes	689.688719372	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	186	apple	apple_2.wav	nomask	visual	yes	visual-yes	5	Does it have a core?	853.933003561	yes	724.093318277	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	187	lion	lion_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it live in jungles?	857.606760745	yes	605.764098	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	188	raccoon	raccoon_2.wav	mask	visual	yes	visual-yes	2	Does it have a tail?	861.280528457	yes	453.723564598	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	189	lion	lion_2.wav	mask	visual	yes	visual-yes	4	Does it have teeth?	864.845892087	yes	439.765437011	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	190	elephant	elephant_4.wav	nomask	visual	yes	visual-yes	1	Is it grey?	868.39465858	yes	468.372248462	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	191	giraffe	giraffe_4.wav	mask	nonvisual	no	nonvisual-no	4	Is it an insect?	872.267618056	no	675.095014856	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	192	pineapple	pineapple_4.wav	mask	visual	no	visual-no	1	Does it have legs?	876.433560958	no	911.154921312	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	193	grasshopper	grasshopper_3.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it found in summer?	880.48133022	yes	727.296938043	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	194	mouse	mouse_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it eat?	884.330881358	yes	601.711612602	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	195	apple	apple_3.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it eaten in pies?	888.237057723	yes	723.776699597	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	196	lion	lion_1.wav	nomask	nonvisual	no	nonvisual-no	1	Is it found in kitchens?	892.569010204	no	1144.55554262	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	197	penguin	penguin_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a bird?	896.209564536	yes	511.070931563	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	198	chicken	chicken_1.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it eat grain?	900.392103795	yes	1121.17215985	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	199	mouse	mouse_2.wav	mask	visual	yes	visual-yes	2	Is it grey?	904.123483632	yes	500.823715527	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	200	tiger	tiger_2.wav	nomask	visual	yes	visual-yes	3	Is it orange?	908.14684011	no	676.215657877	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	201	zebra	zebra_1.wav	nomask	visual	yes	visual-yes	2	Does it have four legs?	912.012993064	yes	624.994394835	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	202	alligator	alligator_3.wav	mask	visual	no	visual-no	5	Is it made of metal?	916.194551663	no	893.663687777	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	203	swan	swan_3.wav	nomask	visual	yes	visual-yes	2	Does it have a beak?	920.142713929	yes	522.133089806	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	204	elephant	elephant_2.wav	mask	visual	yes	visual-yes	4	Does it have a tail?	923.90826909	yes	650.284508418	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	205	donkey	donkey_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it a mammal?	927.657218536	yes	470.29184681	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	206	swan	swan_4.wav	mask	nonvisual	no	nonvisual-no	3	Is it found in dining rooms?	931.830978254	no	764.322219562	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	207	chair	chair_3.wav	mask	visual	yes	visual-yes	5	Does it have a cushion?	935.846523765	yes	673.886638804	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	208	raccoon	raccoon_4.wav	nomask	nonvisual	no	nonvisual-no	4	Does it spit?	940.285886799	yes	1223.62053485	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	209	zebra	zebra_3.wav	nomask	visual	yes	visual-yes	4	Does it have a mane?	944.509440657	yes	999.209233094	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	210	chair	chair_3.wav	mask	visual	yes	visual-yes	2	Is it made of wood?	948.45860035	yes	627.764808451	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	211	donkey	donkey_4.wav	nomask	nonvisual	no	nonvisual-no	5	Does it eat peanuts?	952.273943022	yes	753.419150511	0
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	212	dog	dog_2.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it a pet?	956.039508711	yes	631.131416652	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	213	pineapple	pineapple_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it tropical?	959.85486347	yes	548.872942716	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	214	chicken	chicken_3.wav	mask	visual	yes	visual-yes	4	Does it have legs?	963.852840542	yes	816.886382614	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	215	giraffe	giraffe_1.wav	nomask	visual	yes	visual-yes	4	Is it brown?	968.818563448	yes	1678.07910711	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	216	alligator	alligator_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	972.625140227	yes	537.841198558	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	217	raccoon	raccoon_2.wav	mask	visual	no	visual-no	4	Does it have a long neck?	976.714912546	no	868.827446306	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	218	bottle	bottle_1.wav	mask	nonvisual	no	nonvisual-no	3	Is it a carnivore?	980.697257154	no	745.948976837	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	219	pig	pig_1.wav	mask	visual	yes	visual-yes	1	Is it pink?	984.271979752	yes	531.606695615	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	220	pineapple	pineapple_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it juicy?	988.244961493	yes	517.724213423	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	221	grasshopper	grasshopper_2.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an insect?	992.034934896	yes	510.131213494	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	222	donkey	donkey_2.wav	nomask	visual	yes	visual-yes	3	Does it have a tail?	995.833680821	yes	562.451283797	1
+MWPF134	134	NS	2014_Apr_18_1009	MWP-F1	LL-Kramer	2	223	bottle	bottle_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it a container?	1000.17345831	yes	1158.11711695	1
