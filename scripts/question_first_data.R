@@ -1,5 +1,4 @@
 options(stringsAsFactors = FALSE)
-library(dplyr)
 source("scripts/compile.R")
 
 question_first <- compile("data/question_first/data/", key = "MWPF2",
