@@ -1,6 +1,11 @@
 options(stringsAsFactors = FALSE)
 source("scripts/compile.R")
 
+# check global flag
+if (!exists("CLEAR_GLOBAL_ENVIRONMENT")) {
+  CLEAR_GLOBAL_ENVIRONMENT <- TRUE
+}
+
 question_first <- compile("data/question_first/data/", key = "MWPF2",
                           headername = "_header.txt")
 
@@ -72,6 +77,8 @@ question_first <- question_first %>%
          response, rt, is_correct, is_error) %>%
   arrange(subj_id, block_ix, trial_ix)
 
-# Remove unneeded variables
-# -------------------------
-rm(list = setdiff(ls(), "question_first"))
+if (CLEAR_GLOBAL_ENVIRONMENT == TRUE) {
+  # Remove unneeded variables
+  # -------------------------
+  rm(list = setdiff(ls(), "question_first"))
+}
