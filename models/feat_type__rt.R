@@ -1,7 +1,8 @@
+source("scripts/all_data.R")
+
 library(lme4)
 library(dplyr)
 
-source("scripts/all_data.R")
 source("scripts/contrasts.R")
 
 # Create contrast variables
@@ -39,5 +40,3 @@ summary(rt_mod)
 #   larger in the question_first experiment than it is in the cue_first experiment, p < 0.001
 
 # 
-
-

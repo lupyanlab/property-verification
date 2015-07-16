@@ -49,6 +49,21 @@ question_first <- filter(question_first, block_ix != -1)
 # -----------------------------------------------------
 question_first$rt <- with(question_first, ifelse(is_correct == 0, NA, rt))
 
+# # Correct the calculation of RT
+# # -----------------------------
+# # The RT timer didn't start until after the offset of the cue, 
+# # but really it should have started at the onset of the cue.
+# # In order to correct for this coding error, the duration of each
+# # cue file needs to be added to the measured RT.
+# cue_durations <- read.csv("experiment/stimuli/cues/_cue_stats.csv")
+# cue_durations$cue_dur <- cue_durations$cue_dur * 1000  # convert sec to ms
+# question_first <- merge(question_first, cue_durations, all.x = TRUE)
+# question_first$rt <- with(question_first, cue_dur + rt)
+
+# On second thought, people were prevented from answering before the
+# prompt, and some of the cues were pretty long (~800 msec) so the
+# above is not truly a correct calculation of RT.
+
 # Exclude accuracy on timeout trials
 # ----------------------------------
 question_first$is_correct <- with(question_first, ifelse(response == "timeout", NA, is_correct))
