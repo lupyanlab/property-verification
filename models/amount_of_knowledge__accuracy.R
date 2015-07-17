@@ -15,10 +15,9 @@ property_verification <- recode_exp(property_verification)
 # ---------------------
 property_verification <- filter(property_verification,
                                 subj_id != "MWPF129",
-                                subj_id != "MWPF214")
+                                subj_id != "MWP214")
 
-# Predict error from
-# --------------------
-error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
+# 
+imagery_mod <- glmer(is_error ~ mask_c * imagery_z + (1|subj_id),
                    family = binomial, data = property_verification)
-summary(error_mod)
+summary(imagery_mod)
