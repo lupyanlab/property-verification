@@ -13,12 +13,13 @@ property_verification <- recode_exp(property_verification)
 
 # Drop outlier subjects
 # ---------------------
+source("scripts/outliers.R")
 property_verification <- filter(property_verification,
-                                subj_id != "MWPF129",
-                                subj_id != "MWPF214")
+                                subj_id != cue_first_outliers,
+                                subj_id != question_first_outliers)
 
-# Predict error from
-# --------------------
+# Predict error from interaction
+# ------------------------------
 error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
                    family = binomial, data = property_verification)
 summary(error_mod)
