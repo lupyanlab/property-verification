@@ -1,17 +1,26 @@
 source("scripts/cue_first_data.R")
 library(lme4)
 source("scripts/contrasts.R")
-
-# Remove outlier subject
-# ----------------------
-# Error rate is 65%!!!
 source("scripts/outliers.R")
+source("scripts/")
+
+# Remove outlier subjects
+# -----------------------
 cue_first <- filter(cue_first, subj_id != cue_first_outliers)
 
 # Create contrast variables
 # -------------------------
 cue_first <- recode_mask_type(cue_first)
 cue_first <- recode_feat_type(cue_first)
+
+# Models predicting error rate
+# ----------------------------
+# Baseline differences between feature types
+baseline_feat_type_mod <- glmer(is_error ~ feat_c + (1|subj_id),
+                                family = binomial,
+                                data = filter(cue_first, mask_type == "nomask"))
+summary(baseline_feat_type_mod)
+report
 
 # Feature type (visual or nonvisual)
 # ----------------------------------

@@ -14,8 +14,22 @@ library(lme4)
 source("scripts/contrasts.R")
 source("scripts/outliers.R")
 source("scripts/report_stats.R")
+
 property_verification <- recode_mask_type(property_verification)
-amount_of_knowledge <- glmer(is_error ~ mask_c * imagery_z + (1|subj_id), 
-                             family = binomial,
-                             data = filter(property_verification, exp == "question_first"))
-summary(amount_of_knowledge)
+
+# Norming-context difficulty
+property_verification <- filter(property_verification,
+                                subj_id %nin% question_first_outliers,
+                                subj_id %nin% cue_first_outliers)
+
+amount_of_knowledge_norm_diff <- glmer(is_error ~ mask_c * imagery_z + diff_z + (1|subj_id), 
+                                       family = binomial,
+                                       data = filter(property_verification, exp == "question_first"))
+summary(amount_of_knowledge_norm_diff)
+
+# Experiment-context difficulty
+amount_of_knowledge_exp_diff <- glmer(is_error ~ mask_c * imagery_z + exp_diff + (1|subj_id), 
+                                      family = binomial,
+                                      data = filter(property_verification, exp == "question_first"))
+summary(amount_of_knowledge_exp_diff)
+report_glmer_effect(amount_of_knowledge_exp_diff, "mask_c:imagery_z")
