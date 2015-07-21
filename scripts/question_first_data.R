@@ -24,23 +24,6 @@ senses <- read.csv("norms/feature-norms-senses/feature_norms_senses.csv")
 senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
 question_first <- merge(question_first, senses, all.x = TRUE)
 
-# Fix miscoded questions
-# ----------------------
-
-# start with the original scoring as "truth"
-question_first$truth <- question_first$truth_coded
-
-# get a list of the miscoded questions
-miscoded <- (!is.na(question_first$truth_agree) &
-             question_first$truth_agree == 0 &
-             question_first$truth_coded == "no")
-
-# fix the coding to match the norms
-question_first[miscoded, "truth"] <- question_first[miscoded, "truth_normed"]
-
-# update is_correct with the new scoring column
-question_first$is_correct <- with(question_first, ifelse(response == truth, 1, 0))
-
 # Remove practice trials
 # ----------------------
 question_first <- filter(question_first, block_ix != -1)
@@ -83,7 +66,7 @@ question_first <- question_first %>%
          cue, question, question_id,
          mask_type = cue_mask,
          feat_type = ftype,
-         truth_coded, truth_normed, truth,
+         truth_coded,
          imagery_mean, imagery_z,
          facts_mean, facts_z,
          diff_mean = difficulty_mean, diff_z = difficulty_z,
