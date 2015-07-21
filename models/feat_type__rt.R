@@ -13,7 +13,10 @@ property_verification <- recode_exp(property_verification)
 
 # Drop outlier subjects
 # ---------------------
-property_verification <- filter(property_verification, subj_id != "MWPF129")
+source("scripts/outliers.R")
+property_verification <- filter(property_verification,
+                                subj_id != cue_first_outliers,
+                                subj_id != question_first_outliers)
 
 # Visualize the effect
 # --------------------

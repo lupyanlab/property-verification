@@ -1,12 +1,16 @@
-library(lme4)
 source("scripts/question_first_data.R")
+
+library(lme4)
+
 source("scripts/contrasts.R")
+source("scripts/outliers.R")
+source("scripts/report_stats.R")
 
 question_first <- recode_mask_type(question_first)
 
 # Drop outlier subjects
 # ---------------------
-question_first <- filter(question_first, subj_id != "MWPF214")
+question_first <- filter(question_first, subj_id %nin% question_first_outliers)
 
 # Amount of visual knowledge (imagery)
 # ------------------------------------

@@ -20,6 +20,6 @@ property_verification <- filter(property_verification,
 
 # Predict error from interaction
 # ------------------------------
-error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
+error_mod <- glmer(is_error ~ mask_c * feat_c * exp_c + (1|subj_id),
                    family = binomial, data = property_verification)
 summary(error_mod)
