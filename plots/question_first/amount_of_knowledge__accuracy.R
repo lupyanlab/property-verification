@@ -1,19 +1,4 @@
-library(dplyr)
-
-SAVE_AS <- FALSE
-
-# ------------------------------------------------------------------------------
-# Summarize the data.
-feature <- read.csv("./feature-last/feature-last-final.csv", 
-                    stringsAsFactors = FALSE)
-
-feature <- filter(feature, subj_id != "MWPF214")
-
-library(lme4)
-imagery <- glmer(is_error ~ imagery_mean * mask_c + (1|subj_id), 
-                 data = feature, family = binomial)
-factual <- glmer(is_error ~ facts_mean * mask_c + (1|subj_id),
-                 data = feature, family = binomial)
+source("models/question_first/amount_of_knowledge__accuracy.R")
 
 # ------------------------------------------------------------------------------
 # Get the model estimates
@@ -105,72 +90,27 @@ icon_width <- 0.25
 source("./new-graphs/colorscheme.R")
 
 # ------------------------------------------------------------------------------
-# Generate the plot.
-library(ggplot2)
-library(scales)
-library(grid)
-library(gridExtra)
-
-generate_plot <- function(values, means, x_label, 
-                          icon_interference_y, icon_blank_y,
-                          icon_x,
-                          color_scheme) {
-  icon_x_left <- icon_x
-  icon_x_right <- icon_x_left + icon_width
-  ggplot(values, aes(x = rating)) +
-    geom_smooth(aes(y = rate, ymin = rate - se, ymax = rate + se, 
-                    group = mask_type, fill = mask_type, color = mask_type),
-                stat = "identity", alpha = 0.4) +
-    geom_point(aes(y = rate, shape = mask_type, color = mask_type, size = obs), 
-      data = means) +
-    scale_x_continuous(x_label, 
-      breaks = 0:3, labels = c("None", "Little", "Some", "A lot")) +
-    scale_y_continuous("Error Rate", breaks = seq(0.0, 0.4, by = 0.05), labels = percent) +
-    scale_color_manual(values = unlist(color_scheme)) +
-    scale_fill_manual(values = unlist(color_scheme)) +
-    scale_shape_manual(values = c(1,16)) +
-    scale_size_continuous(range = c(2,4)) +
-    coord_cartesian(xlim = c(-0.2, 3.6), ylim = c(0, 0.30)) +
-    #facet_wrap(~ type, nrow = 2) +
-    theme_bw(base_size = 12) +
-    theme(
-      legend.position = "none",
-      plot.margin = unit(c(0.1, 2.5, 0.5, 0.5), "lines"),
-      axis.line = element_line(color = "black"),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      panel.border = element_blank(),
-      panel.background = element_blank(),
-      strip.background = element_blank()
-    ) + 
-    annotation_custom(grob_icon("blank"), 
-                      xmin = icon_x_left, 
-                      xmax = icon_x_right, 
-                      ymin = icon_blank_y) + 
-    annotation_custom(grob_icon("interference"), 
-                      xmin = icon_x_left, 
-                      xmax = icon_x_right, 
-                      ymin = icon_interference_y)  
-}
+# Get the function that will make the plot
+source("plots/linegraph.R")
 
 # ------------------------------------------------------------------------------
 # Draw plots
 factual_plot <- function() {
-  generate_plot(facts_values, facts_means,
-                "Amount of nonvisual knowledge required",
-                icon_interference_y = 0.0,
-                icon_blank_y = 0.08,
-                icon_x = 3.2,
-                color_scheme = facts_color_scheme)
+  linegraph(facts_values, facts_means,
+            "Amount of nonvisual knowledge required",
+            icon_interference_y = 0.0,
+            icon_blank_y = 0.08,
+            icon_x = 3.2,
+            color_scheme = facts_color_scheme)
 }
 
 imagery_plot <- function() {
-  generate_plot(imagery_values, imagery_means,
-                "Amount of visual knowledge required",
-                icon_interference_y = 0.07,
-                icon_blank_y = -0.11,
-                icon_x = 3.5,
-                color_scheme = imagery_color_scheme)
+  linegraph(imagery_values, imagery_means,
+            "Amount of visual knowledge required",
+            icon_interference_y = 0.07,
+            icon_blank_y = -0.11,
+            icon_x = 3.5,
+            color_scheme = imagery_color_scheme)
 }
 
 factual_gg <- factual_plot()

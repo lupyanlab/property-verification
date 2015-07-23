@@ -21,7 +21,9 @@ property_verification <- filter(property_verification,
 # Visualize the effect
 # --------------------
 property_verification %>% group_by(exp, feat_type, mask_type) %>%
-  summarize(rt = mean(rt, na.rm = TRUE))
+  summarize(
+    rt = mean(rt, na.rm = TRUE),
+    error_rate = mean(is_error, na.rm = TRUE))
 
 library(ggplot2)
 ggplot(property_verification, aes(x = feat_type, y = rt, fill = mask_type)) +
@@ -32,14 +34,3 @@ ggplot(property_verification, aes(x = feat_type, y = rt, fill = mask_type)) +
 # -------------------------------------------------------------------
 rt_mod <- lmer(rt ~ mask_c * feat_c * exp_c + (1|subj_id), data = property_verification)
 summary(rt_mod)
-
-
-# mask_c:exp_c
-# - the mask slowed RTs to a greater extent (24 ms) in the question_first experiment than it
-#   did in the cue_first experiment, p < 0.01
-
-# feat_c:exp_c
-# - the difference in RTs between nonvisual and visual questions is 40 ms
-#   larger in the question_first experiment than it is in the cue_first experiment, p < 0.001
-
-# 

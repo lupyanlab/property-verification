@@ -18,21 +18,10 @@ property_verification <- filter(property_verification,
                                 subj_id != cue_first_outliers,
                                 subj_id != question_first_outliers)
 
-# Visualize the effect
-# --------------------
-property_verification %>% group_by(exp, feat_type, mask_type) %>%
-  summarize(
-    rt = mean(rt, na.rm = TRUE),
-    error_rate = mean(is_error, na.rm = TRUE))
+# Model differences between experiments
+rt_mod <- lm(rt ~ exp_c, data = property_verification)
+summary(rt_mod)
 
-library(ggplot2)
-ggplot(property_verification, aes(x = feat_type, y = is_error, fill = mask_type)) +
-  stat_summary(fun.y = "mean", geom = "bar", position = "dodge") +
-  facet_wrap("exp", nrow = 1)
-
-# Predict error from interaction
-# ------------------------------
-error_mod <- glmer(is_error ~ mask_c * feat_c * exp_c + (1|subj_id),
-                   family = binomial, data = property_verification)
+# 
+error_mod <- glm(is_error ~ exp_c, data = property_verification)
 summary(error_mod)
-
