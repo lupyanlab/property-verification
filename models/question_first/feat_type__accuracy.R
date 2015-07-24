@@ -27,8 +27,14 @@ confint(feat_type_error_mod_nomask)
 report_glmer_effect(feat_type_error_mod_nomask, "feat_c")
 
 # Feature type (visual or nonvisual)
-# ----------------------------------
 feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
                              family = binomial, data = question_first)
 summary(feat_type_error_mod)
 
+# 
+mask_mod_visual <- glmer(is_error ~ mask_c + (1|subj_id),
+                         family = binomial,
+                         data = filter(question_first, feat_type == "visual"))
+summary(mask_mod_visual)
+report_glmer_effect(mask_mod_visual, "mask_c")
+# 
