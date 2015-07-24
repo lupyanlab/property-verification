@@ -1,10 +1,6 @@
-SAVE_AS <- FALSE
 
-source("./new-graphs/errorbars.R")
-error_gt <- errorbars()
-
-source("./new-graphs/amounts.R")
-
+# Subplot A: Trial structure
+# --------------------------
 library(gridExtra)
 library(png)
 
@@ -15,8 +11,23 @@ png_to_grob <- function(png_image, alpha = 0.2) {
   img_grob
 }
 
-trialstructure <- png_to_grob("./new-graphs/property-verification-last.png", alpha = 1.0)
+trialstructure <- png_to_grob("plots/question_first/trial_structure.png", alpha = 1.0)
 
+
+# Subplot B: Feature type by mask
+# -------------------------------
+SAVE_AS <- FALSE
+source("plots/question_first/feat_type__accuracy.R")
+error_gt <- errorbars()
+
+# Subplots C,D: Effect of mask by amount of knowledge
+# ---------------------------------------------------
+SAVE_AS <- FALSE
+source("plots/question_first/amount_of_knowledge__accuracy.R")
+
+
+# Figure 1
+# --------
 top_row <- arrangeGrob(trialstructure, error_gt, nrow = 1)
 imagery_gg <- imagery_plot() +
   theme(
@@ -33,8 +44,8 @@ factual_gt <- turn_off_clipping(factual_gg)
 imagery_gt <- turn_off_clipping(imagery_gg)
 bottom_row <- arrangeGrob(imagery_gt, factual_gt, nrow = 1)
 
-if (SAVE_AS == "png") {
-  png("./new-graphs/fig1.png", width = 8, height = 6, units = "in", res = 200)
+if (SAVE_AS == TRUE) {
+  png("plots/question_first/fig1.png", width = 8, height = 6, units = "in", res = 400)
   grid.arrange(top_row, bottom_row, nrow = 2, heights = c(0.55, 0.45))
   dev.off()
 }
