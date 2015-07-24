@@ -19,21 +19,13 @@ property_verification <- filter(property_verification,
                                 subj_id %nin% cue_first_outliers,
                                 subj_id %nin% question_first_outliers)
 
-# Visualize the effect
-# --------------------
-property_verification %>% group_by(exp, feat_type, mask_type) %>%
-  summarize(
-    rt = mean(rt, na.rm = TRUE),
-    error_rate = mean(is_error, na.rm = TRUE))
-
-library(ggplot2)
-ggplot(property_verification, aes(x = feat_type, y = is_error, fill = mask_type)) +
-  stat_summary(fun.y = "mean", geom = "bar", position = "dodge") +
-  facet_wrap("exp", nrow = 1)
 
 # Models predicting error rate
 # ----------------------------
 # Effect of mask on visual questions only
+feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
+                             family = binomial, data = property_verification)
+
 mask_mod_visual <- glmer(is_error ~ mask_c + exp_c + (1|subj_id),
                          family = binomial,
                          data = filter(property_verification, feat_type == "visual"))
