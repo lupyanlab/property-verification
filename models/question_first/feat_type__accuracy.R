@@ -1,3 +1,4 @@
+CLEAR_GLOBAL_ENVIRONMENT <- FALSE
 source("scripts/question_first_data.R")
 
 library(lme4)

@@ -20,9 +20,9 @@ property_verification <- filter(property_verification,
 
 
 # Imagery by mask
-imagery_mod <- glmer(is_error ~ mask_c * imagery_mean + (1|subj_id),
-                     family = binomial, data = property_verification)
+imagery_error_mod <- glmer(is_error ~ mask_c * imagery_mean + (1|subj_id),
+                           family = binomial, data = property_verification)
 
 # Facts by mask
-facts_mod <- glmer(is_error ~ mask_c * facts_mean + (1|subj_id),
-                   family = binomial, data = property_verification)
+facts_error_mod <- glmer(is_error ~ mask_c * facts_mean + (1|subj_id),
+                         family = binomial, data = property_verification)

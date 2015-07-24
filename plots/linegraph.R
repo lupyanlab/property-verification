@@ -35,12 +35,12 @@ linegraph <- function(values, means, x_label,
       panel.background = element_blank(),
       strip.background = element_blank()
     ) + 
-    annotation_custom(grob_icon("blank"), 
-                      xmin = icon_x_left, 
-                      xmax = icon_x_right, 
-                      ymin = icon_blank_y) + 
     annotation_custom(grob_icon("interference"), 
                       xmin = icon_x_left, 
                       xmax = icon_x_right, 
-                      ymin = icon_interference_y)  
+                      ymin = icon_interference_y) +
+    annotation_custom(grob_icon("blank"), 
+                      xmin = icon_x_left, 
+                      xmax = icon_x_right, 
+                      ymin = icon_blank_y)
 }
