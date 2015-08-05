@@ -28,6 +28,14 @@ question_first <- merge(question_first, senses, all.x = TRUE)
 # ----------------------
 question_first <- filter(question_first, block_ix != -1)
 
+# Exclude RT on timeout trials
+# ----------------------------
+question_first$rt <- with(question_first, ifelse(response == "timeout", NA, rt))
+
+# Save raw RTs for investigating speed-accuracy tradeoff
+# ------------------------------------------------------
+question_first$raw_rt <- question_first$rt
+
 # Exclude RTs on incorrect responses and timeout trials
 # -----------------------------------------------------
 question_first$rt <- with(question_first, ifelse(is_correct == 0, NA, rt))
@@ -72,7 +80,8 @@ question_first <- question_first %>%
          diff_mean = difficulty_mean, diff_z = difficulty_z,
          prop_visual,
          senses_mean,
-         response, rt, is_correct, is_error) %>%
+         response, rt, is_correct, is_error,
+         raw_rt) %>%
   arrange(subj_id, block_ix, trial_ix)
 
 if (CLEAR_GLOBAL_ENVIRONMENT == TRUE) {
