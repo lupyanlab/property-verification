@@ -15,6 +15,11 @@ question_first <- recode_feat_type(question_first)
 # ---------------------
 question_first <- filter(question_first, subj_id %nin% question_first_outliers)
 
+# Descriptives
+# ------------
+question_first %>% group_by(feat_type, mask_type) %>%
+  summarize(error_rate = mean(is_error, na.rm = TRUE))
+
 # Models predicting error rate
 # ----------------------------
 
