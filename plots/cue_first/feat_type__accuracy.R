@@ -1,4 +1,10 @@
-source("models/cue_first/feat_type__accuracy.R")
+source("models/cue_first/feat_type__accuracy_for_plot.R")
+
+# check global flag
+if (!exists("SAVE_AS")) {
+  SAVE_AS <- TRUE
+}
+
 
 library(AICcmodavg)
 library(lme4)
@@ -35,7 +41,7 @@ get_pos <- function(x) {
        right_icon = get_icon(x + icon_gutter))
 }
 
-icon_top <- -0.13
+icon_top <- -0.125
 
 left_pos_x <- -0.5
 right_pos_x <- 0.5
@@ -54,6 +60,8 @@ source("plots/errorbar.R")
 
 grid.draw(errorbars())
 
-png("plots/cue_first/feat_type__accuracy.png", width = 6, height = 6, units = "in", res = 200)
-grid.draw(errorbars())
-dev.off()
+if (SAVE_AS == TRUE) {
+  png("plots/cue_first/feat_type__accuracy.png", width = 6, height = 6, units = "in", res = 200)
+  grid.draw(errorbars())
+  dev.off()
+}

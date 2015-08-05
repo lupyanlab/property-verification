@@ -4,9 +4,17 @@ difficulty <- property_verification %>%
   group_by(question_id) %>%
   summarize(
     norm_diff = mean(diff_z),
-    exp_diff = mean(is_error[mask_type == "nomask"], na.rm = TRUE))
+    exp_diff = mean(is_error[mask_type == "nomask"], na.rm = TRUE),
+    
+    # save imagery and facts
+    imagery_z = mean(imagery_z),
+    facts_z = mean(facts_z))
 
+# Correlation between norming experiment difficulty and experiment difficulty
 cor(difficulty[,c("norm_diff", "exp_diff")])
+
+# Correlation between imagery, facts, and difficulty
+cor(difficulty[,c("norm_diff", "imagery_z", "facts_z")])
 
 property_verification <- merge(property_verification, difficulty[,c("question_id", "exp_diff")])
 

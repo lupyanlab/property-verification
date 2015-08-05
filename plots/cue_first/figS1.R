@@ -11,19 +11,19 @@ png_to_grob <- function(png_image, alpha = 0.2) {
   img_grob
 }
 
-trialstructure <- png_to_grob("plots/question_first/trial_structure.png", alpha = 1.0)
+trialstructure <- png_to_grob("plots/cue_first/trial_structure.png", alpha = 1.0)
 
 
 # Subplot B: Feature type by mask
 # -------------------------------
 SAVE_AS <- FALSE
-source("plots/question_first/feat_type__accuracy.R")
+source("plots/cue_first/feat_type__accuracy.R")
 error_gt <- errorbars()
 
 # Subplots C,D: Effect of mask by amount of knowledge
 # ---------------------------------------------------
 SAVE_AS <- FALSE
-source("plots/question_first/amount_of_knowledge__accuracy.R")
+source("plots/cue_first/amount_of_knowledge__accuracy.R")
 
 
 # Figure 1
@@ -45,7 +45,7 @@ imagery_gt <- turn_off_clipping(imagery_gg)
 bottom_row <- arrangeGrob(imagery_gt, factual_gt, nrow = 1)
 
 if (SAVE_AS == TRUE) {
-  png("plots/question_first/fig1.png", width = 8, height = 6, units = "in", res = 400)
+  png("plots/cue_first/figS1.png", width = 8, height = 6, units = "in", res = 400)
   grid.arrange(top_row, bottom_row, nrow = 2, heights = c(0.55, 0.45))
   dev.off()
 }
