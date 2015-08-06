@@ -1,3 +1,4 @@
+# ---- feat_type__accuracy ----
 source("scripts/cue_first_data.R")
 
 library(lme4)
@@ -7,16 +8,18 @@ source("scripts/outliers.R")
 source("scripts/report_stats.R")
 
 # Remove outlier subjects
-# -----------------------
 cue_first <- filter(cue_first, subj_id %nin% cue_first_outliers)
 
 # Create contrast variables
-# -------------------------
 cue_first <- recode_mask_type(cue_first)
 cue_first <- recode_feat_type(cue_first)
 
+# Descriptives
+cue_first %>% group_by(feat_type, mask_type) %>%
+  summarize(error_rate = mean(is_error, na.rm = TRUE) * 100 %>% round(digits = 2),
+            rt = mean(rt, na.rm = TRUE))
+
 # Models predicting error rate
-# ----------------------------
 # Baseline differences between feature types
 baseline_feat_type_mod <- glmer(is_error ~ feat_c + (1|subj_id),
                                 family = binomial,

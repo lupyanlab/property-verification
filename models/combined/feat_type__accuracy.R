@@ -19,13 +19,13 @@ property_verification <- filter(property_verification,
                                 subj_id %nin% cue_first_outliers,
                                 subj_id %nin% question_first_outliers)
 
-# Visualize the effect
-# --------------------
+# Descriptives
 property_verification %>% group_by(feat_type, mask_type) %>%
   summarize(
     rt = mean(rt, na.rm = TRUE),
     error_rate = mean(is_error, na.rm = TRUE) * 100 %>% round(digits = 2))
 
+# Visualize the effect
 library(ggplot2)
 ggplot(property_verification, aes(x = feat_type, y = is_error, fill = mask_type)) +
   stat_summary(fun.y = "mean", geom = "bar", position = "dodge") +
@@ -61,6 +61,13 @@ report_glmer_effect(mask_mod_nonvisual, "mask_c")
 
 
 # Interaction between mask and feature type
+error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
+                   family = binomial, data = property_verification)
+summary(error_mod)
+report_glmer_effect(error_mod, "mask_c:feat_c")
+# 
+
+# Interaction between mask and feature type BY EXPERIMENT
 error_mod <- glmer(is_error ~ mask_c + feat_c + mask_c:feat_c + exp_c + mask_c:feat_c:exp_c + (1|subj_id),
                    family = binomial, data = property_verification)
 summary(error_mod)
