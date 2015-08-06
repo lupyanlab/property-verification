@@ -1,4 +1,4 @@
-source("models/feat_type__accuracy_for_plot.R")
+source("models/question_first/feat_type__accuracy_for_plot.R")
 
 # check global flag
 if (!exists("SAVE_AS")) {
@@ -11,7 +11,7 @@ library(lme4)
 library(dplyr)
 
 dv_columns <- c("feat_type", "feat_c", "mask_type", "mask_c")
-points <- property_verification[, dv_columns] %>% unique()
+points <- question_first[, dv_columns] %>% unique()
 error_rates <- predictSE(feat_type_error_mod, points, se.fit = TRUE, type = "response") %>%
   as.data.frame() %>% select(rate = fit, se = se.fit) %>% 
   cbind(points, .)
@@ -61,7 +61,7 @@ source("plots/errorbar.R")
 grid.draw(errorbars())
 
 if (SAVE_AS == TRUE) {
-  png("plots/feat_type__accuracy.png", width = 6, height = 6, units = "in", res = 200)
+  png("plots/question_first/feat_type__accuracy.png", width = 6, height = 6, units = "in", res = 200)
   grid.draw(errorbars())
   dev.off()
 }

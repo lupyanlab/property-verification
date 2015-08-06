@@ -1,36 +1,40 @@
-source("scripts/all_data.R")
+source("scripts/question_first_data.R")
 
 library(lme4)
-library(dplyr)
 
 source("scripts/contrasts.R")
+source("scripts/outliers.R")
+source("scripts/report_stats.R")
 
 # Create contrast variables
 # -------------------------
-property_verification <- recode_mask_type(property_verification)
-property_verification <- recode_feat_type(property_verification)
-property_verification <- recode_exp(property_verification)
+question_first <- recode_mask_type(question_first)
+question_first <- recode_feat_type(question_first)
 
 # Drop outlier subjects
 # ---------------------
-source("scripts/outliers.R")
-property_verification <- filter(property_verification,
-                                subj_id %nin% cue_first_outliers,
-                                subj_id %nin% question_first_outliers)
+question_first <- filter(question_first, subj_id != question_first_outliers)
 
-# Visualize the effect
+# Models predicting RT
 # --------------------
-property_verification %>% group_by(exp, feat_type, mask_type) %>%
-  summarize(
-    rt = mean(rt, na.rm = TRUE),
-    error_rate = mean(is_error, na.rm = TRUE))
+# Predict RT from feature type on nomask trials only
+rt_mod_nomask <- lmerTest::lmer(rt ~ feat_c + (1|subj_id), data = filter(question_first, mask_type == "nomask"))
+summary(rt_mod_nomask)
+confint(rt_mod_nomask)
+report_lmerTest_effect(rt_mod_nomask, "feat_c")
 
-library(ggplot2)
-ggplot(property_verification, aes(x = feat_type, y = rt, fill = mask_type)) +
-  stat_summary(fun.y = "mean", geom = "bar", position = "dodge") +
-  facet_wrap("exp", nrow = 1)
-
-# Predict reaction times based on mask_type, cue_type, and experiment
-# -------------------------------------------------------------------
-rt_mod <- lmer(rt ~ mask_c + feat_c + mask_c:feat_c + exp_c + mask_c:feat_c:exp_c + (1|subj_id), data = property_verification)
+# Predict reaction times from mask_type and cue_type
+rt_mod <- lmerTest::lmer(rt ~ mask_c * feat_c + (1|subj_id), data = question_first)
 summary(rt_mod)
+confint(rt_mod)
+report_lmerTest_effect(rt_mod, "mask_c:feat_c")
+
+# RT by mask for visual questions only
+question_first_visual <- filter(question_first, feat_type == "visual")
+rt_mod_visual <- lmerTest::lmer(rt ~ mask_c + (1|subj_id), data = question_first_visual)
+summary(rt_mod_visual)
+
+# RT by mask for nonvisual question only
+question_first_nonvisual <- filter(question_first, feat_type == "nonvisual")
+rt_mod_nonvisual <- lmerTest::lmer(rt ~ mask_c + (1|subj_id), data = question_first_nonvisual)
+summary(rt_mod_nonvisual)

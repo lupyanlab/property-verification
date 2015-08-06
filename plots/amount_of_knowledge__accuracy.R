@@ -1,4 +1,4 @@
-source("models/amount_of_knowledge__accuracy_for_plot.R")
+source("models/question_first/amount_of_knowledge__accuracy_for_plot.R")
 
 # check global flag
 if (!exists("SAVE_AS")) {
@@ -24,7 +24,7 @@ expand_points <- function(rating_range, name) {
 predict_and_merge <- function(mod, newdata, type) {
   yvals <- predictSE(mod, newdata, se.fit = TRUE) %>%
     as.data.frame() %>% select(rate = fit, se = se.fit)
-  
+
   common_name <- c("rating")
   names(common_name) <- type
   plyr::rename(newdata, common_name) %>%
@@ -32,11 +32,11 @@ predict_and_merge <- function(mod, newdata, type) {
     mutate(type = type)
 }
 
-imagery_range <- range(property_verification$imagery_mean)
+imagery_range <- range(question_first$imagery_mean)
 imagery_points <- expand_points(imagery_range, "imagery_mean")
 imagery_values <- predict_and_merge(imagery_error_mod, imagery_points, "imagery_mean")
 
-facts_range <- range(property_verification$facts_mean)
+facts_range <- range(question_first$facts_mean)
 facts_points <- expand_points(facts_range, "facts_mean")
 facts_values <- predict_and_merge(facts_error_mod, facts_points, "facts_mean")
 
@@ -45,7 +45,7 @@ facet_values <- rbind_list(imagery_values, facts_values)
 # ------------------------------------------------------------------------------
 # Summarize ratings by question
 
-imagery_means <- property_verification %>% 
+imagery_means <- question_first %>% 
   group_by(imagery_mean = cut(imagery_mean, breaks = seq(0, 3.5, by = 0.25),
                               labels = seq(0.125, 3.375, by = 0.25), right = FALSE), 
            mask_type) %>%
@@ -59,7 +59,7 @@ imagery_means <- property_verification %>%
     type = "imagery_mean"
   ) %>% select(-imagery_mean)
 
-facts_means <- property_verification %>% 
+facts_means <- question_first %>% 
   group_by(facts_mean = cut(facts_mean, breaks = seq(0, 3, by = 0.25),
                             labels = seq(0.125, 2.875, by = 0.25), right = FALSE), 
            mask_type) %>%
@@ -104,7 +104,7 @@ factual_plot <- function() {
   linegraph(facts_values, facts_means,
             "Amount of encyclopedic knowledge required",
             icon_interference_y = 0.0,
-            icon_blank_y = -0.03,
+            icon_blank_y = 0.08,
             icon_x = 3.2,
             color_scheme = facts_color_scheme)
 }
@@ -112,7 +112,7 @@ factual_plot <- function() {
 imagery_plot <- function() {
   linegraph(imagery_values, imagery_means,
             "Amount of visual knowledge required",
-            icon_interference_y = -0.01,
+            icon_interference_y = 0.07,
             icon_blank_y = -0.11,
             icon_x = 3.5,
             color_scheme = imagery_color_scheme)
@@ -132,17 +132,17 @@ grid.draw(imagery_gt)
 # png
 
 if (SAVE_AS == TRUE) {
-  png("plots/amount_of_knowledge__accuracy_imagery.png",
+  png("plots/question_first/amount_of_knowledge__accuracy_imagery.png",
       width = 6, height = 6, units = "in", res = 200)
   grid.draw(imagery_gt)
   dev.off()
   
-  png("plots/amount_of_knowledge__accuracy_encyclopedic.png",
+  png("plots/question_first/amount_of_knowledge__accuracy_encyclopedic.png",
       width = 6, height = 6, units = "in", res = 200)
   grid.draw(factual_gt)
   dev.off()
   
-  png("plots/amount_of_knowledge__accuracy.png",
+  png("plots/question_first/amount_of_knowledge__accuracy.png",
       width = 12, height = 6, units = "in", res = 200)
   grid.arrange(imagery_gt, factual_gt, nrow = 1)
   dev.off()
