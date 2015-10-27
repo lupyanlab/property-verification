@@ -1,12 +1,6 @@
-options(stringsAsFactors = FALSE)
-source("scripts/compile.R")
+devtools::load_all()
 
-# check global flag
-if (!exists("CLEAR_GLOBAL_ENVIRONMENT")) {
-  CLEAR_GLOBAL_ENVIRONMENT <- TRUE
-}
-
-cue_first <- compile("data/cue_first/data/", key = "MWPF1",
+cue_first <- compile("data-raw/cue_first/data/", key = "MWPF1",
                      headername = "_header.txt")
 
 # Rename response columns
@@ -15,12 +9,12 @@ cue_first <- rename(cue_first, truth_coded = response, response = response.1)
 
 # Merge norming ratings
 # ---------------------
-norms <- read.csv("norms/feature-norms/feature_norms_merged.csv")
+norms <- read.csv("data-raw/norms/feature-norms/feature_norms_merged.csv")
 cue_first <- merge(cue_first, norms, all.x = TRUE)
 
 # Merge sensory ratings
 # ---------------------
-senses <- read.csv("norms/feature-norms-senses/feature_norms_senses.csv")
+senses <- read.csv("data-raw/norms/feature-norms-senses/feature_norms_senses.csv")
 senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
 cue_first <- merge(cue_first, senses, all.x = TRUE)
 
@@ -47,7 +41,7 @@ cue_first$question_id <- with(cue_first, paste(cue, ftype, truth_coded, qid, sep
 # Put the columns in the correct order
 # ------------------------------------
 cue_first <- cue_first %>%
-  select(subj_id, block_ix, trial_ix, 
+  select(subj_id, block_ix, trial_ix,
          cue, question, question_id,
          mask_type = cue_mask,
          feat_type = ftype,
@@ -60,8 +54,4 @@ cue_first <- cue_first %>%
          response, rt, is_correct, is_error) %>%
   arrange(subj_id, block_ix, trial_ix)
 
-if (CLEAR_GLOBAL_ENVIRONMENT == TRUE) {
-  # Remove unneeded variables
-  # -------------------------
-  rm(list = setdiff(ls(), "cue_first"))
-}
+devtools::use_data(cue_first)
