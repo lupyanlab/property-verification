@@ -2,3 +2,5 @@
 .DS_Store
 .Rproj.user
 *cache/
+.Rhistory
+.RData
