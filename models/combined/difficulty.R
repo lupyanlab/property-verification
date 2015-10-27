@@ -46,3 +46,11 @@ amount_of_knowledge_exp_diff <- glmer(is_error ~ mask_c * imagery_z + exp_diff +
                                       data = filter(property_verification, exp == "question_first"))
 summary(amount_of_knowledge_exp_diff)
 report_glmer_effect(amount_of_knowledge_exp_diff, "mask_c:imagery_z")
+
+
+# Experiment-context difficulty by mask
+exp_diff_by_mask <- glmer(is_error ~ mask_c * (imagery_z + exp_diff) + (1|subj_id),
+                          family = binomial,
+                          data = filter(property_verification, exp == "question_first"))
+summary(exp_diff_by_mask)
+report_glmer_effect(exp_diff_by_mask, "mask_c:exp_diff")

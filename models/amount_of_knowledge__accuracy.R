@@ -35,6 +35,15 @@ report_glmer_effect(diff_error_mod, "mask_c:diff_z")
 # -0.05 log-odds, 95% CI [-0.23, 0.13], p = 0.5984
 
 
+# Question difficulty on nomask trials
+diff_error_mod_nomask <- glmer(is_error ~ diff_z + (1|subj_id),
+                               family = binomial,
+                               data = filter(question_first, mask_type == "nomask"))
+summary(diff_error_mod_nomask)
+report_glmer_effect(diff_error_mod_nomask, "diff_z")
+# 0.58 log-odds, 95% CI [0.44, 0.71], p = 0.0000
+
+
 # Interference by amount of visual knowledge (imagery)
 # controlling for: diff_z
 imagery_error_mod_diff <- glmer(is_error ~ mask_c * imagery_z + diff_z + (1|subj_id),
