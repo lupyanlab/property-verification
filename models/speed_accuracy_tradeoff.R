@@ -1,10 +1,10 @@
 # ---- speed-accuracy-tradeoff ----
-source("scripts/question_first_data.R")
+devtools::load_all("propertyverification")
+data(question_first)
 
+library(dplyr)
 library(lme4)
 library(ggplot2)
-
-source("scripts/outliers.R")
 
 # Drop outlier subjects
 question_first <- filter(question_first, subj_id %nin% question_first_outliers)

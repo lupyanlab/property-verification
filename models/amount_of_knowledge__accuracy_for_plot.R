@@ -1,10 +1,8 @@
-CLEAR_GLOBAL_ENVIRONMENT <- FALSE
-source("scripts/question_first_data.R")
+devtools::load_all("propertyverification")
+data(question_first)
 
+library(dplyr)
 library(lme4)
-
-source("scripts/contrasts.R")
-source("scripts/outliers.R")
 
 question_first <- recode_mask_type(question_first)
 

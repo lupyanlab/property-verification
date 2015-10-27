@@ -1,11 +1,8 @@
-source("scripts/all_data.R")
+devtools::load_all("propertyverification")
+data(property_verification)
 
 library(lme4)
 library(dplyr)
-
-source("scripts/contrasts.R")
-source("scripts/outliers.R")
-source("scripts/report_stats.R")
 
 # Create contrast variables
 # -------------------------

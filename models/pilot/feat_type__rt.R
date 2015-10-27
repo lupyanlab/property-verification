@@ -1,10 +1,9 @@
-source("scripts/cue_first_data.R")
+devtools::load_all("propertyverification")
+data(cue_first)
 
 library(lme4)
+library(dplyr)
 
-source("scripts/contrasts.R")
-source("scripts/outliers.R")
-source("scripts/report_stats.R")
 
 # Create contrast variables
 # -------------------------

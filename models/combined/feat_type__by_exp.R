@@ -1,9 +1,9 @@
-source("scripts/all_data.R")
+devtools::load_all("propertyverification")
+data(property_verification)
 
 library(lme4)
 library(dplyr)
 
-source("scripts/contrasts.R")
 
 # Create contrast variables
 # -------------------------

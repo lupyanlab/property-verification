@@ -1,11 +1,8 @@
-CLEAR_GLOBAL_ENVIRONMENT <- FALSE
-source("scripts/cue_first_data.R")
+devtools::load_all("propertyverification")
+data(cue_first)
 
 library(lme4)
-
-source("scripts/contrasts.R")
-source("scripts/outliers.R")
-source("scripts/report_stats.R")
+library(dplyr)
 
 # Remove outlier subjects
 # -----------------------

@@ -1,4 +1,9 @@
-source("scripts/all_data.R")
+devtools::load_all("propertyverification")
+data(property_verification)
+
+library(lme4)
+library(dplyr)
+
 
 difficulty <- property_verification %>%
   group_by(question_id) %>%

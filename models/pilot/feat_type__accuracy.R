@@ -1,11 +1,9 @@
 # ---- feat_type__accuracy ----
-source("scripts/cue_first_data.R")
+devtools::load_all("propertyverification")
+data(cue_first)
 
 library(lme4)
-
-source("scripts/contrasts.R")
-source("scripts/outliers.R")
-source("scripts/report_stats.R")
+library(dplyr)
 
 # Remove outlier subjects
 cue_first <- filter(cue_first, subj_id %nin% cue_first_outliers)
