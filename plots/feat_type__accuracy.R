@@ -1,4 +1,4 @@
-source("models/question_first/feat_type__accuracy_for_plot.R")
+source("models/feat_type__accuracy_for_plot.R")
 
 # check global flag
 if (!exists("SAVE_AS")) {

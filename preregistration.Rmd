@@ -1,0 +1,77 @@
+---
+title: "Predicted results for new experiment"
+author: "Pierce Edmiston"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(scales)
+library(grid)
+
+clean <- function(frame) {
+  frame <- as.data.frame(frame)
+  frame$mask_type <- rownames(frame)
+  rownames(frame) <- NULL
+  gather(frame, feat_type, error_rate, -question_type, -mask_type)
+}
+
+prompt_error <- list(
+  question_type = "Answer proposition",
+  visual    = c(nomask = 0.051, mask = 0.15),
+  nonvisual = c(nomask = 0.049, mask = 0.07)
+) %>% clean
+
+pic_error <- list(
+  question_type = "Verify picture",
+  visual    = c(nomask = 0.011, mask = 0.08),
+  nonvisual = c(nomask = 0.012, mask = 0.07)
+) %>% clean
+
+dualtask <- rbind(prompt_error, pic_error) %>%
+  mutate(
+    mask_type = factor(mask_type, levels = c("nomask", "mask")),
+    feat_type = factor(feat_type, levels = c("nonvisual", "visual"))
+  )
+```
+
+```{r, engine = "dot", fig.width = 4}
+digraph { 
+  proposition -> prompt [label="answer proposition"];
+  proposition -> picture [label="verify picture"];
+  proposition[label="Does a camel have a long neck?", shape=box];
+  prompt[label="Yes or No?", shape=ellipse];
+  picture[label="Mentioned in question?", shape=ellipse];
+  rankdir = "LR";
+}
+```
+
+```{r}
+ggplot(dualtask, aes(x = feat_type, y = error_rate, fill = mask_type)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  facet_wrap("question_type") +
+  scale_x_discrete("Feature mentioned in proposition", labels = c("Nonvisual", "Visual")) +
+  scale_y_continuous("Error Rate", labels = percent) +
+  scale_fill_manual("Mask Type", labels = c("No mask", "Mask"), 
+                    values = RColorBrewer::brewer.pal(3, "Set2")[c(1,3)]) +
+  theme_minimal() +
+  theme(
+    legend.position = c(0.8, 0.8),
+    legend.direction = "horizontal",
+    axis.ticks = element_blank(),
+    panel.margin = unit(3, "lines")
+  )
+```
