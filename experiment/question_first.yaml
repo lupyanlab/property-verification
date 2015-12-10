@@ -20,7 +20,7 @@ break_text: "Take a short break to rest your eyes and hands, but please stay at 
 end_text: "You've reached the end of the experiment! Before you leave, there is a short survey we'd like you to fill out. Press the SPACEBAR to see the survey. If you don't see the survey, please tell the experimenter."
 timeout_text: "You didn't answer fast enough! Remember to press 'y' for YES and 'n' for NO. Please respond as quickly as possible. Press the SPACEBAR when you are ready to continue."
 trials:
-    num_categories: 18
+    num_categories: 33
     ratio_masked_cue: 0.5
     ratio_visual_questions: 0.5 # fixed in trials.py
     ratio_yes_resp: 0.75
