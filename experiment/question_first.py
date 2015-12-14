@@ -4,7 +4,14 @@ import yaml
 import socket
 import webbrowser
 
+from psychopy import prefs
+try:
+    import pyo
+except ImportError:
+    print 'pyo not found!'
+prefs.general['audioLib'] = ['pyo', ]
 from psychopy import visual, core, event, sound
+sound.init(48000, buffer=128)
 
 from resources.psychopy_helper import *
 from resources.dynamic_mask import DynamicMask
