@@ -12,6 +12,9 @@ compile <- function(data_dir, regex_key, header_file) {
                         file.path(data_dir, header_file))
   header <- colnames(readr::read_tsv(header_file))
 
-  data_files <- list.files(data_dir, key, full.names = TRUE)
-  plyr::ldply(data_files, read_tsv, col_names = header)
+  # hack!!!
+  header[header == "response"] <- c("response", "response.1")
+
+  data_files <- list.files(data_dir, regex_key, full.names = TRUE)
+  plyr::ldply(data_files, readr::read_tsv, col_names = header)
 }

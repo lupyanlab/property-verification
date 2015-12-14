@@ -1,7 +1,15 @@
+library(stringr)
+library(dplyr)
+
 devtools::load_all()
 
-question_first <- compile("data-raw/question_first/data/", key = "MWPF2",
-                          headername = "_header.txt")
+question_first <- compile("data-raw/question_first/data/", regex_key = "MWPF",
+                          header_file = "_header.txt")
+
+# Label experiment runs
+# ---------------------
+subj_id_nums <- as.numeric(str_extract(question_first$subj_id, "[[:digit:]]{1}"))
+question_first$exp_run <- ifelse(subj_id_nums == 2, 1, 2)
 
 # Rename response columns
 # -----------------------
@@ -64,7 +72,7 @@ question_first$question_id <- with(question_first, paste(cue, ftype, truth_coded
 # Put the columns in the correct order
 # ------------------------------------
 question_first <- question_first %>%
-  select(subj_id, block_ix, trial_ix,
+  select(subj_id, exp_run, block_ix, trial_ix,
          cue, question, question_id,
          mask_type = cue_mask,
          feat_type = ftype,
