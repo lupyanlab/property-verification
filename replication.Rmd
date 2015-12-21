@@ -84,6 +84,10 @@ The effect was indeed stronger in the first run than it was in the second run.
 ```{r, run-diff-mod, echo = 1}
 ```
 
+In this plot, each point is a subject, and plotted along the y-axis is the
+interaction term for that subject: the extent to which they show the expected
+`feature x mask` interaction.
+
 ```{r, run-diff-plot}
 ```
 
@@ -98,6 +102,11 @@ errors were less likely in the second run of the experiment.
 There were no differences in overall RTs across the experiment runs.
 
 ```{r, overall-rt}
+```
+
+### By-subject averages
+
+```{r, subjs}
 ```
 
 ## Did the same questions get used in both runs?
@@ -126,3 +135,111 @@ change the original conclusions.
 
 ```{r, drop-duplicates}
 ```
+
+## How did the python files differ?
+
+### Experiment files
+
+`diff -b diff/first_run/MWPF2.py diff/second_run/question_first.py`
+
+```{r, eval = FALSE, echo = TRUE}
+# the first run had a comment at the top of the experiment script
+2,4d1
+< """
+< MWP-F/run.py
+< """
+
+# the second run set the psychopy audioLib manually
+9a7,12
+> from psychopy import prefs
+> try:
+>     import pyo
+> except ImportError:
+>     print 'pyo not found!'
+> prefs.general['audioLib'] = ['pyo', ]
+10a14
+> sound.init(48000, buffer=128)
+
+# the trials files were named differently, so they were imported differently
+12d15
+< from MWPF1_trials import write_trials
+15a19,20
+> from question_first_trials import write_trials
+> 
+  
+# self.trials_fields is a tuple so it needed to be converted to
+# a list before it could be used in the concatenation of the header
+# file. The header file was only created once, so the bug didn't
+# cause a problem in the first run (though it could have). This
+# bug was fixed in the second run.
+206c211
+<             header = self.subj_vars_fields+self.trials_fields+self.resp_fields
+---
+>             header = self.subj_vars_fields+list(self.trials_fields)+self.resp_fields
+
+# different config files were loaded for the first and second run experiments
+335c340
+<     exp = Experiment(exp_dir=root_dir, version_file='MWPF2.yaml')
+---
+>     exp = Experiment(exp_dir=root_dir, version_file='question_first.yaml')
+```
+
+### Trials files
+
+The only difference between the trials files was that the two runs took
+in a differently named config files.
+
+`diff -b diff/first_run/MWPF2_trials.py diff/second_run/question_first_trials.py`
+
+```{r, eval = FALSE, echo = TRUE}
+138c138
+<     version_file = os.path.join(exp_dir, 'MWPF2.yaml')
+---
+>     version_file = os.path.join(exp_dir, 'question_first.yaml')
+```
+
+### Config files
+
+As can be seen in the config file below, more categories were used
+in the second run of the experiment than were used in the first run.
+
+`diff diff/first_run/MWPF2.yaml diff/second_run/question_first.yaml`
+
+```{r, eval = FALSE, echo = TRUE}
+# the different runs used different names
+1,2c1,2
+< task_name: "Masked Word Priming: Features 2"
+< version_name: "MWPF2"
+---
+> task_name: "Property Verification: Question First"
+> version_name: "question_first"
+
+# each participant was assigned questions from 18 categories
+# in the first run of the experiment, and 33 categories in
+# the second run.
+23c23
+<     num_categories: 18
+---
+>     num_categories: 33
+```
+
+This is an interesting clue because I think it reflects that there
+was a difference between the two experiments, likely in terms of the
+version of pandas installed on the testing computers.
+
+Here's why: when we started the second run of participants, the
+number of categories number had not changed from the first run,
+i.e., it was still 18. However, after the first few subjects,
+we noticed that the subjects weren't completing as many trials
+as they were in the first run. This was weird because the trials
+file was exactly the same (as seen above).
+
+First I confirmed that the number of trials was indeed different,
+but then I tried to create a new trial list using the old version
+of the trials file and came up with a shorter trials file than
+was already recorded in the first run. This really could only
+be explained by a difference between pandas functionality.
+
+To compensate because we were short on time I simply increased the number
+of categories in the second run of the experiment in order to give
+participants more trials.

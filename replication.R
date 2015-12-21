@@ -29,6 +29,7 @@ question_first <- question_first %>%
 run1_data <- filter(question_first, exp_run == 1)
 run2_data <- filter(question_first, exp_run == 2)
 
+# Create theme elements used in multiple plots
 scale_x_feat_type <- scale_x_discrete("Feature type", labels = c("Encyclopedic", "Visual"))
 scale_fill_mask_type <- scale_fill_discrete("Interference", labels = c("None", "Mask"))
 base_theme <- theme_minimal() +
@@ -36,6 +37,7 @@ base_theme <- theme_minimal() +
     axis.ticks = element_blank()
   )
 
+# Creates the main error bar plot for any dataset from the experiment
 error_bar_plot <- function(frame) {
   ggplot(frame, aes(x = feat_type, y = is_error, fill = mask_f)) +
     geom_bar(stat = "summary", fun.y = "mean", position = "dodge") +
@@ -45,6 +47,110 @@ error_bar_plot <- function(frame) {
     coord_cartesian(ylim = c(0, 0.14)) +
     base_theme
 }
+
+# ---- subjs
+subjs <- question_first %>%
+  group_by(exp_run, subj_id) %>%
+  summarize(
+    rt = mean(rt, na.rm = TRUE),
+    error = mean(is_error, na.rm = TRUE)
+  ) %>%
+  ungroup %>%
+  mutate(
+    rank_rt = rank(rt),
+    rank_error = rank(error, ties.method = "first")
+  )
+
+# subj theme
+rank_axis_breaks <- c(1, seq(5, nrow(subjs), by = 5))
+scale_x_subj_rank <- scale_x_continuous("Rank", breaks = rank_axis_breaks)
+scale_shape_exp_run <- scale_shape_manual("Run", labels = c("first", "second"), values = c(1, 16))
+scale_linetype_exp_run <- scale_linetype_discrete("Run", labels = c("first", "second"))
+subj_xlim <- c(0.5, nrow(subjs) + 2.5)
+subj_rt_ylim <- c(min(subjs$rt) - 100, max(subjs$rt) + 200) %>%
+  round(digits = -1)
+subj_error_ylim <- c(0, max(subjs$error) + 0.2) %>%
+  round(digits = 1)
+label_size = 3
+
+subj_ids_by_error <- subjs %>%
+  arrange(rank_error) %>%
+  .$subj_id
+
+subjs$subj_id <- factor(subjs$subj_id, levels = subj_ids_by_error)
+
+ggplot(subjs, aes(x = rank_error, y = error, color = subj_id, shape = factor(exp_run))) +
+  geom_point() +
+  geom_text(aes(label = subj_id), angle = 90, hjust = -0.1, size = label_size) +
+  scale_x_subj_rank +
+  scale_y_continuous("Error rate", labels = percent) +
+  scale_shape_exp_run +
+  coord_cartesian(xlim = subj_xlim, ylim = subj_error_ylim) +
+  base_theme +
+  guides(color = "none") +
+  theme(legend.position = "top") +
+  ggtitle("Average Error")
+
+ggplot(subjs, aes(x = rank_rt, y = rt, color = subj_id, shape = factor(exp_run))) +
+  geom_point() +
+  geom_text(aes(label = subj_id), angle = 90, hjust = -0.1, size = label_size) +
+  scale_x_subj_rank +
+  scale_y_continuous("RT (ms)") +
+  scale_shape_exp_run +
+  coord_cartesian(xlim = subj_xlim, ylim = subj_rt_ylim) +
+  base_theme +
+  guides(color = "none") +
+  theme(legend.position = "top") +
+  ggtitle("Average RT")
+
+subjs_parallel <- subjs %>%
+  select(-(rt:error)) %>%
+  gather(rank_type, rank_value, -(exp_run:subj_id)) %>%
+  mutate(rank_type = factor(rank_type, levels = c("rank_error", "rank_rt")))
+
+# subjs_parallel <- subjs_parallel %>%
+#   filter(rank_type == "rank_error") %>%
+#   mutate(label_side = ifelse(rank_value %% 2, "rank_error", "rank_rt")) %>%
+#   select(subj_id, label_side) %>%
+#   left_join(subjs_parallel, .)
+
+ggplot(subjs_parallel, aes(x = rank_type, y = rank_value, color = subj_id)) +
+  geom_line(aes(group = subj_id, lty = factor(exp_run))) +
+  geom_text(aes(label = subj_id),
+            data = filter(subjs_parallel, rank_type == "rank_error"),
+            size = label_size, hjust = 1) +
+  scale_x_discrete("", labels = c("Error", "RT")) +
+  scale_y_continuous("Rank", breaks = rank_axis_breaks) +
+  scale_linetype_exp_run +
+  base_theme +
+  guides(color = "none") +
+  theme(legend.position = "top") +
+  ggtitle("Correlation between Error and RT\n(rank)")
+
+z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
+
+subjs_parallel_z <- subjs %>%
+  mutate(
+    rt_z = z_score(rt), 
+    error_z = z_score(error)
+  ) %>% 
+  select(exp_run, subj_id, rt_z, error_z) %>%
+  gather(measure, z_score, -(exp_run:subj_id)) %>%
+  mutate(measure = factor(measure, levels = c("error_z", "rt_z")))
+
+ggplot(subjs_parallel_z, aes(x = measure, y = z_score, color = subj_id)) +
+  geom_line(aes(group = subj_id, lty = factor(exp_run))) +
+  geom_text(aes(label = subj_id),
+            data = filter(subjs_parallel_z, measure == "error_z"),
+            size = label_size, hjust = 1) +
+  scale_x_discrete("", labels = c("Error", "RT")) +
+  scale_y_continuous("z-score") +
+  coord_cartesian(ylim = c(-3.1, 3.1)) +
+  scale_linetype_exp_run +
+  base_theme +
+  guides(color = "none") +
+  theme(legend.position = "top") +
+  ggtitle("Correlation between Error and RT\n(z-score)")
 
 # ---- mod
 feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
@@ -96,6 +202,7 @@ subj_effects_diff <- subj_effects %>%
 ggplot(subj_effects_diff, aes(x = factor(exp_run), y = effect_of_mask_diff, color = factor(exp_run))) +
   geom_point(shape = 1, position = position_jitter(width = 0.1, height = 0)) +
   geom_point(stat = "summary", fun.y = "mean", size = 6) +
+  geom_hline(yintercept = 0, lty = 2, size = 0.1) +
   scale_x_discrete("Experiment run", labels = c("first", "second")) +
   scale_y_continuous("Effect of mask (interaction term)") +
   annotate("text", x = 0.5, y = 0.10, label = "+ larger for visual",
