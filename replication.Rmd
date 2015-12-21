@@ -1,5 +1,5 @@
 ---
-title: "Replication of question_first experiment"
+title: "Replication of `question_first` experiment"
 author: "Pierce Edmiston"
 date: "`r Sys.Date()`"
 output:
@@ -21,4 +21,108 @@ read_chunk("replication.R")
 ```
 
 ```{r, setup}
+```
+
+# First run
+
+## Effect of mask on error rate
+
+In the first run of the experiment we found that the mask had a detrimental
+effect on the visual question trials and that this effect was greater for
+visual trials than it was for nonvisual trials.
+
+```{r, run1-mod, echo = 1}
+```
+
+```{r, run1-plot}
+```
+
+# Second run
+
+## Effect of mask on error rate
+
+In the second run of the experiment, we didn't find the same effect of
+the mask, instead we found an overall effect of question type such
+that visual questions were more difficult than nonvisual questions.
+
+```{r, run2-mod, echo = 1}
+```
+
+```{r, run2-plot}
+```
+
+# Overall
+
+## Effect of mask on error rate
+
+Across both runs the detrimental effect of the mask was not greater
+for the visual questions than it was for the nonvisual questions. Instead,
+the overall error rate for visual questions increased so that there
+is an overall difference between visual and nonvisual questions.
+
+```{r, mod, echo = 1}
+```
+
+```{r, plot}
+```
+
+# Differences between runs
+
+What was different about the two runs of the experiment? First,
+we should test that the effect is indeed different between
+the two runs.
+
+It should be noted that this analysis is post-hoc and exploratory,
+and there were no **intended** differences between the first and
+second run of the experiment, so the most likely source of the
+failure-to-replicate is that the preliminary finding was type-2 error.
+
+## Was the effect stronger in the first run?
+
+The effect was indeed stronger in the first run than it was in the second run.
+
+```{r, run-diff-mod, echo = 1}
+```
+
+```{r, run-diff-plot}
+```
+
+## Were there differences in overall error rates or RTs?
+
+There is a marginal difference in overall error rates such that
+errors were less likely in the second run of the experiment.
+
+```{r, overall-error}
+```
+
+There were no differences in overall RTs across the experiment runs.
+
+```{r, overall-rt}
+```
+
+## Did the same questions get used in both runs?
+
+Of the 500+ questions that could have been used for each subject,
+only these 10 appeared in one run but not the other, so it seems
+that for the most part the same questions were used in the two runs,
+and these 10 appearing in only one version by chance.
+
+```{r, same-propositions}
+```
+
+## Did any subjects see the same question multiple times?
+
+It seems that for some reason the trials for the second run of the experiment
+were different and some questions appeared more than one time. This was true
+for all subjects in the second run.
+
+```{r, unique-propositions}
+```
+
+### Effect of mask on error rate (duplicates dropped)
+
+Redoing the main analyses without the duplicated trials, however, does not
+change the original conclusions.
+
+```{r, drop-duplicates}
 ```

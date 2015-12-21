@@ -2,7 +2,8 @@
 recode_mask_type <- function(frame) {
   mask_type_map <- data.frame(
     mask_type = c("nomask", "mask"),
-    mask_c = c(-0.5, 0.5))
+    mask_c = c(-0.5, 0.5),
+    mask_f = factor(c("nomask", "mask"), levels = c("nomask", "mask")))
   merge(frame, mask_type_map, all.x = TRUE)
 }
 
