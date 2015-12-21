@@ -8,6 +8,9 @@ question_first <- compile("data-raw/question_first/data/", regex_key = "MWPF",
 
 # Label experiment runs
 # ---------------------
+# Subjects for the first run of this experiment were named in the 200s.
+# The second run of the experiment, conducted a year after the original
+# study, was run with subject ids in the 300s.
 subj_id_nums <- as.numeric(str_extract(question_first$subj_id, "[[:digit:]]{1}"))
 question_first$exp_run <- ifelse(subj_id_nums == 2, 1, 2)
 
