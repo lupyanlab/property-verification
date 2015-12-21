@@ -1,0 +1,228 @@
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-20	grasshopper	grasshopper_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an insect?	7.12716730259	yes	656.300253526	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-19	pineapple	pineapple_1.wav	mask	visual	no	visual-no	3	Does it have whiskers?	14.3193988144	no	105.005825579	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-18	swan	swan_3.wav	mask	visual	yes	visual-yes	3	Does it have feathers?	21.6496847153	yes	324.039421801	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-17	alligator	alligator_1.wav	mask	visual	no	visual-no	3	Is it round?	28.8649300932	no	59.7344566486	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-16	table	table_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it furniture?	36.0052039588	yes	318.546745402	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-15	camel	camel_2.wav	nomask	visual	yes	visual-yes	5	Is it beige?	43.0714608087	yes	468.230180268	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-14	giraffe	giraffe_1.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it a mammal?	50.4007201936	yes	104.115666298	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-13	strawberry	strawberry_1.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it taste sweet?	57.6519797322	yes	645.916662412	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-12	raccoon	raccoon_3.wav	mask	visual	yes	visual-yes	3	Does it have eyes?	64.8732417674	yes	181.308255647	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-11	penguin	penguin_2.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it lay eggs?	72.1255121377	yes	1595.64586962	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-10	zebra	zebra_2.wav	mask	visual	yes	visual-yes	4	Does it have a mane?	79.2637547373	no	1006.34506554	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-9	donkey	donkey_1.wav	mask	visual	yes	visual-yes	4	Does it have hooves?	86.4470110366	yes	231.418365263	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-8	lion	lion_2.wav	nomask	visual	yes	visual-yes	1	Does it have a mane?	93.4462658763	yes	423.857932969	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-7	apple	apple_3.wav	mask	visual	yes	visual-yes	5	Does it have a core?	100.694554376	yes	174.021176936	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-6	chicken	chicken_4.wav	mask	visual	yes	visual-yes	1	Does it have feathers?	107.784776068	yes	425.94489397	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-5	bottle	bottle_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it used for holding liquids?	114.795018181	yes	706.974994857	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-4	mouse	mouse_4.wav	mask	visual	yes	visual-yes	3	Does it have fur?	121.864290881	yes	328.253674554	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-3	deer	deer_2.wav	nomask	visual	yes	visual-yes	1	Does it have antlers?	129.045525837	yes	129.62172227	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-2	pig	pig_4.wav	mask	visual	yes	visual-yes	4	Does it have legs?	135.992805106	yes	723.980846058	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	-1	-1	chair	chair_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it used for relaxing?	143.342058345	yes	206.388277176	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	0	chair	chair_3.wav	mask	visual	yes	visual-yes	1	Does it have legs?	155.894508284	yes	128.725481452	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	1	alligator	alligator_1.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it a reptile?	163.102767144	yes	328.8624782	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	2	apple	apple_1.wav	nomask	visual	yes	visual-yes	3	Does it have seeds?	170.223008425	yes	132.53162452	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	3	chicken	chicken_1.wav	mask	nonvisual	no	nonvisual-no	5	Is it comfortable?	177.184273533	no	254.494648194	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	4	camel	camel_3.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it spit?	184.25751338	yes	363.868047716	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	5	pig	pig_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it eaten as bacon?	191.186882874	yes	142.872644181	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	6	table	table_3.wav	mask	visual	yes	visual-yes	1	Is it made of wood?	198.260039819	yes	276.239053055	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	7	mouse	mouse_4.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it eat cheese?	205.369268219	yes	208.386574348	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	8	grasshopper	grasshopper_4.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it found in summer?	212.482538026	yes	236.073696637	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	9	pineapple	pineapple_3.wav	mask	visual	yes	visual-yes	2	Does it have an inside?	219.68779672	yes	164.345616067	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	10	chicken	chicken_1.wav	mask	visual	no	visual-no	4	Does it have four legs?	226.643025325	no	366.38776504	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	11	deer	deer_3.wav	mask	nonvisual	no	nonvisual-no	4	Does it eat people?	233.718319484	no	299.76633715	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	12	table	table_3.wav	nomask	visual	no	visual-no	1	Does it have a neck?	240.891559971	no	325.271432986	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	13	apple	apple_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it grow on trees?	247.954895396	yes	194.842773722	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	14	giraffe	giraffe_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it live in Africa?	255.172074734	yes	210.543314053	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	15	alligator	alligator_4.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in swamps?	262.359291137	yes	139.60968703	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	16	pineapple	pineapple_3.wav	mask	visual	yes	visual-yes	4	Is it yellow inside?	269.688585412	yes	134.531522053	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	17	pig	pig_2.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	276.553835591	yes	260.348701733	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	18	zebra	zebra_4.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it live in Africa?	283.65509641	yes	200.853989518	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	19	strawberry	strawberry_4.wav	nomask	visual	yes	visual-yes	1	Is it red?	290.964705073	yes	116.820521362	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	20	giraffe	giraffe_3.wav	mask	visual	yes	visual-yes	4	Is it brown?	298.072610558	no	256.749654305	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	21	strawberry	strawberry_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a fruit?	305.328860878	yes	358.505006123	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	22	alligator	alligator_4.wav	nomask	visual	yes	visual-yes	1	Does it have a long tongue?	312.523092287	no	263.557564293	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	23	deer	deer_4.wav	mask	visual	yes	visual-yes	4	Does it have hooves?	319.570352351	yes	214.230385143	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	24	chair	chair_2.wav	nomask	nonvisual	no	nonvisual-no	5	Is it an animal?	326.801645242	no	125.113630551	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	25	swan	swan_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it a bird?	334.004862747	yes	213.323901466	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	26	lion	lion_2.wav	nomask	visual	yes	visual-yes	2	Does it have fur?	340.997109623	yes	245.759180048	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	27	pineapple	pineapple_2.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it grow on trees?	348.272374334	no	411.132912559	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	28	penguin	penguin_2.wav	mask	visual	no	visual-no	4	Is it long?	355.359685163	no	432.091506198	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	29	bottle	bottle_3.wav	nomask	visual	no	visual-no	2	Does it have seeds?	362.423890262	no	925.927609322	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	30	table	table_2.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it found in kitchens?	369.47124187	yes	236.163960886	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	31	chair	chair_1.wav	nomask	nonvisual	yes	nonvisual-yes	5	Is it found at tables?	376.65844483	yes	357.306283957	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	32	strawberry	strawberry_2.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it taste good?	383.973680925	yes	232.974623563	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	33	raccoon	raccoon_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it furry?	391.021011728	yes	335.27444175	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	34	bottle	bottle_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it used for holding liquids?	398.140239616	yes	307.07422155	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	35	deer	deer_2.wav	nomask	visual	yes	visual-yes	1	Does it have antlers?	405.398654998	yes	256.984917563	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	36	lion	lion_2.wav	nomask	visual	yes	visual-yes	1	Does it have a mane?	412.395676598	yes	233.514928841	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	37	chicken	chicken_1.wav	nomask	nonvisual	no	nonvisual-no	1	Is it used for holding liquids?	419.346971346	no	323.89506296	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	38	raccoon	raccoon_1.wav	nomask	visual	yes	visual-yes	4	Does it have stripes?	426.429230257	yes	424.904294254	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	39	giraffe	giraffe_2.wav	nomask	visual	yes	visual-yes	3	Does it have long legs?	433.595476544	yes	274.579406949	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	40	apple	apple_3.wav	mask	visual	yes	visual-yes	5	Does it have a core?	440.663776503	yes	280.224124261	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	41	alligator	alligator_2.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it found in summer?	447.798979566	yes	402.932948375	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	42	pig	pig_4.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it like mud?	454.66722575	yes	400.571353559	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	43	mouse	mouse_1.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it eat?	461.756501588	yes	261.408186518	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	44	pig	pig_1.wav	mask	visual	yes	visual-yes	5	Is it muddy?	468.663742574	yes	369.366805826	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	45	chair	chair_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it furniture?	475.859089163	yes	282.046054024	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	46	penguin	penguin_2.wav	nomask	nonvisual	no	nonvisual-no	1	Is it like a horse?	483.043251946	no	331.22023195	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	47	pig	pig_4.wav	nomask	nonvisual	no	nonvisual-no	3	Does it live in India?	489.909513597	no	664.871517452	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	48	mouse	mouse_3.wav	nomask	nonvisual	no	nonvisual-no	1	Is it a fruit?	496.97377311	no	366.568293597	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	49	bottle	bottle_3.wav	nomask	visual	yes	visual-yes	2	Is it made of plastic?	504.078017771	yes	386.88831561	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	50	grasshopper	grasshopper_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an insect?	511.212272419	yes	301.55721854	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	51	apple	apple_2.wav	mask	nonvisual	no	nonvisual-no	5	Is it used in experiments?	518.361522777	yes	343.943011831	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	52	grasshopper	grasshopper_3.wav	nomask	visual	no	visual-no	1	Is it made of wood?	525.494773955	no	451.043800567	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	53	strawberry	strawberry_2.wav	nomask	visual	yes	visual-yes	3	Does it have green leaves?	532.722051047	yes	282.437199145	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	54	mouse	mouse_4.wav	mask	visual	yes	visual-yes	3	Does it have fur?	539.899991678	yes	380.049357249	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	55	lion	lion_4.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	546.846568358	yes	398.094847915	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	56	camel	camel_4.wav	nomask	visual	yes	visual-yes	4	Is it large?	553.725787732	yes	443.194650696	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	57	donkey	donkey_1.wav	mask	visual	yes	visual-yes	4	Does it have hooves?	560.935158891	yes	283.171476505	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	58	giraffe	giraffe_1.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it a mammal?	568.187323953	yes	305.535888008	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	59	donkey	donkey_4.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it make noises?	575.131554402	yes	427.975519793	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	60	apple	apple_3.wav	nomask	visual	no	visual-no	4	Does it have a hood?	582.252835002	no	631.694919604	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	61	lion	lion_3.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it roar?	589.308079612	yes	325.721153873	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	62	table	table_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it furniture?	596.401349803	yes	298.42645704	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	63	raccoon	raccoon_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it produce offspring?	603.449602133	yes	624.770178227	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	64	chicken	chicken_1.wav	mask	visual	no	visual-no	1	Is it orange?	610.49683787	no	343.029486365	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	65	penguin	penguin_4.wav	mask	visual	no	visual-no	2	Does it have a tail?	617.753106435	yes	661.100263766	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	66	chair	chair_2.wav	mask	visual	yes	visual-yes	2	Is it made of wood?	625.106790945	yes	407.48073085	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	67	deer	deer_1.wav	mask	visual	yes	visual-yes	2	Does it have four legs?	632.15863208	yes	421.889403893	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	0	68	penguin	penguin_3.wav	nomask	visual	yes	visual-yes	2	Does it have a beak?	639.167853119	yes	453.691232193	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	69	pig	pig_2.wav	nomask	visual	yes	visual-yes	1	Is it pink?	649.877253086	yes	585.861799656	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	70	table	table_4.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it used for eating on?	656.96149717	yes	350.862951949	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	71	chicken	chicken_4.wav	nomask	visual	yes	visual-yes	4	Does it have legs?	663.924896932	yes	603.91945357	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	72	chair	chair_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it used for relaxing?	671.12001562	yes	257.219220512	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	73	strawberry	strawberry_1.wav	mask	nonvisual	yes	nonvisual-yes	2	Does it taste sweet?	678.364283519	yes	279.92068266	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	74	mouse	mouse_3.wav	mask	nonvisual	no	nonvisual-no	3	Does it live in zoos?	685.42753156	yes	573.652757914	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	75	donkey	donkey_3.wav	mask	visual	yes	visual-yes	1	Does it have legs?	692.407767848	yes	334.704368492	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	76	table	table_1.wav	mask	nonvisual	no	nonvisual-no	2	Is it a mammal?	699.520042187	no	338.736492326	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	77	chair	chair_1.wav	mask	visual	yes	visual-yes	3	Does it have armrests?	706.573314747	yes	360.708478431	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	78	chicken	chicken_2.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it eat grain?	713.537547053	yes	570.520075795	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	79	chair	chair_4.wav	nomask	nonvisual	no	nonvisual-no	2	Is it nutritious?	720.588796989	no	360.66206597	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	80	zebra	zebra_2.wav	mask	visual	yes	visual-yes	4	Does it have a mane?	727.722051047	yes	259.84040508	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	81	mouse	mouse_2.wav	nomask	visual	no	visual-no	3	Does it have stripes?	734.840308435	no	566.861172265	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	82	camel	camel_3.wav	nomask	visual	yes	visual-yes	3	Does it have legs?	741.911563748	yes	269.024953886	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	83	grasshopper	grasshopper_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it live in grass?	749.032934613	yes	272.692499741	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	84	pineapple	pineapple_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it juicy?	756.226081251	yes	328.97770917	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	85	chicken	chicken_2.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it live in a coop?	763.193395985	yes	394.731063745	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	86	alligator	alligator_2.wav	mask	visual	yes	visual-yes	5	Does it have jaws?	770.316585578	yes	278.068024665	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	87	donkey	donkey_1.wav	mask	visual	yes	visual-yes	3	Does it have a tail?	777.488845642	yes	439.868636662	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	88	bottle	bottle_1.wav	mask	visual	yes	visual-yes	4	Does it have a neck?	784.609096205	yes	435.17873605	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	89	grasshopper	grasshopper_1.wav	nomask	visual	no	visual-no	2	Does it have teeth?	791.79233554	no	492.266401183	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	90	raccoon	raccoon_3.wav	mask	visual	yes	visual-yes	3	Does it have eyes?	798.847614399	yes	362.531368446	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	91	pineapple	pineapple_2.wav	mask	visual	yes	visual-yes	5	Does it have a core?	806.122139391	yes	479.914921161	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	92	raccoon	raccoon_3.wav	mask	visual	yes	visual-yes	5	Does it have a mask?	813.163228196	yes	462.330674462	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	93	pineapple	pineapple_2.wav	mask	nonvisual	no	nonvisual-no	2	Is it clothing?	820.424380313	no	308.363528107	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	94	table	table_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it found in dining rooms?	827.542636421	yes	240.088855906	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	95	chicken	chicken_4.wav	mask	visual	yes	visual-yes	1	Does it have feathers?	834.485875243	yes	346.770331846	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	96	lion	lion_1.wav	mask	visual	no	visual-no	4	Is it yellow inside?	841.528141324	no	345.078997256	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	97	strawberry	strawberry_3.wav	mask	nonvisual	no	nonvisual-no	1	Is is used for riding?	848.752406087	no	320.185265795	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	98	giraffe	giraffe_4.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in grass?	855.838672475	yes	717.522149906	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	99	lion	lion_4.wav	nomask	visual	yes	visual-yes	4	Does it have teeth?	862.778900248	yes	342.717402382	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	100	bottle	bottle_2.wav	mask	visual	no	visual-no	4	Does it have eyes?	869.827142656	no	302.569010528	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	101	deer	deer_1.wav	nomask	visual	yes	visual-yes	5	Does it have a white tail?	876.88039313	yes	373.023148626	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	102	alligator	alligator_3.wav	nomask	nonvisual	yes	nonvisual-yes	5	Does it eat people?	884.041677123	yes	270.718209038	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	103	lion	lion_1.wav	nomask	visual	yes	visual-yes	3	Does it have a tail?	891.106922501	yes	396.693191142	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	104	pineapple	pineapple_1.wav	nomask	visual	yes	visual-yes	3	Does it have skin?	898.277179786	yes	350.207735843	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	105	deer	deer_3.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it an herbivore?	905.282432718	yes	294.095372839	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	106	alligator	alligator_1.wav	nomask	visual	yes	visual-yes	2	Is it long?	912.485710399	yes	190.600353351	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	107	penguin	penguin_4.wav	mask	nonvisual	yes	nonvisual-yes	5	Does it waddle?	919.526932359	yes	340.871146123	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	108	grasshopper	grasshopper_2.wav	nomask	visual	no	visual-no	3	Does it have long legs?	926.673198236	yes	735.133923998	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	109	apple	apple_1.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it eaten in pies?	933.78545561	yes	139.591442188	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	110	pig	pig_1.wav	mask	nonvisual	yes	nonvisual-yes	4	Is it smelly?	940.699691117	yes	391.265172046	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	111	alligator	alligator_3.wav	nomask	visual	yes	visual-yes	3	Does it have scales?	947.849937583	yes	257.746082149	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	112	apple	apple_4.wav	nomask	nonvisual	no	nonvisual-no	1	Is it an animal?	954.832213459	no	282.825143368	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	113	bottle	bottle_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it used for holding things?	961.908489322	yes	231.624820735	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	114	camel	camel_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it eat?	968.935711999	yes	295.09564169	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	115	raccoon	raccoon_1.wav	nomask	visual	no	visual-no	1	Does it have a mane?	976.002941271	yes	444.905830722	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	116	pig	pig_4.wav	mask	visual	yes	visual-yes	4	Does it have legs?	982.872219413	yes	490.496965591	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	117	giraffe	giraffe_4.wav	mask	visual	yes	visual-yes	2	Is it tall?	989.951469835	yes	319.535811257	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	118	apple	apple_2.wav	mask	nonvisual	yes	nonvisual-yes	5	Is it used for cider?	997.09672776	yes	90.3119558352	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	119	penguin	penguin_3.wav	nomask	visual	yes	visual-yes	3	Does it have feet?	1004.12598298	yes	385.38327103	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	120	mouse	mouse_2.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a rodent?	1011.2402393	yes	229.396701849	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	121	zebra	zebra_1.wav	nomask	visual	yes	visual-yes	3	Does it have hooves?	1018.34649378	yes	313.330303179	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	122	swan	swan_2.wav	mask	visual	yes	visual-yes	2	Does it have a beak?	1025.65876204	yes	309.097805526	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	123	giraffe	giraffe_3.wav	nomask	nonvisual	no	nonvisual-no	4	Is it an insect?	1032.77800241	no	256.562403985	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	124	chair	chair_1.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it used in circuses?	1039.82327634	no	335.203382652	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	125	alligator	alligator_4.wav	mask	visual	yes	visual-yes	4	Does it have a tail?	1047.00351903	yes	288.490346225	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	126	penguin	penguin_4.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a bird?	1054.06077986	yes	214.579919062	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	127	deer	deer_4.wav	nomask	nonvisual	no	nonvisual-no	1	Does it live in zoos?	1061.08603273	no	582.242266741	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	128	penguin	penguin_2.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it lay eggs?	1068.17828728	yes	362.649160088	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	129	donkey	donkey_3.wav	mask	visual	yes	visual-yes	2	Does it have four legs?	1075.15853637	yes	347.540458897	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	130	pig	pig_3.wav	nomask	visual	no	visual-no	2	Does it have wings?	1082.15678262	no	340.109981596	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	131	lion	lion_3.wav	nomask	nonvisual	no	nonvisual-no	2	Does it eat cheese?	1089.20802488	no	330.456506694	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	132	giraffe	giraffe_1.wav	mask	visual	no	visual-no	2	Does it have warts?	1096.35929786	no	524.613015994	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	133	mouse	mouse_2.wav	mask	visual	yes	visual-yes	2	Is it grey?	1103.47557647	yes	320.106204541	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	134	penguin	penguin_2.wav	mask	nonvisual	no	nonvisual-no	3	Is it an herbivore?	1110.56081283	yes	309.001139482	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	135	chicken	chicken_4.wav	mask	visual	no	visual-no	2	Is it yellow?	1117.51303902	yes	631.518232054	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	136	camel	camel_2.wav	nomask	visual	yes	visual-yes	5	Is it beige?	1124.55029384	yes	294.332876685	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	137	strawberry	strawberry_1.wav	nomask	visual	yes	visual-yes	2	Does it have seeds?	1131.77958715	yes	189.670503431	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	1	138	alligator	alligator_3.wav	nomask	nonvisual	no	nonvisual-no	3	Is it used for freight?	1138.92184107	no	304.108944489	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	139	donkey	donkey_4.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it furry?	1150.97926131	yes	454.686059617	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	140	giraffe	giraffe_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Does it live in zoos?	1158.15350078	yes	263.931104681	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	141	camel	camel_1.wav	nomask	visual	yes	visual-yes	1	Does it have a hump?	1165.14976986	yes	216.408570588	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	142	chair	chair_4.wav	mask	visual	yes	visual-yes	4	Does it have a seat?	1172.21102088	yes	238.399761845	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	143	pig	pig_3.wav	mask	nonvisual	no	nonvisual-no	4	Does it grow on trees?	1179.21825803	no	222.413704789	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	144	pineapple	pineapple_1.wav	mask	visual	no	visual-no	3	Does it have whiskers?	1186.40652079	no	191.108970088	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	145	alligator	alligator_1.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it an animal?	1193.60478305	yes	151.586026303	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	146	bottle	bottle_4.wav	nomask	visual	yes	visual-yes	1	Is it made of glass?	1200.58504078	yes	320.6000973	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	147	raccoon	raccoon_1.wav	nomask	visual	yes	visual-yes	2	Does it have a tail?	1207.64229361	yes	262.979168852	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	148	deer	deer_3.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it hunted by people?	1214.64953267	yes	255.031112349	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	149	swan	swan_3.wav	mask	visual	yes	visual-yes	3	Does it have feathers?	1221.9688185	yes	210.307410627	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	150	pig	pig_2.wav	nomask	visual	yes	visual-yes	2	Does it have a tail?	1228.85604514	yes	639.359059685	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	151	camel	camel_1.wav	nomask	visual	yes	visual-yes	2	Is it brown?	1235.84930733	yes	495.770703128	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	152	zebra	zebra_3.wav	nomask	visual	yes	visual-yes	1	Does it have stripes?	1242.95961795	yes	259.686763748	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	153	chicken	chicken_3.wav	mask	nonvisual	yes	nonvisual-yes	1	Does it lay eggs?	1250.02980161	yes	305.429299362	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	154	apple	apple_4.wav	mask	visual	yes	visual-yes	4	Is it round?	1257.00906612	yes	450.483009801	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	155	mouse	mouse_1.wav	nomask	visual	yes	visual-yes	4	Does it have a white tail?	1264.11032245	no	382.901964011	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	156	donkey	donkey_2.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it like a horse?	1271.21257298	yes	354.953331465	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	157	grasshopper	grasshopper_1.wav	mask	nonvisual	no	nonvisual-no	3	Does it taste good?	1278.3978375	no	227.938069729	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	158	chair	chair_4.wav	mask	visual	no	visual-no	5	Does it have a tail?	1285.45107453	no	290.243457421	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	159	alligator	alligator_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it live in water?	1292.61335911	yes	260.124641529	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	160	grasshopper	grasshopper_2.wav	nomask	visual	yes	visual-yes	2	Does it have legs?	1299.76361006	yes	518.439836625	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	161	swan	swan_1.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it graceful?	1307.06587211	yes	290.759436146	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	162	apple	apple_4.wav	mask	visual	yes	visual-yes	1	Is it red?	1314.04713363	yes	283.732907439	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	163	penguin	penguin_3.wav	nomask	nonvisual	yes	nonvisual-yes	3	Does it live in the Arctic?	1321.06138866	yes	235.536592256	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	164	deer	deer_1.wav	nomask	visual	yes	visual-yes	3	Does it have eyes?	1328.09761408	yes	290.782802447	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	165	lion	lion_3.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it a carnivore?	1335.1538756	yes	400.53678432	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	166	raccoon	raccoon_2.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it nocturnal?	1342.23712518	yes	541.639352683	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	167	chicken	chicken_4.wav	mask	visual	yes	visual-yes	2	Does it have wings?	1349.19168545	yes	495.776464697	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	168	penguin	penguin_1.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it unable to fly?	1356.27763847	yes	300.682423462	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	169	swan	swan_4.wav	mask	visual	yes	visual-yes	4	Does it have wings?	1363.47489181	yes	285.038858419	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	170	camel	camel_4.wav	nomask	visual	no	visual-no	3	Does it have whiskers?	1370.35613509	yes	778.115717461	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	171	pineapple	pineapple_1.wav	mask	nonvisual	yes	nonvisual-yes	4	Does it grow in Hawaii?	1377.54239988	yes	275.070418953	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	172	apple	apple_1.wav	mask	nonvisual	no	nonvisual-no	4	Is it timid?	1384.65465277	no	270.755018923	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	173	bottle	bottle_2.wav	mask	nonvisual	yes	nonvisual-yes	5	Is it used for holding beer?	1391.70791125	yes	317.144128319	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	174	chicken	chicken_2.wav	mask	visual	yes	visual-yes	3	Does it have a beak?	1398.67715354	yes	422.763558861	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	175	giraffe	giraffe_2.wav	nomask	visual	yes	visual-yes	1	Does it have spots?	1405.86047386	yes	671.886523138	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	176	deer	deer_2.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it fast?	1412.94668551	yes	268.72535341	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	177	raccoon	raccoon_2.wav	mask	visual	no	visual-no	2	Does it have seeds?	1420.03292661	no	1065.64068422	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	178	lion	lion_2.wav	nomask	nonvisual	yes	nonvisual-yes	4	Does it live in jungles?	1427.02617504	yes	554.050048639	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	179	donkey	donkey_2.wav	nomask	nonvisual	no	nonvisual-no	4	Does it chase cats?	1434.12643527	no	262.744225678	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	180	mouse	mouse_4.wav	nomask	visual	yes	visual-yes	1	Does it have a tail?	1441.16368368	yes	349.463535822	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	181	giraffe	giraffe_1.wav	nomask	visual	no	visual-no	4	Does it have antennae?	1448.32397765	yes	447.553582431	0
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	182	alligator	alligator_2.wav	mask	visual	no	visual-no	2	Is it grey?	1455.45719906	no	546.46304925	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	183	chair	chair_2.wav	mask	nonvisual	yes	nonvisual-yes	1	Is it used for sitting on?	1462.69346224	yes	209.208555287	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	184	chicken	chicken_3.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it eaten by frying?	1469.75771759	yes	470.972357376	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	185	grasshopper	grasshopper_4.wav	mask	visual	yes	visual-yes	4	Does it have antennae?	1476.8789505	yes	298.541367927	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	186	strawberry	strawberry_4.wav	nomask	visual	yes	visual-yes	4	Is it small?	1484.14423077	yes	232.398148626	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	187	pineapple	pineapple_4.wav	mask	nonvisual	yes	nonvisual-yes	2	Is it tropical?	1491.28847978	yes	162.985250412	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	188	mouse	mouse_3.wav	nomask	visual	yes	visual-yes	4	Does it have whiskers?	1498.34878591	yes	376.777437807	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	189	camel	camel_4.wav	nomask	nonvisual	yes	nonvisual-yes	1	Does it live in the desert?	1505.22999686	yes	261.742036266	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	190	raccoon	raccoon_4.wav	mask	nonvisual	no	nonvisual-no	3	Is it used for holding beer?	1512.2792373	no	220.070354932	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	191	lion	lion_1.wav	nomask	nonvisual	no	nonvisual-no	4	Does it lay eggs?	1519.33348804	no	290.519371571	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	192	alligator	alligator_1.wav	mask	visual	no	visual-no	3	Is it round?	1526.53074682	no	226.850737468	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	193	table	table_4.wav	mask	visual	yes	visual-yes	4	Is it flat?	1533.6179946	yes	271.902847453	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	194	mouse	mouse_4.wav	nomask	nonvisual	yes	nonvisual-yes	2	Is it an animal?	1540.65325944	yes	294.656163547	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	195	deer	deer_2.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it a mammal?	1547.7355494	yes	203.627215	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	196	penguin	penguin_1.wav	mask	visual	yes	visual-yes	4	Does it have wings?	1554.82275332	yes	232.699669665	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	197	zebra	zebra_4.wav	mask	visual	yes	visual-yes	2	Does it have four legs?	1561.92205265	yes	165.020997636	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	198	pineapple	pineapple_4.wav	mask	nonvisual	no	nonvisual-no	3	Is it a carnivore?	1569.07327602	no	255.411374616	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	199	pig	pig_3.wav	nomask	nonvisual	yes	nonvisual-yes	2	Does it live on farms?	1576.07753412	yes	359.556488751	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	200	strawberry	strawberry_4.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it used for making jam?	1583.34599924	yes	165.21528986	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	201	bottle	bottle_1.wav	nomask	nonvisual	yes	nonvisual-yes	3	Is it a container?	1590.46305375	yes	272.936085239	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	202	table	table_2.wav	nomask	visual	yes	visual-yes	3	Does it have legs?	1597.51030901	yes	199.354386423	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	203	penguin	penguin_1.wav	nomask	visual	no	visual-no	1	Is it red?	1604.58955239	no	836.350891099	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	204	apple	apple_2.wav	nomask	nonvisual	yes	nonvisual-yes	1	Is it a fruit?	1611.7398091	yes	110.671668546	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	205	lion	lion_4.wav	mask	nonvisual	yes	nonvisual-yes	3	Is it a mammal?	1618.68306649	yes	225.342171965	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	206	mouse	mouse_1.wav	nomask	nonvisual	yes	nonvisual-yes	4	Is it used in experiments?	1625.77131709	yes	470.089560084	1
+MWPF_318	318	NS	2015_Dec_14_1631	question_first	LL-ELAINE	2	207	chicken	chicken_3.wav	nomask	visual	no	visual-no	3	Does it have hooves?	1632.84079785	no	291.806117457	1
