@@ -165,6 +165,13 @@ error_bar_plot(question_first) +
   facet_wrap("exp_run_label") +
   ggtitle("Effect of mask on error rate by feature type")
 
+question_first_timeout <- question_first %>%
+  mutate(is_error = ifelse(response == "timeout", 0, is_error))
+
+error_bar_plot(question_first_timeout) +
+  facet_wrap("exp_run_label") +
+  ggtitle("Effect of mask on error rate by feature type\n(timeouts counted as errors)")
+
 # ---- run-diff-mod
 run_diff_mod <- glmer(is_error ~ mask_c * feat_c * exp_run_c + (1|subj_id),
                  family = binomial, data = question_first)
@@ -220,6 +227,16 @@ tidy(overall_error_mod, effects = "fixed")
 # ---- overall-rt
 overall_rt_mod <- lmer(rt ~ exp_run_c + (1|subj_id), data = question_first)
 tidy(overall_rt_mod, effects = "fixed")
+
+# ---- question-freq
+question_freqs <- count(question_first, question_id, truth_coded)
+ggplot(question_freqs, aes(x = n)) +
+  geom_histogram(aes(fill = truth_coded)) +
+  scale_x_continuous("Number of times proposition was seen") +
+  scale_y_continuous("Frequency (number of propositions)") +
+  scale_fill_discrete("Is proposition true?") +
+  base_theme +
+  ggtitle("Number of times a proposition was seen")
 
 # ---- same-propositions
 same_propositions <- question_first[, c("exp_run", "cue", "question")] %>% 

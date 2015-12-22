@@ -23,13 +23,32 @@ read_chunk("replication.R")
 ```{r, setup}
 ```
 
+# Conclusions
+
+- We didn't replicate the effect. The most likely conclusion is that we
+  got lucky the first time, or at the very least the effect is more
+  fragile than our theory predicts.
+- However, the effects are significantly different between the two runs
+  (a three-way interaction between feature x mask x run), which at
+  least suggests it would be worth ruling out that there was a difference
+  in the methods or the participants.
+- For instance, it seems that the trial generation file behaved differently
+  at the time of the first run compared to the second run, even though there was
+  no difference line-by-line between the trial generation files (see below).
+  My best guess is that the first run was done using an old version of pandas 
+  that got updated by the time the second run was conducted.
+- One consequence of the different trials files, other than a different number
+  of total trials per subject, was that some questions were unintentionally seen
+  more than once in the second run. Removing the duplicated questions did not
+  revive the effect.
+- Participants in the second run were not any slower overall than participants
+  in the first run, and if anything they were more accurate, so we don't have
+  any evidence to support the claim that the end of the semester subjects
+  were sloppier than the first run subjects.
+
 # First run
 
-## Effect of mask on error rate
-
-In the first run of the experiment we found that the mask had a detrimental
-effect on the visual question trials and that this effect was greater for
-visual trials than it was for nonvisual trials.
+Here is the effect we were trying to replicate.
 
 ```{r, run1-mod, echo = 1}
 ```
@@ -39,10 +58,8 @@ visual trials than it was for nonvisual trials.
 
 # Second run
 
-## Effect of mask on error rate
-
 In the second run of the experiment, we didn't find the same effect of
-the mask, instead we found an overall effect of question type such
+the mask. Instead we found an overall effect of question type such
 that visual questions were more difficult than nonvisual questions.
 
 ```{r, run2-mod, echo = 1}
@@ -52,8 +69,6 @@ that visual questions were more difficult than nonvisual questions.
 ```
 
 # Overall
-
-## Effect of mask on error rate
 
 Across both runs the detrimental effect of the mask was not greater
 for the visual questions than it was for the nonvisual questions. Instead,
@@ -106,12 +121,22 @@ There were no differences in overall RTs across the experiment runs.
 
 ### By-subject averages
 
+There don't appear to be any outlier subjects in the second run.
+
 ```{r, subjs}
 ```
 
 ## Did the same questions get used in both runs?
 
-Of the 500+ questions that could have been used for each subject,
+Although there were equal numbers of true and false propositions in the 
+stimuli, each participant only saw a subset of those propositions, and 
+not in equal proportion. Participants saw 75% true propositions and 25%
+false ones.
+
+```{r, question-freq}
+```
+
+Of the 500+ questions that could have been sampled for each subject,
 only these 10 appeared in one run but not the other, so it seems
 that for the most part the same questions were used in the two runs,
 and these 10 appearing in only one version by chance.
