@@ -281,6 +281,11 @@ error_bar_plot(filter(question_first, exp_run == 2, is_duplicate == FALSE)) +
 error_bar_plot(filter(question_first, is_duplicate == FALSE)) +
   ggtitle("Effect of mask on error rate by feature type\n(both runs; duplicates dropped)")
 
+# ---- error-rate-on-duplicated-questions
+filter(question_first, exp_run == 2) %>%
+  group_by(is_duplicate) %>%
+  summarize(error = mean(is_error, na.rm = TRUE))
+
 # ---- run1-mod
 run1_feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
                                   family = binomial, data = run1_data)

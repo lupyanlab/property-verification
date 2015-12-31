@@ -161,6 +161,16 @@ change the original conclusions.
 ```{r, drop-duplicates}
 ```
 
+### Effect of duplicated questions on error rate
+
+Error rate on the duplicated questions was more than double what it was
+when the question was seen the first time, indicating that seeing a question
+multiple times encouraged different response patterns than when it was
+seen the first time.
+
+```{r, error-rate-on-duplicated-questions, echo = TRUE}
+```
+
 ## How did the python files differ?
 
 ### Experiment files
