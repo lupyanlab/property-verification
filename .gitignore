@@ -3,5 +3,6 @@
 .Rproj.user
 *cache/
 *.pickle
+*.swp
 .Rhistory
 .RData
