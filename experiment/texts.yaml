@@ -1,0 +1,81 @@
+instructions:
+  1:
+    tag: title
+    main: >
+      Welcome to the experiment! Press the SPACEBAR to begin.
+  2:
+    main: >
+      Your job today is to answer some simple, yes or no questions about
+      familiar objects like dogs, chairs, and elephants. Press the SPACEBAR to
+      continue.
+  3:
+    main: >
+      Think of it like a game you might play with a child who is learning about
+      these objects for the first time. First you'll see the question (for
+      example, 'Does it have feathers?'), then you'll hear a word through the
+      headphones, like 'eagle' or 'table'. After the word, you'll see a question
+      mark appear on the screen. Once it appears, you'll answer  yes or no using
+      the keyboard. You will press the 'y' key for yes and the 'n' key for no.
+      Press the SPACEBAR to continue.
+  4:
+    tag: weird_question
+    main: >
+      Some of the questions may sound a bit weird. If the question doesn't make
+      sense, the answer is most likely 'no'. Answer the question
+      below.
+
+
+      (Remember: Press 'y' for YES and 'n' for NO)
+    example: Does it have a seat? -> pineapple
+    advance: n
+  5:
+    main: >
+      Other questions will be true for some items in a category, but not all
+      items. In these cases, the answer is 'yes'. Answer the question below.
+    example: Is it green? -> apple
+    advance: y
+  6:
+    main: >
+      Why are we asking you to answer these simple questions? The speed at which
+      people perform this task tells us something about how easy or hard it is
+      for the brain to 'find' the relevant information in your memory. Now this
+      sort of analysis only turns up meaningful results if everyone is doing
+      their best to answer as quickly and accurately as possible, so please: try
+      your best for this 20-25 minute task. Press the SPACEBAR to continue.
+  7:
+    main: >
+      Ok! Ready for the experiment? Please open the door and tell the
+      experimenter you are ready to continue. Press the SPACEBAR after you've
+      talked to the experimenter.
+  8:
+    main: >
+      Let's do some practice questions. Make sure you have the headphones on.
+      Remember to answer as quickly as you can once you see the question mark.
+      Press the SPACEBAR to begin the practice trials.
+end_of_practice: >
+    You made it to the end of practice trials. Do you have any questions? If so,
+    now is the time to ask the experimenter.
+
+
+    Please remember that the value of this type
+    of experiment depends on you answering as quickly and accurately as
+    possible. It may seem simple and boring, but please try to stay focused. You
+    will get a few breaks during the experiment. Try to challenge yourself to be
+    as fast and accurate as possible!
+
+
+    Press the SPACEBAR to continue.
+break_text: >
+  Take a short break to rest your eyes and hands, but please stay at your
+  computer. When you are ready to continue, press SPACEBAR.
+
+
+  (Remember: Press 'y' for YES and 'n' for NO)
+end_text: >
+  You've reached the end of the experiment! Before you leave, there is a short
+  survey we'd like you to fill out. Press the SPACEBAR to see the survey. If you
+  don't see the survey, please tell the experimenter.
+timeout_text: >
+  You didn't answer fast enough! Remember to press 'y' for YES and 'n' for NO.
+  Please respond as quickly as possible. Press the SPACEBAR when you are ready
+  to continue.

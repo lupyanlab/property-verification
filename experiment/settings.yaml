@@ -1,0 +1,12 @@
+waits:
+  ready_duration: 1.0
+  ready_offset_to_question_onset: 0.4
+  question_duration: 1.5
+  question_offset_to_cue_onset: 0.4
+  max_wait: 2.0
+  inter_trial_interval: 1.0
+response_keys:
+  # 'yes' and 'no' must be quoted or they are interpreted as booleans!
+  y: 'yes'
+  n: 'no'
+survey_url: "https://uwmadison.qualtrics.com/SE/?SID=SV_7O0p9B6lnOtPrzn"
