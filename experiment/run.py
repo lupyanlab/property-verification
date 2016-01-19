@@ -102,6 +102,7 @@ class Trials(UserList):
         'feat_type',
         'question',
         'cue',
+        'cue_file',
         'mask_type',
         'correct_response',
 
@@ -189,6 +190,14 @@ class Trials(UserList):
         ##############################
         # END ASSIGNING PROPOSITIONS #
         ##############################
+
+        # There are multiple versions of each cue, so choose a version
+        # at random
+        all_cues = Path(stim_dir, 'cues').listdir('*.wav', names_only=True)
+        def pick_cue_file(cue):
+            options = [c for c in all_cues if c.find(cue) == 0]
+            return prng.choice(options)
+        trials['cue_file'] = trials.cue.apply(pick_cue_file)
 
         # Add columns for response variables
         for col in ['response', 'rt', 'is_correct']:

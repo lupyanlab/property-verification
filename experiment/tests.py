@@ -2,6 +2,7 @@ import os
 import yaml
 
 import pytest
+import unipath
 
 from run import Trials
 
@@ -24,3 +25,9 @@ def test_proposition_ids_are_unique(trials):
 
 def test_trials_are_correct_length(trials):
     assert len(trials) > 200 and len(trials) < 250
+
+def test_cue_files_exist(trials):
+    frame = trials.to_dataframe()
+    available = unipath.Path('stimuli/cues').listdir('*.wav')
+    used = frame.cue_file.unique()
+    assert all([cue in available for cue in used])
