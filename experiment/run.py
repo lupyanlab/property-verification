@@ -138,7 +138,7 @@ class Trials(UserList):
                         seed=seed)
 
         # Extend the trials to final length
-        trials = extend(trials, reps=4)
+        trials = extend(trials, max_length=230)
 
         # Read proposition info
         propositions_csv = Path(cls.STIM_DIR, 'propositions.csv')
@@ -166,13 +166,13 @@ class Trials(UserList):
             if valid_propositions.sum() == 0:
                 trials.ix[row.name, 'cue'] = prng.choice(categories)
                 return determine_question(trials.ix[row.name, ])
+            else:
+                options = _propositions.ix[valid_propositions, ]
+                selected_ix = prng.choice(options.index)
+                selected_proposition_id = options.ix[selected_ix, 'proposition_id']
+                _propositions.drop(selected_ix, inplace=True)
 
-            options = _propositions.ix[valid_propositions, ]
-            selected_ix = prng.choice(options.index)
-            selected_proposition_id = options.ix[selected_ix, 'proposition_id']
-            _propositions.drop(selected_ix, inplace=True)
-
-            return selected_proposition_id
+                return selected_proposition_id
 
         trials['proposition_id'] = trials.apply(determine_question, axis=1)
 

@@ -6,10 +6,10 @@ import pytest
 from run import Trials
 
 
-@pytest.fixture(scope='module')
+@pytest.fixture(scope='module', params=[100, 104, 108])
 def trials(request):
     trials_csv = 'test_trials.csv'
-    trials = Trials.make()
+    trials = Trials.make(seed=request.param)
     trials.write(trials_csv)
 
     def remove_trials():
@@ -21,4 +21,6 @@ def trials(request):
 def test_proposition_ids_are_unique(trials):
     frame = trials.to_dataframe()
     assert len(frame) == len(frame.proposition_id.unique())
-    
+
+def test_trials_are_correct_length(trials):
+    assert len(trials) > 200 and len(trials) < 250
