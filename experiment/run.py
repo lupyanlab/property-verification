@@ -360,7 +360,7 @@ class Experiment(object):
         trial['is_correct'] = is_correct
 
         if response == 'timeout':
-            self.show_timeout_screen()
+            self.show_text('timeout')
         else:
             remaining_time = self.waits['max_wait'] - rt
             core.wait(remaining_time + self.waits['inter_trial_interval'])
@@ -444,7 +444,7 @@ def main():
 
     # Start of experiment
     experiment = Experiment('settings.yaml', 'texts.yaml')
-    experiment.show_instructions()
+    experiment.show_text('instructions')
 
     participant.write_header(trials.COLUMNS)
 
@@ -456,11 +456,11 @@ def main():
             participant.write_trial(trial_data)
 
         if block_type == 'practice':
-            experiment.show_end_of_practice_screen()
+            experiment.show_text('end_of_practice')
         else:
-            experiment.show_break_screen()
+            experiment.show_text('break')
 
-    experiment.show_end_of_experiment_screen()
+    experiment.show_text('end_of_experiment')
     webbrowser.open(experiment.survey_url.format(**participant))
 
 
