@@ -144,8 +144,9 @@ class Trials(UserList):
         # Extend the trials to final length
         trials = extend(trials, max_length=230)
 
-        # Assign propositions
-        # -------------------
+        ################################
+        # BEGIN ASSIGNING PROPOSITIONS #
+        ################################
 
         # Read proposition info
         propositions_csv = Path(stim_dir, 'propositions.csv')
@@ -186,6 +187,10 @@ class Trials(UserList):
         trials = trials.merge(propositions)
         len_after = len(trials)
         assert len_before == len_after
+
+        ##############################
+        # END ASSIGNING PROPOSITIONS #
+        ##############################
 
         # Add columns for response variables
         for col in ['response', 'rt', 'is_correct']:
