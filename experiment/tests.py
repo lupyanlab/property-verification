@@ -1,15 +1,24 @@
+import os
 import yaml
+
 import pytest
 
-from question_first_trials import make_trials
+from run import Trials
 
-@pytest.fixture
-def trial_params():
-    settings_file = 'question_first.yaml'
-    return yaml.load(open(settings_file, 'r'))['trials']
 
-def test_questions_are_unique(trial_params):
-    trials = make_trials('.', trial_params, seed=100)
-    trials['question_id'] = trials.cue + trials.question
-    assert len(trials) == len(trials.question_id.unique())
+@pytest.fixture(scope='module')
+def trials(request):
+    trials_csv = 'test_trials.csv'
+    trials = Trials.make()
+    trials.write(trials_csv)
+
+    def remove_trials():
+        os.remove(trials_csv)
+    request.addfinalizer(remove_trials)
+
+    return trials
+
+def test_proposition_ids_are_unique(trials):
+    frame = trials.to_dataframe()
+    assert len(frame) == len(frame.proposition_id.unique())
     

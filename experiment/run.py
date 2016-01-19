@@ -7,6 +7,7 @@ from UserList import UserList
 import webbrowser
 
 import pandas as pd
+from numpy import random
 from unipath import Path
 
 from psychopy import prefs
@@ -123,7 +124,11 @@ class Trials(UserList):
         settings.update(kwargs)
 
         seed = settings.get('seed')
-        prng = pd.np.random.RandomState(seed)
+        try:
+            seed = int(seed)
+        except TypeError, ValueError:
+            seed = None
+        prng = random.RandomState(seed)
 
         # Balance within subject variables
         trials = counterbalance({'feat_type': ['visual', 'nonvisual'],
@@ -203,10 +208,17 @@ class Trials(UserList):
 
         return cls(trials.to_dict('record'))
 
-    def write_trials(self, trials_csv):
-        trials = pd.DataFrame.from_records(self)
-        trials = trials[self.COLUMNS]
-        trials.to_csv(trials_csv, index=False)
+    def to_dataframe(self):
+        return pd.DataFrame.from_records(self)[self.COLUMNS]
+
+    def write(self, trials_csv):
+        frame = self.to_dataframe()
+        frame.to_csv(trials_csv, index=False)
+
+    @classmethod
+    def load_trials(cls, trials_csv):
+        trials = pd.read_csv(trials_csv)
+        return cls(trials.to_dict('records'))
 
     def iter_blocks(self, key='block'):
         """ Yield blocks of trials. """
@@ -455,36 +467,37 @@ def main():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('command', choices=['run', 'trials', 'instructions', 'test', 'survey'],
-                        nargs='?', default='run')
+    parser.add_argument(
+        'command',
+        choices=['experiment', 'make', 'instructions', 'trial', 'survey'],
+        nargs='?',
+        default='experiment',
+    )
     parser.add_argument('--output', '-o', help='Name of output file')
+    parser.add_argument('--seed', '-s', help='Seed for random number generator')
+    parser.add_argument('--trial-index', '-i', default=0, type=int,
+                        help='Trial index to run from sample_trials.csv')
 
     args = parser.parse_args()
 
-    if args.command == 'trials':
-        trials = Trials.make()
-        trials.write_trials(args.output or 'sample_trials.csv')
-    elif args.command == 'instructions':
+    if args.command == 'make':
+        seed = args.seed or random.randint(100)
+        output = args.output or 'sample_trials.csv'
+        print "Making trials with seed %s: %s" % (seed, output)
+        trials = Trials.make(seed=seed)
+        trials.write(output)
+    elif args.command == 'trial':
         experiment = Experiment('settings.yaml', 'texts.yaml')
-        experiment.show_instructions()
-    elif args.command == 'test':
-        trial_settings = dict(
-            block_type = 'practice',
-            question_slug='is-it-used-in-circuses',
-            cue='elephant',
-            mask_type='mask',
-            response_type='pic',
-            pic='elephant',
-            correct_response='yes'
-        )
-
-        experiment = Experiment('settings.yaml', 'texts.yaml')
-        trial_data = experiment.run_trial(trial_settings)
+        trials = Trials.load('sample_trials.csv')
+        trial_data = experiment.run_trial(trials[args.trial_index])
         import pprint
         pprint.pprint(trial_data)
     elif args.command == 'survey':
         experiment = Experiment('settings.yaml', 'texts.yaml')
-        import webbrowser
-        webbrowser.open(experiment.survey_url.format(subj_id='TEST_SUBJ', computer='TEST_COMPUTER'))
+        survey_url = experiment.survey_url.format(
+            subj_id='TEST_SUBJ',
+            computer='TEST_COMPUTER',
+        )
+        webbrowser.open(survey_url)
     else:
         main()
