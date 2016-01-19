@@ -1,11 +1,9 @@
 #!/usr/bin/env python
-import argparse
-import copy
-import yaml
 from UserDict import UserDict
 from UserList import UserList
 import webbrowser
 
+import yaml
 import pandas as pd
 from numpy import random
 from unipath import Path
@@ -24,7 +22,7 @@ print 'initializing pyo to 48000'
 sound.init(48000, buffer=128)
 print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
 
-from labtools.psychopy_helper import get_subj_info, load_sounds, load_images
+from labtools.psychopy_helper import get_subj_info, load_sounds
 from labtools.dynamic_mask import DynamicMask
 from labtools.trials_functions import (counterbalance, expand, extend,
                                        add_block, smart_shuffle)
@@ -130,7 +128,7 @@ class Trials(UserList):
         seed = settings.get('seed')
         try:
             seed = int(seed)
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             seed = None
         prng = random.RandomState(seed)
 
@@ -271,7 +269,7 @@ class Experiment(object):
 
         text_kwargs = dict(
             win=self.win,
-            pos=[0,100],
+            pos=[0, 100],
             height=40,
             font='Consolas',
             color='black',
@@ -280,7 +278,7 @@ class Experiment(object):
         self.ready = visual.TextStim(text='READY', **text_kwargs)
         self.question = visual.TextStim(**text_kwargs)
         self.prompt = visual.TextStim(text='?', **text_kwargs)
-        self.prompt.setHeight(100) # increase font size from default
+        self.prompt.setHeight(100)  # increase font size from default
 
         self.cues = load_sounds(Path(self.STIM_DIR, 'cues'))
 
@@ -299,7 +297,7 @@ class Experiment(object):
         self.question.setText(trial['question'])
 
         cue = self.cues[trial['cue']]
-        cue_dur = question.getDuration()
+        cue_dur = cue.getDuration()
 
         stims_during_cue = []
         if trial['mask_type'] == 'mask':
@@ -331,7 +329,7 @@ class Experiment(object):
         # Play cue (and show mask)
         self.timer.reset()
         cue.play()
-        while cue_timer.getTime() < cue_dur:
+        while self.timer.getTime() < cue_dur:
             for stim in stims_during_cue:
                 stim.draw()
             self.win.flip()
@@ -427,10 +425,10 @@ class Experiment(object):
                 example.setText(block['example'])
                 example.draw()
 
-            # if tag == 'mask':
-            #     img_path = str(Path('stimuli', 'dynamic_mask', 'colored_1.png'))
-            #     mask = visual.ImageStim(self.win, img_path, pos=[0, -100])
-            #     mask.draw()
+            if tag == 'mask':
+                img_path = Path('stimuli', 'dynamic_mask', 'colored_1.png')
+                mask = visual.ImageStim(self.win, str(img_path), pos=[0, -100])
+                mask.draw()
 
             self.win.flip()
             key = event.waitKeys(keyList=advance_keys)[0]
@@ -478,6 +476,7 @@ def main():
 
 
 if __name__ == '__main__':
+    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'command',
@@ -486,7 +485,8 @@ if __name__ == '__main__':
         default='experiment',
     )
     parser.add_argument('--output', '-o', help='Name of output file')
-    parser.add_argument('--seed', '-s', help='Seed for random number generator')
+    parser.add_argument('--seed', '-s',
+                        help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
 
