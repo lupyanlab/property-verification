@@ -6,7 +6,7 @@ waits:
   max_wait: 2.0
   inter_trial_interval: 1.0
 response_keys:
-  # 'yes' and 'no' must be quoted or they are interpreted as booleans!
+  # 'yes' and 'no' must be quoted or yaml thinks they are boolean!
   y: 'yes'
   n: 'no'
 survey_url: "https://uwmadison.qualtrics.com/SE/?SID=SV_7O0p9B6lnOtPrzn"
