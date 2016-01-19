@@ -1,8 +1,6 @@
-*.pyc
 .DS_Store
 .Rproj.user
 *cache/
-*.pickle
 *.swp
 .Rhistory
 .RData
