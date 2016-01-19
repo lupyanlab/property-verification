@@ -419,7 +419,7 @@ class Experiment(object):
                 if tag == 'title':
                     main.setHeight(50)
                 else:
-                    main.setHeight(20)
+                    main.setHeight(25)
 
                 main.draw()
 
