@@ -116,11 +116,15 @@ class Trials(UserList):
 
     @classmethod
     def make(cls, **kwargs):
-        """ Create a list of trials.
+        """Create a list of trials.
 
         Each trial is a dict with values for all keys in self.COLUMNS.
         """
+        # Make copies of class defaults
+        stim_dir = cls.STIM_DIR
+        columns = cls.COLUMNS
         settings = dict(cls.DEFAULTS)
+
         settings.update(kwargs)
 
         seed = settings.get('seed')
@@ -140,44 +144,48 @@ class Trials(UserList):
         # Extend the trials to final length
         trials = extend(trials, max_length=230)
 
+        # Assign propositions
+        # -------------------
+
         # Read proposition info
-        propositions_csv = Path(cls.STIM_DIR, 'propositions.csv')
+        propositions_csv = Path(stim_dir, 'propositions.csv')
         propositions = pd.read_csv(propositions_csv)
 
-        # Add cue
-        categories = propositions.cue.unique()
-        trials['cue'] = prng.choice(categories, len(trials), replace=True)
+        # Define how to divide up possible propositions
+        proposition_groups = ['feat_type', 'correct_response']
+        grouped_trials = trials.groupby(proposition_groups)
 
-        # Create a copy of the propositions that will be modified in place
-        # to remove the questions that have already been used.
-        _propositions = propositions.copy()
+        trial_groups = []
+        for (feat_type, correct_response), trial_group in grouped_trials:
+            # Select all possible propositions matching the current group
+            options_ix = (
+                (propositions.feat_type == feat_type) &
+                (propositions.correct_response == correct_response)
+            )
 
-        def determine_question(row):
-            """Pick a proposition_id for this trial."""
-            is_cue = (_propositions.cue == row['cue'])
-            is_feat_type = (_propositions.feat_type == row['feat_type'])
-            is_correct_response = (_propositions.correct_response ==
-                                   row['correct_response'])
+            # Get a list of propositions to choose from
+            proposition_options = propositions.ix[
+                options_ix, 'proposition_id'
+            ].values
 
-            valid_propositions = (is_cue & is_feat_type & is_correct_response)
+            # Randomly select propositions for the current group
+            selected = prng.choice(proposition_options, size=len(trial_group),
+                                   replace=False)
 
-            # If there are no questions remaining for this trial type,
-            # pick a new cue and try again.
-            if valid_propositions.sum() == 0:
-                trials.ix[row.name, 'cue'] = prng.choice(categories)
-                return determine_question(trials.ix[row.name, ])
-            else:
-                options = _propositions.ix[valid_propositions, ]
-                selected_ix = prng.choice(options.index)
-                selected_proposition_id = options.ix[selected_ix, 'proposition_id']
-                _propositions.drop(selected_ix, inplace=True)
+            # Add in the proposition id column
+            trial_group['proposition_id'] = selected
 
-                return selected_proposition_id
+            # Add the current trial group to the list of all trial groups
+            trial_groups.append(trial_group)
 
-        trials['proposition_id'] = trials.apply(determine_question, axis=1)
+        # Glue all trial groups together again
+        trials = pd.concat(trial_groups)
 
-        # Merge in question info
+        # Add in remaining proposition columns
+        len_before = len(trials)
         trials = trials.merge(propositions)
+        len_after = len(trials)
+        assert len_before == len_after
 
         # Add columns for response variables
         for col in ['response', 'rt', 'is_correct']:
@@ -198,13 +206,13 @@ class Trials(UserList):
         trials['block_type'] = 'test'
 
         # Merge practice trials
-        trials = pd.concat([practice_trials, trials])
+        trials = pd.concat([practice_trials, trials], ignore_index=True)
 
         # Label trial
         trials['trial'] = range(len(trials))
 
         # Reorcder columns
-        trials = trials[cls.COLUMNS]
+        trials = trials[columns]
 
         return cls(trials.to_dict('record'))
 
