@@ -272,8 +272,7 @@ class Experiment(object):
         self.cues = load_sounds(Path(self.STIM_DIR, 'cues'))
 
         mask_kwargs = dict(win=self.win, size=[500, 500])
-        self.mask = DynamicMask(Path(self.STIM_DIR, 'dynamic_mask'),
-                                **mask_kwargs)
+        self.mask = DynamicMask(**mask_kwargs)
 
         feedback_dir = Path(self.STIM_DIR, 'feedback')
         self.feedback = {}
@@ -426,7 +425,7 @@ class Experiment(object):
             if key == 'q':
                 core.quit()
 
-            if key in ['up', 'down']:
+            if key in ['y', 'n']:
                 self.feedback[1].play()
 
 
@@ -486,6 +485,9 @@ if __name__ == '__main__':
         print "Making trials with seed %s: %s" % (seed, output)
         trials = Trials.make(seed=seed)
         trials.write(output)
+    elif args.command == 'instructions':
+        experiment = Experiment('settings.yaml', 'texts.yaml')
+        experiment._show_instructions()
     elif args.command == 'trial':
         experiment = Experiment('settings.yaml', 'texts.yaml')
         trials = Trials.load('sample_trials.csv')
