@@ -1,0 +1,6 @@
+banana
+bike
+carrot
+jacket
+toad
+train

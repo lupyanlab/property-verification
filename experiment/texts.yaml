@@ -65,17 +65,17 @@ end_of_practice: >
 
 
     Press the SPACEBAR to continue.
-break_text: >
+break: >
   Take a short break to rest your eyes and hands, but please stay at your
   computer. When you are ready to continue, press SPACEBAR.
 
 
   (Remember: Press 'y' for YES and 'n' for NO)
-end_text: >
+end_of_experiment: >
   You've reached the end of the experiment! Before you leave, there is a short
   survey we'd like you to fill out. Press the SPACEBAR to see the survey. If you
   don't see the survey, please tell the experimenter.
-timeout_text: >
+timeout: >
   You didn't answer fast enough! Remember to press 'y' for YES and 'n' for NO.
   Please respond as quickly as possible. Press the SPACEBAR when you are ready
   to continue.

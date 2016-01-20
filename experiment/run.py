@@ -1,11 +1,9 @@
 #!/usr/bin/env python
-import argparse
-import copy
-import yaml
 from UserDict import UserDict
 from UserList import UserList
 import webbrowser
 
+import yaml
 import pandas as pd
 from numpy import random
 from unipath import Path
@@ -24,7 +22,7 @@ print 'initializing pyo to 48000'
 sound.init(48000, buffer=128)
 print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
 
-from labtools.psychopy_helper import get_subj_info, load_sounds, load_images
+from labtools.psychopy_helper import get_subj_info, load_sounds
 from labtools.dynamic_mask import DynamicMask
 from labtools.trials_functions import (counterbalance, expand, extend,
                                        add_block, smart_shuffle)
@@ -104,6 +102,7 @@ class Trials(UserList):
         'feat_type',
         'question',
         'cue',
+        'cue_file',
         'mask_type',
         'correct_response',
 
@@ -116,17 +115,21 @@ class Trials(UserList):
 
     @classmethod
     def make(cls, **kwargs):
-        """ Create a list of trials.
+        """Create a list of trials.
 
         Each trial is a dict with values for all keys in self.COLUMNS.
         """
+        # Make copies of class defaults
+        stim_dir = cls.STIM_DIR
+        columns = cls.COLUMNS
         settings = dict(cls.DEFAULTS)
+
         settings.update(kwargs)
 
         seed = settings.get('seed')
         try:
             seed = int(seed)
-        except TypeError, ValueError:
+        except (TypeError, ValueError):
             seed = None
         prng = random.RandomState(seed)
 
@@ -140,44 +143,61 @@ class Trials(UserList):
         # Extend the trials to final length
         trials = extend(trials, max_length=230)
 
+        ################################
+        # BEGIN ASSIGNING PROPOSITIONS #
+        ################################
+
         # Read proposition info
-        propositions_csv = Path(cls.STIM_DIR, 'propositions.csv')
+        propositions_csv = Path(stim_dir, 'propositions.csv')
         propositions = pd.read_csv(propositions_csv)
 
-        # Add cue
-        categories = propositions.cue.unique()
-        trials['cue'] = prng.choice(categories, len(trials), replace=True)
+        # Define how to divide up possible propositions
+        proposition_groups = ['feat_type', 'correct_response']
+        grouped_trials = trials.groupby(proposition_groups)
 
-        # Create a copy of the propositions that will be modified in place
-        # to remove the questions that have already been used.
-        _propositions = propositions.copy()
+        trial_groups = []
+        for (feat_type, correct_response), trial_group in grouped_trials:
+            # Select all possible propositions matching the current group
+            options_ix = (
+                (propositions.feat_type == feat_type) &
+                (propositions.correct_response == correct_response)
+            )
 
-        def determine_question(row):
-            """Pick a proposition_id for this trial."""
-            is_cue = (_propositions.cue == row['cue'])
-            is_feat_type = (_propositions.feat_type == row['feat_type'])
-            is_correct_response = (_propositions.correct_response ==
-                                   row['correct_response'])
+            # Get a list of propositions to choose from
+            proposition_options = propositions.ix[
+                options_ix, 'proposition_id'
+            ].values
 
-            valid_propositions = (is_cue & is_feat_type & is_correct_response)
+            # Randomly select propositions for the current group
+            selected = prng.choice(proposition_options, size=len(trial_group),
+                                   replace=False)
 
-            # If there are no questions remaining for this trial type,
-            # pick a new cue and try again.
-            if valid_propositions.sum() == 0:
-                trials.ix[row.name, 'cue'] = prng.choice(categories)
-                return determine_question(trials.ix[row.name, ])
-            else:
-                options = _propositions.ix[valid_propositions, ]
-                selected_ix = prng.choice(options.index)
-                selected_proposition_id = options.ix[selected_ix, 'proposition_id']
-                _propositions.drop(selected_ix, inplace=True)
+            # Add in the proposition id column
+            trial_group['proposition_id'] = selected
 
-                return selected_proposition_id
+            # Add the current trial group to the list of all trial groups
+            trial_groups.append(trial_group)
 
-        trials['proposition_id'] = trials.apply(determine_question, axis=1)
+        # Glue all trial groups together again
+        trials = pd.concat(trial_groups)
 
-        # Merge in question info
+        # Add in remaining proposition columns
+        len_before = len(trials)
         trials = trials.merge(propositions)
+        len_after = len(trials)
+        assert len_before == len_after
+
+        ##############################
+        # END ASSIGNING PROPOSITIONS #
+        ##############################
+
+        # There are multiple versions of each cue, so choose a version
+        # at random
+        all_cues = Path(stim_dir, 'cues').listdir('*.wav', names_only=True)
+        def pick_cue_file(cue):
+            options = [c for c in all_cues if c.find(cue) == 0]
+            return prng.choice(options)
+        trials['cue_file'] = trials.cue.apply(pick_cue_file)
 
         # Add columns for response variables
         for col in ['response', 'rt', 'is_correct']:
@@ -198,13 +218,13 @@ class Trials(UserList):
         trials['block_type'] = 'test'
 
         # Merge practice trials
-        trials = pd.concat([practice_trials, trials])
+        trials = pd.concat([practice_trials, trials], ignore_index=True)
 
         # Label trial
         trials['trial'] = range(len(trials))
 
         # Reorcder columns
-        trials = trials[cls.COLUMNS]
+        trials = trials[columns]
 
         return cls(trials.to_dict('record'))
 
@@ -258,7 +278,7 @@ class Experiment(object):
 
         text_kwargs = dict(
             win=self.win,
-            pos=[0,100],
+            pos=[0, 100],
             height=40,
             font='Consolas',
             color='black',
@@ -267,13 +287,12 @@ class Experiment(object):
         self.ready = visual.TextStim(text='READY', **text_kwargs)
         self.question = visual.TextStim(**text_kwargs)
         self.prompt = visual.TextStim(text='?', **text_kwargs)
-        self.prompt.setHeight(100) # increase font size from default
+        self.prompt.setHeight(100)  # increase font size from default
 
         self.cues = load_sounds(Path(self.STIM_DIR, 'cues'))
 
         mask_kwargs = dict(win=self.win, size=[500, 500])
-        self.mask = DynamicMask(Path(self.STIM_DIR, 'dynamic_mask'),
-                                **mask_kwargs)
+        self.mask = DynamicMask(**mask_kwargs)
 
         feedback_dir = Path(self.STIM_DIR, 'feedback')
         self.feedback = {}
@@ -287,7 +306,7 @@ class Experiment(object):
         self.question.setText(trial['question'])
 
         cue = self.cues[trial['cue']]
-        cue_dur = question.getDuration()
+        cue_dur = cue.getDuration()
 
         stims_during_cue = []
         if trial['mask_type'] == 'mask':
@@ -319,7 +338,7 @@ class Experiment(object):
         # Play cue (and show mask)
         self.timer.reset()
         cue.play()
-        while cue_timer.getTime() < cue_dur:
+        while self.timer.getTime() < cue_dur:
             for stim in stims_during_cue:
                 stim.draw()
             self.win.flip()
@@ -361,7 +380,7 @@ class Experiment(object):
         trial['is_correct'] = is_correct
 
         if response == 'timeout':
-            self.show_timeout_screen()
+            self.show_text('timeout')
         else:
             remaining_time = self.waits['max_wait'] - rt
             core.wait(remaining_time + self.waits['inter_trial_interval'])
@@ -407,7 +426,7 @@ class Experiment(object):
                 if tag == 'title':
                     main.setHeight(50)
                 else:
-                    main.setHeight(20)
+                    main.setHeight(25)
 
                 main.draw()
 
@@ -415,10 +434,10 @@ class Experiment(object):
                 example.setText(block['example'])
                 example.draw()
 
-            # if tag == 'mask':
-            #     img_path = str(Path('stimuli', 'dynamic_mask', 'colored_1.png'))
-            #     mask = visual.ImageStim(self.win, img_path, pos=[0, -100])
-            #     mask.draw()
+            if tag == 'mask':
+                img_path = Path('stimuli', 'dynamic_mask', 'colored_1.png')
+                mask = visual.ImageStim(self.win, str(img_path), pos=[0, -100])
+                mask.draw()
 
             self.win.flip()
             key = event.waitKeys(keyList=advance_keys)[0]
@@ -426,7 +445,7 @@ class Experiment(object):
             if key == 'q':
                 core.quit()
 
-            if key in ['up', 'down']:
+            if key in ['y', 'n']:
                 self.feedback[1].play()
 
 
@@ -445,7 +464,7 @@ def main():
 
     # Start of experiment
     experiment = Experiment('settings.yaml', 'texts.yaml')
-    experiment.show_instructions()
+    experiment.show_text('instructions')
 
     participant.write_header(trials.COLUMNS)
 
@@ -457,15 +476,16 @@ def main():
             participant.write_trial(trial_data)
 
         if block_type == 'practice':
-            experiment.show_end_of_practice_screen()
+            experiment.show_text('end_of_practice')
         else:
-            experiment.show_break_screen()
+            experiment.show_text('break')
 
-    experiment.show_end_of_experiment_screen()
+    experiment.show_text('end_of_experiment')
     webbrowser.open(experiment.survey_url.format(**participant))
 
 
 if __name__ == '__main__':
+    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'command',
@@ -474,7 +494,8 @@ if __name__ == '__main__':
         default='experiment',
     )
     parser.add_argument('--output', '-o', help='Name of output file')
-    parser.add_argument('--seed', '-s', help='Seed for random number generator')
+    parser.add_argument('--seed', '-s',
+                        help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
 
@@ -486,6 +507,9 @@ if __name__ == '__main__':
         print "Making trials with seed %s: %s" % (seed, output)
         trials = Trials.make(seed=seed)
         trials.write(output)
+    elif args.command == 'instructions':
+        experiment = Experiment('settings.yaml', 'texts.yaml')
+        experiment._show_instructions()
     elif args.command == 'trial':
         experiment = Experiment('settings.yaml', 'texts.yaml')
         trials = Trials.load('sample_trials.csv')
