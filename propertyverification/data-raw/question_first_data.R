@@ -1,92 +1,96 @@
 library(stringr)
 library(dplyr)
 
-devtools::load_all()
+library(devtools)
+load_all()
 
-question_first <- compile("data-raw/question_first/data/", regex_key = "MWPF",
-                          header_file = "_header.txt")
+compile_question_first <- function(overwrite = FALSE) {
+  first_run <- compile("data-raw/question_first/first_run/", regex_key = "MWPF",
+                       header_file = "_header.txt")
+  first_run$exp_run <- 1
 
-# Label experiment runs
-# ---------------------
-# Subjects for the first run of this experiment were named in the 200s.
-# The second run of the experiment, conducted a year after the original
-# study, was run with subject ids in the 300s.
-subj_id_nums <- as.numeric(str_extract(question_first$subj_id, "[[:digit:]]{1}"))
-question_first$exp_run <- ifelse(subj_id_nums == 2, 1, 2)
+  second_run <- compile("data-raw/question_first/second_run/", regex_key = "MWPF",
+                        header_file = "_header.txt")
+  second_run$exp_run <- 2
 
-# Rename response columns
-# -----------------------
-question_first <- rename(question_first, truth_coded = response, response = response.1)
+  question_first <- rbind(first_run, second_run)
 
-# Merge norming ratings
-# ---------------------
-norms <- read.csv("data-raw/norms/feature-norms/feature_norms_merged.csv")
-question_first <- merge(question_first, norms, all.x = TRUE)
+  # Rename response columns
+  # -----------------------
+  question_first <- rename(question_first,
+                           truth_coded = response,
+                           response = response.1)
 
-# Merge sensory ratings
-# ---------------------
-senses <- read.csv("data-raw/norms/feature-norms-senses/feature_norms_senses.csv")
-senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
-question_first <- merge(question_first, senses, all.x = TRUE)
+  # Merge norming ratings
+  # ---------------------
+  norms <- read.csv("data-raw/norms/feature-norms/feature_norms_merged.csv")
+  question_first <- merge(question_first, norms, all.x = TRUE)
 
-# Remove practice trials
-# ----------------------
-question_first <- filter(question_first, block_ix != -1)
+  # Merge sensory ratings
+  # ---------------------
+  senses <- read.csv("data-raw/norms/feature-norms-senses/feature_norms_senses.csv")
+  senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
+  question_first <- merge(question_first, senses, all.x = TRUE)
 
-# Exclude RT on timeout trials
-# ----------------------------
-question_first$rt <- with(question_first, ifelse(response == "timeout", NA, rt))
+  # Remove practice trials
+  # ----------------------
+  question_first <- filter(question_first, block_ix != -1)
 
-# Save raw RTs for investigating speed-accuracy tradeoff
-# ------------------------------------------------------
-question_first$raw_rt <- question_first$rt
+  # Exclude RT on timeout trials
+  # ----------------------------
+  question_first$rt <- with(question_first, ifelse(response == "timeout", NA, rt))
 
-# Exclude RTs on incorrect responses and timeout trials
-# -----------------------------------------------------
-question_first$rt <- with(question_first, ifelse(is_correct == 0, NA, rt))
+  # Save raw RTs for investigating speed-accuracy tradeoff
+  # ------------------------------------------------------
+  question_first$raw_rt <- question_first$rt
 
-# # Correct the calculation of RT
-# # -----------------------------
-# # The RT timer didn't start until after the offset of the cue,
-# # but really it should have started at the onset of the cue.
-# # In order to correct for this coding error, the duration of each
-# # cue file needs to be added to the measured RT.
-# cue_durations <- read.csv("experiment/stimuli/cues/_cue_stats.csv")
-# cue_durations$cue_dur <- cue_durations$cue_dur * 1000  # convert sec to ms
-# question_first <- merge(question_first, cue_durations, all.x = TRUE)
-# question_first$rt <- with(question_first, cue_dur + rt)
+  # Exclude RTs on incorrect responses and timeout trials
+  # -----------------------------------------------------
+  question_first$rt <- with(question_first, ifelse(is_correct == 0, NA, rt))
 
-# On second thought, people were prevented from answering before the
-# prompt, and some of the cues were pretty long (~800 msec) so the
-# above is not truly a correct calculation of RT.
+  # # Correct the calculation of RT
+  # # -----------------------------
+  # # The RT timer didn't start until after the offset of the cue,
+  # # but really it should have started at the onset of the cue.
+  # # In order to correct for this coding error, the duration of each
+  # # cue file needs to be added to the measured RT.
+  # cue_durations <- read.csv("experiment/stimuli/cues/_cue_stats.csv")
+  # cue_durations$cue_dur <- cue_durations$cue_dur * 1000  # convert sec to ms
+  # question_first <- merge(question_first, cue_durations, all.x = TRUE)
+  # question_first$rt <- with(question_first, cue_dur + rt)
 
-# Exclude accuracy on timeout trials
-# ----------------------------------
-question_first$is_correct <- with(question_first, ifelse(response == "timeout", NA, is_correct))
+  # On second thought, people were prevented from answering before the
+  # prompt, and some of the cues were pretty long (~800 msec) so the
+  # above is not truly a correct calculation of RT.
 
-# Make a new column to code accuracy in terms of error
-# ----------------------------------------------------
-question_first$is_error <- with(question_first, ifelse(is_correct == 0, 1, 0))
+  # Exclude accuracy on timeout trials
+  # ----------------------------------
+  question_first$is_correct <- with(question_first, ifelse(response == "timeout", NA, is_correct))
 
-# Create a unique question identifier
-# -----------------------------------
-question_first$question_id <- with(question_first, paste(cue, ftype, truth_coded, qid, sep = ":"))
+  # Make a new column to code accuracy in terms of error
+  # ----------------------------------------------------
+  question_first$is_error <- with(question_first, ifelse(is_correct == 0, 1, 0))
 
-# Put the columns in the correct order
-# ------------------------------------
-question_first <- question_first %>%
-  select(subj_id, exp_run, block_ix, trial_ix,
-         cue, question, question_id,
-         mask_type = cue_mask,
-         feat_type = ftype,
-         truth_coded,
-         imagery_mean, imagery_z,
-         facts_mean, facts_z,
-         diff_mean = difficulty_mean, diff_z = difficulty_z,
-         prop_visual,
-         senses_mean,
-         response, rt, is_correct, is_error,
-         raw_rt) %>%
-  arrange(subj_id, block_ix, trial_ix)
+  # Create a unique question identifier
+  # -----------------------------------
+  question_first$question_id <- with(question_first, paste(cue, ftype, truth_coded, qid, sep = ":"))
 
-devtools::use_data(question_first)
+  # Put the columns in the correct order
+  # ------------------------------------
+  question_first <- question_first %>%
+    select(subj_id, exp_run, block_ix, trial_ix,
+           cue, question, question_id,
+           mask_type = cue_mask,
+           feat_type = ftype,
+           truth_coded,
+           imagery_mean, imagery_z,
+           facts_mean, facts_z,
+           diff_mean = difficulty_mean, diff_z = difficulty_z,
+           prop_visual,
+           senses_mean,
+           response, rt, is_correct, is_error,
+           raw_rt) %>%
+    arrange(subj_id, block_ix, trial_ix)
+
+  use_data(question_first, overwrite = overwrite)
+}
