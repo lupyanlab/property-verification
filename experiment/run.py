@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import logging
 from UserDict import UserDict
 from UserList import UserList
 import webbrowser
@@ -94,6 +95,7 @@ class Participant(UserDict):
 
 class Trials(UserList):
     STIM_DIR = Path('stimuli')
+    DEFAULTS = dict(ratio_yes_correct_responses=0.75)
     COLUMNS = [
         # Trial columns
         'block',
@@ -114,7 +116,6 @@ class Trials(UserList):
         'rt',
         'is_correct',
     ]
-    DEFAULTS = dict(ratio_yes_correct_responses=0.75)
 
     @classmethod
     def make(cls, **kwargs):
@@ -122,7 +123,7 @@ class Trials(UserList):
 
         Each trial is a dict with values for all keys in self.COLUMNS.
         """
-        # Make copies of class defaults
+        # make convenience copies of class defaults
         stim_dir = cls.STIM_DIR
         columns = cls.COLUMNS
         settings = dict(cls.DEFAULTS)
@@ -133,6 +134,7 @@ class Trials(UserList):
         try:
             seed = int(seed)
         except (TypeError, ValueError):
+            logging.info('seed was None or couldn\'t be converted to int')
             seed = None
         prng = random.RandomState(seed)
 
@@ -154,24 +156,24 @@ class Trials(UserList):
         propositions_csv = Path(stim_dir, 'propositions.csv')
         propositions = pd.read_csv(propositions_csv)
 
-        # Define how to divide up possible propositions
+        # Divide up possible propositions based on within subject vars
         proposition_groups = ['feat_type', 'correct_response']
         grouped_trials = trials.groupby(proposition_groups)
 
         trial_groups = []
         for (feat_type, correct_response), trial_group in grouped_trials:
             # Select all possible propositions matching the current group
-            options_ix = (
+            options_mask = (
                 (propositions.feat_type == feat_type) &
                 (propositions.correct_response == correct_response)
             )
 
-            # Get a list of propositions to choose from
+            # Get a list of proposition to choose from
             proposition_options = propositions.ix[
-                options_ix, 'proposition_id'
+                options_mask, 'proposition_id'
             ].values
 
-            # Randomly select propositions for the current group
+            # Randomly select proposition for the current group of trials
             selected = prng.choice(proposition_options, size=len(trial_group),
                                    replace=False)
 
@@ -185,17 +187,13 @@ class Trials(UserList):
         trials = pd.concat(trial_groups)
 
         # Add in remaining proposition columns
-        len_before = len(trials)
         trials = trials.merge(propositions)
-        len_after = len(trials)
-        assert len_before == len_after
 
         ##############################
         # END ASSIGNING PROPOSITIONS #
         ##############################
 
-        # There are multiple versions of each cue, so choose a version
-        # at random
+        # Choose a version of each cue at random
         all_cues = Path(stim_dir, 'cues').listdir('*.wav', names_only=True)
         def pick_cue_file(cue):
             options = [c for c in all_cues if c.find(cue) == 0]
@@ -214,7 +212,7 @@ class Trials(UserList):
         practice_trials['block_type'] = 'practice'
         trials.drop(practice_ix, inplace=True)
 
-        # Finishing touches
+        # Finishing touches: block trials and shuffle
         trials = add_block(trials, 50, name='block', start=1, groupby='cue',
                            seed=seed)
         trials = smart_shuffle(trials, col='cue', block='block', seed=seed)
@@ -226,7 +224,7 @@ class Trials(UserList):
         # Label trial
         trials['trial'] = range(len(trials))
 
-        # Reorcder columns
+        # Reorder columns
         trials = trials[columns]
 
         return cls(trials.to_dict('record'))
@@ -241,10 +239,11 @@ class Trials(UserList):
     @classmethod
     def load_trials(cls, trials_csv):
         trials = pd.read_csv(trials_csv)
+        assert set(trials.columns) == set(cls.COLUMNS)
         return cls(trials.to_dict('records'))
 
     def iter_blocks(self, key='block'):
-        """ Yield blocks of trials. """
+        """Yield blocks of trials."""
         block = self[0][key]
         trials_in_block = []
         for trial in self:
@@ -368,6 +367,7 @@ class Experiment(object):
         try:
             key, rt = response[0]
         except TypeError:
+            logging.info('no key was pressed')
             rt = self.waits['max_wait']
             response = 'timeout'
         else:
@@ -383,6 +383,7 @@ class Experiment(object):
         trial['is_correct'] = is_correct
 
         if response == 'timeout':
+            # pause the experiment
             self.show_text('timeout')
         else:
             remaining_time = self.waits['max_wait'] - rt
@@ -394,15 +395,16 @@ class Experiment(object):
         if label == 'instructions':
             self._show_instructions()
         else:
-            text = visual.TextStim(
+            text_str = self.texts[label]
+            text_stim = visual.TextStim(
                 win=self.win,
-                text=self.texts['label'],
+                text=text_str,
                 height=30,
                 wrapWidth=self.win.size[0] * 0.8,
                 color='black',
                 font='Consolas',
             )
-            text.draw()
+            text_stim.draw()
             self.win.flip()
             event.waitKeys(keyList=['space', ])
 
@@ -451,13 +453,15 @@ class Experiment(object):
             if key in ['y', 'n']:
                 self.feedback[1].play()
 
+def create_experiment():
+    return Experiment('settings.yaml', 'texts.yaml')
 
-def main():
+def run_experiment():
     participant_data = get_subj_info(
         'gui.yaml',
         # check_exists is a simple function to determine if the data file
-        # exists, provided subj_info data. Here it's used to check for
-        # uniqueness in subj_ids when getting info from gui.
+        # exists, provided subj_info data. Here the calculation of the data
+        # file path is provided through the participant class.
         check_exists=lambda subj_info:
             Participant(**subj_info).data_file.exists()
     )
@@ -466,7 +470,7 @@ def main():
     trials = Trials.make(**participant)
 
     # Start of experiment
-    experiment = Experiment('settings.yaml', 'texts.yaml')
+    experiment = create_experiment()
     experiment.show_text('instructions')
 
     participant.write_header(trials.COLUMNS)
@@ -511,20 +515,20 @@ if __name__ == '__main__':
         trials = Trials.make(seed=seed)
         trials.write(output)
     elif args.command == 'instructions':
-        experiment = Experiment('settings.yaml', 'texts.yaml')
+        experiment = create_experiment()
         experiment._show_instructions()
     elif args.command == 'trial':
-        experiment = Experiment('settings.yaml', 'texts.yaml')
         trials = Trials.load('sample_trials.csv')
+        experiment = create_experiment()
         trial_data = experiment.run_trial(trials[args.trial_index])
         import pprint
         pprint.pprint(trial_data)
     elif args.command == 'survey':
-        experiment = Experiment('settings.yaml', 'texts.yaml')
+        experiment = create_experiment()
         survey_url = experiment.survey_url.format(
             subj_id='TEST_SUBJ',
             computer='TEST_COMPUTER',
         )
         webbrowser.open(survey_url)
     else:
-        main()
+        run_experiment()
