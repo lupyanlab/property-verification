@@ -29,7 +29,7 @@ from labtools.trials_functions import (counterbalance, expand, extend,
 
 
 class Participant(UserDict):
-    """ Store participant data and provide helper functions.
+    """Manage participant data.
 
     >>> participant = Participant(subj_id=100, seed=539,
                                   _order=['subj_id', 'seed'])
@@ -45,7 +45,7 @@ class Participant(UserDict):
     DATA_DELIMITER = ','
 
     def __init__(self, **kwargs):
-        """ Standard dict constructor.
+        """Standard dict constructor.
 
         Saves _order if provided. Raises an AssertionError if _order
         isn't exhaustive of kwargs.
@@ -57,6 +57,7 @@ class Participant(UserDict):
         kwargs_in_order = all([kwg in self._order for kwg in kwargs])
         assert correct_len & kwargs_in_order, "_order doesn't match kwargs"
 
+        # standard practice for extending UserDict
         self.data = dict(**kwargs)
 
     def keys(self):
@@ -73,20 +74,22 @@ class Participant(UserDict):
         return self._data_file
 
     def write_header(self, trial_col_names):
-        """ Writes the names of the columns and saves the order. """
+        """Writes the names of the columns and saves the order."""
         self._col_names = self._order + trial_col_names
-        self._write_line(self.DATA_DELIMITER.join(self._col_names))
+        self._write_line(self._col_names, mode='w')
 
     def write_trial(self, trial):
         assert self._col_names, 'write header first to save column order'
         trial_data = dict(self)
         trial_data.update(trial)
-        row_data = [str(trial_data[key]) for key in self._col_names]
-        self._write_line(self.DATA_DELIMITER.join(row_data))
+        ordered_data = [trial_data[col] for col in self._col_names]
+        self._write_line(ordered_data)
 
-    def _write_line(self, row):
-        with open(self.data_file, 'a') as f:
-            f.write(row + '\n')
+    def _write_line(self, row, mode='a'):
+        # Join a list of data and write it to the participant's data file.
+        row_str = self.DATA_DELIMITER.join([str(item) for item in row])
+        with open(self.data_file, mode) as f:
+            f.write(row_str + '\n')
 
 
 class Trials(UserList):
