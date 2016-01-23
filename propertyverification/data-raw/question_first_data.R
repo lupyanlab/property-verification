@@ -17,19 +17,24 @@ compile_question_first <- function(overwrite = FALSE) {
 
   # Rename response columns
   # -----------------------
+  # There were two columns named response in the original experiment.
+  # The first response column, generated when the trials were created,
+  # corresponds to the correct_response. The second response column is
+  # the participant's response on that trial.
   question_first <- rename(question_first,
-                           truth_coded = response,
+                           correct_response = response,
                            response = response.1)
 
   # Merge norming ratings
   # ---------------------
   norms <- read.csv("data-raw/norms/feature-norms/feature_norms_merged.csv")
+  norms <- rename(norms, correct_response = truth_coded)
   question_first <- merge(question_first, norms, all.x = TRUE)
 
   # Merge sensory ratings
   # ---------------------
   senses <- read.csv("data-raw/norms/feature-norms-senses/feature_norms_senses.csv")
-  senses <- select(senses, cue, ftype, qid, question, truth_coded, senses_mean)
+  senses <- select(senses, cue, ftype, qid, question, correct_response = truth_coded, senses_mean)
   question_first <- merge(question_first, senses, all.x = TRUE)
 
   # Remove practice trials
@@ -71,18 +76,23 @@ compile_question_first <- function(overwrite = FALSE) {
   # ----------------------------------------------------
   question_first$is_error <- with(question_first, ifelse(is_correct == 0, 1, 0))
 
-  # Create a unique question identifier
+  # Create a unique proposition identifier
   # -----------------------------------
-  question_first$question_id <- with(question_first, paste(cue, ftype, truth_coded, qid, sep = ":"))
+  question_first$question_slug <- question_first$question %>%
+    str_to_lower %>%
+    str_replace_all(" ", "-") %>%
+    str_replace("\\?", "")
+  question_first$proposition_id <- with(question_first, paste(question_slug, cue, sep = ":"))
 
   # Put the columns in the correct order
   # ------------------------------------
   question_first <- question_first %>%
-    select(subj_id, exp_run, block_ix, trial_ix,
-           cue, question, question_id,
+    select(subj_id, exp_run,
+           block = block_ix, trial = trial_ix,
+           cue, question, proposition_id,
            mask_type = cue_mask,
            feat_type = ftype,
-           truth_coded,
+           correct_response,
            imagery_mean, imagery_z,
            facts_mean, facts_z,
            diff_mean = difficulty_mean, diff_z = difficulty_z,
@@ -90,7 +100,7 @@ compile_question_first <- function(overwrite = FALSE) {
            senses_mean,
            response, rt, is_correct, is_error,
            raw_rt) %>%
-    arrange(subj_id, block_ix, trial_ix)
+    arrange(exp_run, subj_id, block, trial)
 
   use_data(question_first, overwrite = overwrite)
 }
