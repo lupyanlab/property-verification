@@ -129,21 +129,22 @@ def merge_info(df, q_version):
 def convert_z(ser):
     return (ser - ser.mean())/ser.std()
 
-if __name__ == '__main__':
+def main():
     data_dir = './mturk-data/'
+    info_dir = './loop-merge/'
 
     senses_q_types = ['truth', 'senses', 'difficulty']
 
     v1 = pd.read_csv(data_dir + 'mwpfeaturessensory.csv', skiprows = [1,])
     v1 = remove_practice_cols(v1)
-    v1 = compile_question_types(v1, data_dir + 'questions.csv',
+    v1 = compile_question_types(v1, info_dir + 'questions.csv',
         q_types = senses_q_types)
 
     # allv = merge_versions({'v1':v1, 'v2':v2, 'v3':v3})
 
     allv = summarize_question_types(v1, q_types = senses_q_types)
     df = merge_questions(allv)
-    df = merge_info(df, data_dir + 'questions.csv')
+    df = merge_info(df, info_dir + 'questions.csv')
 
     df['truth_z'] = convert_z(df.truth_mean)
     df['senses_z'] = convert_z(df.senses_mean)
@@ -157,7 +158,8 @@ if __name__ == '__main__':
     df['truth_agree'] = np.nan
     df['truth_agree'][df.truth_normed.notnull()] = (df.truth_coded == df.truth_normed).astype(int)
 
-    dis = df[(df.truth_agree.notnull() & (df.truth_agree == False))]
-    dis.to_csv('./truth_disagree.csv', index = False)
+    return df
 
-    df.to_csv('./feature_norms_senses.csv', index = False)
+if __name__ == '__main__':
+    df = main()
+    df.to_csv('./senses.csv', index = False)
