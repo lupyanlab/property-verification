@@ -158,6 +158,15 @@ def main():
     df['truth_agree'] = np.nan
     df['truth_agree'][df.truth_normed.notnull()] = (df.truth_coded == df.truth_normed).astype(int)
 
+    # create proposition_id column
+    def proposition_id(row):
+        question_slug = row['question'].lower().replace(' ', '-').strip('?')
+        return '{}:{}'.format(question_slug, row['cue'])
+    df['proposition_id'] = df.apply(proposition_id, axis=1)
+
+    # HACK!!!
+    df.drop_duplicates(subset='proposition_id', keep='first', inplace=True)
+
     return df
 
 if __name__ == '__main__':
