@@ -35,4 +35,4 @@ def norms():
     norms = pd.merge(knowledge_type, senses_only)
 
     norms = norms.merge(category_proportions)
-    norms.to_csv('norms-test.csv', index=False)
+    norms.to_csv('norms.csv', index=False)
