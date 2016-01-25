@@ -25,18 +25,6 @@ compile_question_first <- function(overwrite = FALSE) {
                            correct_response = response,
                            response = response.1)
 
-  # Merge norming ratings
-  # ---------------------
-  norms <- read.csv("data-raw/norms/feature-norms/feature_norms_merged.csv")
-  norms <- rename(norms, correct_response = truth_coded)
-  question_first <- merge(question_first, norms, all.x = TRUE)
-
-  # Merge sensory ratings
-  # ---------------------
-  senses <- read.csv("data-raw/norms/feature-norms-senses/feature_norms_senses.csv")
-  senses <- select(senses, cue, ftype, qid, question, correct_response = truth_coded, senses_mean)
-  question_first <- merge(question_first, senses, all.x = TRUE)
-
   # Remove practice trials
   # ----------------------
   question_first <- filter(question_first, block_ix != -1)
@@ -84,6 +72,11 @@ compile_question_first <- function(overwrite = FALSE) {
     str_replace("\\?", "")
   question_first$proposition_id <- with(question_first, paste(question_slug, cue, sep = ":"))
 
+  # Merge norming ratings
+  # ---------------------
+  norms <- read.csv("data-raw/norms/norms.csv")
+  question_first <- merge(question_first, norms, all.x = TRUE)
+
   # Put the columns in the correct order
   # ------------------------------------
   question_first <- question_first %>%
@@ -95,9 +88,9 @@ compile_question_first <- function(overwrite = FALSE) {
            correct_response,
            imagery_mean, imagery_z,
            facts_mean, facts_z,
-           diff_mean = difficulty_mean, diff_z = difficulty_z,
+           difficulty_mean, difficulty_z,
            prop_visual,
-           senses_mean,
+           senses_mean, senses_z,
            response, rt, is_correct, is_error,
            raw_rt) %>%
     arrange(exp_run, subj_id, block, trial)
