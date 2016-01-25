@@ -33,7 +33,7 @@ def knowledge_type():
 def compile_survey(survey_dir, measures):
     """
     Usage::
-        
+
         compile_survey('survey-1', ['truth', 'difficulty', 'imagery', 'facts'])
 
     Args:
@@ -78,7 +78,7 @@ def process_qualtrics_data(survey_dir, measures):
     re_contains = '|'.join(measures)
     qualtrics_measure_cols = all_qualtrics_cols[
         all_qualtrics_cols.str.contains(re_contains)
-    ] 
+    ]
 
     # melt data
     keep_cols = [subj_id_col, ] + qualtrics_measure_cols.tolist()
@@ -91,7 +91,7 @@ def process_qualtrics_data(survey_dir, measures):
 
     # drop empty cells
     long_data.dropna(subset=['subj_id', 'value'], inplace=True)
-     
+
     # extract data from qualtrics col
     # example column: "truth(10)"
     re_qualtrics_col = r'^(?P<measure>[a-z]+)\((?P<loop_merge_row>\d+)\)$'
