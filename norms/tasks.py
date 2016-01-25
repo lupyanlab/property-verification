@@ -95,6 +95,14 @@ def norms():
     )
     norms = norms.reset_index()
 
+    # calculate z-scores
+    measures = survey_data.measure.unique()
+    for measure in measures:
+        val_col = '{}_mean'.format(measure)
+        z_col = '{}_z'.format(measure)
+        z_score = lambda x: (x - x.mean())/x.std()
+        norms[z_col] = z_score(norms[val_col])
+
     # merge in proposition data
     propositions = pd.read_csv('propositions.csv')
     norms = norms.merge(propositions)
