@@ -27,9 +27,6 @@ def knowledge_type():
     # save the long form data
     survey_data.to_csv('knowledge_type/knowledge_type.csv', index=False)
 
-    # survey_data_summary = summarize_survey(survey_data)
-    # survey_data_summary.to_csv('knowledge_type_summary.csv', index=False)
-
 @task
 def senses():
     senses_type_measures = ['truth', 'difficulty', 'senses']
@@ -83,24 +80,20 @@ def norms():
     statistics_to_keep = ['count', 'mean']
     norms = norms.ix[norms.statistic.isin(statistics_to_keep)]
 
-    # pivot to columns
+    # Pivot statistics from rows to columns
+    #
+    # After pivoting on multiple columns, the resulting columns are
+    # hierarchical, which isn't what we want, but can be prevented by
+    # collapsing across the multiple columns before pivoting.
+    norms['col'] = norms.measure + '_' + norms.statistic
+    norms.drop(['measure', 'statistic'], axis=1, inplace=True)
     norms = pd.pivot_table(
         norms,
         values='value',
-        index=['proposition_id'],
-        columns=['measure', 'statistic'],
+        index='proposition_id',
+        columns='col',
     )
-
-    # the problem with pivoting is that the result is hierarchical,
-    # e.g., ("truth", "std"), ("difficulty", "std"), etc.
-    # hierarchical columns are bad, so here we flatten the hierarchy
-    # first by transposing the dataframe so the column multiindex can
-    # be dealt with like a normal index.
-    norm_cols = norms.T.reset_index()
-    norm_cols['col'] = norm_cols.measure + '_' + norm_cols.statistic
-    norm_cols.drop(['measure', 'statistic'], axis=1, inplace=True)
-    norm_cols.set_index('col', inplace=True)
-    norms = norm_cols.T.reset_index()
+    norms = norms.reset_index()
 
     # merge in proposition data
     propositions = pd.read_csv('propositions.csv')
