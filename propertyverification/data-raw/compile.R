@@ -24,7 +24,8 @@ compile_question_first <- function(overwrite = FALSE) {
 
 compile_cue_first <- function(overwrite = FALSE) {
   cue_first <- compile("data-raw/cue_first/data/", regex_key = "MWPF1",
-                       headername = "_header.txt")
+                       header_file = "_header.txt")
+  cue_first$exp_run <- 1
   cue_first <- tidy_property_verification_data(cue_first)
   use_data(cue_first, overwrite = overwrite)
   cue_first
@@ -32,7 +33,6 @@ compile_cue_first <- function(overwrite = FALSE) {
 
 compile_property_verification <- function(overwrite = FALSE) {
   cue_first <- compile_cue_first(overwrite = overwrite)
-  cue_first$exp_run <- 1
   cue_first$exp <- "cue_first"
 
   question_first <- compile_question_first(overwrite = overwrite)
