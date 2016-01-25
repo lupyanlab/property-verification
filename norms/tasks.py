@@ -103,7 +103,7 @@ def norms():
     category_proportions = pd.read_csv('mcrae_et_al/category_proportions.csv')
     norms = norms.merge(category_proportions)
 
-    norms.to_csv('norms-1.csv', index=False)
+    norms.to_csv('norms.csv', index=False)
 
 def compile_survey(survey_dir, measures):
     """
