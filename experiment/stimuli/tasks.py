@@ -44,6 +44,12 @@ def cue_stats():
 
 @task(cue_info)
 def verify():
+    _verify_cue_files()
+    _verify_proposition_uniqueness()
+
+def _verify_cue_files():
+    _status_line('verifying cue files')
+
     propositions = read_csv('propositions.csv')
     available_cues = read_csv(CUE_INFO_CSV).cue.tolist()
 
@@ -56,3 +62,26 @@ def verify():
 
     if not any_missing:
         print("all cues present and accounted for")
+
+def _verify_proposition_uniqueness():
+    _status_line('verifying proposition uniqueness')
+
+    propositions = read_csv('propositions.csv')
+    duplicates = propositions.ix[
+        propositions.duplicated('proposition_id'),
+        'proposition_id'
+    ]
+
+    any_duplicates = False
+    msg = "proposition_id {} appeared multiple times"
+    for proposition_id in duplicates:
+        print(msg.format(proposition_id))
+        any_duplicates = True
+
+    if not any_duplicates:
+        print("all propositions are unique")
+
+def _status_line(header):
+    print('\n')
+    print(header)
+    print('-'*len(header))
