@@ -237,7 +237,7 @@ class Trials(UserList):
         frame.to_csv(trials_csv, index=False)
 
     @classmethod
-    def load_trials(cls, trials_csv):
+    def load(cls, trials_csv):
         trials = pd.read_csv(trials_csv)
         assert set(trials.columns) == set(cls.COLUMNS)
         return cls(trials.to_dict('records'))
@@ -291,7 +291,8 @@ class Experiment(object):
         self.prompt = visual.TextStim(text='?', **text_kwargs)
         self.prompt.setHeight(100)  # increase font size from default
 
-        self.cues = load_sounds(Path(self.STIM_DIR, 'cues'))
+        cues_dir = Path(self.STIM_DIR, 'cues')
+        self.cues = load_sounds(cues_dir, include_ext=True)
 
         mask_kwargs = dict(win=self.win, size=[500, 500])
         self.mask = DynamicMask(**mask_kwargs)
@@ -307,7 +308,7 @@ class Experiment(object):
         """Run a trial using a dict of settings."""
         self.question.setText(trial['question'])
 
-        cue = self.cues[trial['cue']]
+        cue = self.cues[trial['cue_file']]
         cue_dur = cue.getDuration()
 
         stims_during_cue = []
@@ -331,7 +332,7 @@ class Experiment(object):
         # Show question
         self.question.draw()
         self.win.flip()
-        core.wait(self.waits['question_dur'])
+        core.wait(self.waits['question_duration'])
 
         # Delay between question offset and cue onset
         self.win.flip()
@@ -353,7 +354,7 @@ class Experiment(object):
         self.win.flip()
         response = event.waitKeys(
             maxWait=self.waits['max_wait'],
-            keyList=self.resp_keys.keys(),
+            keyList=self.response_keys.keys(),
             timeStamped=self.timer,
         )
 
@@ -371,7 +372,7 @@ class Experiment(object):
             rt = self.waits['max_wait']
             response = 'timeout'
         else:
-            response = self.resp_keys[key]
+            response = self.response_keys[key]
 
         # Evaluate the response
         is_correct = int(response == trial['correct_response'])
