@@ -229,9 +229,9 @@ overall_rt_mod <- lmer(rt ~ exp_run_c + (1|subj_id), data = question_first)
 tidy(overall_rt_mod, effects = "fixed")
 
 # ---- question-freq
-question_freqs <- count(question_first, question_id, truth_coded)
+question_freqs <- count(question_first, proposition_id, correct_response)
 ggplot(question_freqs, aes(x = n)) +
-  geom_histogram(aes(fill = truth_coded)) +
+  geom_histogram(aes(fill = correct_response)) +
   scale_x_continuous("Number of times proposition was seen") +
   scale_y_continuous("Frequency (number of propositions)") +
   scale_fill_discrete("Is proposition true?") +
@@ -252,7 +252,7 @@ unique_propositions <- question_first %>%
   group_by(exp_run, subj_id) %>%
   summarize(
     num_trials = n(),
-    num_unique_propositions = length(unique(question_id))
+    num_unique_propositions = length(unique(proposition_id))
   ) %>%
   mutate(all_unique = num_trials == num_unique_propositions)
 
@@ -273,7 +273,7 @@ hist(unique_propositions$num_duplicate,
 # ---- drop-duplicates
 question_first <- question_first %>%
   group_by(subj_id) %>%
-  mutate(is_duplicate = label_duplicates(question_id))
+  mutate(is_duplicate = label_duplicates(proposition_id))
 
 error_bar_plot(filter(question_first, exp_run == 2, is_duplicate == FALSE)) +
   ggtitle("Effect of mask on error rate by feature type\n(second run; duplicates dropped)")
