@@ -64,26 +64,59 @@ def category_proportions():
 
 @task(knowledge_type, senses, category_proportions)
 def norms():
+    # combine the survey data from the separate surveys before aggregation
+    # because truth and difficulty questions were asked in both surveys
     knowledge_type = pd.read_csv('knowledge_type/knowledge_type.csv')
     senses = pd.read_csv('senses/senses.csv')
+    survey_data = pd.concat([knowledge_type, senses])
+
+    # use pandas generic "describe" function to aggregate multiple stats
+    # for each proposition
+    summary_group_cols = ['proposition_id', 'measure']
+    norms = survey_data.groupby(summary_group_cols).describe()
+
+    # rename statistics column
+    norms.reset_index(inplace=True)
+    norms.rename(columns={'level_2': 'statistic'}, inplace=True)
+
+    # determine statistics to keep
+    statistics_to_keep = ['count', 'mean']
+    norms = norms.ix[norms.statistic.isin(statistics_to_keep)]
+
+    # pivot to columns
+    norms = pd.pivot_table(
+        norms,
+        values='value',
+        index=['proposition_id'],
+        columns=['measure', 'statistic'],
+    )
+
+    # the problem with pivoting is that the result is hierarchical,
+    # e.g., ("truth", "std"), ("difficulty", "std"), etc.
+    # hierarchical columns are bad, so here we flatten the hierarchy
+    # first by transposing the dataframe so the column multiindex can
+    # be dealt with like a normal index.
+    norm_cols = norms.T.reset_index()
+    norm_cols['col'] = norm_cols.measure + '_' + norm_cols.statistic
+    norm_cols.drop(['measure', 'statistic'], axis=1, inplace=True)
+    norm_cols.set_index('col', inplace=True)
+    norms = norm_cols.T.reset_index()
+
+    # merge in proposition data
+    propositions = pd.read_csv('propositions.csv')
+    norms = norms.merge(propositions)
+
+    # merge in category proportions
     category_proportions = pd.read_csv('mcrae_et_al/category_proportions.csv')
-
-    # ignore truth and difficulty measures from senses survey
-    sense_measure_cols = senses.columns[senses.columns.str.contains('senses')]
-    senses_only = senses[['cue', 'question'] + sense_measure_cols.tolist()]
-
-    norms = pd.merge(knowledge_type, senses_only)
-
     norms = norms.merge(category_proportions)
-    norms.to_csv('norms.csv', index=False)
 
+    norms.to_csv('norms-1.csv', index=False)
 
 def compile_survey(survey_dir, measures):
     """
-    Usage::
-
-        measures_to_extract = ['truth', 'difficulty', 'imagery', 'facts']
-        compile_survey('knowledge_type/survey-1', measures_to_extract)
+    Usage:
+        > measures_to_extract = ['truth', 'difficulty', 'imagery', 'facts']
+        > compile_survey('knowledge_type/survey-1', measures_to_extract)
 
     Args:
         survey_dir (str): Place to look for loop merge and response data.
@@ -110,6 +143,7 @@ def process_loop_merge(survey_dir):
     return loop_merge[loop_merge_cols]
 
 def process_qualtrics_data(survey_dir, measures):
+    """Melt the wide qualtrics data to long and interpret column names."""
     qualtrics_data = pd.read_csv(
         unipath.Path(survey_dir, 'qualtrics-data.csv'),
         skiprows=[1, ],
