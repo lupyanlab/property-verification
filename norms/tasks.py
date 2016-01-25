@@ -25,16 +25,65 @@ def knowledge_type():
     )
 
     # save the long form data
-    survey_data.to_csv('knowledge_type.csv', index=False)
+    survey_data.to_csv('knowledge_type/knowledge_type.csv', index=False)
 
     # survey_data_summary = summarize_survey(survey_data)
     # survey_data_summary.to_csv('knowledge_type_summary.csv', index=False)
+
+@task
+def senses():
+    senses_type_measures = ['truth', 'difficulty', 'senses']
+    survey_dir = 'senses/survey-1'
+    survey_data = compile_survey(survey_dir, senses_type_measures)
+
+    # merge in proposition info based on proposition_id
+    propositions = pd.read_csv('propositions.csv')
+    survey_data = survey_data.merge(propositions)
+
+    # format data for inspection
+    survey_data.sort_values(
+        ['subj_id', 'proposition_id', 'measure'],
+        inplace=True,
+    )
+
+    # save the long form data
+    survey_data.to_csv('senses/senses.csv', index=False)
+
+@task
+def category_proportions():
+    brm = pd.read_table('mcrae_et_al/McRae-BRM-InPress/CONCS_brm.txt')
+    visual_columns = ['Num_Vis_Mot', 'Num_VisF&S', 'Num_Sound']
+    brm['prop_visual'] = brm[visual_columns].sum(axis=1) / brm.Num_Feats_No_Tax
+
+    category_proportions = brm[['Concept', 'prop_visual']].rename(
+        columns = {'Concept': 'cue'}
+    )
+
+    dst = 'mcrae_et_al/category_proportions.csv'
+    category_proportions.to_csv(dst, index=False)
+
+@task(knowledge_type, senses, category_proportions)
+def norms():
+    knowledge_type = pd.read_csv('knowledge_type/knowledge_type.csv')
+    senses = pd.read_csv('senses/senses.csv')
+    category_proportions = pd.read_csv('mcrae_et_al/category_proportions.csv')
+
+    # ignore truth and difficulty measures from senses survey
+    sense_measure_cols = senses.columns[senses.columns.str.contains('senses')]
+    senses_only = senses[['cue', 'question'] + sense_measure_cols.tolist()]
+
+    norms = pd.merge(knowledge_type, senses_only)
+
+    norms = norms.merge(category_proportions)
+    norms.to_csv('norms.csv', index=False)
+
 
 def compile_survey(survey_dir, measures):
     """
     Usage::
 
-        compile_survey('survey-1', ['truth', 'difficulty', 'imagery', 'facts'])
+        measures_to_extract = ['truth', 'difficulty', 'imagery', 'facts']
+        compile_survey('knowledge_type/survey-1', measures_to_extract)
 
     Args:
         survey_dir (str): Place to look for loop merge and response data.
@@ -68,7 +117,8 @@ def process_qualtrics_data(survey_dir, measures):
 
     # label subj_id
     subj_id_col = 'subj_id'
-    qualtrics_data.rename(columns={'worker': subj_id_col}, inplace=True)
+    first_col = qualtrics_data.columns[0]
+    qualtrics_data.rename(columns={first_col: subj_id_col}, inplace=True)
 
     # remove practice columns before selecting columns
     qualtrics_data = remove_practice_cols(qualtrics_data)
@@ -122,35 +172,3 @@ def create_proposition_id(row):
 
     question_slug = row['question'].lower().replace(' ', '-').strip('?')
     return '{}:{}'.format(question_slug, row['cue'])
-
-@task
-def senses():
-    run("cd senses && python compile.py")
-
-@task
-def category_proportions():
-    brm = pd.read_table('mcrae_et_al/McRae-BRM-InPress/CONCS_brm.txt')
-    visual_columns = ['Num_Vis_Mot', 'Num_VisF&S', 'Num_Sound']
-    brm['prop_visual'] = brm[visual_columns].sum(axis=1) / brm.Num_Feats_No_Tax
-
-    category_proportions = brm[['Concept', 'prop_visual']].rename(
-        columns = {'Concept': 'cue'}
-    )
-
-    dst = 'mcrae_et_al/category_proportions.csv'
-    category_proportions.to_csv(dst, index=False)
-
-@task(knowledge_type, senses, category_proportions)
-def norms():
-    knowledge_type = pd.read_csv('knowledge_type/knowledge_type.csv')
-    senses = pd.read_csv('senses/senses.csv')
-    category_proportions = pd.read_csv('mcrae_et_al/category_proportions.csv')
-
-    # ignore truth and difficulty measures from senses survey
-    sense_measure_cols = senses.columns[senses.columns.str.contains('senses')]
-    senses_only = senses[['cue', 'question'] + sense_measure_cols.tolist()]
-
-    norms = pd.merge(knowledge_type, senses_only)
-
-    norms = norms.merge(category_proportions)
-    norms.to_csv('norms.csv', index=False)
