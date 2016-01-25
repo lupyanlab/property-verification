@@ -134,7 +134,6 @@ Is it made of wood?,chair,is-it-made-of-wood,is-it-made-of-wood:chair,yes,visual
 Does it have a cushion?,chair,does-it-have-a-cushion,does-it-have-a-cushion:chair,yes,visual
 Is it long?,chair,is-it-long,is-it-long:chair,no,visual
 Does it have a tail?,chair,does-it-have-a-tail,does-it-have-a-tail:chair,no,visual
-Does it have a tail?,chair,does-it-have-a-tail,does-it-have-a-tail:chair,no,visual
 Does it have a snout?,chair,does-it-have-a-snout,does-it-have-a-snout:chair,no,visual
 Is it orange?,chair,is-it-orange,is-it-orange:chair,no,visual
 Is it used for relaxing?,chair,is-it-used-for-relaxing,is-it-used-for-relaxing:chair,yes,nonvisual
@@ -374,7 +373,6 @@ Does it have legs?,pineapple,does-it-have-legs,does-it-have-legs:pineapple,no,vi
 Does it have whiskers?,pineapple,does-it-have-whiskers,does-it-have-whiskers:pineapple,no,visual
 Does it have a tail?,pineapple,does-it-have-a-tail,does-it-have-a-tail:pineapple,no,visual
 Does it have a seat?,pineapple,does-it-have-a-seat,does-it-have-a-seat:pineapple,no,visual
-Does it have legs?,pineapple,does-it-have-legs,does-it-have-legs:pineapple,no,visual
 Is it juicy?,pineapple,is-it-juicy,is-it-juicy:pineapple,yes,nonvisual
 Is it tropical?,pineapple,is-it-tropical,is-it-tropical:pineapple,yes,nonvisual
 Does it grow on trees?,pineapple,does-it-grow-on-trees,does-it-grow-on-trees:pineapple,yes,nonvisual

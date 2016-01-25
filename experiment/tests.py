@@ -28,6 +28,6 @@ def test_trials_are_correct_length(trials):
 
 def test_cue_files_exist(trials):
     frame = trials.to_dataframe()
-    available = unipath.Path('stimuli/cues').listdir('*.wav')
+    available = unipath.Path('stimuli/cues').listdir('*.wav', names_only=True)
     used = frame.cue_file.unique()
     assert all([cue in available for cue in used])
