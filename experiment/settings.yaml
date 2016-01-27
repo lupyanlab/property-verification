@@ -10,4 +10,4 @@ response_keys:
   # 'yes' and 'no' must be quoted or yaml thinks they are boolean!
   y: 'yes'
   n: 'no'
-survey_url: "https://uwmadison.qualtrics.com/SE/?SID=SV_7O0p9B6lnOtPrzn"
+survey_url: "https://docs.google.com/forms/d/1sXgpenG9tMBRa331zStFQHoBmKbUel3I5Y4ONowFj14/viewform?entry.910726511={subj_id}&entry.125044269={computer}&entry.969548156&entry.969586956&entry.1239227527&entry.1711268051&entry.23393786"
