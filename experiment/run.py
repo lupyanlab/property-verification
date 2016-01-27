@@ -278,9 +278,10 @@ class Experiment(object):
             color=[.6, .6, .6],
         )
 
+        fixation_point = [0, 100]
         text_kwargs = dict(
             win=self.win,
-            pos=[0, 100],
+            pos=fixation_point,
             height=40,
             font='Consolas',
             color='black',
@@ -294,7 +295,7 @@ class Experiment(object):
         cues_dir = Path(self.STIM_DIR, 'cues')
         self.cues = load_sounds(cues_dir, include_ext=True)
 
-        mask_kwargs = dict(win=self.win, size=[500, 500])
+        mask_kwargs = dict(win=self.win, pos=fixation_point, size=[500, 500])
         self.mask = DynamicMask(**mask_kwargs)
 
         feedback_dir = Path(self.STIM_DIR, 'feedback')
