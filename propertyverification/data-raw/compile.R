@@ -2,7 +2,7 @@ library(stringr)
 library(dplyr)
 library(devtools)
 
-load_all()
+# load_all()
 
 compile_question_first <- function(overwrite = FALSE) {
   first_run <- compile("data-raw/question_first/first_run/", regex_key = "MWPF",
@@ -45,6 +45,11 @@ compile_property_verification <- function(overwrite = FALSE) {
   use_data(property_verification, overwrite = overwrite)
 }
 
+compile_norms <- function(overwrite = FALSE) {
+  norms <- read.csv("data-raw/norms/norms.csv")
+  use_data(norms, overwrite = overwrite)
+}
+
 rename_old_experiment_vars <- function(frame) {
   frame <- rename(frame,
                   # There were two columns named response in the original
@@ -68,56 +73,6 @@ rename_old_experiment_vars <- function(frame) {
     str_replace_all(" ", "-") %>%
     str_replace("\\?", "")
   frame$proposition_id <- with(frame, paste(question_slug, cue, sep = ":"))
-
-  frame
-}
-
-tidy_property_verification_data <- function(frame) {
-  # Remove practice trials
-  # ----------------------
-  frame <- filter(frame, block != -1)
-
-  # Exclude RT on timeout trials
-  # ----------------------------
-  frame$rt <- with(frame, ifelse(response == "timeout", NA, rt))
-
-  # Save raw RTs for investigating speed-accuracy tradeoff
-  # ------------------------------------------------------
-  frame$raw_rt <- frame$rt
-
-  # Exclude RTs on incorrect responses and timeout trials
-  # -----------------------------------------------------
-  frame$rt <- with(frame, ifelse(is_correct == 0, NA, rt))
-
-  # Exclude accuracy on timeout trials
-  # ----------------------------------
-  frame$is_correct <- with(frame, ifelse(response == "timeout", NA, is_correct))
-
-  # Make a new column to code accuracy in terms of error
-  # ----------------------------------------------------
-  frame$is_error <- with(frame, ifelse(is_correct == 0, 1, 0))
-
-  # Merge norming ratings
-  # ---------------------
-  norms <- read.csv("data-raw/norms/norms.csv")
-  frame <- merge(frame, norms, all.x = TRUE)
-
-  # Put the columns in the correct order
-  # ------------------------------------
-  frame <- frame %>%
-    select(subj_id, exp_run,
-           block, trial,
-           cue, question, proposition_id,
-           mask_type, feat_type,
-           correct_response,
-           imagery_mean, imagery_z,
-           facts_mean, facts_z,
-           difficulty_mean, difficulty_z,
-           prop_visual,
-           senses_mean, senses_z,
-           response, rt, is_correct, is_error,
-           raw_rt) %>%
-    arrange(exp_run, subj_id, block, trial)
 
   frame
 }

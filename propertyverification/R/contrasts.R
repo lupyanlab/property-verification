@@ -10,7 +10,8 @@ recode_mask_type <- function(frame) {
 recode_feat_type <- function(frame) {
   feat_type_map <- data.frame(
     feat_type = c("nonvisual", "visual"),
-    feat_c = c(-0.5, 0.5))
+    feat_c = c(-0.5, 0.5),
+    feat_label = c("Encyclopedic Knowledge", "Visual Knowledge"))
   merge(frame, feat_type_map, all.x = TRUE)
 }
 
