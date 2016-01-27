@@ -12,11 +12,11 @@ library(devtools)
 load_all("propertyverification")
 data(question_first)
 
-third_run <- compile("experiment/data/", regex_key = "MWPR") %>%
+run3_data <- compile("experiment/data/", regex_key = "MWPR") %>%
   mutate(exp_run = 3) %>%
   tidy_property_verification_data
 
-question_first <- rbind(question_first, third_run)
+question_first <- rbind(question_first, run3_data)
 
 # TODO: Move this function to the propertyverification package
 recode_exp_run <- function(frame) {
@@ -40,6 +40,7 @@ run3_data <- filter(question_first, exp_run == 3)
 
 # Create theme elements used in multiple plots
 scale_x_feat_type <- scale_x_discrete("Feature type", labels = c("Encyclopedic", "Visual"))
+scale_x_mask_type <- scale_x_continuous("Interference", breaks = c(-0.5, 0.5), labels = c("None", "Mask"))
 scale_fill_mask_type <- scale_fill_discrete("Interference", labels = c("None", "Mask"))
 base_theme <- theme_minimal() +
   theme(
@@ -48,13 +49,28 @@ base_theme <- theme_minimal() +
 
 # Creates the main error bar plot for any dataset from the experiment
 error_bar_plot <- function(frame) {
-  ggplot(frame, aes(x = feat_type, y = is_error, fill = mask_f)) +
-    geom_bar(stat = "summary", fun.y = "mean", position = "dodge") +
-    scale_x_feat_type +
+  ggplot(frame, aes(x = mask_c, y = is_error, fill = mask_f)) +
+    geom_bar(aes(width = 1.0), stat = "summary", fun.y = "mean", position = "dodge") +
+    facet_wrap("feat_label") +
+    scale_x_mask_type +
     scale_y_continuous("Error rate", labels = percent) +
     scale_fill_mask_type +
     coord_cartesian(ylim = c(0, 0.14)) +
     base_theme
+}
+
+error_bar_subj_plot <- function(frame) {
+  subj_means <- frame %>%
+    group_by(subj_id, feat_type, mask_type) %>%
+    summarize(is_error = mean(is_error, na.rm = TRUE)) %>%
+    recode_mask_type %>%
+    recode_feat_type
+  
+  error_bar_plot(frame) +
+    geom_line(aes(group = subj_id), data = subj_means) +
+    geom_text(aes(label = subj_id),
+              hjust = 1.05, size = 3,
+              data = filter(subj_means, mask_type == "nomask"))
 }
 
 # ---- subjs
@@ -171,14 +187,14 @@ error_bar_plot(question_first) +
   ggtitle("Effect of mask on error rate by feature type\n(all runs)")
 
 error_bar_plot(question_first) +
-  facet_wrap("exp_run_label") +
+  facet_grid(exp_run_label ~ feat_label) +
   ggtitle("Effect of mask on error rate by feature type")
 
 question_first_timeout <- question_first %>%
   mutate(is_error = ifelse(response == "timeout", 0, is_error))
 
 error_bar_plot(question_first_timeout) +
-  facet_wrap("exp_run_label") +
+  facet_grid(exp_run_label ~ feat_label) +
   ggtitle("Effect of mask on error rate by feature type\n(timeouts counted as errors)")
 
 # ---- run-diff-mod
@@ -320,5 +336,6 @@ run3_feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
 tidy(run3_feat_type_error_mod, effects = "fixed")
 
 # ---- run3-plot
-error_bar_plot(run3_data) +
-  ggtitle("Effect of mask on error by feature type\n(third run)")
+run3_title <- "Effect of mask on error by feature type\n(third run)"
+error_bar_plot(run3_data) + ggtitle(run3_title)
+error_bar_subj_plot(run3_data) + ggtitle(run3_title)
