@@ -13,20 +13,23 @@ compile_question_first <- function(overwrite = FALSE) {
                         header_file = "_header.txt")
   second_run$exp_run <- 2
 
-  question_first <- rbind(first_run, second_run)
+  question_first <- rbind(first_run, second_run) %>%
+    rename_old_exp_vars %>%
+    tidy_property_verification_data
 
-  question_first <- tidy_property_verification_data(question_first)
-
-  use_data(question_first, overwrite = overwrite)
-
+    use_data(question_first, overwrite = overwrite)
   question_first
 }
 
 compile_cue_first <- function(overwrite = FALSE) {
   cue_first <- compile("data-raw/cue_first/data/", regex_key = "MWPF1",
                        header_file = "_header.txt")
-  cue_first$exp_run <- 1
-  cue_first <- tidy_property_verification_data(cue_first)
+
+  cue_first <- cue_first %>%
+    mutate(exp_run = 1) %>%
+    rename_old_exp_vars %>%
+    tidy_property_verification_data
+
   use_data(cue_first, overwrite = overwrite)
   cue_first
 }
@@ -42,20 +45,37 @@ compile_property_verification <- function(overwrite = FALSE) {
   use_data(property_verification, overwrite = overwrite)
 }
 
-tidy_property_verification_data <- function(frame) {
-  # Rename response columns
-  # -----------------------
-  # There were two columns named response in the original experiment.
-  # The first response column, generated when the trials were created,
-  # corresponds to the correct_response. The second response column is
-  # the participant's response on that trial.
+rename_old_experiment_vars <- function(frame) {
   frame <- rename(frame,
+                  # There were two columns named response in the original
+                  # experiment. The first response column, generated when the
+                  # trials were created, corresponds to the correct_response.
+                  # The second response column is the participant's response on
+                  # that trial.
                   correct_response = response,
-                  response = response.1)
+                  response = response.1,
+                  
+                  # mask_type and feat_type are much better names
+                  mask_type = cue_mask,
+                  feat_type = ftype,
 
+                  # In later experiments I dropped the "_ix" suffix
+                  block = block_ix,
+                  trial = trial_ix)
+
+  frame$question_slug <- frame$question %>%
+    str_to_lower() %>%
+    str_replace_all(" ", "-") %>%
+    str_replace("\\?", "")
+  frame$proposition_id <- with(frame, paste(question_slug, cue, sep = ":"))
+
+  frame
+}
+
+tidy_property_verification_data <- function(frame) {
   # Remove practice trials
   # ----------------------
-  frame <- filter(frame, block_ix != -1)
+  frame <- filter(frame, block != -1)
 
   # Exclude RT on timeout trials
   # ----------------------------
@@ -77,14 +97,6 @@ tidy_property_verification_data <- function(frame) {
   # ----------------------------------------------------
   frame$is_error <- with(frame, ifelse(is_correct == 0, 1, 0))
 
-  # Create a unique proposition identifier
-  # -----------------------------------
-  frame$question_slug <- frame$question %>%
-    str_to_lower() %>%
-    str_replace_all(" ", "-") %>%
-    str_replace("\\?", "")
-  frame$proposition_id <- with(frame, paste(question_slug, cue, sep = ":"))
-
   # Merge norming ratings
   # ---------------------
   norms <- read.csv("data-raw/norms/norms.csv")
@@ -94,10 +106,9 @@ tidy_property_verification_data <- function(frame) {
   # ------------------------------------
   frame <- frame %>%
     select(subj_id, exp_run,
-           block = block_ix, trial = trial_ix,
+           block, trial,
            cue, question, proposition_id,
-           mask_type = cue_mask,
-           feat_type = ftype,
+           mask_type, feat_type,
            correct_response,
            imagery_mean, imagery_z,
            facts_mean, facts_z,
