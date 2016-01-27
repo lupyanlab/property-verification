@@ -21,3 +21,11 @@ recode_exp <- function(frame) {
     exp_c = c(-0.5, 0.5))
   merge(frame, experiment_map, all.x = TRUE)
 }
+
+recode_exp_run <- function(frame) {
+  exp_run_map <- data_frame(
+    exp_run = c(1, 2, 3),
+    exp_run_label = c("First run", "Second run", "Third run")
+  )
+  frame %>% left_join(exp_run_map)
+}
