@@ -5,3 +5,6 @@
 *.swp
 .Rhistory
 .RData
+
+# ignore credentials
+drive-api-creds.json
