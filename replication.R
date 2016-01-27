@@ -1,8 +1,4 @@
 # ---- setup
-library(devtools)
-load_all("propertyverification")
-data(question_first)
-
 library(dplyr)
 library(tidyr)
 
@@ -12,11 +8,23 @@ library(scales)
 library(lme4)
 library(broom)
 
+library(devtools)
+load_all("propertyverification")
+data(question_first)
+
+third_run <- compile("experiment/data/", regex_key = "MWPR") %>%
+  mutate(exp_run = 3) %>%
+  tidy_property_verification_data
+
+question_first <- rbind(question_first, third_run)
+
+# TODO: Move this function to the propertyverification package
 recode_exp_run <- function(frame) {
   exp_run_map <- data_frame(
-    exp_run = c(1, 2),
-    exp_run_c = c(-0.5, 0.5),
-    exp_run_label = c("First run", "Second run"))
+    exp_run = c(1, 2, 3),
+    exp_run_c = c(-0.5, NA, 0.5),
+    exp_run_label = c("First run", "Second run", "Third run")
+  )
   frame %>% left_join(exp_run_map)
 }
 
@@ -28,6 +36,7 @@ question_first <- question_first %>%
 
 run1_data <- filter(question_first, exp_run == 1)
 run2_data <- filter(question_first, exp_run == 2)
+run3_data <- filter(question_first, exp_run == 3)
 
 # Create theme elements used in multiple plots
 scale_x_feat_type <- scale_x_discrete("Feature type", labels = c("Encyclopedic", "Visual"))
@@ -63,9 +72,10 @@ subjs <- question_first %>%
 
 # subj theme
 rank_axis_breaks <- c(1, seq(5, nrow(subjs), by = 5))
+run_labels <- c("first", "second", "third")
 scale_x_subj_rank <- scale_x_continuous("Rank", breaks = rank_axis_breaks)
-scale_shape_exp_run <- scale_shape_manual("Run", labels = c("first", "second"), values = c(1, 16))
-scale_linetype_exp_run <- scale_linetype_discrete("Run", labels = c("first", "second"))
+scale_shape_exp_run <- scale_shape_manual("Run", labels = run_labels, values = c(1, 16, 14))
+scale_linetype_exp_run <- scale_linetype_discrete("Run", labels = run_labels)
 subj_xlim <- c(0.5, nrow(subjs) + 2.5)
 subj_rt_ylim <- c(min(subjs$rt) - 100, max(subjs$rt) + 200) %>%
   round(digits = -1)
@@ -76,7 +86,6 @@ label_size = 3
 subj_ids_by_error <- subjs %>%
   arrange(rank_error) %>%
   .$subj_id
-
 subjs$subj_id <- factor(subjs$subj_id, levels = subj_ids_by_error)
 
 ggplot(subjs, aes(x = rank_error, y = error, color = subj_id, shape = factor(exp_run))) +
@@ -159,7 +168,7 @@ tidy(feat_type_error_mod, effects = "fixed")
 
 # ---- plot
 error_bar_plot(question_first) +
-  ggtitle("Effect of mask on error rate by feature type\n(both runs)")
+  ggtitle("Effect of mask on error rate by feature type\n(all runs)")
 
 error_bar_plot(question_first) +
   facet_wrap("exp_run_label") +
@@ -210,7 +219,7 @@ ggplot(subj_effects_diff, aes(x = factor(exp_run), y = effect_of_mask_diff, colo
   geom_point(shape = 1, position = position_jitter(width = 0.1, height = 0)) +
   geom_point(stat = "summary", fun.y = "mean", size = 6) +
   geom_hline(yintercept = 0, lty = 2, size = 0.1) +
-  scale_x_discrete("Experiment run", labels = c("first", "second")) +
+  scale_x_discrete("Experiment run", labels = run_labels) +
   scale_y_continuous("Effect of mask (interaction term)") +
   annotate("text", x = 0.5, y = 0.10, label = "+ larger for visual",
            angle = 90, size = 4) +
@@ -254,6 +263,7 @@ unique_propositions <- question_first %>%
     num_trials = n(),
     num_unique_propositions = length(unique(proposition_id))
   ) %>%
+  ungroup() %>%
   mutate(all_unique = num_trials == num_unique_propositions)
 
 unique_propositions %>%
@@ -304,3 +314,11 @@ tidy(run2_feat_type_error_mod, effects = "fixed")
 error_bar_plot(run2_data) +
   ggtitle("Effect of mask on error by feature type\n(second run)")
 
+# ---- run3-mod
+run3_feat_type_error_mod <- glmer(is_error ~ mask_c * feat_c + (1|subj_id),
+                                  family = binomial, data = run3_data)
+tidy(run3_feat_type_error_mod, effects = "fixed")
+
+# ---- run3-plot
+error_bar_plot(run3_data) +
+  ggtitle("Effect of mask on error by feature type\n(third run)")
