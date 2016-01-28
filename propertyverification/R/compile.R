@@ -11,7 +11,7 @@ compile <- function(data_dir, regex_key, header_file) {
   data_files <- list.files(data_dir, regex_key, full.names = TRUE)
 
   if(missing(header_file)) {
-    return plyr::ldply(data_files, readr::read_csv)
+    frame <- plyr::ldply(data_files, readr::read_csv)
   } else {
     header_file <- ifelse(file.exists(header_file), header_file,
                           file.path(data_dir, header_file))
@@ -23,6 +23,8 @@ compile <- function(data_dir, regex_key, header_file) {
     }
   
     data_files <- list.files(data_dir, regex_key, full.names = TRUE)
-    return plyr::ldply(data_files, readr::read_tsv, col_names = header)
+    frame <- plyr::ldply(data_files, readr::read_tsv, col_names = header)
   }
+  
+  frame
 }
