@@ -23,9 +23,14 @@ read_chunk("replication.R")
 ```{r, setup}
 ```
 
-# First run
+# Subjects
 
-Here is the effect we were trying to replicate.
+```{r, subjs}
+```
+
+# Individual runs
+
+## First run
 
 ```{r, run1-mod, echo = 1}
 ```
@@ -33,7 +38,7 @@ Here is the effect we were trying to replicate.
 ```{r, run1-plot}
 ```
 
-# Second run
+## Second run
 
 ```{r, run2-mod, echo = 1}
 ```
@@ -41,14 +46,7 @@ Here is the effect we were trying to replicate.
 ```{r, run2-plot}
 ```
 
-It seems that for some reason the trials for the second run of the experiment
-were different and some questions appeared more than one time. This was true
-for all subjects in the second run.
-
-```{r, unique-propositions}
-```
-
-# Third run
+## Third run
 
 ```{r, run3-mod, echo = 1}
 ```
