@@ -4,18 +4,6 @@ library(devtools)
 
 load_all()
 
-make_package_data <- function(overwrite = FALSE) {
-  cue_first <- compile_cue_first()
-  question_first <- compile_question_first()
-  norms <- compile_norms()
-
-  cue_first$exp <- "cue_first"
-  question_first$exp <- "question_first"
-  property_verification <- rbind(cue_first, question_first)
-
-  use_data(cue_first, question_first, norms, property_verification,
-           overwrite = overwrite)
-}
 
 compile_question_first <- function() {
   first_run <- compile("data-raw/question_first/first_run/", regex_key = "MWPF",
@@ -49,6 +37,16 @@ compile_norms <- function() {
 }
 
 rename_old_experiment_vars <- function(frame) {
+  # The old experiment did not include a column with a unique identifier
+  # for each proposition (proposition_id).
+  frame$question_slug <- frame$question %>%
+    str_to_lower() %>%
+    str_replace_all(" ", "-") %>%
+    str_replace("\\?", "")
+  frame$proposition_id <- with(frame, paste(question_slug, cue, sep = ":"))
+
+  frame$block_type <- ifelse(frame$block_ix < 0, "practice", "test")
+
   frame <- frame %>% rename(
     # There were two columns named response in the original
     # experiment. The first response column, generated when the
@@ -64,16 +62,29 @@ rename_old_experiment_vars <- function(frame) {
 
     # In later experiments I dropped the "_ix" suffix
     block = block_ix,
-    trial = trial_ix
-  )
+    trial = trial_ix,
 
-  # The old experiment did not include a column with a unique identifier
-  # for each proposition (proposition_id).
-  frame$question_slug <- frame$question %>%
-    str_to_lower() %>%
-    str_replace_all(" ", "-") %>%
-    str_replace("\\?", "")
-  frame$proposition_id <- with(frame, paste(question_slug, cue, sep = ":"))
+    computer = room
+  ) %>% select(
+    # Drop these columns
+    -qtype,
+    -exp_name,
+    -qid,
+    -exp_timer,
+    -question_slug
+  )
 
   frame
 }
+
+
+cue_first <- compile_cue_first()
+question_first <- compile_question_first()
+norms <- compile_norms()
+
+cue_first$exp <- "cue_first"
+question_first$exp <- "question_first"
+property_verification <- rbind(cue_first, question_first)
+
+use_data(cue_first, question_first, norms, property_verification,
+         overwrite = TRUE)

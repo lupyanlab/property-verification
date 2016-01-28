@@ -1,6 +1,6 @@
 tidy_property_verification_data <- function(frame) {
   # Remove practice trials
-  frame <- filter(frame, block != -1)
+  frame <- filter(frame, block_type != "practice")
 
   # Exclude RT on timeout trials
   frame$rt <- with(frame, ifelse(response == "timeout", NA, rt))
