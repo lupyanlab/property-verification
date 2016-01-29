@@ -5,3 +5,9 @@
 *.swp
 .Rhistory
 .RData
+
+# ignore credentials
+drive-api-creds.json
+
+# ignore venv
+lupyanlab/
