@@ -1,0 +1,169 @@
+subj_id,seed,date,computer,block,block_type,trial,proposition_id,feat_type,question,cue,cue_file,mask_type,correct_response,response,rt,is_correct
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,0,is-it-eaten-by-rabbits:carrot,nonvisual,Is it eaten by rabbits?,carrot,carrot_4.wav,nomask,yes,yes,645.013253379,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,1,does-it-live-in-africa:elephant,nonvisual,Does it live in Africa?,elephant,elephant_3.wav,nomask,yes,yes,302.631372557,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,2,is-it-an-insect:strawberry,nonvisual,Is it an insect?,strawberry,strawberry_1.wav,mask,no,no,125.782022486,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,3,does-it-make-noises:rabbit,nonvisual,Does it make noises?,rabbit,rabbit_3.wav,nomask,yes,yes,157.184555865,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,4,does-it-have-a-mane:lion,visual,Does it have a mane?,lion,lion_4.wav,nomask,yes,yes,596.340206859,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,5,does-it-have-a-tail:chair,visual,Does it have a tail?,chair,chair_4.wav,nomask,no,no,591.575011262,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,6,does-it-have-a-neck:table,visual,Does it have a neck?,table,table_4.wav,nomask,no,no,241.612413898,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,0,practice,7,is-it-worn-in-cold-temperatures:jacket,nonvisual,Is it worn in cold temperatures?,jacket,jacket_2.wav,mask,yes,yes,553.707918822,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,9,does-it-live-in-africa:carrot,nonvisual,Does it live in Africa?,carrot,carrot_1.wav,mask,no,no,67.4675131449,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,10,does-it-eat-leaves:jacket,nonvisual,Does it eat leaves?,jacket,jacket_4.wav,nomask,no,no,332.118160964,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,11,does-it-waddle:penguin,nonvisual,Does it waddle?,penguin,penguin_4.wav,mask,yes,yes,415.2426082,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,12,does-it-have-feathers:banana,visual,Does it have feathers?,banana,banana_4.wav,nomask,no,no,49.5725024084,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,13,does-it-have-warts:toad,visual,Does it have warts?,toad,toad_1.wav,mask,yes,yes,444.320640352,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,14,does-it-have-hooves:zebra,visual,Does it have hooves?,zebra,zebra_4.wav,nomask,yes,yes,393.012604211,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,15,does-it-live-in-the-arctic:penguin,nonvisual,Does it live in the Arctic?,penguin,penguin_2.wav,nomask,yes,no,230.234137009,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,16,is-it-an-amphibian:bottle,nonvisual,Is it an amphibian?,bottle,bottle_3.wav,nomask,no,no,338.1073848,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,17,does-it-have-a-beak:train,visual,Does it have a beak?,train,train_2.wav,mask,no,no,236.507281603,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,18,does-it-have-antlers:deer,visual,Does it have antlers?,deer,deer_2.wav,mask,yes,yes,198.362990312,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,19,is-it-a-mammal:giraffe,nonvisual,Is it a mammal?,giraffe,giraffe_4.wav,mask,yes,yes,448.235994176,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,20,does-it-have-jaws:alligator,visual,Does it have jaws?,alligator,alligator_4.wav,mask,yes,yes,150.356693484,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,21,does-it-have-a-long-neck:raccoon,visual,Does it have a long neck?,raccoon,raccoon_3.wav,nomask,no,no,353.954773076,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,22,does-it-live-in-jungles:zebra,nonvisual,Does it live in jungles?,zebra,zebra_1.wav,mask,no,no,90.4686164868,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,23,does-it-have-hooves:donkey,visual,Does it have hooves?,donkey,donkey_3.wav,mask,yes,yes,649.404262542,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,24,does-it-grow-on-trees:pineapple,nonvisual,Does it grow on trees?,pineapple,pineapple_2.wav,nomask,yes,no,269.438249816,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,25,does-it-have-a-seat:bike,visual,Does it have a seat?,bike,bike_1.wav,mask,yes,yes,305.642469175,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,26,does-it-taste-good:toad,nonvisual,Does it taste good?,toad,toad_2.wav,nomask,no,no,474.896378524,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,27,is-it-loud:deer,nonvisual,Is it loud?,deer,deer_3.wav,nomask,no,no,758.064294147,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,28,does-it-have-large-teeth:tiger,visual,Does it have large teeth?,tiger,tiger_1.wav,nomask,yes,yes,290.59210766,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,29,does-it-have-four-legs:swan,visual,Does it have four legs?,swan,swan_2.wav,mask,no,no,317.799847689,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,30,does-it-have-legs:grasshopper,visual,Does it have legs?,grasshopper,grasshopper_1.wav,nomask,yes,yes,471.5110955,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,31,is-it-used-for-racing:pineapple,nonvisual,Is it used for racing?,pineapple,pineapple_2.wav,nomask,no,no,490.76777359,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,32,does-it-have-four-legs:elephant,visual,Does it have four legs?,elephant,elephant_3.wav,mask,yes,yes,318.838863284,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,33,is-it-made-of-wood:chair,visual,Is it made of wood?,chair,chair_2.wav,nomask,yes,yes,436.164079962,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,34,does-it-live-in-swamps:alligator,nonvisual,Does it live in swamps?,alligator,alligator_4.wav,mask,yes,yes,213.310602616,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,35,is-it-pink:dog,visual,Is it pink?,dog,dog_1.wav,mask,no,no,131.107057357,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,36,is-it-eaten-as-bacon:pig,nonvisual,Is it eaten as bacon?,pig,pig_1.wav,nomask,yes,yes,38.7550250161,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,37,does-it-roar:lion,nonvisual,Does it roar?,lion,lion_4.wav,mask,yes,yes,104.050400259,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,38,is-it-used-for-eating-on:table,nonvisual,Is it used for eating on?,table,table_4.wav,mask,yes,yes,269.729532651,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,39,is-it-an-animal:elephant,nonvisual,Is it an animal?,elephant,elephant_2.wav,nomask,yes,yes,30.2342010255,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,40,does-it-lay-eggs:donkey,nonvisual,Does it lay eggs?,donkey,donkey_1.wav,nomask,no,no,24.0084299294,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,41,does-it-grow-on-trees:apple,nonvisual,Does it grow on trees?,apple,apple_3.wav,mask,yes,yes,429.904699296,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,42,does-it-have-four-legs:dog,visual,Does it have four legs?,dog,dog_3.wav,mask,yes,yes,116.197855968,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,43,does-it-have-sleeves:jacket,visual,Does it have sleeves?,jacket,jacket_2.wav,nomask,yes,yes,6.78465008968,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,44,is-it-green:apple,visual,Is it green?,apple,apple_4.wav,mask,yes,yes,368.01477283,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,45,does-it-have-long-legs:lion,visual,Does it have long legs?,lion,lion_2.wav,mask,no,yes,272.665087774,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,46,does-it-eat:camel,nonvisual,Does it eat?,camel,camel_4.wav,nomask,yes,yes,221.661458258,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,47,is-it-red:strawberry,visual,Is it red?,strawberry,strawberry_3.wav,mask,yes,yes,123.589078634,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,48,does-it-live-in-a-coop:chicken,nonvisual,Does it live in a coop?,chicken,chicken_1.wav,nomask,yes,yes,327.153228573,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,49,is-it-an-insect:giraffe,nonvisual,Is it an insect?,giraffe,giraffe_2.wav,nomask,no,no,96.7894546629,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,50,is-it-flat:table,visual,Is it flat?,table,table_3.wav,mask,yes,yes,182.109726564,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,51,does-it-eat-carrots:rabbit,nonvisual,Does it eat carrots?,rabbit,rabbit_1.wav,mask,yes,yes,321.623015305,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,52,does-it-have-ears:elephant,visual,Does it have ears?,elephant,elephant_3.wav,nomask,yes,yes,32.6169588952,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,53,does-it-have-legs:chicken,visual,Does it have legs?,chicken,chicken_1.wav,mask,yes,yes,234.976286069,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,54,is-it-a-fruit:train,nonvisual,Is it a fruit?,train,train_1.wav,mask,no,no,170.758977503,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,55,does-it-have-a-neck:bottle,visual,Does it have a neck?,bottle,bottle_3.wav,mask,yes,no,176.76644653,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,56,does-it-taste-sweet:strawberry,nonvisual,Does it taste sweet?,strawberry,strawberry_3.wav,mask,yes,yes,8.43311907374,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,57,does-it-have-a-snout:pig,visual,Does it have a snout?,pig,pig_3.wav,nomask,yes,yes,569.258262578,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,58,is-it-nutritious:chair,nonvisual,Is it nutritious?,chair,chair_1.wav,mask,no,no,257.12178601,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,59,does-it-have-an-inside:pineapple,visual,Does it have an inside?,pineapple,pineapple_3.wav,nomask,yes,yes,360.258966452,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,60,does-it-live-on-a-farm:camel,nonvisual,Does it live on a farm?,camel,camel_3.wav,mask,no,no,78.3013151668,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,1,test,61,is-it-an-animal:mouse,nonvisual,Is it an animal?,mouse,mouse_1.wav,nomask,yes,yes,180.145967926,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,63,does-it-live-in-grass:giraffe,nonvisual,Does it live in grass?,giraffe,giraffe_4.wav,nomask,yes,yes,510.1092759,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,64,is-it-breakable:bottle,nonvisual,Is it breakable?,bottle,bottle_4.wav,mask,yes,yes,399.332482106,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,65,is-it-used-for-freight:train,nonvisual,Is it used for freight?,train,train_1.wav,mask,yes,yes,206.975680456,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,66,is-it-like-a-horse:donkey,nonvisual,Is it like a horse?,donkey,donkey_3.wav,nomask,yes,yes,360.205191158,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,67,does-it-produce-offspring:raccoon,nonvisual,Does it produce offspring?,raccoon,raccoon_4.wav,mask,yes,yes,142.502299044,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,68,does-it-have-a-core:pineapple,visual,Does it have a core?,pineapple,pineapple_3.wav,nomask,yes,yes,863.320477394,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,69,does-it-have-a-top:dog,visual,Does it have a top?,dog,dog_3.wav,mask,yes,no,302.761009458,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,70,does-it-have-a-skin:banana,visual,Does it have a skin?,banana,banana_2.wav,nomask,yes,yes,407.383732527,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,71,does-it-fly:bottle,nonvisual,Does it fly?,bottle,bottle_2.wav,mask,no,no,198.044499703,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,72,is-it-used-for-protection:dog,nonvisual,Is it used for protection?,dog,dog_3.wav,nomask,yes,no,141.143192421,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,73,does-it-have-pockets:jacket,visual,Does it have pockets?,jacket,jacket_4.wav,nomask,yes,yes,542.175678158,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,74,does-it-grow-in-hawaii:pineapple,nonvisual,Does it grow in Hawaii?,pineapple,pineapple_4.wav,mask,yes,yes,208.913831797,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,75,is-it-timid:deer,nonvisual,Is it timid?,deer,deer_1.wav,mask,yes,yes,175.304590666,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,76,does-it-have-hooves:elephant,visual,Does it have hooves?,elephant,elephant_2.wav,nomask,no,yes,273.222046206,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,77,does-it-have-whiskers:tiger,visual,Does it have whiskers?,tiger,tiger_3.wav,nomask,yes,yes,187.320488942,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,78,is-it-red:penguin,visual,Is it red?,penguin,penguin_2.wav,mask,no,no,200.639157818,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,79,does-it-have-a-tail:mouse,visual,Does it have a tail?,mouse,mouse_4.wav,nomask,yes,yes,62.3559790256,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,80,does-it-have-a-white-tail:deer,visual,Does it have a white tail?,deer,deer_1.wav,mask,yes,yes,278.108556318,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,81,is-it-green:alligator,visual,Is it green?,alligator,alligator_1.wav,mask,yes,yes,135.165171814,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,82,is-it-brown:carrot,visual,Is it brown?,carrot,carrot_4.wav,mask,no,no,400.340448861,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,83,does-it-have-stripes:zebra,visual,Does it have stripes?,zebra,zebra_1.wav,mask,yes,yes,124.604407465,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,84,is-it-pink:pig,visual,Is it pink?,pig,pig_4.wav,nomask,yes,yes,561.929137592,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,85,is-it-grey:lion,visual,Is it grey?,lion,lion_2.wav,nomask,no,no,258.567957411,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,86,does-it-have-long-legs:giraffe,visual,Does it have long legs?,giraffe,giraffe_4.wav,nomask,yes,yes,238.844586507,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,87,is-it-found-in-summer:alligator,nonvisual,Is it found in summer?,alligator,alligator_1.wav,mask,yes,yes,175.761040475,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,88,does-it-have-teeth:lion,visual,Does it have teeth?,lion,lion_3.wav,mask,yes,yes,686.098861421,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,89,is-it-large:camel,visual,Is it large?,camel,camel_2.wav,mask,yes,yes,548.300300463,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,90,does-it-travel-in-herds:swan,nonvisual,Does it travel in herds?,swan,swan_4.wav,mask,no,no,453.327362571,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,91,is-it-an-animal:donkey,nonvisual,Is it an animal?,donkey,donkey_1.wav,nomask,yes,yes,167.125303793,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,92,is-it-worn-in-winter:jacket,nonvisual,Is it worn in winter?,jacket,jacket_2.wav,nomask,yes,yes,20.565210405,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,93,does-it-taste-good:strawberry,nonvisual,Does it taste good?,strawberry,strawberry_3.wav,nomask,yes,yes,59.7385944275,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,94,is-it-edible:rabbit,nonvisual,Is it edible?,rabbit,rabbit_2.wav,nomask,yes,no,60.6268471165,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,95,is-it-fast:banana,nonvisual,Is it fast?,banana,banana_2.wav,nomask,no,no,53.7356066925,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,96,is-it-an-animal:alligator,nonvisual,Is it an animal?,alligator,alligator_1.wav,mask,yes,yes,245.025544864,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,97,does-it-have-large-ears:elephant,visual,Does it have large ears?,elephant,elephant_3.wav,mask,yes,yes,29.3437077198,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,98,is-it-eaten-by-frying:chicken,nonvisual,Is it eaten by frying?,chicken,chicken_1.wav,nomask,yes,yes,145.655196015,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,99,is-it-healthy:table,nonvisual,Is it healthy?,table,table_1.wav,nomask,no,no,131.574390281,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,100,is-it-a-bird:penguin,nonvisual,Is it a bird?,penguin,penguin_2.wav,mask,yes,yes,214.504222153,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,101,does-it-have-many-cars:carrot,visual,Does it have many cars?,carrot,carrot_3.wav,nomask,no,no,205.669068731,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,102,is-it-used-in-circuses:elephant,nonvisual,Is it used in circuses?,elephant,elephant_4.wav,mask,yes,yes,575.956488086,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,103,does-it-have-a-mane:zebra,visual,Does it have a mane?,zebra,zebra_3.wav,nomask,yes,no,100.753782433,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,104,is-it-yellow:banana,visual,Is it yellow?,banana,banana_3.wav,nomask,yes,yes,307.399769081,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,105,does-it-have-a-seat:chair,visual,Does it have a seat?,chair,chair_4.wav,nomask,yes,yes,88.0580107623,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,106,is-it-an-insect:grasshopper,nonvisual,Is it an insect?,grasshopper,grasshopper_3.wav,nomask,yes,yes,41.190917982,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,107,does-it-have-stripes:tiger,visual,Does it have stripes?,tiger,tiger_2.wav,mask,yes,yes,596.737439861,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,108,is-it-used-for-cider:apple,nonvisual,Is it used for cider?,apple,apple_4.wav,nomask,yes,yes,180.813997955,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,109,does-it-have-whiskers:pineapple,visual,Does it have whiskers?,pineapple,pineapple_1.wav,mask,no,no,237.612556026,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,110,does-it-eat-insects:toad,nonvisual,Does it eat insects?,toad,toad_4.wav,nomask,yes,yes,390.718511597,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,111,does-it-have-feathers:swan,visual,Does it have feathers?,swan,swan_4.wav,mask,yes,yes,287.237233249,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,112,is-it-used-for-holding-liquids:chicken,nonvisual,Is it used for holding liquids?,chicken,chicken_1.wav,mask,no,no,242.141524417,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,113,is-it-an-herbivore:deer,nonvisual,Is it an herbivore?,deer,deer_3.wav,mask,yes,yes,610.835210391,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,114,does-it-have-a-lid:bottle,visual,Does it have a lid?,bottle,bottle_4.wav,mask,yes,yes,523.373529286,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,115,is-it-made-of-wood:table,visual,Is it made of wood?,table,table_3.wav,mask,yes,yes,256.637168146,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,2,test,116,is-it-a-mammal:lion,nonvisual,Is it a mammal?,lion,lion_2.wav,nomask,yes,yes,201.590788551,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,118,does-it-have-an-engine:train,visual,Does it have an engine?,train,train_2.wav,mask,yes,yes,214.411715831,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,119,is-it-made-of-glass:pig,visual,Is it made of glass?,pig,pig_1.wav,mask,no,no,226.251243963,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,120,does-it-have-armrests:chair,visual,Does it have armrests?,chair,chair_3.wav,nomask,yes,yes,307.172504428,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,121,does-it-have-four-legs:penguin,visual,Does it have four legs?,penguin,penguin_3.wav,mask,no,no,602.987857972,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,122,is-it-a-reptile:elephant,nonvisual,Is it a reptile?,elephant,elephant_1.wav,mask,no,no,521.397287084,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,123,is-it-prickly:pineapple,nonvisual,Is it prickly?,pineapple,pineapple_3.wav,nomask,yes,yes,609.702088055,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,124,is-it-small:strawberry,visual,Is it small?,strawberry,strawberry_2.wav,nomask,yes,yes,273.746355349,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,125,does-it-taste-good:grasshopper,nonvisual,Does it taste good?,grasshopper,grasshopper_3.wav,mask,no,no,548.407530965,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,126,does-it-have-stripes:raccoon,visual,Does it have stripes?,raccoon,raccoon_2.wav,nomask,yes,yes,360.695570678,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,127,does-it-have-legs:donkey,visual,Does it have legs?,donkey,donkey_3.wav,nomask,yes,yes,210.1279372,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,128,is-it-used-for-holding-beer:bottle,nonvisual,Is it used for holding beer?,bottle,bottle_2.wav,nomask,yes,yes,144.525914744,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,129,is-it-an-animal:pineapple,nonvisual,Is it an animal?,pineapple,pineapple_1.wav,nomask,no,no,538.109881483,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,130,does-it-have-a-zipper:jacket,visual,Does it have a zipper?,jacket,jacket_3.wav,mask,yes,yes,551.673740149,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,131,does-it-live-in-africa:tiger,nonvisual,Does it live in Africa?,tiger,tiger_3.wav,mask,yes,yes,314.378714451,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,132,does-it-have-a-tail:lion,visual,Does it have a tail?,lion,lion_4.wav,nomask,yes,yes,380.915402813,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,133,does-it-have-a-seat:rabbit,visual,Does it have a seat?,rabbit,rabbit_3.wav,nomask,no,no,422.776591498,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,134,is-it-eaten-by-frying:giraffe,nonvisual,Is it eaten by frying?,giraffe,giraffe_3.wav,nomask,no,no,326.813291846,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,135,does-it-bark:dog,nonvisual,Does it bark?,dog,dog_2.wav,mask,yes,yes,205.536551046,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,136,does-it-have-four-legs:zebra,visual,Does it have four legs?,zebra,zebra_2.wav,nomask,yes,yes,224.593172286,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,137,is-it-black:tiger,visual,Is it black?,tiger,tiger_3.wav,nomask,no,no,251.441129978,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,138,is-it-comfortable:chair,nonvisual,Is it comfortable?,chair,chair_1.wav,mask,yes,yes,642.395548697,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,139,is-it-timid:apple,nonvisual,Is it timid?,apple,apple_3.wav,mask,no,no,408.123142872,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,140,does-it-have-whiskers:camel,visual,Does it have whiskers?,camel,camel_1.wav,mask,no,no,272.249929665,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,141,is-it-yellow-inside:pineapple,visual,Is it yellow inside?,pineapple,pineapple_2.wav,nomask,yes,yes,174.164746393,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,142,does-it-have-wings:swan,visual,Does it have wings?,swan,swan_2.wav,mask,yes,yes,209.900352434,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,143,is-it-used-for-transportation:train,nonvisual,Is it used for transportation?,train,train_1.wav,mask,yes,yes,217.288694286,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,144,does-it-have-feathers:chicken,visual,Does it have feathers?,chicken,chicken_2.wav,mask,yes,yes,307.119049219,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,145,does-it-have-legs:table,visual,Does it have legs?,table,table_4.wav,nomask,yes,yes,424.358801567,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,146,does-it-live-in-jungles:lion,nonvisual,Does it live in jungles?,lion,lion_4.wav,nomask,yes,yes,347.046567826,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,147,is-it-green:deer,visual,Is it green?,deer,deer_4.wav,mask,no,no,234.281368379,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,148,does-it-have-hair:dog,visual,Does it have hair?,dog,dog_3.wav,mask,yes,yes,250.729887659,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,149,is-it-hunted-by-people:giraffe,nonvisual,Is it hunted by people?,giraffe,giraffe_4.wav,mask,no,yes,599.188697175,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,150,does-it-have-feet:penguin,visual,Does it have feet?,penguin,penguin_3.wav,mask,yes,yes,270.833206625,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,151,does-it-live-on-water:mouse,nonvisual,Does it live on water?,mouse,mouse_3.wav,nomask,no,no,819.964143418,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,152,is-it-a-mammal:donkey,nonvisual,Is it a mammal?,donkey,donkey_4.wav,mask,yes,yes,350.256440957,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,153,is-it-orange:tiger,visual,Is it orange?,tiger,tiger_4.wav,mask,yes,yes,528.640307602,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,154,is-it-used-for-making-jam:strawberry,nonvisual,Is it used for making jam?,strawberry,strawberry_2.wav,mask,yes,yes,96.4738448965,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,155,does-it-have-hooves:deer,visual,Does it have hooves?,deer,deer_1.wav,mask,yes,yes,455.573441519,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,156,does-it-have-seeds:apple,visual,Does it have seeds?,apple,apple_1.wav,mask,yes,yes,531.470232672,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,157,is-it-green:grasshopper,visual,Is it green?,grasshopper,grasshopper_3.wav,nomask,yes,yes,323.40880332,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,158,does-it-live-in-africa:zebra,nonvisual,Does it live in Africa?,zebra,zebra_1.wav,mask,yes,yes,586.980104097,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,159,is-it-made-of-metal:bike,visual,Is it made of metal?,bike,bike_3.wav,mask,yes,yes,204.270590883,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,160,is-it-used-for-holding-liquids:bottle,nonvisual,Is it used for holding liquids?,bottle,bottle_3.wav,mask,yes,yes,237.238369562,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,161,does-it-eat-grain:chicken,nonvisual,Does it eat grain?,chicken,chicken_4.wav,nomask,yes,yes,319.903486146,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,162,does-it-have-a-long-tongue:toad,visual,Does it have a long tongue?,toad,toad_3.wav,mask,yes,yes,278.588372836,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,163,is-it-made-of-glass:bottle,visual,Is it made of glass?,bottle,bottle_4.wav,nomask,yes,yes,111.42305765,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,164,does-it-eat-people:alligator,nonvisual,Does it eat people?,alligator,alligator_1.wav,mask,yes,yes,90.1539670012,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,165,does-it-waddle:lion,nonvisual,Does it waddle?,lion,lion_4.wav,mask,no,no,106.678667973,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,166,does-it-eat-peanuts:elephant,nonvisual,Does it eat peanuts?,elephant,elephant_3.wav,nomask,yes,yes,121.834979596,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,167,does-it-have-fur:mouse,visual,Does it have fur?,mouse,mouse_2.wav,mask,yes,yes,268.628739519,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,168,is-it-eaten-in-pies:apple,nonvisual,Is it eaten in pies?,apple,apple_3.wav,nomask,yes,yes,73.8725352858,1
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,169,is-it-orange:chicken,visual,Is it orange?,chicken,chicken_2.wav,mask,no,yes,693.728871993,0
+MWPR144,144,2016_Jan_29_1231,LL-ELAINE,3,test,170,is-it-a-vegetable:carrot,nonvisual,Is it a vegetable?,carrot,carrot_2.wav,nomask,yes,yes,213.567955827,1
