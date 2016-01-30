@@ -1,21 +1,24 @@
+# Compile all raw .csv and .txt files from the various experiments
+# and save them to the package as .rda files.
+
 library(stringr)
 library(dplyr)
-library(devtools)
-
-load_all()
-
 
 compile_question_first <- function() {
-  first_run <- compile("data-raw/question_first/first_run/", regex_key = "MWPF",
+  first_run <- compile("data-raw/question_first/first_run/data/", regex_key = "MWPF",
                        header_file = "_header.txt")
   first_run$exp_run <- 1
 
-  second_run <- compile("data-raw/question_first/second_run/", regex_key = "MWPF",
+  second_run <- compile("data-raw/question_first/second_run/data/", regex_key = "MWPF",
                         header_file = "_header.txt")
   second_run$exp_run <- 2
 
   question_first <- rbind(first_run, second_run) %>%
     rename_old_experiment_vars
+
+  third_run <- compile("data-raw/question_first/third_run/data/", regex_key = "MWPR") %>%
+    mutate(exp_run = 3)
+  question_first <- rbind_list(question_first, third_run)
 
   question_first
 }
@@ -34,6 +37,28 @@ compile_cue_first <- function() {
 compile_norms <- function() {
   norms <- read.csv("data-raw/norms/norms.csv")
   norms
+}
+
+compile <- function(data_dir, regex_key, header_file) {
+  data_files <- list.files(data_dir, regex_key, full.names = TRUE)
+
+  if(missing(header_file)) {
+    frame <- plyr::ldply(data_files, readr::read_csv)
+  } else {
+    header_file <- ifelse(file.exists(header_file), header_file,
+                          file.path(data_dir, header_file))
+    header <- colnames(readr::read_tsv(header_file))
+
+    # hack!!!
+    if(sum(header == "response") == 2) {
+      header[header == "response"] <- c("response", "response.1")
+    }
+
+    data_files <- list.files(data_dir, regex_key, full.names = TRUE)
+    frame <- plyr::ldply(data_files, readr::read_tsv, col_names = header)
+  }
+
+  frame
 }
 
 rename_old_experiment_vars <- function(frame) {
@@ -86,5 +111,5 @@ cue_first$exp <- "cue_first"
 question_first$exp <- "question_first"
 property_verification <- rbind(cue_first, question_first)
 
-use_data(cue_first, question_first, norms, property_verification,
-         overwrite = TRUE)
+devtools::use_data(cue_first, question_first, norms, property_verification,
+                   overwrite = TRUE)
