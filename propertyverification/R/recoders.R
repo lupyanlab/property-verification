@@ -1,4 +1,6 @@
 
+#' Recode mask_type variable
+#' @export
 recode_mask_type <- function(frame) {
   mask_type_map <- dplyr::data_frame(
     mask_type = c("nomask", "mask"),
@@ -7,6 +9,8 @@ recode_mask_type <- function(frame) {
   dplyr::left_join(frame, mask_type_map)
 }
 
+#' Recode feat_type variable
+#' @export
 recode_feat_type <- function(frame) {
   feat_type_map <- dplyr::data_frame(
     feat_type = c("nonvisual", "visual"),
@@ -15,6 +19,8 @@ recode_feat_type <- function(frame) {
   dplyr::left_join(frame, feat_type_map)
 }
 
+#' Recode experiment name variable
+#' @export
 recode_exp <- function(frame) {
   experiment_map <- dplyr::data_frame(
     exp = c("cue_first", "question_first"),
@@ -22,6 +28,8 @@ recode_exp <- function(frame) {
   dplyr::left_join(frame, experiment_map)
 }
 
+#' Recode experiment run variable
+#' @export
 recode_exp_run <- function(frame) {
   exp_run_map <- dplyr::data_frame(
     exp_run = c(1, 2, 3),

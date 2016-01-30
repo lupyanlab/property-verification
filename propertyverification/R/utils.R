@@ -1,4 +1,9 @@
+#' @export
+"%nin%" <- function(x, y) {
+  !(x %in% y)
+}
 
+#' @export
 label_duplicates <- function(question_ids) {
   seen <- c()
   is_unique <- c()
