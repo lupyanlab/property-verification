@@ -11,8 +11,8 @@ subjects_theme <- theme_minimal(base_size = 14) +
   theme(axis.ticks = element_blank())
 
 # ---- data
-# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverification")
-library(propertyverification)
+# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
+library(propertyverificationdata)
 data(question_first)
 
 question_first <- question_first %>%

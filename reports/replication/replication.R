@@ -8,7 +8,7 @@ library(scales)
 library(lme4)
 library(broom)
 
-library(propertyverification)
+library(propertyverificationdata)
 data(question_first)
 
 question_first <- question_first %>%

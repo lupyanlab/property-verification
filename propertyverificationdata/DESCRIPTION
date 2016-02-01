@@ -1,0 +1,9 @@
+Package: propertyverificationdata
+Title: Experiment testing the effect of visual interference on visual knowledge
+Version: 0.0.0.9001
+Authors@R: person("Pierce", "Edmiston", email = "pedmiston@wisc.edu", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.2.2)
+License: What license is it under?
+LazyData: true
+Suggests: testthat

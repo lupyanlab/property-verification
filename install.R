@@ -1,2 +1,2 @@
 #!/usr/bin/env Rscript
-devtools::install("propertyverification")
+devtools::install("propertyverificationdata")

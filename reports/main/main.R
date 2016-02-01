@@ -13,8 +13,8 @@ library(ggplot2)
 library(lme4)
 
 # ---- data
-# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverification")
-library(propertyverification)
+# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
+library(propertyverificationdata)
 data(question_first)
 data(norms)
 

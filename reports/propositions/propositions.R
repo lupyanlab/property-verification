@@ -28,8 +28,8 @@ tidy_lmer_coefs <- function(mod, grouping_var = 1) {
 }
 
 # ---- data
-# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverification")
-library(propertyverification)
+# devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
+library(propertyverificationdata)
 data(question_first)
 data(norms)
 
