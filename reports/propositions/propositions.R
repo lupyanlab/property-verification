@@ -30,39 +30,49 @@ tidy_lmer_coefs <- function(mod, grouping_var = 1) {
 # ---- data
 # devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
 library(propertyverificationdata)
-data(question_first)
+data(norms_responses)
 data(norms)
+data(question_first)
 
-question_first <- question_first %>%
-  tidy_property_verification_data %>%
-  recode_mask_type %>%
-  recode_feat_type %>%
-  recode_exp_run %>%
-  left_join(norms)
+# ---- truth-agreement
 
-# ---- proposition-error
-baseline_error_from_means <- question_first %>%
+# For each proposition, calculate whether or not the normative truth value
+# is significantly different from 0, which would mean that the proposition
+# does indeed have a normatively correct response.
+
+norms_mods <- norms_responses %>%
+  # select only the truth responses and label the value column appropriately
+  filter(measure == "truth") %>%
+  select(-measure) %>%
+  rename(truth = value) %>%
+  # fit separate models to each part
   group_by(proposition_id) %>%
-  summarize(
-    n = n(),
-    baseline_error = mean(is_error[mask_type == "mask"], na.rm = TRUE)
-  )
+  do(diff_mod = lm(truth ~ 1, data = .))
 
-question_first$nomask <- ifelse(question_first$mask_type == "nomask", 1, 0)
+# classify the results of the models based on whether people agree
+# with the classification or they find the proposition ambiguous
+proposition_classification <- norms_mods %>%
+  tidy(diff_mod) %>%
+  ungroup %>%
+  mutate(agreement = ifelse(p.value < 0.05, "agree", "ambiguous")) %>%
+  select(-term)
 
-proposition_ranef_mod <- glmer(
-  is_error ~ 1 + (nomask|proposition_id),
-  family = binomial, data = question_first
+ggplot(proposition_classification, aes(x = estimate, y = p.value)) +
+  geom_point(aes(color = agreement))
+
+# ---- incorrect-code
+# Of the propositions for which people think there is a normatively correct
+# response, are there any that were incorrectly coded in the experiment?
+
+# norm response is yes, no, or NA for ambiguous questions
+proposition_classification$norm_response <- ifelse(
+  proposition_classification$agreement == "ambiguous", NA,
+    ifelse(proposition_classification$estimate > 0, "yes", "no")
 )
 
-proposition_ranef_coefs <- tidy_lmer_coefs(proposition_ranef_mod)
+proposition_classification <- merge(proposition_classification, norms)
 
-baseline_error_from_model <- proposition_ranef_coefs %>%
-  transmute(proposition_id, baseline_error = intercept)
+proposition_classification <- proposition_classification %>%
+  mutate(truth_verified = correct_response == norm_response)
 
-error_compare <- merge(baseline_error_from_means, baseline_error_from_model,
-      by = "proposition_id", suffixes = c("_means", "_model"))
-  #gather(error_type, error_rate, -(proposition_id:n))
-
-ggplot(error_compare, aes(x = baseline_error_means, baseline_error_model)) +
-  geom_point()
+table(proposition_classification$truth_verified, useNA = "ifany")

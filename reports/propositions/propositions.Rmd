@@ -21,3 +21,38 @@ read_chunk("propositions.R")
 
 ```{r, setup}
 ```
+
+```{r, data, echo = TRUE}
+```
+
+# Normative agreement
+
+Are there any propositions for which the norming participants didn't agree as
+to the truth of the proposition?
+
+Here I fit a lm model for each proposition predicting truth value in an
+intercept-only model. The estimate, error, and _p_ value for the intercept
+correspond to whether or not the norming participants agreed that the truth
+of the proposition was different from 0, that is, whether or not the proposition
+was actually true or false.
+
+Critically there are some propositions for which the truth of the proposition
+is ambiguous, and responses to these propositions cannot really be interpreted
+as true or false in the actual experiment.
+
+```{r, truth-agreement}
+```
+
+# Incorrectly coded propositions
+
+With the agreement scores above, we can also check whether the correct response
+as coded in the experiment matches what the norming participants thought was
+the correct answer. Basically, if there are any cases that the correct response
+was not the same as the norm truth value, we would conclude that these 
+propositions were miscoded.
+
+Fortunately of the questions that were not ambiguous, all of the questions
+were correctly coded.
+
+```{r, incorrect-code}
+```
