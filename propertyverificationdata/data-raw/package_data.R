@@ -39,6 +39,11 @@ compile_norms <- function() {
   norms
 }
 
+compile_norms_responses <- function() {
+  norms_responses <- read.csv("data-raw/norms/norms_responses.csv")
+  norms_responses
+}
+
 compile <- function(data_dir, regex_key, header_file) {
   data_files <- list.files(data_dir, regex_key, full.names = TRUE)
 
@@ -106,10 +111,12 @@ rename_old_experiment_vars <- function(frame) {
 cue_first <- compile_cue_first()
 question_first <- compile_question_first()
 norms <- compile_norms()
+norms_responses <- compile_norms_responses()
 
 cue_first$exp <- "cue_first"
 question_first$exp <- "question_first"
 property_verification <- rbind(cue_first, question_first)
 
-devtools::use_data(cue_first, question_first, norms, property_verification,
+devtools::use_data(property_verification, cue_first, question_first,
+                   norms, norms_responses,
                    overwrite = TRUE)
