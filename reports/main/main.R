@@ -1,12 +1,3 @@
-#' @importFrom magrittr %>%
-recode_correct_response <- function(frame) {
-  correct_response_map <- dplyr::data_frame(
-    correct_response = c("no", "yes"),
-    correct_response_c = c(-0.5, 0.5)
-  )
-  frame %>% left_join(correct_response_map)
-}
-
 # ---- setup
 library(dplyr)
 library(ggplot2)
@@ -25,6 +16,16 @@ question_first <- question_first %>%
   recode_exp_run %>%
   recode_correct_response %>%
   left_join(norms)
+
+# ---- filters
+question_first <- question_first %>%
+  label_ambiguous_propositions %>%
+  filter(agreement != "ambiguous")
+
+# ---- feat-type-mod
+feat_type_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
+                       family = binomial, data = question_first)
+summary(feat_type_mod)
 
 # ---- imagery-mod
 mask_effect_mod <- glmer(is_error ~ imagery_z * mask_c + (mask_c|proposition_id) + (1|subj_id),
