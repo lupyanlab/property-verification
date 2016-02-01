@@ -8,14 +8,10 @@ library(scales)
 library(lme4)
 library(broom)
 
-library(devtools)
-load_all("propertyverification")
+library(propertyverification)
 data(question_first)
 
-run3_data <- compile("experiment/data/", regex_key = "MWPR") %>%
-  mutate(exp_run = 3)
-
-question_first <- rbind_list(question_first, run3_data) %>%
+question_first <- question_first %>%
   tidy_property_verification_data %>%
   recode_mask_type %>%
   recode_feat_type %>%
