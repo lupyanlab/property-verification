@@ -37,3 +37,12 @@ recode_exp_run <- function(frame) {
   )
   dplyr::left_join(frame, exp_run_map)
 }
+
+#' @export
+recode_correct_response <- function(frame) {
+  correct_response_map <- dplyr::data_frame(
+    correct_response = c("no", "yes"),
+    correct_response_c = c(-0.5, 0.5)
+  )
+  dplyr::left_join(frame, correct_response_map)
+}
