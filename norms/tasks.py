@@ -59,13 +59,21 @@ def category_proportions():
     dst = 'mcrae_et_al/category_proportions.csv'
     category_proportions.to_csv(dst, index=False)
 
+
+@task(knowledge_type, senses)
+def norms_responses():
+    knowledge_type = pd.read_csv('knowledge_type/knowledge_type.csv')
+    senses = pd.read_csv('senses/senses.csv')
+    survey_data = pd.concat([knowledge_type, senses])
+    survey_data.to_csv('norms_responses.csv', index=False)
+    return survey_data
+
+
 @task(knowledge_type, senses, category_proportions)
 def norms():
     # combine the survey data from the separate surveys before aggregation
     # because truth and difficulty questions were asked in both surveys
-    knowledge_type = pd.read_csv('knowledge_type/knowledge_type.csv')
-    senses = pd.read_csv('senses/senses.csv')
-    survey_data = pd.concat([knowledge_type, senses])
+    survey_data = norms_responses()
 
     # use pandas generic "describe" function to aggregate multiple stats
     # for each proposition
