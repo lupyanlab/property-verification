@@ -1,7 +1,33 @@
 # ---- setup
 library(dplyr)
 library(ggplot2)
+library(scales)
 library(lme4)
+
+base_theme <- theme_minimal(base_size = 16) +
+  theme(axis.ticks = element_blank())
+
+plot_feat_type <- function(frame, dv) {
+
+  # switch on dv
+  scale_y_correct <- scale_y_continuous("Error Rate", labels = percent)
+  scale_y_rt <- scale_y_continuous("Reaction Time (msec)")
+  
+  scale_y_options <- list(
+    is_correct = scale_y_correct,
+    rt = scale_y_rt
+  )
+  scale_y <- scale_y_options[dv]
+
+  # use aes_string so dv can be provided
+  ggplot(frame, aes_string(x = "mask_c", y = dv)) +
+    geom_bar(stat = "summary", fun.y = "mean",
+             # hack to adjust bar width when using summary functions
+             mapping = aes(width = 0.1)) +
+    scale_x_mask +
+    scale_y +
+    base_theme
+}
 
 # ---- data
 # devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
@@ -15,12 +41,12 @@ question_first <- question_first %>%
   recode_feat_type %>%
   recode_exp_run %>%
   recode_correct_response %>%
+  label_ambiguous_propositions %>%
+  label_outlier_subjects %>%
   left_join(norms)
 
 # ---- filters
 question_first <- question_first %>%
-  label_ambiguous_propositions %>%
-  label_outlier_subjects %>%
   filter(
     agreement != "ambiguous",
     outlier == FALSE
