@@ -44,6 +44,26 @@ compile_norms_responses <- function() {
   norms_responses
 }
 
+compile_subj_info <- function() {
+  subj_info_files <- list.files("data-raw", pattern = "subj_info.csv",
+                                full.names = TRUE, recursive = TRUE)
+  subj_info <- plyr::ldply(subj_info_files, readr::read_csv)
+}
+
+compile_survey <- function() {
+  qualtrics_survey_files <- list.files("data-raw", pattern = "qualtrics_survey.csv",
+                                       full.names = TRUE, recursive = TRUE)
+  qualtrics_surveys <- plyr::ldply(qualtrics_survey_files, readr::read_csv) %>%
+    process_qualtrics_survey
+
+  google_survey_files <- list.files("data-raw", pattern = "google_survey.csv",
+                                    full.names = TRUE, recursive = TRUE)
+  google_surveys <- plyr::ldply(google_survey_files, readr::read_csv) %>%
+    process_google_survey
+
+  rbind_list(qualtrics_surveys, google_surveys)
+}
+
 compile <- function(data_dir, regex_key, header_file) {
   data_files <- list.files(data_dir, regex_key, full.names = TRUE)
 
@@ -107,11 +127,24 @@ rename_old_experiment_vars <- function(frame) {
   frame
 }
 
+process_qualtrics_survey <- function(frame) {
+  frame %>%
+    select(subj_id, computer = room, strategy)
+}
+
+process_google_survey <- function(frame) {
+  frame %>%
+    select(subj_id, computer, strategy = contains("strategy"))
+}
 
 cue_first <- compile_cue_first()
 question_first <- compile_question_first()
+
 norms <- compile_norms()
 norms_responses <- compile_norms_responses()
+
+subj_info <- compile_subj_info()
+survey <- compile_survey()
 
 cue_first$exp <- "cue_first"
 question_first$exp <- "question_first"
@@ -119,4 +152,5 @@ property_verification <- rbind(cue_first, question_first)
 
 devtools::use_data(property_verification, cue_first, question_first,
                    norms, norms_responses,
+                   subj_info, survey,
                    overwrite = TRUE)
