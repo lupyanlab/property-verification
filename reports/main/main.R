@@ -20,7 +20,11 @@ question_first <- question_first %>%
 # ---- filters
 question_first <- question_first %>%
   label_ambiguous_propositions %>%
-  filter(agreement != "ambiguous")
+  label_outlier_subjects %>%
+  filter(
+    agreement != "ambiguous",
+    outlier == FALSE
+  )
 
 # ---- feat-type-mod
 feat_type_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
@@ -28,7 +32,7 @@ feat_type_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
 summary(feat_type_mod)
 
 # ---- imagery-mod
-mask_effect_mod <- glmer(is_error ~ imagery_z * mask_c + (mask_c|proposition_id) + (1|subj_id),
+mask_effect_mod <- glmer(is_error ~ imagery_z * mask_c + (mask_c|proposition_id),
                          family = binomial, data = question_first)
 summary(mask_effect_mod)
 
