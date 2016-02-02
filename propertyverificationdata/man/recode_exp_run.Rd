@@ -2,11 +2,11 @@
 % Please edit documentation in R/recoders.R
 \name{recode_exp_run}
 \alias{recode_exp_run}
-\title{Recode experiment run variable}
+\title{Recode experiment run variable.}
 \usage{
 recode_exp_run(frame)
 }
 \description{
-Recode experiment run variable
+Recode experiment run variable.
 }
 

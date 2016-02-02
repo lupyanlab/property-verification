@@ -2,11 +2,11 @@
 % Please edit documentation in R/recoders.R
 \name{recode_feat_type}
 \alias{recode_feat_type}
-\title{Recode feat_type variable}
+\title{Recode feature type variable.}
 \usage{
 recode_feat_type(frame)
 }
 \description{
-Recode feat_type variable
+Recode feature type variable.
 }
 

@@ -2,11 +2,11 @@
 % Please edit documentation in R/recoders.R
 \name{recode_mask_type}
 \alias{recode_mask_type}
-\title{Recode mask_type variable}
+\title{Recode mask type variable}
 \usage{
 recode_mask_type(frame)
 }
 \description{
-Recode mask_type variable
+Recode mask type variable
 }
 
