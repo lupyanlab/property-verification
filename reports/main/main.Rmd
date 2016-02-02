@@ -1,0 +1,65 @@
+---
+title: "The effect of visual interference on visual knowledge"
+author: "Pierce Edmiston"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.path = "figs/",
+  fig.height = 4
+)
+read_chunk("main.R")
+```
+
+```{r, setup}
+```
+
+# Data
+
+```{r, data, echo = TRUE}
+```
+
+# Filters
+
+```{r, filters, echo = TRUE}
+```
+
+# Type of knowledge
+
+## Error rate
+
+### Overall
+
+```{r, feat-type-error, echo = 1}
+```
+
+### By experiment run
+
+```{r, feat-type-error-by-exp-run, fig.height = 10}
+```
+
+## Reaction time
+
+```{r, feat-type-rt, echo = 1}
+```
+
+# Amount of knowledge
+
+## Visual knowledge
+
+```{r, imagery, echo = 1}
+```
+
+## Encyclopedic knowledge
+
+```{r, facts, echo = 1}
+```
