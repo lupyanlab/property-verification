@@ -1,4 +1,4 @@
-#' @importFrom magrittr %>%
+#' @import dplyr
 #' @export
 tidy_property_verification_data <- function(frame) {
   # Remove practice trials

@@ -1,5 +1,5 @@
 
-#' @importFrom magrittr %>%
+#' @import dplyr
 #' @export
 report_glmer_effect <- function(mod, param) {
   parameter_stats <- mod %>%
@@ -19,7 +19,7 @@ report_glmer_effect <- function(mod, param) {
           p_value)
 }
 
-#' @importFrom magrittr %>%
+#' @import dplyr
 #' @export
 report_lmerTest_effect <- function(mod, param) {
   parameter_stats <- summary(mod)$coefficients[param, ] %>% as.data.frame
