@@ -145,6 +145,9 @@ norms_responses <- compile_norms_responses()
 
 subj_info <- compile_subj_info()
 survey <- compile_survey()
+coded_strategies <- read.csv("data-raw/question_first/coded_strategies.csv",
+                             stringsAsFactors = FALSE,
+                             na.strings = "")
 
 cue_first$exp <- "cue_first"
 question_first$exp <- "question_first"
@@ -152,5 +155,5 @@ property_verification <- rbind(cue_first, question_first)
 
 devtools::use_data(property_verification, cue_first, question_first,
                    norms, norms_responses,
-                   subj_info, survey,
+                   subj_info, survey, coded_strategies,
                    overwrite = TRUE)
