@@ -44,3 +44,8 @@ determining outlier subjects.
 
 ```{r, subj-interactions-plot}
 ```
+
+# Strategies
+
+```{r, subj-strategies}
+```

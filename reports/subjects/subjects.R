@@ -7,6 +7,7 @@ library(lme4)
 library(stringr)
 
 scale_color_exp_run <- scale_color_discrete("")
+scale_x_strategy <- scale_x_discrete("coded strategy")
 
 subjects_theme <- theme_minimal(base_size = 14) +
   theme(axis.ticks = element_blank())
@@ -31,6 +32,8 @@ recode_parameter <- function(frame) {
   )
   frame %>% left_join(parameter_map)
 }
+
+outlier_threshold <- data_frame(threshold = c(-5, 5))
 
 # ---- data
 # devtools::install_github("property-verification", "lupyanlab", subdir = "propertyverificationdata")
@@ -62,8 +65,7 @@ subj_effects <- subj_effects %>%
 plot_overall_effect(subj_effects) +
   facet_wrap("term_label", ncol = 1, scales = "free_y") +
   theme(panel.margin = unit(3, "lines")) +
-  geom_vline(aes(xintercept = xintercept),
-             data = data_frame(xintercept = c(-5, 5)),
+  geom_vline(aes(xintercept = threshold), data = outlier_threshold,
              lty = 2, size = 0.2, alpha = 0.4)
 
 # ---- subj-interactions-plot
@@ -97,3 +99,49 @@ plot_overall_effect(subj_interactions[!subj_interactions$outlier, ]) +
   geom_text(aes(x = mean_effect, y = height, label = label), data = effect_summary,
             hjust = -0.02, angle = 45, size = 3) +
   ggtitle("Distribution of by-subject effects")
+
+# ---- subj-strategies
+data(coded_strategies)
+subj_effects <- subj_effects %>% left_join(coded_strategies)
+
+strategy_counts <- subj_effects %>%
+  group_by(strategy_coded) %>%
+  summarize(n = n()) %>%
+  ungroup
+
+strategy_coded_levels <- strategy_counts %>%
+  arrange(desc(n)) %>%
+  .$strategy_coded
+
+set_strategy_coded_levels <- function(frame) {
+  frame %>% mutate(strategy_coded = factor(strategy_coded, levels = strategy_coded_levels))
+}
+
+strategy_counts <- set_strategy_coded_levels(strategy_counts)
+subj_effects <- set_strategy_coded_levels(subj_effects)
+
+ggplot(strategy_counts, aes(x = strategy_coded, y = n)) +
+  geom_bar(stat = "identity") +
+  scale_x_strategy +
+  scale_y_continuous("number of subjects") +
+  subjects_theme +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Distribution of strategies")
+
+set.seed(542)
+
+subj_interaction <- subj_effects %>%
+  filter(term == "feat_c:mask_c")
+
+ggplot(subj_interaction, aes(x = strategy_coded, y = estimate)) +
+  geom_point(aes(color = strategy_coded),
+             shape = 1,
+             position = position_jitter(width = 0.2)) +
+  guides(color = "none") +
+  scale_x_strategy +
+  scale_y_continuous("knowledge type x interference interaction") +
+  geom_hline(aes(yintercept = threshold), data = outlier_threshold,
+             lty = 2, size = 0.2, alpha = 0.4) +
+  subjects_theme +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  ggtitle("Relationship between strategy and by-subject effect")
