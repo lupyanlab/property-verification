@@ -23,15 +23,24 @@ read_chunk("subjects.R")
 ```{r, setup}
 ```
 
-# Data
-
 ```{r, data, echo = TRUE}
 ```
-
-# Subject effects
 
 ```{r, subj-effects}
 ```
 
-```{r, subj-effects-plots}
+# Determining outlier subjects
+
+To investigate potential outlier subjects I fit the following glm to each subject: `glm(is_error ~ feat_c * mask_c)`.
+
+There are outliers in every term when the models are fit at the by-subject 
+level. The dashed vertical lines depict the symmetric cutoff criteria for
+determining outlier subjects.
+
+```{r, subj-effects-plot, fig.height = 10}
+```
+
+# Subject effects without outliers
+
+```{r, subj-interactions-plot}
 ```
