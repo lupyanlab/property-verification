@@ -30,6 +30,13 @@ label_outlier_subjects <- function(frame) {
 #' @importFrom broom tidy
 #' @export
 label_ambiguous_propositions <- function(frame) {
+  proposition_classification <- determine_ambiguous_propositions()
+  frame %>% left_join(proposition_classification)
+}
+
+#' @import dplyr
+#' @importFrom broom tidy
+determine_ambiguous_propositions <- function() {
   data(norms_responses)
 
   norms_mods <- norms_responses %>%
@@ -49,5 +56,5 @@ label_ambiguous_propositions <- function(frame) {
     mutate(agreement = ifelse(p.value < 0.05, "agree", "ambiguous")) %>%
     select(proposition_id, agreement)
 
-  frame %>% left_join(proposition_classification)
+  proposition_classification
 }

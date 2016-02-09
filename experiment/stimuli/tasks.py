@@ -42,9 +42,23 @@ def cue_stats():
 
     cue_stats.to_csv(CUE_STATS_CSV, index=False)
 
-@task(cue_info)
+
+@task
+def drop_ambiguous_propositions():
+    all_propositions = read_csv('all_propositions.csv')
+    proposition_classification = read_csv(
+        'proposition_agreement_classification.csv',
+    )
+    propositions = all_propositions.merge(proposition_classification)
+    propositions = propositions.ix[propositions.agreement == 'agree', ]
+    propositions.to_csv('propositions.csv', index=False)
+
+
+@task(cue_info, drop_ambiguous_propositions)
 def verify():
     propositions = read_csv('propositions.csv')
+
+    # Verify that all cues in propositions are available.
     available_cues = read_csv(CUE_INFO_CSV).cue.tolist()
 
     any_missing = False
@@ -56,3 +70,10 @@ def verify():
 
     if not any_missing:
         print("all cues present and accounted for")
+
+    # Verify that we are only using a subset of the original questions.
+    all_propositions = read_csv('all_propositions.csv')
+    assert len(propositions) < len(all_propositions)
+    print('only using {} of {} total propositions'.format(
+        len(propositions), len(all_propositions)
+    ))
