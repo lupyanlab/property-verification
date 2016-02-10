@@ -365,7 +365,8 @@ class Experiment(object):
 
         # Evaluate the response
         is_correct = int(response == trial['correct_response'])
-        self.feedback[is_correct].play()
+        if trial['block_type'] == 'practice':
+            self.feedback[is_correct].play()
 
         # Update the data for this trial
         trial['response'] = response
@@ -486,7 +487,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'command',
-        choices=['experiment', 'make', 'instructions', 'trial', 'survey'],
+        choices=['experiment', 'make', 'texts', 'trial', 'survey'],
         nargs='?',
         default='experiment',
     )
@@ -495,6 +496,7 @@ if __name__ == '__main__':
                         help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
+    parser.add_argument('--labels', '-l', nargs='?')
 
     args = parser.parse_args()
 
@@ -504,9 +506,10 @@ if __name__ == '__main__':
         print "Making trials with seed %s: %s" % (seed, output)
         trials = Trials.make(seed=seed)
         trials.write(output)
-    elif args.command == 'instructions':
+    elif args.command == 'texts':
         experiment = create_experiment()
-        experiment._show_instructions()
+        for label in args.labels:
+            experiment.show_text(label)
     elif args.command == 'trial':
         trials = Trials.load('sample_trials.csv')
         experiment = create_experiment()
