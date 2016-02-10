@@ -382,8 +382,8 @@ class Experiment(object):
         return trial
 
     def show_text(self, label):
-        if label == 'instructions':
-            self._show_instructions()
+        if label in ['instructions', 'end_of_practice']:
+            self._show_text_block(label)
         else:
             text_str = self.texts[label]
             text_stim = visual.TextStim(
@@ -398,8 +398,8 @@ class Experiment(object):
             self.win.flip()
             event.waitKeys(keyList=['space', ])
 
-    def _show_instructions(self):
-        instructions = sorted(self.texts['instructions'].items())
+    def _show_text_block(self, label):
+        text_block = sorted(self.texts[label].items())
 
         text_kwargs = dict(
             win=self.win,
@@ -411,7 +411,7 @@ class Experiment(object):
         example = visual.TextStim(pos=[0, -50], **text_kwargs)
         example.setHeight(30)
 
-        for i, block in instructions:
+        for i, block in text_block:
             tag = block.pop('tag', None)
             advance_keys = [block.get('advance', 'space'), 'q']
 
