@@ -10,18 +10,8 @@ from numpy import random
 from unipath import Path
 
 from psychopy import prefs
-
-try:
-    import pyo
-except ImportError:
-    print 'pyo not found!'
-
 prefs.general['audioLib'] = ['pyo']
 from psychopy import visual, core, event, sound
-
-print 'initializing pyo to 48000'
-sound.init(48000, buffer=128)
-print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
 
 from labtools.psychopy_helper import get_subj_info, load_sounds
 from labtools.dynamic_mask import DynamicMask
@@ -95,7 +85,7 @@ class Participant(UserDict):
 
 class Trials(UserList):
     STIM_DIR = Path('stimuli')
-    DEFAULTS = dict(ratio_yes_correct_responses=0.75)
+    DEFAULTS = dict(ratio_yes_correct_responses=0.50)
     COLUMNS = [
         # Trial columns
         'block',
