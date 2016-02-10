@@ -325,11 +325,11 @@ class Experiment(object):
 
         # Delay between question offset and mask onset
         self.win.flip()
-        core.wait(self.waits['question_offset_to_mask_onset'])
+        core.wait(self.waits['question_offset_to_mask_interval_onset'])
 
         # If it's a mask trial, show the mask
         self.timer.reset()
-        while self.timer.getTime() < self.waits['mask_interval_duration']:
+        while self.timer.getTime() < self.waits['mask_interval_onset_to_cue_onset']:
             if show_mask:
                 self.mask.draw()
             self.win.flip()
@@ -339,13 +339,18 @@ class Experiment(object):
         self.timer.reset()
         event.clearEvents()
         cue.play()
-        self.prompt.draw()
-        self.win.flip()
-        response = event.waitKeys(
-            maxWait=self.waits['max_wait'],
-            keyList=self.response_keys.keys(),
-            timeStamped=self.timer,
-        )
+        while self.timer.getTime() < self.waits['max_wait']:
+            if show_mask:
+                self.mask.draw()
+            self.prompt.draw()
+            self.win.flip()
+
+            response = event.getKeys(
+                keyList=self.response_keys.keys(),
+                timeStamped=self.timer,
+            )
+            if response:
+                break
 
         self.win.flip()
 
@@ -356,8 +361,7 @@ class Experiment(object):
         # Determine the response type
         try:
             key, rt = response[0]
-        except TypeError:
-            logging.info('no key was pressed')
+        except IndexError:
             rt = self.waits['max_wait']
             response = 'timeout'
         else:

@@ -2,13 +2,13 @@ waits:
   ready_duration: 1.0
   ready_offset_to_question_onset: 0.4
   question_duration: 1.5
-  question_offset_to_mask_onset: 0.1
-  mask_interval_duration: 0.2
-  mask_interval_offset_to_cue_onset: 0.4
+  question_offset_to_mask_interval_onset: 0.2
+  mask_interval_onset_to_cue_onset: 0.4
   max_wait: 2.0
   inter_trial_interval: 1.0
   mask_refresh: 0.01
 response_keys:
-  y: up
-  n: down
+  # 'yes' and 'no' must be quoted or yaml thinks they are boolean!
+  up: 'yes'
+  down: 'no'
 survey_url: "https://docs.google.com/forms/d/1sXgpenG9tMBRa331zStFQHoBmKbUel3I5Y4ONowFj14/viewform?entry.910726511={subj_id}&entry.125044269={computer}&entry.969548156&entry.969586956&entry.1239227527&entry.1711268051&entry.23393786"
