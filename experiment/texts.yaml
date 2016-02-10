@@ -86,6 +86,6 @@ end_of_experiment: >
   survey we'd like you to fill out. Press the SPACEBAR to see the survey. If you
   don't see the survey, please tell the experimenter.
 timeout: >
-  You didn't answer fast enough! Remember to press 'y' for YES and 'n' for NO.
-  Please respond as quickly as possible. Press the SPACEBAR when you are ready
-  to continue.
+  You didn't answer fast enough! Remember to press the up arrow for YES and the
+  down arrow for NO. Please respond as quickly as possible. Press the SPACEBAR
+  when you are ready to continue. 
