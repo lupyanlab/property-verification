@@ -431,7 +431,7 @@ class Experiment(object):
                 example.draw()
 
             if tag == 'mask':
-                img_path = Path('stimuli', 'dynamic_mask', 'colored_1.png')
+                img_path = Path('labtools', 'dynamic_mask', 'colored_1.png')
                 mask = visual.ImageStim(self.win, str(img_path), pos=[0, -100])
                 mask.draw()
 
@@ -441,7 +441,7 @@ class Experiment(object):
             if key == 'q':
                 core.quit()
 
-            if key in ['y', 'n']:
+            if key in ['up', 'down']:
                 self.feedback[1].play()
 
 def create_experiment():
@@ -496,7 +496,7 @@ if __name__ == '__main__':
                         help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
-    parser.add_argument('--labels', '-l', nargs='?')
+    parser.add_argument('--labels', '-l', nargs='+')
 
     args = parser.parse_args()
 
