@@ -302,9 +302,7 @@ class Experiment(object):
         cue = self.cues[trial['cue_file']]
         cue_dur = cue.getDuration()
 
-        stims_during_cue = []
-        if trial['mask_type'] == 'mask':
-            stims_during_cue.append(self.mask)
+        show_mask = (trial['mask_type'] == 'mask')
 
         ############################
         # BEGIN TRIAL PRESENTATION #
@@ -325,23 +323,23 @@ class Experiment(object):
         self.win.flip()
         core.wait(self.waits['question_duration'])
 
-        # Delay between question offset and cue onset
+        # Delay between question offset and mask onset
         self.win.flip()
-        core.wait(self.waits['question_offset_to_cue_onset'])
+        core.wait(self.waits['question_offset_to_mask_onset'])
 
-        # Play cue (and show mask)
+        # If it's a mask trial, show the mask
         self.timer.reset()
-        cue.play()
-        while self.timer.getTime() < cue_dur:
-            for stim in stims_during_cue:
-                stim.draw()
+        while self.timer.getTime() < self.waits['mask_interval_duration']:
+            if show_mask:
+                self.mask.draw()
             self.win.flip()
             core.wait(self.waits['mask_refresh'])
 
-        # Show the prompt, start the RT timer, and collect the response
-        self.prompt.draw()
+        # Play the cue and collect the response
         self.timer.reset()
         event.clearEvents()
+        cue.play()
+        self.prompt.draw()
         self.win.flip()
         response = event.waitKeys(
             maxWait=self.waits['max_wait'],

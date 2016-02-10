@@ -2,7 +2,9 @@ waits:
   ready_duration: 1.0
   ready_offset_to_question_onset: 0.4
   question_duration: 1.5
-  question_offset_to_cue_onset: 0.4
+  question_offset_to_mask_onset: 0.1
+  mask_interval_duration: 0.2
+  mask_interval_offset_to_cue_onset: 0.4
   max_wait: 2.0
   inter_trial_interval: 1.0
   mask_refresh: 0.01
