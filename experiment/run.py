@@ -10,18 +10,8 @@ from numpy import random
 from unipath import Path
 
 from psychopy import prefs
-
-try:
-    import pyo
-except ImportError:
-    print 'pyo not found!'
-
 prefs.general['audioLib'] = ['pyo']
 from psychopy import visual, core, event, sound
-
-print 'initializing pyo to 48000'
-sound.init(48000, buffer=128)
-print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
 
 from labtools.psychopy_helper import get_subj_info, load_sounds
 from labtools.dynamic_mask import DynamicMask
@@ -95,7 +85,7 @@ class Participant(UserDict):
 
 class Trials(UserList):
     STIM_DIR = Path('stimuli')
-    DEFAULTS = dict(ratio_yes_correct_responses=0.75)
+    DEFAULTS = dict(ratio_yes_correct_responses=0.50)
     COLUMNS = [
         # Trial columns
         'block',
@@ -312,9 +302,7 @@ class Experiment(object):
         cue = self.cues[trial['cue_file']]
         cue_dur = cue.getDuration()
 
-        stims_during_cue = []
-        if trial['mask_type'] == 'mask':
-            stims_during_cue.append(self.mask)
+        show_mask = (trial['mask_type'] == 'mask')
 
         ############################
         # BEGIN TRIAL PRESENTATION #
@@ -335,29 +323,34 @@ class Experiment(object):
         self.win.flip()
         core.wait(self.waits['question_duration'])
 
-        # Delay between question offset and cue onset
+        # Delay between question offset and mask onset
         self.win.flip()
-        core.wait(self.waits['question_offset_to_cue_onset'])
+        core.wait(self.waits['question_offset_to_mask_interval_onset'])
 
-        # Play cue (and show mask)
+        # If it's a mask trial, show the mask
         self.timer.reset()
-        cue.play()
-        while self.timer.getTime() < cue_dur:
-            for stim in stims_during_cue:
-                stim.draw()
+        while self.timer.getTime() < self.waits['mask_interval_onset_to_cue_onset']:
+            if show_mask:
+                self.mask.draw()
             self.win.flip()
             core.wait(self.waits['mask_refresh'])
 
-        # Show the prompt, start the RT timer, and collect the response
-        self.prompt.draw()
+        # Play the cue and collect the response
         self.timer.reset()
         event.clearEvents()
-        self.win.flip()
-        response = event.waitKeys(
-            maxWait=self.waits['max_wait'],
-            keyList=self.response_keys.keys(),
-            timeStamped=self.timer,
-        )
+        cue.play()
+        while self.timer.getTime() < self.waits['max_wait']:
+            if show_mask:
+                self.mask.draw()
+            self.prompt.draw()
+            self.win.flip()
+
+            response = event.getKeys(
+                keyList=self.response_keys.keys(),
+                timeStamped=self.timer,
+            )
+            if response:
+                break
 
         self.win.flip()
 
@@ -368,8 +361,7 @@ class Experiment(object):
         # Determine the response type
         try:
             key, rt = response[0]
-        except TypeError:
-            logging.info('no key was pressed')
+        except IndexError:
             rt = self.waits['max_wait']
             response = 'timeout'
         else:
@@ -377,7 +369,8 @@ class Experiment(object):
 
         # Evaluate the response
         is_correct = int(response == trial['correct_response'])
-        self.feedback[is_correct].play()
+        if trial['block_type'] == 'practice':
+            self.feedback[is_correct].play()
 
         # Update the data for this trial
         trial['response'] = response
@@ -394,8 +387,8 @@ class Experiment(object):
         return trial
 
     def show_text(self, label):
-        if label == 'instructions':
-            self._show_instructions()
+        if label in ['instructions', 'end_of_practice']:
+            self._show_text_block(label)
         else:
             text_str = self.texts[label]
             text_stim = visual.TextStim(
@@ -410,8 +403,8 @@ class Experiment(object):
             self.win.flip()
             event.waitKeys(keyList=['space', ])
 
-    def _show_instructions(self):
-        instructions = sorted(self.texts['instructions'].items())
+    def _show_text_block(self, label):
+        text_block = sorted(self.texts[label].items())
 
         text_kwargs = dict(
             win=self.win,
@@ -423,7 +416,7 @@ class Experiment(object):
         example = visual.TextStim(pos=[0, -50], **text_kwargs)
         example.setHeight(30)
 
-        for i, block in instructions:
+        for i, block in text_block:
             tag = block.pop('tag', None)
             advance_keys = [block.get('advance', 'space'), 'q']
 
@@ -442,7 +435,7 @@ class Experiment(object):
                 example.draw()
 
             if tag == 'mask':
-                img_path = Path('stimuli', 'dynamic_mask', 'colored_1.png')
+                img_path = Path('labtools', 'dynamic_mask', 'colored_1.png')
                 mask = visual.ImageStim(self.win, str(img_path), pos=[0, -100])
                 mask.draw()
 
@@ -452,7 +445,7 @@ class Experiment(object):
             if key == 'q':
                 core.quit()
 
-            if key in ['y', 'n']:
+            if key in ['up', 'down']:
                 self.feedback[1].play()
 
 def create_experiment():
@@ -498,7 +491,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'command',
-        choices=['experiment', 'make', 'instructions', 'trial', 'survey'],
+        choices=['experiment', 'make', 'texts', 'trial', 'survey'],
         nargs='?',
         default='experiment',
     )
@@ -507,6 +500,7 @@ if __name__ == '__main__':
                         help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
+    parser.add_argument('--labels', '-l', nargs='+')
 
     args = parser.parse_args()
 
@@ -516,9 +510,10 @@ if __name__ == '__main__':
         print "Making trials with seed %s: %s" % (seed, output)
         trials = Trials.make(seed=seed)
         trials.write(output)
-    elif args.command == 'instructions':
+    elif args.command == 'texts':
         experiment = create_experiment()
-        experiment._show_instructions()
+        for label in args.labels:
+            experiment.show_text(label)
     elif args.command == 'trial':
         trials = Trials.load('sample_trials.csv')
         experiment = create_experiment()

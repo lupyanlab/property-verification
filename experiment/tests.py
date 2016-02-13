@@ -1,8 +1,10 @@
+from __future__ import print_function
 import os
 import yaml
 
 import pytest
 import unipath
+import pandas as pd
 
 from run import Trials
 
@@ -23,3 +25,9 @@ def test_cue_files_exist(trials):
     available = unipath.Path('stimuli/cues').listdir('*.wav', names_only=True)
     used = frame.cue_file.unique()
     assert all([cue in available for cue in used])
+
+def test_propositions_are_correct_proportion(trials):
+    frame = trials.to_dataframe()
+    proportions = frame.groupby('correct_response').size() / len(frame)
+    expected = pd.Series([0.5, 0.5], index=['no', 'yes'])
+    assert all(proportions == expected)
