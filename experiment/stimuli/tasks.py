@@ -17,6 +17,7 @@ CUE_STATS_CSV = 'cue_stats.csv'
 
 @task
 def cue_info():
+    """Scan the available cue files to create a cue info csv."""
     cues = Path(CUES_DIR).listdir('*.wav', names_only=True)
     cue_info = DataFrame({'cue_file': cues})
     filename_re = r'(?P<cue>[a-z]+)_(?P<version>\d)\.wav'
@@ -26,6 +27,7 @@ def cue_info():
 
 @task
 def cue_stats():
+    """Load all cue files and measure their duration."""
     from psychopy import sound
     cues = Path(CUES_DIR).listdir('*.wav')  # with path
     cue_stats_records = []
