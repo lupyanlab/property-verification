@@ -27,20 +27,30 @@ read_chunk("propositions.R")
 
 # Normative agreement
 
-Are there any propositions for which the norming participants didn't agree as
-to the truth of the proposition?
+Ideally, the majority of people would agree on the truth or falseness of each of
+the 536 propositions we created for this experiment, yet against our best 
+intentions, there were some propositions for which people did not agree.
 
-Here I fit a lm model for each proposition predicting truth value in an
-intercept-only model. The estimate, error, and _p_ value for the intercept
-correspond to whether or not the norming participants agreed that the truth
-of the proposition was different from 0, that is, whether or not the proposition
-was actually true or false.
+To determine which propositions were ambiguous, I fit a linear model to the
+responses for each proposition given in the norming study. In the norming
+study, participants were asked to answer the yes or no question on a
+5-point scale from _Definitely no_ to _Definitely yes_. The scale was centered
+on _Maybe_, corresponding to a truth value of 0. The linear models predicted
+mean truth value for each proposition, and the statistical test of interest
+was whether this value differently reliably from 0 (the intercept term),
+which would indicate that people tended to agree on the truth or falseness
+of each of the propositions.
 
-Critically there are some propositions for which the truth of the proposition
-is ambiguous, and responses to these propositions cannot really be interpreted
-as true or false in the actual experiment.
+Any proposition for which mean truth value did not significantly differ from 0
+(_p_ < 0.05) was deemed "ambiguous". If the truth value of the proposition is
+ambiguous as determined by the norming participants, then supposedly incorrect
+responses to these propositions in the main experiment cannot be interpreted as
+errors in the actual experiment.
 
 ```{r, truth-agreement}
+```
+
+```{r, save-ambiguous, echo = TRUE}
 ```
 
 # Incorrectly coded propositions
