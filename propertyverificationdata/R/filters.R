@@ -58,3 +58,23 @@ determine_ambiguous_propositions <- function() {
 
   proposition_classification
 }
+
+#' Label the propositions that were too hard based on baseline performance.
+#' 
+#' @import dplyr
+#' @importFrom broom tidy
+label_bad_baseline_performance <- function(frame) {
+  data(question_first)
+  
+  baseline_performance <- question_first %>%
+    tidy_property_verification_data %>%
+    filter(mask_type == "nomask") %>%
+    group_by(proposition_id) %>%
+    do(mod = glm(is_error ~ 1, family = "binomial", data = .)) %>%
+    tidy(mod) %>%
+    mutate(baseline_difficulty = ifelse((estimate > 0) | (p.value > 0.05),
+                                        "too_hard", "easy")) %>%
+    select(proposition_id, baseline_difficulty)
+
+  baseline_performance
+}
