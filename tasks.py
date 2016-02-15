@@ -31,7 +31,9 @@ def replace_propositions():
     keepers = all_propositions.proposition_id.isin(selected_proposition_ids)
     selected_propositions = all_propositions.ix[keepers]
 
-    selected_propositions.sort_values(by=['feat_type', 'correct_response'],
-                                      inplace=True)
+    selected_propositions.sort_values(
+        by=['feat_type', 'correct_response', 'cue'],
+        ascending=[0, 0, 1],
+        inplace=True)
 
     selected_propositions.to_csv(dst, index=False)
