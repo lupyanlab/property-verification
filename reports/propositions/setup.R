@@ -17,7 +17,9 @@ set.seed(253)
 
 question_first <- question_first %>%
   tidy_property_verification_data %>%
-  recode_property_verification_data
+  recode_property_verification_data %>%
+  label_outlier_subjects %>%
+  filter(outlier == FALSE)
 
 #' Get the coefficients from an lme4 mod in tidy format.
 tidy_lmer_coefs <- function(mod, grouping_var = 1) {
