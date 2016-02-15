@@ -37,3 +37,14 @@ def replace_propositions():
         inplace=True)
 
     selected_propositions.to_csv(dst, index=False)
+
+@task(replace_propositions)
+def create_loop_merge():
+    """Create a spreadsheet to upload to Qualtrics as loop and merge data."""
+    propositions = pd.read_csv('experiment/stimuli/propositions.csv')
+    loop_merge = propositions.ix[propositions.correct_response == 'yes']
+    loop_merge.sort_values(by=['cue', ], inplace=True)
+    loop_merge['loop_merge_row'] = range(1, len(loop_merge)+1)
+    loop_merge = loop_merge[['loop_merge_row', 'question', 'cue', 'proposition_id']]
+    loop_merge.to_csv('individual_diffs/qualtrics/loop-merge.csv',
+                      index=False)

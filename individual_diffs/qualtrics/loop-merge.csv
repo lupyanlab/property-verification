@@ -1,0 +1,101 @@
+loop_merge_row,question,cue,proposition_id
+1,Does it have jaws?,alligator,does-it-have-jaws:alligator
+2,Is it an animal?,alligator,is-it-an-animal:alligator
+3,Is it long?,alligator,is-it-long:alligator
+4,Is it round?,apple,is-it-round:apple
+5,Does it grow on trees?,apple,does-it-grow-on-trees:apple
+6,Is it used for cider?,apple,is-it-used-for-cider:apple
+7,Does it grow in tropical climates?,banana,does-it-grow-in-tropical-climates:banana
+8,Does it have a skin?,banana,does-it-have-a-skin:banana
+9,Is it yellow?,banana,is-it-yellow:banana
+10,Does it have a peel?,banana,does-it-have-a-peel:banana
+11,Does it have different speeds?,bike,does-it-have-different-speeds:bike
+12,Is it a container?,bottle,is-it-a-container:bottle
+13,Is it breakable?,bottle,is-it-breakable:bottle
+14,Is it used for holding liquids?,bottle,is-it-used-for-holding-liquids:bottle
+15,Is it used for holding things?,bottle,is-it-used-for-holding-things:bottle
+16,Does it have a hump?,camel,does-it-have-a-hump:camel
+17,Is it brown?,camel,is-it-brown:camel
+18,Does it have legs?,camel,does-it-have-legs:camel
+19,Is it large?,camel,is-it-large:camel
+20,Does it drink water?,camel,does-it-drink-water:camel
+21,Does it spit?,camel,does-it-spit:camel
+22,Does it eat?,camel,does-it-eat:camel
+23,Is it beige?,camel,is-it-beige:camel
+24,Is it found at tables?,chair,is-it-found-at-tables:chair
+25,Is it used for sitting on?,chair,is-it-used-for-sitting-on:chair
+26,Is it used for relaxing?,chair,is-it-used-for-relaxing:chair
+27,Does it live in a coop?,chicken,does-it-live-in-a-coop:chicken
+28,Is it fast?,deer,is-it-fast:deer
+29,Does it have four legs?,deer,does-it-have-four-legs:deer
+30,Does it have hair?,dog,does-it-have-hair:dog
+31,Does it bark?,dog,does-it-bark:dog
+32,Is it furry?,donkey,is-it-furry:donkey
+33,Does it make noises?,donkey,does-it-make-noises:donkey
+34,Does it have hooves?,donkey,does-it-have-hooves:donkey
+35,Does it have a tail?,donkey,does-it-have-a-tail:donkey
+36,Does it have legs?,donkey,does-it-have-legs:donkey
+37,Does it have four legs?,donkey,does-it-have-four-legs:donkey
+38,Does it live in Africa?,elephant,does-it-live-in-africa:elephant
+39,Is it an animal?,elephant,is-it-an-animal:elephant
+40,Does it have ears?,elephant,does-it-have-ears:elephant
+41,Does it eat peanuts?,elephant,does-it-eat-peanuts:elephant
+42,Does it have four legs?,elephant,does-it-have-four-legs:elephant
+43,Does it eat leaves?,giraffe,does-it-eat-leaves:giraffe
+44,Does it live in zoos?,giraffe,does-it-live-in-zoos:giraffe
+45,Does it have long legs?,giraffe,does-it-have-long-legs:giraffe
+46,Is it tall?,giraffe,is-it-tall:giraffe
+47,Does it have legs?,grasshopper,does-it-have-legs:grasshopper
+48,Is it green?,grasshopper,is-it-green:grasshopper
+49,Is it worn for the rain?,jacket,is-it-worn-for-the-rain:jacket
+50,Is it clothing?,jacket,is-it-clothing:jacket
+51,Does it have a zipper?,jacket,does-it-have-a-zipper:jacket
+52,Does it have pockets?,jacket,does-it-have-pockets:jacket
+53,Does it have sleeves?,jacket,does-it-have-sleeves:jacket
+54,Does it roar?,lion,does-it-roar:lion
+55,Is it an animal?,lion,is-it-an-animal:lion
+56,Is it a carnivore?,lion,is-it-a-carnivore:lion
+57,Does it have a tail?,lion,does-it-have-a-tail:lion
+58,Does it have a tail?,mouse,does-it-have-a-tail:mouse
+59,Does it eat?,mouse,does-it-eat:mouse
+60,Is it an animal?,mouse,is-it-an-animal:mouse
+61,Is it grey?,mouse,is-it-grey:mouse
+62,Is it black?,penguin,is-it-black:penguin
+63,Does it have feet?,penguin,does-it-have-feet:penguin
+64,Does it have a snout?,pig,does-it-have-a-snout:pig
+65,Does it live on farms?,pig,does-it-live-on-farms:pig
+66,Does it like mud?,pig,does-it-like-mud:pig
+67,Does it have legs?,pig,does-it-have-legs:pig
+68,Is it pink?,pig,is-it-pink:pig
+69,Is it smelly?,pig,is-it-smelly:pig
+70,Is it juicy?,pineapple,is-it-juicy:pineapple
+71,Does it have an inside?,pineapple,does-it-have-an-inside:pineapple
+72,Is it tropical?,pineapple,is-it-tropical:pineapple
+73,Does it eat carrots?,rabbit,does-it-eat-carrots:rabbit
+74,Does it have whiskers?,rabbit,does-it-have-whiskers:rabbit
+75,Does it have feet?,rabbit,does-it-have-feet:rabbit
+76,Does it have ears?,rabbit,does-it-have-ears:rabbit
+77,Does it produce offspring?,raccoon,does-it-produce-offspring:raccoon
+78,Is it furry?,raccoon,is-it-furry:raccoon
+79,Does it taste good?,strawberry,does-it-taste-good:strawberry
+80,Is it a fruit?,strawberry,is-it-a-fruit:strawberry
+81,Is it red?,strawberry,is-it-red:strawberry
+82,Does it lay eggs?,swan,does-it-lay-eggs:swan
+83,Does it have feathers?,swan,does-it-have-feathers:swan
+84,Does it have a long neck?,swan,does-it-have-a-long-neck:swan
+85,Does it have wings?,swan,does-it-have-wings:swan
+86,Does it live on water?,swan,does-it-live-on-water:swan
+87,Is it used for eating on?,table,is-it-used-for-eating-on:table
+88,Is it made of wood?,table,is-it-made-of-wood:table
+89,Is it flat?,table,is-it-flat:table
+90,Is it found in kitchens?,table,is-it-found-in-kitchens:table
+91,Does it live in India?,tiger,does-it-live-in-india:tiger
+92,Does it have whiskers?,tiger,does-it-have-whiskers:tiger
+93,Is it small?,toad,is-it-small:toad
+94,Does it have an engine?,train,does-it-have-an-engine:train
+95,Is it loud?,train,is-it-loud:train
+96,Does it have stripes?,zebra,does-it-have-stripes:zebra
+97,Does it have four legs?,zebra,does-it-have-four-legs:zebra
+98,Does it have hooves?,zebra,does-it-have-hooves:zebra
+99,Does it live in Africa?,zebra,does-it-live-in-africa:zebra
+100,Is it an animal?,zebra,is-it-an-animal:zebra
