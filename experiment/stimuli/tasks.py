@@ -45,18 +45,7 @@ def cue_stats():
     cue_stats.to_csv(CUE_STATS_CSV, index=False)
 
 
-@task
-def drop_ambiguous_propositions():
-    all_propositions = read_csv('all_propositions.csv')
-    proposition_classification = read_csv(
-        'proposition_agreement_classification.csv',
-    )
-    propositions = all_propositions.merge(proposition_classification)
-    propositions = propositions.ix[propositions.agreement == 'agree', ]
-    propositions.to_csv('propositions.csv', index=False)
-
-
-@task(cue_info, drop_ambiguous_propositions)
+@task(cue_info)
 def verify():
     propositions = read_csv('propositions.csv')
 
