@@ -31,3 +31,12 @@ def test_propositions_are_correct_proportion(trials):
     proportions = frame.groupby('correct_response').size() / len(frame)
     expected = pd.Series([0.5, 0.5], index=['no', 'yes'])
     assert all(proportions == expected)
+
+def test_all_trials_are_reached(trials):
+    frame = trials.to_dataframe()
+    expected_num_blocks = len(frame.block.unique())
+    blocks = list(trials.iter_blocks())
+    for b in blocks:
+        print(b[0]['block'])
+    actual_num_blocks = len(list(trials.iter_blocks()))
+    assert actual_num_blocks == expected_num_blocks

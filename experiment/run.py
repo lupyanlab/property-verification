@@ -243,6 +243,8 @@ class Trials(UserList):
                 yield trials_in_block
                 block = trial[key]
                 trials_in_block = []
+        # end of trials, so yield the last block
+        yield trials_in_block
 
 
 class Experiment(object):
