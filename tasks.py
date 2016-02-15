@@ -11,5 +11,9 @@ from invoke import task, run
 def install_r_package_data():
     """Install the propertyverificationdata R package."""
     # watch quotes!
-    r_command = 'devtools::install("propertyverificationdata")'
-    run("Rscript -e '{}'".format(r_command))
+    r_commands = [
+        'devtools::document("propertyverificationdata")',
+        'devtools::install("propertyverificationdata")',
+    ]
+    for r_command in r_commands:
+        run("Rscript -e '{}'".format(r_command))
