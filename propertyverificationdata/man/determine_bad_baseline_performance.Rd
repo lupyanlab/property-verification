@@ -4,7 +4,7 @@
 \alias{determine_bad_baseline_performance}
 \title{Determine which propositions had bad baseline performance.}
 \usage{
-determine_bad_baseline_performance()
+determine_bad_baseline_performance(question_first)
 }
 \description{
 Determine which propositions had bad baseline performance.

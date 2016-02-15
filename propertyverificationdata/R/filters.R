@@ -64,8 +64,9 @@ determine_ambiguous_propositions <- function() {
 #'
 #' @import dplyr
 #' @export
-label_bad_baseline_performance <- function(frame) {
-  baseline_performance <- determine_bad_baseline_performance()
+label_bad_baseline_performance <- function(frame, question_first) {
+  if(missing(question_first)) data(question_first)
+  baseline_performance <- determine_bad_baseline_performance(question_first)
   frame %>% left_join(baseline_performance)
 }
 
@@ -73,16 +74,23 @@ label_bad_baseline_performance <- function(frame) {
 #'
 #' @import dplyr
 #' @importFrom broom tidy
-determine_bad_baseline_performance <- function() {
-  data(question_first)
-
-  question_first %>%
+determine_bad_baseline_performance <- function(question_first) {
+  baseline_performance_mods <- question_first %>%
     tidy_property_verification_data %>%
     filter(mask_type == "nomask") %>%
     group_by(proposition_id) %>%
-    do(mod = glm(is_error ~ 1, family = "binomial", data = .)) %>%
-    tidy(mod) %>%
-    mutate(baseline_difficulty = ifelse((estimate > 0) | (p.value > 0.05),
-                                        "too_hard", "easy")) %>%
+    do(mod = glm(is_error ~ 1, family = "binomial", data = .))
+
+  baseline_performance_coefs <- baseline_performance_mods %>% tidy(mod)
+
+  baseline_performance <- baseline_performance_coefs %>%
+    mutate(
+      baseline_difficulty = ifelse(
+        estimate < -10, "easy",  # everyone got it right
+        ifelse((estimate > 0) | (p.value > 0.05), "too_hard", "easy")
+      )
+    ) %>%
     select(proposition_id, baseline_difficulty)
+
+  baseline_performance
 }

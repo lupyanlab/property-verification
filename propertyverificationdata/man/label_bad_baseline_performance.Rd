@@ -4,7 +4,7 @@
 \alias{label_bad_baseline_performance}
 \title{Label the propositions that were too hard based on baseline performance.}
 \usage{
-label_bad_baseline_performance(frame)
+label_bad_baseline_performance(frame, question_first)
 }
 \description{
 Label the propositions that were too hard based on baseline performance.
