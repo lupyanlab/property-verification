@@ -1,41 +1,32 @@
 source("reports/propositions/setup.R")
 
 # ---- subset
+cat("total number of propositions in the original stimuli set")
+nrow(norms)
+
 best_propositions <- norms %>%
   label_ambiguous_propositions %>%
   label_bad_baseline_performance(question_first) %>%
   filter(agreement == "agree", baseline_difficulty == "easy") %>%
   select(proposition_id, feat_type, correct_response)
 
-cat("number of remaining propositions")
+cat("number of remaining propositions (no ambiguous propositions or propositions that were too difficult")
 nrow(best_propositions)
 
 cat("distribution of propositions by type")
 table(best_propositions[, c("feat_type", "correct_response")])
 
-# Summarize baseline task performance for each proposition
-proposition_difficulty <- question_first %>%
-  filter(mask_type == "nomask") %>%
-  group_by(proposition_id) %>%
-  summarize(
-    num_trials = n(),
-    num_errors = sum(is_error, na.rm = TRUE),
-    difficulty_exp_error = mean(is_error, na.rm = TRUE),
-    difficulty_exp_rt = mean(rt[is_correct == 1], na.rm = TRUE)
-  ) %>%
-  left_join(norms) %>%
-  select(
-    proposition_id,
-    n_norms = difficulty_count,
-    difficulty_norms = difficulty_z,
-    n_exp = num_trials,
-    difficulty_exp_error,
-    difficulty_exp_rt
+best_propositions <- best_propositions %>%
+  left_join(difficulty_measures) %>%
+  filter(
+    # additional cutoffs from eyeballing distributions
+    difficulty_exp_error < 0.2,
+    difficulty_exp_rt < 600
   )
 
-best_propositions <- best_propositions %>% left_join(proposition_difficulty)
+cat("entering loop to randomly select balanced propositions")
 
-for(seed in 1:10000) {
+for(seed in 1:1000) {
   set.seed(seed)
   
   subset_proposition_ids <- best_propositions %>%
@@ -45,54 +36,60 @@ for(seed in 1:10000) {
   
   # see if the randomly selected propositions differ in norming difficulty
   norm_diff <- filter(norms, proposition_id %in% subset_proposition_ids) %>%
-    lm(difficulty_z ~ feat_type, data = .) %>%
+    lm(difficulty_z ~ feat_type + correct_response, data = .) %>%
     tidy %>%
     filter(term == "feat_typevisual") %>%
     .$p.value < 0.05
   
   # see if the randomly selected propositions differ in exp difficulty (error)
   exp_error_diff <- filter(question_first, proposition_id %in% subset_proposition_ids) %>%
-    glm(is_error ~ feat_type, data = .) %>%
+    glm(is_error ~ feat_type + correct_response, data = .) %>%
     tidy %>%
     filter(term == "feat_typevisual") %>%
     .$p.value < 0.05
   
   # see if the randomly selected propositions differ in exp difficulty (rt)
   exp_rt_diff <- filter(question_first, proposition_id %in% subset_proposition_ids) %>%
-    lm(rt ~ feat_type, data = .) %>%
+    lm(rt ~ feat_type + correct_response, data = .) %>%
     tidy %>%
     filter(term == "feat_typevisual") %>%
     .$p.value < 0.05
   
   if(!any(norm_diff, exp_error_diff, exp_rt_diff)) {
-    cat("found one!", seed)
+    cat("found a set of propositions that are balanced!")
     break
   }
 }
 
+cat("verify the final selected propositions")
+
 # verify
 selected_propositions <- norms %>%
   filter(proposition_id %in% subset_proposition_ids) %>%
-  left_join(proposition_difficulty)
+  left_join(difficulty_measures)
+
 
 table(selected_propositions[, c("feat_type", "correct_response")])
 
 ggplot(selected_propositions, aes(x = feat_type, y = difficulty_z)) +
   geom_point(aes(color = feat_type), shape = 1, position = position_jitter(width = 0.1)) +
   geom_point(stat = "summary", fun.y = "mean", size = 4) +
-  facet_wrap("correct_response")
+  facet_wrap("correct_response") +
+  base_theme
 
 ggplot(selected_propositions, aes(x = feat_type, y = difficulty_exp_error)) +
   geom_point(aes(color = feat_type), shape = 1, position = position_jitter(width = 0.1)) +
   geom_point(stat = "summary", fun.y = "mean", size = 4) +
-  facet_wrap("correct_response")
+  facet_wrap("correct_response") +
+  base_theme
 
 ggplot(selected_propositions, aes(x = feat_type, y = difficulty_exp_rt)) +
   geom_point(aes(color = feat_type), shape = 1, position = position_jitter(width = 0.1)) +
   geom_point(stat = "summary", fun.y = "mean", size = 4) +
-  facet_wrap("correct_response")
+  facet_wrap("correct_response") +
+  base_theme
 
 # ---- export-subset
 selected_propositions %>%
   select(proposition_id) %>%
-  write.csv("balanced-propositions.csv", row.names = FALSE)
+  write.csv("balanced_propositions.csv", row.names = FALSE)

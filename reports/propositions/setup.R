@@ -21,6 +21,27 @@ question_first <- question_first %>%
   label_outlier_subjects %>%
   filter(outlier == FALSE)
 
+# Summarize measures of difficulty for each of the propositions
+difficulty_measures <- question_first %>%
+  filter(mask_type == "nomask") %>%
+  group_by(proposition_id) %>%
+  summarize(
+    num_trials = n(),
+    num_errors = sum(is_error, na.rm = TRUE),
+    difficulty_exp_error = mean(is_error, na.rm = TRUE),
+    difficulty_exp_rt = mean(rt[is_correct == 1], na.rm = TRUE)
+  ) %>%
+  # add in norming difficulty
+  left_join(norms) %>%
+  select(
+    proposition_id,
+    n_norms = difficulty_count,
+    difficulty_norms = difficulty_z,
+    n_exp = num_trials,
+    difficulty_exp_error,
+    difficulty_exp_rt
+  )
+
 #' Get the coefficients from an lme4 mod in tidy format.
 tidy_lmer_coefs <- function(mod, grouping_var = 1) {
   coefs_list <- coef(mod)

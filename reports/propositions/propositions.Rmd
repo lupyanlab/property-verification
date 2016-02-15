@@ -112,6 +112,30 @@ no mask trials only**.
 
 # Subsetting balanced propositions
 
+Ideally, propositions testing visual and encyclopedic knowledge would be
+equally difficult, which was the case in the first run of the experiment.
+However, with subsequent runs, it seemed that the visual questions were
+harder overall than the encyclopedic questions. If true, this provides
+an alternative explanation of our preliminary results: it's not that the
+mask only affected visual knowledge, it might just be that the mask affected
+the more difficult questions which just happened to be visual.
+
+For the new experiment, only a subset of propositions will be used, and
+these will be carefully selected to equate for overall difficulty differences
+between visual and encyclopedic questions.
+
+To determine the subset of propositions to use, first I removed the ambiguous
+questions (as rated by the norming participants) and then I removed the propositions
+for which baseline performance was too low.
+
+Of the remaining propositions, I selected 200: 100 visual and 100 encyclopedic.
+Within those 100 propositions, 50 of them were correct and 50 of them were
+incorrect.
+
+To select the 200 propositions to use, I randomly sampled propositions and 
+then calculated whether or not the propositions differed in terms of difficulty
+between visual and nonvisual.
+
 ```{r, subset}
 ```
 
