@@ -1,6 +1,6 @@
 source("reports/propositions/setup.R")
 
-# ---- difficulty
+# ---- baseline-difficulty
 baseline_performance <- question_first %>%
   filter(mask_type == "nomask")
 
@@ -19,5 +19,8 @@ ggplot(prop_error_coefs, aes(x = estimate, y = p.value)) +
   scale_shape_manual(values = c(16, 1)) +
   base_theme
 
-baseline_difficulty <- prop_error_coefs %>%
+# ---- export-difficult
+difficult_propositions <- prop_error_coefs %>%
+  filter(baseline_difficulty == "too_hard") %>%
   select(proposition_id, baseline_difficulty)
+write.csv(difficult_propositions, "difficult_propositions.csv", row.names = FALSE)

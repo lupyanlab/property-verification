@@ -19,7 +19,7 @@ opts_chunk$set(
 read_chunk("setup.R")
 read_chunk("ambiguous.R")
 read_chunk("incorrectly-coded.R")
-read_chunk("difficulty.R")
+read_chunk("baseline-difficulty.R")
 read_chunk("subjective-objective-difficulty.R")
 ```
 
@@ -50,6 +50,9 @@ responses to these propositions in the main experiment cannot be interpreted as
 errors in the actual experiment.
 
 ```{r, ambiguous}
+```
+
+```{r, export-ambiguous}
 ```
 
 # Incorrectly-coded propositions
@@ -85,7 +88,10 @@ The plot below is of the significance value of the intercept terms for each
 of these models. Propositions with positive estimates, or estimates that were
 not significantly different from chance, were labeled as being too hard.
 
-```{r, difficulty}
+```{r, baseline-difficulty}
+```
+
+```{r, export-difficult}
 ```
 
 # Subjective and objective measures of proposition difficulty

@@ -40,6 +40,6 @@ ggplot(proposition_classification, aes(x = estimate, y = p.value)) +
   base_theme +
   ggtitle("Which propositions were ambiguous?")
 
-# ---- save-ambiguous
+# ---- export-ambiguous
 ambiguous_propositions <- filter(proposition_classification, agreement == "ambiguous")
 write.csv(ambiguous_propositions, "ambiguous_propositions.csv", row.names = FALSE)
