@@ -27,13 +27,14 @@ label_outlier_subjects <- function(frame) {
 #' Label the ambiguity of propositions based on norming data.
 #'
 #' @import dplyr
-#' @importFrom broom tidy
 #' @export
 label_ambiguous_propositions <- function(frame) {
   proposition_classification <- determine_ambiguous_propositions()
   frame %>% left_join(proposition_classification)
 }
 
+#' Determine which propositions were ambiguous.
+#'
 #' @import dplyr
 #' @importFrom broom tidy
 determine_ambiguous_propositions <- function() {
@@ -60,13 +61,22 @@ determine_ambiguous_propositions <- function() {
 }
 
 #' Label the propositions that were too hard based on baseline performance.
-#' 
+#'
+#' @import dplyr
+#' @export
+label_bad_baseline_performance <- function(frame) {
+  baseline_performance <- determine_bad_baseline_performance()
+  frame %>% left_join(baseline_performance)
+}
+
+#' Determine which propositions had bad baseline performance.
+#'
 #' @import dplyr
 #' @importFrom broom tidy
-label_bad_baseline_performance <- function(frame) {
+determine_bad_baseline_performance <- function() {
   data(question_first)
-  
-  baseline_performance <- question_first %>%
+
+  question_first %>%
     tidy_property_verification_data %>%
     filter(mask_type == "nomask") %>%
     group_by(proposition_id) %>%
@@ -75,6 +85,4 @@ label_bad_baseline_performance <- function(frame) {
     mutate(baseline_difficulty = ifelse((estimate > 0) | (p.value > 0.05),
                                         "too_hard", "easy")) %>%
     select(proposition_id, baseline_difficulty)
-
-  baseline_performance
 }

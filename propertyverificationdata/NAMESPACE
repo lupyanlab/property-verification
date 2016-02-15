@@ -2,6 +2,7 @@
 
 export("%nin%")
 export(label_ambiguous_propositions)
+export(label_bad_baseline_performance)
 export(label_duplicates)
 export(label_outlier_subjects)
 export(recode_property_verification_data)
