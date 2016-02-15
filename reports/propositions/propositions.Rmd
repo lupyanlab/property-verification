@@ -21,6 +21,7 @@ read_chunk("ambiguous.R")
 read_chunk("incorrectly-coded.R")
 read_chunk("baseline-difficulty.R")
 read_chunk("subjective-objective-difficulty.R")
+read_chunk("subset.R")
 ```
 
 ```{r, setup, echo = 1:5}
@@ -107,4 +108,12 @@ no mask trials only**.
 ```
 
 ```{r, subj-obj-diff-by-correctness}
+```
+
+# Subsetting balanced propositions
+
+```{r, subset}
+```
+
+```{r, export-subset}
 ```
