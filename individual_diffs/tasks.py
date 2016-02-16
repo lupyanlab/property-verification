@@ -20,7 +20,9 @@ def compile_survey():
     questions.index = questions.index.values + 1
 
     # create choices from questions
-    choices = {str(i): text for i, text in questions.question_str.iteritems()}
+    choices = {str(i): {'Display': text}
+        for i, text in questions.question_str.iteritems()
+    }
 
     # select the choices in the template survey
     slider_question = pluck(survey['SurveyElements'], 'SQ')
