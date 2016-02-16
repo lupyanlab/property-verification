@@ -52,6 +52,7 @@ def create_survey_questions():
     survey_questions.to_csv('individual_diffs/survey_questions.csv', index=False)
 
 def format_question(cue_questions):
+    assert len(cue_questions.cue.unique()) == 0
     cue = cue_questions.cue.iloc[0]
 
     if cue[:1] in list('aeiou'):
