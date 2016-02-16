@@ -5,8 +5,11 @@ Usage::
     $ invoke --list
     $ invoke [task_name]
 """
-from invoke import task, run
+import json
+
 import pandas as pd
+from invoke import task, run
+from unipath import Path
 
 @task
 def install_r_package_data():
@@ -45,7 +48,7 @@ def create_survey_questions():
     survey_questions = propositions.ix[
         propositions.correct_response == 'yes',
         ['proposition_id', 'question', 'cue']
-    ] 
+    ]
 
     survey_questions = survey_questions.groupby('cue').apply(format_question)
     survey_questions = survey_questions[['proposition_id', 'question_str']]
@@ -67,3 +70,46 @@ def format_question(cue_questions):
     )
 
     return cue_questions
+
+@task
+def compile_survey():
+    """Insert question strings as items in the template survey."""
+    survey_builder_dir = 'individual_diffs'
+    survey_template = Path(survey_builder_dir, 'survey_template.qsf')
+    survey_questions = Path(survey_builder_dir, 'survey_questions.csv')
+    survey_output = Path(survey_builder_dir, 'survey_data.qsf')
+
+    # where to start the slider
+    slider_start = 0
+
+    survey = json.load(open(survey_template))
+    questions = pd.read_csv(survey_questions)
+
+    # start index at 1 instead of 0
+    questions.index = questions.index.values + 1
+
+    # create choices from questions
+    choices = {str(i): {'Display': text}
+        for i, text in questions.question_str.iteritems()
+    }
+
+    # select the choices in the template survey
+    visual_knowledge_question = pluck(survey['SurveyElements'], 'SQ')
+    content = visual_knowledge_question['Payload']
+
+    # insert choices and settings dependent on choices
+    content['Choices'] = choices
+    content['ChoiceOrder'] = sorted(map(int, choices.keys()))
+
+    json.dump(survey, open(survey_output, 'w'))
+
+def pluck(items, search_term):
+    for item in items:
+        try:
+            values = item.values()
+        except AttributeError:
+            continue
+        else:
+            if search_term in values:
+                return item
+    raise AssertionError('search term {} not found'.format(search_term))
