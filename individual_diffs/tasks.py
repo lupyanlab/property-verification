@@ -10,10 +10,14 @@ def compile_survey():
     """Insert question strings as items in the template survey."""
     survey_template = 'survey_template.qsf'
 
+    # where to start the slider
+    slider_start = 0
+
     survey = json.load(open(survey_template))
     questions = read_csv('survey_questions.csv')
-    # where to star the slider
-    slider_start = 0
+
+    # start index at 1 instead of 0
+    questions.index = questions.index.values + 1
 
     # create choices from questions
     choices = {str(i): text for i, text in questions.question_str.iteritems()}
