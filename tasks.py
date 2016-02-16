@@ -39,12 +39,30 @@ def replace_propositions():
     selected_propositions.to_csv(dst, index=False)
 
 @task(replace_propositions)
-def create_loop_merge():
-    """Create a spreadsheet to upload to Qualtrics as loop and merge data."""
+def create_survey_questions():
+    """Format propositions as questions to use in the Qualtrics survey."""
     propositions = pd.read_csv('experiment/stimuli/propositions.csv')
-    loop_merge = propositions.ix[propositions.correct_response == 'yes']
-    loop_merge.sort_values(by=['cue', ], inplace=True)
-    loop_merge['loop_merge_row'] = range(1, len(loop_merge)+1)
-    loop_merge = loop_merge[['loop_merge_row', 'question', 'cue', 'proposition_id']]
-    loop_merge.to_csv('individual_diffs/qualtrics/loop-merge.csv',
-                      index=False)
+    survey_questions = propositions.ix[
+        propositions.correct_response == 'yes',
+        ['proposition_id', 'question', 'cue']
+    ] 
+
+    survey_questions = survey_questions.groupby('cue').apply(format_question)
+    survey_questions = survey_questions[['proposition_id', 'question_str']]
+    survey_questions.to_csv('individual_diffs/survey_questions.csv', index=False)
+
+def format_question(cue_questions):
+    cue = cue_questions.cue.iloc[0]
+
+    if cue[:1] in list('aeiou'):
+        article = 'an'
+    else:
+        article = 'a'
+
+    pronoun = r'\ it\ '
+    noun = ' {} {} '.format(article, cue)
+    cue_questions['question_str'] = cue_questions.question.str.replace(
+        pronoun, noun
+    )
+
+    return cue_questions

@@ -1,0 +1,101 @@
+proposition_id,question_str
+does-it-have-jaws:alligator,Does an alligator have jaws?
+is-it-long:alligator,Is an alligator long?
+is-it-round:apple,Is an apple round?
+is-it-yellow:banana,Is a banana yellow?
+does-it-have-a-peel:banana,Does a banana have a peel?
+does-it-have-a-skin:banana,Does a banana have a skin?
+is-it-beige:camel,Is a camel beige?
+is-it-large:camel,Is a camel large?
+does-it-have-legs:camel,Does a camel have legs?
+is-it-brown:camel,Is a camel brown?
+does-it-have-a-hump:camel,Does a camel have a hump?
+does-it-have-four-legs:deer,Does a deer have four legs?
+does-it-have-hair:dog,Does a dog have hair?
+does-it-have-hooves:donkey,Does a donkey have hooves?
+does-it-have-a-tail:donkey,Does a donkey have a tail?
+does-it-have-four-legs:donkey,Does a donkey have four legs?
+does-it-have-legs:donkey,Does a donkey have legs?
+does-it-have-four-legs:elephant,Does an elephant have four legs?
+does-it-have-ears:elephant,Does an elephant have ears?
+does-it-have-long-legs:giraffe,Does a giraffe have long legs?
+is-it-tall:giraffe,Is a giraffe tall?
+does-it-have-legs:grasshopper,Does a grasshopper have legs?
+is-it-green:grasshopper,Is a grasshopper green?
+does-it-have-sleeves:jacket,Does a jacket have sleeves?
+does-it-have-pockets:jacket,Does a jacket have pockets?
+does-it-have-a-zipper:jacket,Does a jacket have a zipper?
+does-it-have-a-tail:lion,Does a lion have a tail?
+does-it-have-a-tail:mouse,Does a mouse have a tail?
+is-it-grey:mouse,Is a mouse grey?
+does-it-have-feet:penguin,Does a penguin have feet?
+is-it-black:penguin,Is a penguin black?
+does-it-have-legs:pig,Does a pig have legs?
+is-it-pink:pig,Is a pig pink?
+does-it-have-a-snout:pig,Does a pig have a snout?
+does-it-have-an-inside:pineapple,Does a pineapple have an inside?
+does-it-have-ears:rabbit,Does a rabbit have ears?
+does-it-have-feet:rabbit,Does a rabbit have feet?
+does-it-have-whiskers:rabbit,Does a rabbit have whiskers?
+is-it-red:strawberry,Is a strawberry red?
+does-it-have-wings:swan,Does a swan have wings?
+does-it-have-a-long-neck:swan,Does a swan have a long neck?
+does-it-have-feathers:swan,Does a swan have feathers?
+is-it-flat:table,Is a table flat?
+is-it-made-of-wood:table,Is a table made of wood?
+does-it-have-whiskers:tiger,Does a tiger have whiskers?
+is-it-small:toad,Is a toad small?
+does-it-have-an-engine:train,Does a train have an engine?
+does-it-have-hooves:zebra,Does a zebra have hooves?
+does-it-have-four-legs:zebra,Does a zebra have four legs?
+does-it-have-stripes:zebra,Does a zebra have stripes?
+is-it-an-animal:alligator,Is an alligator an animal?
+is-it-used-for-cider:apple,Is an apple used for cider?
+does-it-grow-on-trees:apple,Does an apple grow on trees?
+does-it-grow-in-tropical-climates:banana,Does a banana grow in tropical climates?
+does-it-have-different-speeds:bike,Does a bike have different speeds?
+is-it-breakable:bottle,Is a bottle breakable?
+is-it-a-container:bottle,Is a bottle a container?
+is-it-used-for-holding-liquids:bottle,Is a bottle used for holding liquids?
+is-it-used-for-holding-things:bottle,Is a bottle used for holding things?
+does-it-eat:camel,Does a camel eat?
+does-it-spit:camel,Does a camel spit?
+does-it-drink-water:camel,Does a camel drink water?
+is-it-used-for-relaxing:chair,Is a chair used for relaxing?
+is-it-used-for-sitting-on:chair,Is a chair used for sitting on?
+is-it-found-at-tables:chair,Is a chair found at tables?
+does-it-live-in-a-coop:chicken,Does a chicken live in a coop?
+is-it-fast:deer,Is a deer fast?
+does-it-bark:dog,Does a dog bark?
+does-it-make-noises:donkey,Does a donkey make noises?
+is-it-furry:donkey,Is a donkey furry?
+is-it-an-animal:elephant,Is an elephant an animal?
+does-it-live-in-africa:elephant,Does an elephant live in Africa?
+does-it-eat-peanuts:elephant,Does an elephant eat peanuts?
+does-it-live-in-zoos:giraffe,Does a giraffe live in zoos?
+does-it-eat-leaves:giraffe,Does a giraffe eat leaves?
+is-it-worn-for-the-rain:jacket,Is a jacket worn for the rain?
+is-it-clothing:jacket,Is a jacket clothing?
+does-it-roar:lion,Does a lion roar?
+is-it-an-animal:lion,Is a lion an animal?
+is-it-a-carnivore:lion,Is a lion a carnivore?
+is-it-an-animal:mouse,Is a mouse an animal?
+does-it-eat:mouse,Does a mouse eat?
+does-it-like-mud:pig,Does a pig like mud?
+is-it-smelly:pig,Is a pig smelly?
+does-it-live-on-farms:pig,Does a pig live on farms?
+is-it-juicy:pineapple,Is a pineapple juicy?
+is-it-tropical:pineapple,Is a pineapple tropical?
+does-it-eat-carrots:rabbit,Does a rabbit eat carrots?
+does-it-produce-offspring:raccoon,Does a raccoon produce offspring?
+is-it-furry:raccoon,Is a raccoon furry?
+does-it-taste-good:strawberry,Does a strawberry taste good?
+is-it-a-fruit:strawberry,Is a strawberry a fruit?
+does-it-live-on-water:swan,Does a swan live on water?
+does-it-lay-eggs:swan,Does a swan lay eggs?
+is-it-used-for-eating-on:table,Is a table used for eating on?
+is-it-found-in-kitchens:table,Is a table found in kitchens?
+does-it-live-in-india:tiger,Does a tiger live in India?
+is-it-loud:train,Is a train loud?
+does-it-live-in-africa:zebra,Does a zebra live in Africa?
+is-it-an-animal:zebra,Is a zebra an animal?
