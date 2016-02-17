@@ -74,16 +74,18 @@ def format_question(cue_questions):
 @task
 def compile_survey():
     """Insert question strings as items in the template survey."""
-    survey_builder_dir = 'individual_diffs'
-    survey_template = Path(survey_builder_dir, 'survey_template.qsf')
-    survey_questions = Path(survey_builder_dir, 'survey_questions.csv')
-    survey_output = Path(survey_builder_dir, 'survey_data.qsf')
+    survey_dir = 'individual_diffs'
+    survey_questions = Path(survey_dir, 'survey_questions.csv')
+    survey_builder_dir = Path(survey_dir, 'survey_builder')
+    survey_template = Path(survey_builder_dir, 'property_verification_template.qsf')
+    survey_output = Path(survey_builder_dir, 'property_verification.qsf')
 
     # load the survey data exported from qualtrics
     survey = json.load(open(survey_template))
 
-    # modify survey name
-    survey['SurveyEntry']['SurveyName'] = 'property-verification'
+    # modify survey name and id
+    survey['SurveyEntry']['SurveyName'] = 'property_verification'
+    survey['SurveyEntry']['SurveyID'] = 'SV_property_verification'
 
     # load questions
     questions = pd.read_csv(survey_questions)
