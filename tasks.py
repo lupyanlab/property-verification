@@ -72,7 +72,7 @@ def format_question(cue_questions):
     return cue_questions
 
 @task
-def compile_survey():
+def build_survey():
     """Insert question strings as items in the template survey."""
     survey_dir = 'individual_diffs'
     survey_questions = Path(survey_dir, 'survey_questions.csv')
@@ -118,3 +118,34 @@ def pluck(items, search_term):
             if search_term in values:
                 return item
     raise AssertionError('search term {} not found'.format(search_term))
+
+@task
+def compile_survey_data():
+    """Transform the raw output from qualtrics to a format for analysis."""
+    survey_dir = Path('individual_diffs')
+    survey_questions_file = Path(survey_dir, 'survey_questions.csv')
+    survey_data_dir = Path(survey_dir, 'survey_data')
+    survey_data_file = Path(survey_data_dir, 'property_verification.csv')
+    survey_data = pd.read_csv(survey_data_file, skiprows=[0,])
+
+    imagery_output = Path(survey_dir, 'imagery.csv')
+    # strategy_output = Path(survey_dir, 'strategy.csv')
+
+    id_col = 'subj_id'
+
+    is_imagery_col = survey_data.columns.str.contains('imagery')
+    imagery_cols = survey_data.columns[is_imagery_col].tolist()
+    imagery = pd.melt(survey_data, id_col, imagery_cols,
+                      var_name = 'qualtrics', value_name = 'imagery')
+
+    # separate choice text
+    imagery['question_str'] = imagery.qualtrics.str.split('-').str.get(1)
+    # drop qualtrics entry for the instructions "question"
+    imagery = imagery.ix[imagery.question_str != 'text']
+    imagery.drop('qualtrics', axis=1, inplace=True)
+
+    # read in the map between question strings and proposition ids
+    survey_questions = pd.read_csv(survey_questions_file)
+
+    imagery = imagery.merge(survey_questions)
+    imagery.to_csv(imagery_output, index=False)
