@@ -6,6 +6,7 @@
 #' @param header_file Optional file containing column headers
 #' @export
 compile <- function(data_dir, regex_key, header_file) {
+  if(missing(regex_key)) regex_key <- "*"
   data_files <- list.files(data_dir, regex_key, full.names = TRUE)
 
   if(missing(header_file)) {
