@@ -9,7 +9,7 @@ import pandas as pd
 from run import Trials
 
 
-@pytest.fixture(scope='module', params=[100, 104, 108])
+@pytest.fixture(scope='module', params=[100, 101, 104, 108])
 def trials(request):
     return Trials.make(seed=request.param)
 

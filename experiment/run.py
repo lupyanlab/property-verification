@@ -144,7 +144,7 @@ class Trials(UserList):
 
         # Add practice trials
         num_practice = 6
-        practice_ix = prng.choice(trials.index, num_practice)
+        practice_ix = prng.choice(trials.index, num_practice, replace=False)
         practice_trials = trials.ix[practice_ix, ]
         practice_trials['block'] = 0
         practice_trials['block_type'] = 'practice'
