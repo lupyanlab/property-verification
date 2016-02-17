@@ -11,4 +11,4 @@ response_keys:
   # 'yes' and 'no' must be quoted or yaml thinks they are boolean!
   up: 'yes'
   down: 'no'
-survey_url: "https://uwmadison.co1.qualtrics.com/SE/?SID=SV_1FgKcGp8GyDjWe1&subj_id={subj_id}&computer={computer}"
+survey_url: "https://uwmadison.co1.qualtrics.com/SE/?SID=SV_cGguoGTm0LRnP3D&subj_id={subj_id}&computer={computer}"
