@@ -6,3 +6,7 @@
   name: seed
   prompt: Randomizer
   default: 101
+3:
+  name: experimenter
+  prompt: Experimenter initials
+  default: XXX 
