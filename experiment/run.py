@@ -162,7 +162,7 @@ class Trials(UserList):
         trials = pd.concat([practice_trials, trials], ignore_index=True)
 
         # Label trial
-        trials['trial'] = range(len(trials))
+        trials['trial'] = range(1, len(trials)+1)
 
         # Reorder columns
         trials = trials[columns]
