@@ -85,7 +85,6 @@ class Participant(UserDict):
 
 class Trials(UserList):
     STIM_DIR = Path('stimuli')
-    DEFAULTS = dict(ratio_yes_correct_responses=0.50)
     COLUMNS = [
         # Trial columns
         'block',
@@ -116,10 +115,8 @@ class Trials(UserList):
         # make convenience copies of class defaults
         stim_dir = cls.STIM_DIR
         columns = cls.COLUMNS
-        settings = dict(cls.DEFAULTS)
 
-        settings.update(kwargs)
-
+        settings = kwargs.copy()
         seed = settings.get('seed')
         try:
             seed = int(seed)
@@ -128,60 +125,11 @@ class Trials(UserList):
             seed = None
         prng = random.RandomState(seed)
 
-        # Balance within subject variables
-        trials = counterbalance({'feat_type': ['visual', 'nonvisual'],
-                                 'mask_type': ['mask', 'nomask']})
-        trials = expand(trials, name='correct_response', values=['yes', 'no'],
-                        ratio=settings['ratio_yes_correct_responses'],
-                        seed=seed)
+        # Read in the trials (same for all participants)
+        trials = pd.read_csv(Path(stim_dir, 'propositions.csv'))
 
-        # Extend the trials to final length
-        trials = extend(trials, max_length=230)
-
-        ################################
-        # BEGIN ASSIGNING PROPOSITIONS #
-        ################################
-
-        # Read proposition info
-        propositions_csv = Path(stim_dir, 'propositions.csv')
-        propositions = pd.read_csv(propositions_csv)
-
-        # Divide up possible propositions based on within subject vars
-        proposition_groups = ['feat_type', 'correct_response']
-        grouped_trials = trials.groupby(proposition_groups)
-
-        trial_groups = []
-        for (feat_type, correct_response), trial_group in grouped_trials:
-            # Select all possible propositions matching the current group
-            options_mask = (
-                (propositions.feat_type == feat_type) &
-                (propositions.correct_response == correct_response)
-            )
-
-            # Get a list of proposition to choose from
-            proposition_options = propositions.ix[
-                options_mask, 'proposition_id'
-            ].values
-
-            # Randomly select proposition for the current group of trials
-            selected = prng.choice(proposition_options, size=len(trial_group),
-                                   replace=False)
-
-            # Add in the proposition id column
-            trial_group['proposition_id'] = selected
-
-            # Add the current trial group to the list of all trial groups
-            trial_groups.append(trial_group)
-
-        # Glue all trial groups together again
-        trials = pd.concat(trial_groups)
-
-        # Add in remaining proposition columns
-        trials = trials.merge(propositions)
-
-        ##############################
-        # END ASSIGNING PROPOSITIONS #
-        ##############################
+        # Randomly assign mask trials
+        trials['mask_type'] = prng.choice(['mask', 'nomask'], size=len(trials))
 
         # Choose a version of each cue at random
         all_cues = Path(stim_dir, 'cues').listdir('*.wav', names_only=True)
@@ -195,7 +143,7 @@ class Trials(UserList):
             trials[col] = ''
 
         # Add practice trials
-        num_practice = 8
+        num_practice = 6
         practice_ix = prng.choice(trials.index, num_practice)
         practice_trials = trials.ix[practice_ix, ]
         practice_trials['block'] = 0
@@ -203,8 +151,10 @@ class Trials(UserList):
         trials.drop(practice_ix, inplace=True)
 
         # Finishing touches: block trials and shuffle
-        trials = add_block(trials, 50, name='block', start=1, groupby='cue',
-                           seed=seed)
+        num_blocks = 4
+        trials_per_block = (len(trials)/num_blocks) + 1
+        trials = add_block(trials, trials_per_block, name='block', start=1,
+                           groupby='cue', seed=seed)
         trials = smart_shuffle(trials, col='cue', block='block', seed=seed)
         trials['block_type'] = 'test'
 
