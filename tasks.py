@@ -79,10 +79,13 @@ def compile_survey():
     survey_questions = Path(survey_builder_dir, 'survey_questions.csv')
     survey_output = Path(survey_builder_dir, 'survey_data.qsf')
 
-    # where to start the slider
-    slider_start = 0
-
+    # load the survey data exported from qualtrics
     survey = json.load(open(survey_template))
+
+    # modify survey name
+    survey['SurveyEntry']['SurveyName'] = 'property-verification'
+
+    # load questions
     questions = pd.read_csv(survey_questions)
 
     # start index at 1 instead of 0
