@@ -4,6 +4,10 @@
 library(stringr)
 library(dplyr)
 
+# Load the compile function.
+# Don't load the package because that would load the data you are compiling.
+source("R/compile.R")
+
 compile_question_first <- function() {
   first_run <- compile("data-raw/question_first/first_run/data/", regex_key = "MWPF",
                        header_file = "_header.txt")
@@ -62,28 +66,6 @@ compile_survey <- function() {
     process_google_survey
 
   rbind_list(qualtrics_surveys, google_surveys)
-}
-
-compile <- function(data_dir, regex_key, header_file) {
-  data_files <- list.files(data_dir, regex_key, full.names = TRUE)
-
-  if(missing(header_file)) {
-    frame <- plyr::ldply(data_files, readr::read_csv)
-  } else {
-    header_file <- ifelse(file.exists(header_file), header_file,
-                          file.path(data_dir, header_file))
-    header <- colnames(readr::read_tsv(header_file))
-
-    # hack!!!
-    if(sum(header == "response") == 2) {
-      header[header == "response"] <- c("response", "response.1")
-    }
-
-    data_files <- list.files(data_dir, regex_key, full.names = TRUE)
-    frame <- plyr::ldply(data_files, readr::read_tsv, col_names = header)
-  }
-
-  frame
 }
 
 rename_old_experiment_vars <- function(frame) {
