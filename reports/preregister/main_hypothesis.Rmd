@@ -1,0 +1,36 @@
+---
+title: "The effect of visual interference on visual knowledge"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+read_chunk("main_hypothesis.R")
+```
+
+```{r, setup}
+```
+
+# Data
+
+```{r, data}
+```
+
+# Outliers
+
+```{r, outliers}
+```
+
+# RT
+
+```{r, rt}
+```
+
+# Error
+
+```{r, error}
+```
