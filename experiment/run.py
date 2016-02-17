@@ -302,6 +302,7 @@ class Experiment(object):
                 timeStamped=self.timer,
             )
             if response:
+                cue.stop()
                 break
 
         self.win.flip()
