@@ -17,7 +17,7 @@ plot_interaction <- function(frame, y_var, scale_y, coord_ylim) {
 
   ggplot(frame, aes_string(x = "mask_c", y = y_var, fill = "mask_f")) +
     geom_bar(aes(width = 1.0), stat = "summary", fun.y = "mean") +
-    facet_wrap("facet_label") +
+    facet_wrap("feat_label") +
     scale_x_mask +
     scale_y +
     scale_fill_mask +
@@ -27,7 +27,7 @@ plot_interaction <- function(frame, y_var, scale_y, coord_ylim) {
 
 plot_rt <- function(frame) {
   scale_y_rt <- scale_y_continuous("Reaction time (ms)")
-  coord_ylim_rt <- c(200, 500)
+  coord_ylim_rt <- c(500, 1500)
   plot_interaction(frame, "rt",
                    scale_y = scale_y_rt,
                    coord_ylim = coord_ylim_rt)
@@ -64,20 +64,20 @@ Z_SCORE_CUTOFF <- 2.0
 
 subj_mods <- property_verification %>%
   group_by(subj_id) %>%
-  do(mod = glm(is_error ~ feat_type * mask_type, family = "binomial", data = .))
+  do(mod = glm(is_error ~ feat_c * mask_c, family = "binomial", data = .))
 
 subj_effects <- subj_mods %>%
   tidy(mod) %>%
-  filter(term == "feat_type:mask_type")
+  filter(term == "feat_c:mask_c")
 
 z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
 subj_effects$estimate_z <- z_score(subj_effects$estimate)
-subj_effects$is_outlier <- ifelse(abs(estimate_z) > Z_SCORE_CUTOFF, 1, 0)
+subj_effects$is_outlier <- ifelse(abs(subj_effects$estimate_z) > Z_SCORE_CUTOFF, 1, 0)
 outlier_labels <- select(subj_effects, subj_id, is_outlier)
 
 # drop any outlier subjects
 property_verification <- left_join(property_verification, outlier_labels) %>%
-  filter(is_outlier == 0)
+  filter(is_outlier != 1)
 
 # ---- rt
 rt_mod <- lmer(rt ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),

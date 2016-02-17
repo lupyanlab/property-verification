@@ -12,6 +12,7 @@ recode_property_verification_data <- function(frame) {
 }
 
 #' Recode mask type variable
+#' @export
 recode_mask_type <- function(frame) {
   mask_type_map <- dplyr::data_frame(
     mask_type = c("nomask", "mask"),
@@ -23,6 +24,7 @@ recode_mask_type <- function(frame) {
 
 
 #' Recode feature type variable.
+#' @export
 recode_feat_type <- function(frame) {
   feat_type_map <- dplyr::data_frame(
     feat_type = c("nonvisual", "visual"),
@@ -33,6 +35,7 @@ recode_feat_type <- function(frame) {
 }
 
 #' Recode combination of feature and mask trial type.
+#' @export
 recode_trial_type <- function(frame) {
   trial_type_map <- dplyr::data_frame(
     feat_type = rep(c("nonvisual", "visual"), times = 2),
@@ -54,6 +57,7 @@ recode_exp_run <- function(frame) {
 }
 
 #' Recode the truth of the proposition.
+#' @export
 recode_correct_response <- function(frame) {
   correct_response_map <- dplyr::data_frame(
     correct_response = c("no", "yes"),
