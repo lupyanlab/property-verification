@@ -96,8 +96,8 @@ def compile_survey():
         for i, text in questions.question_str.iteritems()
     }
 
-    # select the choices in the template survey
-    visual_knowledge_question = pluck(survey['SurveyElements'], 'SQ')
+    # select the correct question in the template survey
+    visual_knowledge_question = pluck(survey['SurveyElements'], 'imagery')
     content = visual_knowledge_question['Payload']
 
     # insert choices and settings dependent on choices
