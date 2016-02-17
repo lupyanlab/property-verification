@@ -2,7 +2,7 @@ from invoke import task
 import json
 import gspread
 import pandas
-from oauth2client.client import SignedJwtAssertionCredentials as Credentials
+from oauth2client.client import Credentials
 
 def get_worksheet(workbook, worksheet):
     json_key = json.load(open('drive-api-creds.json'))
@@ -28,7 +28,7 @@ def get_worksheet(workbook, worksheet):
 @task
 def subj_info():
     subj_info = get_worksheet(workbook='MWP Subject Info',
-                              worksheet='property-verification-third-run')
+                              worksheet='property-verification-spring-2016')
     subj_info.to_csv('subj_info.csv', index=False)
 
 @task

@@ -9,7 +9,7 @@ import pandas as pd
 from run import Trials
 
 
-@pytest.fixture(scope='module', params=[100, 104, 108])
+@pytest.fixture(scope='module', params=[100, 101, 104, 108])
 def trials(request):
     return Trials.make(seed=request.param)
 
@@ -18,7 +18,7 @@ def test_proposition_ids_are_unique(trials):
     assert len(frame) == len(frame.proposition_id.unique())
 
 def test_trials_are_correct_length(trials):
-    assert len(trials) > 200 and len(trials) < 250
+    assert len(trials) == 200
 
 def test_cue_files_exist(trials):
     frame = trials.to_dataframe()
@@ -33,10 +33,7 @@ def test_propositions_are_correct_proportion(trials):
     assert all(proportions == expected)
 
 def test_all_trials_are_reached(trials):
+    num_blocks = len(list(trials.iter_blocks()))
     frame = trials.to_dataframe()
     expected_num_blocks = len(frame.block.unique())
-    blocks = list(trials.iter_blocks())
-    for b in blocks:
-        print(b[0]['block'])
-    actual_num_blocks = len(list(trials.iter_blocks()))
-    assert actual_num_blocks == expected_num_blocks
+    assert num_blocks == expected_num_blocks
