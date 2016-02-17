@@ -13,24 +13,24 @@ instructions:
       Think of it like a game you might play with a child who is learning about
       these objects for the first time. First you'll see the question (for
       example, 'Does it have feathers?'), then you'll hear a word through the
-      headphones, like 'eagle' or 'table'. After the word, you'll see a question
-      mark appear on the screen. Once it appears, you'll answer yes or no using
-      the keyboard. You will press the up arrow for yes and the down arrow for no.
-      Press the SPACEBAR to continue.
+      headphones, like 'eagle' or 'table'. As soon as you hear the word,  you'll
+      see a question mark appear on the screen. Once it appears, you'll answer
+      yes or no using the keyboard. You will press the up arrow for YES and the
+      down arrow for NO. Press the SPACEBAR to continue.
   4:
     main: >
       Some of the questions may sound a bit weird. If the question doesn't make
-      sense, the answer is most likely 'no'. Answer the question
+      sense, the answer is most likely NO. Answer the question
       below.
 
 
       (Remember: Press the up arrow for YES and the down arrow for NO)
-    example: Does it have a seat? -> pineapple
+    example: Does it have a skin? -> bicycle
     advance: down
   5:
     main: >
       Other questions will be true for some items in a category, but not all
-      items. In these cases, the answer is 'yes'. Answer the question below.
+      items. In these cases, the answer is YES. Answer the question below.
     example: Is it green? -> apple
     advance: up
   6:
@@ -40,7 +40,8 @@ instructions:
       for the brain to 'find' the relevant information in your memory. This
       sort of analysis only turns up meaningful results if everyone is doing
       their best to answer as quickly and accurately as possible, so please: try
-      your best for this 20-25 minute task. Press the SPACEBAR to continue.
+      your best for this 25-30 minute portion of the experiment. Press the
+      SPACEBAR to continue.
   7:
     main: >
       Ok! Ready for the experiment? Please open the door and tell the
@@ -59,6 +60,7 @@ end_of_practice:
       trials you should have seen flashing colorful shapes like the image below.
       Please try to look at these flashing shapes when they are present. If
       you look away from the screen, your performance will likely suffer.
+
 
       Press the SPACEBAR to continue.
   2:
@@ -88,4 +90,4 @@ end_of_experiment: >
 timeout: >
   You didn't answer fast enough! Remember to press the up arrow for YES and the
   down arrow for NO. Please respond as quickly as possible. Press the SPACEBAR
-  when you are ready to continue. 
+  when you are ready to continue.
