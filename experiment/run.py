@@ -453,7 +453,8 @@ if __name__ == '__main__':
                         help='Seed for random number generator')
     parser.add_argument('--trial-index', '-i', default=0, type=int,
                         help='Trial index to run from sample_trials.csv')
-    parser.add_argument('--labels', '-l', nargs='+')
+    parser.add_argument('--labels', '-l', nargs='+',
+                        help='Names of text screens to show')
 
     args = parser.parse_args()
 
