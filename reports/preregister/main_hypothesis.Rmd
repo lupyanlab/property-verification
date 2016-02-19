@@ -17,7 +17,7 @@ read_chunk("main_hypothesis.R")
 
 # Data
 
-```{r, data}
+```{r, data, echo = TRUE}
 ```
 
 # Outliers

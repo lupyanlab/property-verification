@@ -43,7 +43,7 @@ plot_error <- function(frame) {
 
 # ---- data
 library(propertyverificationdata)
-property_verification <- compile("experiment/data/") %>%
+property_verification <- compile("experiment/data/", regex_key="PV*") %>%
     filter(block_type != "practice") %>%
     mutate(
       # only measure errors of comission
