@@ -6,10 +6,14 @@ Usage::
     $ invoke [task_name]
 """
 import json
+from StringIO import StringIO
+
+from invoke import task, run
 
 import pandas as pd
-from invoke import task, run
 from unipath import Path
+import requests
+import yaml
 
 @task
 def install_r_package_data():
@@ -149,3 +153,56 @@ def compile_survey_data():
 
     imagery = imagery.merge(survey_questions)
     imagery.to_csv(imagery_output, index=False)
+
+@task
+def get_qualtrics_responses(name='property_verification',
+        output='individual_diffs/survey_data/property_verification.csv'):
+    """Get the survey data."""
+    qualtrics_api_creds = Path('individual_diffs', 'qualtrics_api.yml')
+    creds = yaml.load(open(qualtrics_api_creds))
+    qualtrics = Qualtrics(**creds)
+    responses = qualtrics.get_survey_responses(name)
+    responses.to_csv(output, index=False)
+
+def get_survey_id(name):
+    """Given the name of the survey, get the survey id."""
+    get_surveys_kwargs = dict(Request='getSurveys', Format='JSON')
+    get_surveys_kwargs.update(generic_kwargs)
+    response = requests.get(qualtrics_url_root, params = get_surveys_kwargs)
+    surveys = response.json()['Result']['Surveys']
+    for survey in surveys:
+        if survey['SurveyName'] == name:
+            return survey['SurveyID']
+
+class Qualtrics:
+    def __init__(self, user, token):
+        self.root_url = 'https://survey.qualtrics.com/WRAPI/ControlPanel/api.php'
+        self.base_params = dict(
+            API_SELECT='ControlPanel',
+            Version=2.5,
+            User=user,
+            Token=token,
+        )
+
+    def get_survey_id(self, name):
+        """Get the survey id assigned by Qualtrics given the survey name."""
+        response = self.get(Request='getSurveys', Format='JSON')
+        surveys = response.json()['Result']['Surveys']
+        for survey in surveys:
+            if survey['SurveyName'] == name:
+                return survey['SurveyID']
+        raise AssertionError('survey {} not found'.format(name))
+
+    def get_survey_responses(self, name):
+        """Get the survey data."""
+        survey_id = self.get_survey_id(name)
+        response = self.get(Request='getLegacyResponseData', Format='CSV',
+                            SurveyID=survey_id)
+        response_csv = StringIO(response.content)
+        survey_data = pd.DataFrame.from_csv(response_csv)
+        return survey_data
+
+    def get(self, **kwargs):
+        params = self.base_params.copy()
+        params.update(kwargs)
+        return requests.get(self.root_url, params=params)

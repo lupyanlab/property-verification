@@ -1,0 +1,601 @@
+subj_id,imagery,question_str,proposition_id
+PV_103,3,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV_102,2,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV101,4,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV104,3,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV106,5,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV105,2,Does a jacket have sleeves?,does-it-have-sleeves:jacket
+PV_103,2,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV_102,2,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV101,4,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV104,4,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV106,5,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV105,1,Does a jacket have pockets?,does-it-have-pockets:jacket
+PV_103,3,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV_102,2,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV101,5,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV104,3,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV106,5,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV105,1,Does a jacket have a zipper?,does-it-have-a-zipper:jacket
+PV_103,3,Does a lion have a tail?,does-it-have-a-tail:lion
+PV_102,2,Does a lion have a tail?,does-it-have-a-tail:lion
+PV101,5,Does a lion have a tail?,does-it-have-a-tail:lion
+PV104,4,Does a lion have a tail?,does-it-have-a-tail:lion
+PV106,5,Does a lion have a tail?,does-it-have-a-tail:lion
+PV105,2,Does a lion have a tail?,does-it-have-a-tail:lion
+PV_103,3,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV_102,4,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV101,5,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV104,3,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV106,5,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV105,1,Does a giraffe have long legs?,does-it-have-long-legs:giraffe
+PV_103,4,Is a giraffe tall?,is-it-tall:giraffe
+PV_102,2,Is a giraffe tall?,is-it-tall:giraffe
+PV101,5,Is a giraffe tall?,is-it-tall:giraffe
+PV104,3,Is a giraffe tall?,is-it-tall:giraffe
+PV106,5,Is a giraffe tall?,is-it-tall:giraffe
+PV105,3,Is a giraffe tall?,is-it-tall:giraffe
+PV_103,3,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV_102,1,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV101,4,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV104,3,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV106,5,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV105,1,Does a grasshopper have legs?,does-it-have-legs:grasshopper
+PV_103,2,Is a grasshopper green?,is-it-green:grasshopper
+PV_102,3,Is a grasshopper green?,is-it-green:grasshopper
+PV101,5,Is a grasshopper green?,is-it-green:grasshopper
+PV104,3,Is a grasshopper green?,is-it-green:grasshopper
+PV106,5,Is a grasshopper green?,is-it-green:grasshopper
+PV105,3,Is a grasshopper green?,is-it-green:grasshopper
+PV_103,3,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV_102,3,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV101,4,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV104,3,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV106,5,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV105,3,Does a mouse have a tail?,does-it-have-a-tail:mouse
+PV_103,3,Is a mouse grey?,is-it-grey:mouse
+PV_102,2,Is a mouse grey?,is-it-grey:mouse
+PV101,3,Is a mouse grey?,is-it-grey:mouse
+PV104,4,Is a mouse grey?,is-it-grey:mouse
+PV106,5,Is a mouse grey?,is-it-grey:mouse
+PV105,2,Is a mouse grey?,is-it-grey:mouse
+PV_103,4,Is a banana yellow?,is-it-yellow:banana
+PV_102,3,Is a banana yellow?,is-it-yellow:banana
+PV101,5,Is a banana yellow?,is-it-yellow:banana
+PV104,3,Is a banana yellow?,is-it-yellow:banana
+PV106,5,Is a banana yellow?,is-it-yellow:banana
+PV105,2,Is a banana yellow?,is-it-yellow:banana
+PV_103,2,Is a camel large?,is-it-large:camel
+PV_102,1,Is a camel large?,is-it-large:camel
+PV101,3,Is a camel large?,is-it-large:camel
+PV104,3,Is a camel large?,is-it-large:camel
+PV106,5,Is a camel large?,is-it-large:camel
+PV105,1,Is a camel large?,is-it-large:camel
+PV_103,2,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV_102,2,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV101,2,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV104,2,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV106,5,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV105,1,Is a bottle used for holding things?,is-it-used-for-holding-things:bottle
+PV_103,3,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV_102,1,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV101,3,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV104,3,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV106,5,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV105,1,Is a bottle used for holding liquids?,is-it-used-for-holding-liquids:bottle
+PV_103,1,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV_102,1,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV101,5,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV104,3,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV106,4,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV105,1,Does a bike have different speeds?,does-it-have-different-speeds:bike
+PV_103,3,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV_102,1,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV101,2,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV104,3,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV106,5,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV105,2,Does a banana grow in tropical climates?,does-it-grow-in-tropical-climates:banana
+PV_103,3,Is a bottle a container?,is-it-a-container:bottle
+PV_102,2,Is a bottle a container?,is-it-a-container:bottle
+PV101,2,Is a bottle a container?,is-it-a-container:bottle
+PV104,4,Is a bottle a container?,is-it-a-container:bottle
+PV106,5,Is a bottle a container?,is-it-a-container:bottle
+PV105,2,Is a bottle a container?,is-it-a-container:bottle
+PV_103,3,Is a bottle breakable?,is-it-breakable:bottle
+PV_102,2,Is a bottle breakable?,is-it-breakable:bottle
+PV101,3,Is a bottle breakable?,is-it-breakable:bottle
+PV104,3,Is a bottle breakable?,is-it-breakable:bottle
+PV106,5,Is a bottle breakable?,is-it-breakable:bottle
+PV105,1,Is a bottle breakable?,is-it-breakable:bottle
+PV_103,3,Is an alligator an animal?,is-it-an-animal:alligator
+PV_102,1,Is an alligator an animal?,is-it-an-animal:alligator
+PV101,5,Is an alligator an animal?,is-it-an-animal:alligator
+PV104,3,Is an alligator an animal?,is-it-an-animal:alligator
+PV106,5,Is an alligator an animal?,is-it-an-animal:alligator
+PV105,2,Is an alligator an animal?,is-it-an-animal:alligator
+PV_103,2,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV_102,2,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV101,4,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV104,4,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV106,5,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV105,3,Does a zebra have stripes?,does-it-have-stripes:zebra
+PV_103,3,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV_102,2,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV101,3,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV104,3,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV106,5,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV105,3,Does an apple grow on trees?,does-it-grow-on-trees:apple
+PV_103,1,Is an apple used for cider?,is-it-used-for-cider:apple
+PV_102,1,Is an apple used for cider?,is-it-used-for-cider:apple
+PV101,1,Is an apple used for cider?,is-it-used-for-cider:apple
+PV104,4,Is an apple used for cider?,is-it-used-for-cider:apple
+PV106,5,Is an apple used for cider?,is-it-used-for-cider:apple
+PV105,1,Is an apple used for cider?,is-it-used-for-cider:apple
+PV_103,3,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV_102,1,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV101,4,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV104,3,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV106,5,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV105,3,Does a rabbit eat carrots?,does-it-eat-carrots:rabbit
+PV_103,1,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV_102,1,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV101,1,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV104,3,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV106,3,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV105,1,Does a raccoon produce offspring?,does-it-produce-offspring:raccoon
+PV_103,2,Does a mouse eat?,does-it-eat:mouse
+PV_102,1,Does a mouse eat?,does-it-eat:mouse
+PV101,2,Does a mouse eat?,does-it-eat:mouse
+PV104,4,Does a mouse eat?,does-it-eat:mouse
+PV106,5,Does a mouse eat?,does-it-eat:mouse
+PV105,1,Does a mouse eat?,does-it-eat:mouse
+PV_103,1,Does a pig like mud?,does-it-like-mud:pig
+PV_102,1,Does a pig like mud?,does-it-like-mud:pig
+PV101,3,Does a pig like mud?,does-it-like-mud:pig
+PV104,5,Does a pig like mud?,does-it-like-mud:pig
+PV106,5,Does a pig like mud?,does-it-like-mud:pig
+PV105,3,Does a pig like mud?,does-it-like-mud:pig
+PV_103,2,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV_102,1,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV101,3,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV104,3,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV106,5,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV105,2,Is a lion a carnivore?,is-it-a-carnivore:lion
+PV_103,3,Is a mouse an animal?,is-it-an-animal:mouse
+PV_102,1,Is a mouse an animal?,is-it-an-animal:mouse
+PV101,2,Is a mouse an animal?,is-it-an-animal:mouse
+PV104,3,Is a mouse an animal?,is-it-an-animal:mouse
+PV106,5,Is a mouse an animal?,is-it-an-animal:mouse
+PV105,1,Is a mouse an animal?,is-it-an-animal:mouse
+PV_103,2,Is a pineapple juicy?,is-it-juicy:pineapple
+PV_102,1,Is a pineapple juicy?,is-it-juicy:pineapple
+PV101,5,Is a pineapple juicy?,is-it-juicy:pineapple
+PV104,3,Is a pineapple juicy?,is-it-juicy:pineapple
+PV106,5,Is a pineapple juicy?,is-it-juicy:pineapple
+PV105,1,Is a pineapple juicy?,is-it-juicy:pineapple
+PV_103,3,Is a pineapple tropical?,is-it-tropical:pineapple
+PV_102,1,Is a pineapple tropical?,is-it-tropical:pineapple
+PV101,4,Is a pineapple tropical?,is-it-tropical:pineapple
+PV104,3,Is a pineapple tropical?,is-it-tropical:pineapple
+PV106,5,Is a pineapple tropical?,is-it-tropical:pineapple
+PV105,2,Is a pineapple tropical?,is-it-tropical:pineapple
+PV_103,2,Is a pig smelly?,is-it-smelly:pig
+PV_102,1,Is a pig smelly?,is-it-smelly:pig
+PV101,3,Is a pig smelly?,is-it-smelly:pig
+PV104,3,Is a pig smelly?,is-it-smelly:pig
+PV106,5,Is a pig smelly?,is-it-smelly:pig
+PV105,1,Is a pig smelly?,is-it-smelly:pig
+PV_103,1,Does a pig live on farms?,does-it-live-on-farms:pig
+PV_102,1,Does a pig live on farms?,does-it-live-on-farms:pig
+PV101,4,Does a pig live on farms?,does-it-live-on-farms:pig
+PV104,4,Does a pig live on farms?,does-it-live-on-farms:pig
+PV106,5,Does a pig live on farms?,does-it-live-on-farms:pig
+PV105,4,Does a pig live on farms?,does-it-live-on-farms:pig
+PV_103,1,Is an apple round?,is-it-round:apple
+PV_102,3,Is an apple round?,is-it-round:apple
+PV101,4,Is an apple round?,is-it-round:apple
+PV104,3,Is an apple round?,is-it-round:apple
+PV106,5,Is an apple round?,is-it-round:apple
+PV105,2,Is an apple round?,is-it-round:apple
+PV_103,2,Is a camel beige?,is-it-beige:camel
+PV_102,3,Is a camel beige?,is-it-beige:camel
+PV101,3,Is a camel beige?,is-it-beige:camel
+PV104,4,Is a camel beige?,is-it-beige:camel
+PV106,5,Is a camel beige?,is-it-beige:camel
+PV105,2,Is a camel beige?,is-it-beige:camel
+PV_103,1,Is a zebra an animal?,is-it-an-animal:zebra
+PV_102,2,Is a zebra an animal?,is-it-an-animal:zebra
+PV101,4,Is a zebra an animal?,is-it-an-animal:zebra
+PV104,2,Is a zebra an animal?,is-it-an-animal:zebra
+PV106,5,Is a zebra an animal?,is-it-an-animal:zebra
+PV105,1,Is a zebra an animal?,is-it-an-animal:zebra
+PV_103,3,Is a strawberry red?,is-it-red:strawberry
+PV_102,3,Is a strawberry red?,is-it-red:strawberry
+PV101,5,Is a strawberry red?,is-it-red:strawberry
+PV104,2,Is a strawberry red?,is-it-red:strawberry
+PV106,5,Is a strawberry red?,is-it-red:strawberry
+PV105,2,Is a strawberry red?,is-it-red:strawberry
+PV_103,2,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV_102,2,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV101,3,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV104,2,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV106,5,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV105,3,Does a rabbit have whiskers?,does-it-have-whiskers:rabbit
+PV_103,3,Is a pig pink?,is-it-pink:pig
+PV_102,2,Is a pig pink?,is-it-pink:pig
+PV101,3,Is a pig pink?,is-it-pink:pig
+PV104,3,Is a pig pink?,is-it-pink:pig
+PV106,5,Is a pig pink?,is-it-pink:pig
+PV105,3,Is a pig pink?,is-it-pink:pig
+PV_103,3,Does a pig have legs?,does-it-have-legs:pig
+PV_102,3,Does a pig have legs?,does-it-have-legs:pig
+PV101,4,Does a pig have legs?,does-it-have-legs:pig
+PV104,1,Does a pig have legs?,does-it-have-legs:pig
+PV106,5,Does a pig have legs?,does-it-have-legs:pig
+PV105,1,Does a pig have legs?,does-it-have-legs:pig
+PV_103,4,Is a penguin black?,is-it-black:penguin
+PV_102,3,Is a penguin black?,is-it-black:penguin
+PV101,4,Is a penguin black?,is-it-black:penguin
+PV104,3,Is a penguin black?,is-it-black:penguin
+PV106,5,Is a penguin black?,is-it-black:penguin
+PV105,2,Is a penguin black?,is-it-black:penguin
+PV_103,3,Does a penguin have feet?,does-it-have-feet:penguin
+PV_102,2,Does a penguin have feet?,does-it-have-feet:penguin
+PV101,4,Does a penguin have feet?,does-it-have-feet:penguin
+PV104,3,Does a penguin have feet?,does-it-have-feet:penguin
+PV106,5,Does a penguin have feet?,does-it-have-feet:penguin
+PV105,2,Does a penguin have feet?,does-it-have-feet:penguin
+PV_103,4,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV_102,2,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV101,2,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV104,3,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV106,5,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV105,1,Does a rabbit have feet?,does-it-have-feet:rabbit
+PV_103,3,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV_102,2,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV101,4,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV104,3,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV106,5,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV105,1,Does a rabbit have ears?,does-it-have-ears:rabbit
+PV_103,3,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV_102,2,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV101,3,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV104,3,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV106,5,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV105,1,Does a pineapple have an inside?,does-it-have-an-inside:pineapple
+PV_103,3,Does a pig have a snout?,does-it-have-a-snout:pig
+PV_102,3,Does a pig have a snout?,does-it-have-a-snout:pig
+PV101,4,Does a pig have a snout?,does-it-have-a-snout:pig
+PV104,3,Does a pig have a snout?,does-it-have-a-snout:pig
+PV106,5,Does a pig have a snout?,does-it-have-a-snout:pig
+PV105,3,Does a pig have a snout?,does-it-have-a-snout:pig
+PV_103,2,Does a camel eat?,does-it-eat:camel
+PV_102,1,Does a camel eat?,does-it-eat:camel
+PV101,3,Does a camel eat?,does-it-eat:camel
+PV104,3,Does a camel eat?,does-it-eat:camel
+PV106,3,Does a camel eat?,does-it-eat:camel
+PV105,1,Does a camel eat?,does-it-eat:camel
+PV_103,1,Does a camel spit?,does-it-spit:camel
+PV_102,1,Does a camel spit?,does-it-spit:camel
+PV101,2,Does a camel spit?,does-it-spit:camel
+PV104,3,Does a camel spit?,does-it-spit:camel
+PV106,5,Does a camel spit?,does-it-spit:camel
+PV105,1,Does a camel spit?,does-it-spit:camel
+PV_103,2,Does a camel drink water?,does-it-drink-water:camel
+PV_102,1,Does a camel drink water?,does-it-drink-water:camel
+PV101,4,Does a camel drink water?,does-it-drink-water:camel
+PV104,3,Does a camel drink water?,does-it-drink-water:camel
+PV106,5,Does a camel drink water?,does-it-drink-water:camel
+PV105,1,Does a camel drink water?,does-it-drink-water:camel
+PV_103,4,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV_102,2,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV101,4,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV104,4,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV106,3,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV105,1,Is a chair used for relaxing?,is-it-used-for-relaxing:chair
+PV_103,1,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV_102,1,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV101,5,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV104,5,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV106,5,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV105,1,Is a chair used for sitting on?,is-it-used-for-sitting-on:chair
+PV_103,4,Is a chair found at tables?,is-it-found-at-tables:chair
+PV_102,2,Is a chair found at tables?,is-it-found-at-tables:chair
+PV101,5,Is a chair found at tables?,is-it-found-at-tables:chair
+PV104,3,Is a chair found at tables?,is-it-found-at-tables:chair
+PV106,5,Is a chair found at tables?,is-it-found-at-tables:chair
+PV105,1,Is a chair found at tables?,is-it-found-at-tables:chair
+PV_103,3,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV_102,1,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV101,3,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV104,3,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV106,5,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV105,1,Does a chicken live in a coop?,does-it-live-in-a-coop:chicken
+PV_103,1,Is a deer fast?,is-it-fast:deer
+PV_102,1,Is a deer fast?,is-it-fast:deer
+PV101,3,Is a deer fast?,is-it-fast:deer
+PV104,3,Is a deer fast?,is-it-fast:deer
+PV106,5,Is a deer fast?,is-it-fast:deer
+PV105,3,Is a deer fast?,is-it-fast:deer
+PV_103,1,Does a dog bark?,does-it-bark:dog
+PV_102,1,Does a dog bark?,does-it-bark:dog
+PV101,4,Does a dog bark?,does-it-bark:dog
+PV104,4,Does a dog bark?,does-it-bark:dog
+PV106,5,Does a dog bark?,does-it-bark:dog
+PV105,1,Does a dog bark?,does-it-bark:dog
+PV_103,2,Does a donkey make noises?,does-it-make-noises:donkey
+PV_102,1,Does a donkey make noises?,does-it-make-noises:donkey
+PV101,4,Does a donkey make noises?,does-it-make-noises:donkey
+PV104,4,Does a donkey make noises?,does-it-make-noises:donkey
+PV106,5,Does a donkey make noises?,does-it-make-noises:donkey
+PV105,2,Does a donkey make noises?,does-it-make-noises:donkey
+PV_103,2,Is an alligator long?,is-it-long:alligator
+PV_102,2,Is an alligator long?,is-it-long:alligator
+PV101,3,Is an alligator long?,is-it-long:alligator
+PV104,4,Is an alligator long?,is-it-long:alligator
+PV106,5,Is an alligator long?,is-it-long:alligator
+PV105,3,Is an alligator long?,is-it-long:alligator
+PV_103,2,Does a banana have a skin?,does-it-have-a-skin:banana
+PV_102,2,Does a banana have a skin?,does-it-have-a-skin:banana
+PV101,5,Does a banana have a skin?,does-it-have-a-skin:banana
+PV104,4,Does a banana have a skin?,does-it-have-a-skin:banana
+PV106,5,Does a banana have a skin?,does-it-have-a-skin:banana
+PV105,3,Does a banana have a skin?,does-it-have-a-skin:banana
+PV_103,1,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV_102,1,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV101,2,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV104,5,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV106,5,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV105,3,Does a zebra live in Africa?,does-it-live-in-africa:zebra
+PV_103,2,Is a train loud?,is-it-loud:train
+PV_102,1,Is a train loud?,is-it-loud:train
+PV101,2,Is a train loud?,is-it-loud:train
+PV104,3,Is a train loud?,is-it-loud:train
+PV106,5,Is a train loud?,is-it-loud:train
+PV105,1,Is a train loud?,is-it-loud:train
+PV_103,2,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV_102,1,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV101,4,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV104,4,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV106,5,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV105,1,Does a strawberry taste good?,does-it-taste-good:strawberry
+PV_103,2,Is a raccoon furry?,is-it-furry:raccoon
+PV_102,2,Is a raccoon furry?,is-it-furry:raccoon
+PV101,4,Is a raccoon furry?,is-it-furry:raccoon
+PV104,4,Is a raccoon furry?,is-it-furry:raccoon
+PV106,5,Is a raccoon furry?,is-it-furry:raccoon
+PV105,2,Is a raccoon furry?,is-it-furry:raccoon
+PV_103,3,Does a swan live on water?,does-it-live-on-water:swan
+PV_102,3,Does a swan live on water?,does-it-live-on-water:swan
+PV101,5,Does a swan live on water?,does-it-live-on-water:swan
+PV104,3,Does a swan live on water?,does-it-live-on-water:swan
+PV106,5,Does a swan live on water?,does-it-live-on-water:swan
+PV105,2,Does a swan live on water?,does-it-live-on-water:swan
+PV_103,2,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV_102,1,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV101,5,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV104,3,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV106,5,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV105,1,Is a strawberry a fruit?,is-it-a-fruit:strawberry
+PV_103,2,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV_102,3,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV101,5,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV104,4,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV106,5,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV105,1,Is a table used for eating on?,is-it-used-for-eating-on:table
+PV_103,2,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV_102,2,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV101,2,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV104,4,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV106,5,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV105,1,Does a swan lay eggs?,does-it-lay-eggs:swan
+PV_103,4,Does a tiger live in India?,does-it-live-in-india:tiger
+PV_102,1,Does a tiger live in India?,does-it-live-in-india:tiger
+PV101,1,Does a tiger live in India?,does-it-live-in-india:tiger
+PV104,3,Does a tiger live in India?,does-it-live-in-india:tiger
+PV106,5,Does a tiger live in India?,does-it-live-in-india:tiger
+PV105,2,Does a tiger live in India?,does-it-live-in-india:tiger
+PV_103,4,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV_102,2,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV101,5,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV104,3,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV106,5,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV105,1,Is a table found in kitchens?,is-it-found-in-kitchens:table
+PV_103,3,Does a camel have a hump?,does-it-have-a-hump:camel
+PV_102,2,Does a camel have a hump?,does-it-have-a-hump:camel
+PV101,5,Does a camel have a hump?,does-it-have-a-hump:camel
+PV104,3,Does a camel have a hump?,does-it-have-a-hump:camel
+PV106,5,Does a camel have a hump?,does-it-have-a-hump:camel
+PV105,1,Does a camel have a hump?,does-it-have-a-hump:camel
+PV_103,4,Is a camel brown?,is-it-brown:camel
+PV_102,3,Is a camel brown?,is-it-brown:camel
+PV101,4,Is a camel brown?,is-it-brown:camel
+PV104,3,Is a camel brown?,is-it-brown:camel
+PV106,5,Is a camel brown?,is-it-brown:camel
+PV105,2,Is a camel brown?,is-it-brown:camel
+PV_103,3,Does a dog have hair?,does-it-have-hair:dog
+PV_102,2,Does a dog have hair?,does-it-have-hair:dog
+PV101,5,Does a dog have hair?,does-it-have-hair:dog
+PV104,3,Does a dog have hair?,does-it-have-hair:dog
+PV106,5,Does a dog have hair?,does-it-have-hair:dog
+PV105,3,Does a dog have hair?,does-it-have-hair:dog
+PV_103,3,Does a deer have four legs?,does-it-have-four-legs:deer
+PV_102,2,Does a deer have four legs?,does-it-have-four-legs:deer
+PV101,3,Does a deer have four legs?,does-it-have-four-legs:deer
+PV104,3,Does a deer have four legs?,does-it-have-four-legs:deer
+PV106,5,Does a deer have four legs?,does-it-have-four-legs:deer
+PV105,1,Does a deer have four legs?,does-it-have-four-legs:deer
+PV_103,3,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV_102,2,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV101,5,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV104,3,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV106,5,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV105,2,Does a donkey have a tail?,does-it-have-a-tail:donkey
+PV_103,1,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV_102,3,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV101,3,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV104,3,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV106,5,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV105,2,Does a donkey have hooves?,does-it-have-hooves:donkey
+PV_103,3,Does a donkey have legs?,does-it-have-legs:donkey
+PV_102,2,Does a donkey have legs?,does-it-have-legs:donkey
+PV101,4,Does a donkey have legs?,does-it-have-legs:donkey
+PV104,3,Does a donkey have legs?,does-it-have-legs:donkey
+PV106,5,Does a donkey have legs?,does-it-have-legs:donkey
+PV105,1,Does a donkey have legs?,does-it-have-legs:donkey
+PV_103,3,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV_102,4,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV101,5,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV104,3,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV106,5,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV105,1,Does a donkey have four legs?,does-it-have-four-legs:donkey
+PV_103,3,Does an elephant have ears?,does-it-have-ears:elephant
+PV_102,4,Does an elephant have ears?,does-it-have-ears:elephant
+PV101,5,Does an elephant have ears?,does-it-have-ears:elephant
+PV104,4,Does an elephant have ears?,does-it-have-ears:elephant
+PV106,5,Does an elephant have ears?,does-it-have-ears:elephant
+PV105,1,Does an elephant have ears?,does-it-have-ears:elephant
+PV_103,2,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV_102,2,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV101,5,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV104,3,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV106,5,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV105,1,Does an elephant have four legs?,does-it-have-four-legs:elephant
+PV_103,1,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV_102,4,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV101,3,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV104,3,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV106,5,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV105,3,Does a zebra have hooves?,does-it-have-hooves:zebra
+PV_103,2,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV_102,2,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV101,5,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV104,3,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV106,5,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV105,1,Does a zebra have four legs?,does-it-have-four-legs:zebra
+PV_103,2,Is a toad small?,is-it-small:toad
+PV_102,2,Is a toad small?,is-it-small:toad
+PV101,5,Is a toad small?,is-it-small:toad
+PV104,4,Is a toad small?,is-it-small:toad
+PV106,5,Is a toad small?,is-it-small:toad
+PV105,3,Is a toad small?,is-it-small:toad
+PV_103,1,Does a train have an engine?,does-it-have-an-engine:train
+PV_102,1,Does a train have an engine?,does-it-have-an-engine:train
+PV101,3,Does a train have an engine?,does-it-have-an-engine:train
+PV104,3,Does a train have an engine?,does-it-have-an-engine:train
+PV106,5,Does a train have an engine?,does-it-have-an-engine:train
+PV105,1,Does a train have an engine?,does-it-have-an-engine:train
+PV_103,1,Is a table made of wood?,is-it-made-of-wood:table
+PV_102,1,Is a table made of wood?,is-it-made-of-wood:table
+PV101,4,Is a table made of wood?,is-it-made-of-wood:table
+PV104,1,Is a table made of wood?,is-it-made-of-wood:table
+PV106,5,Is a table made of wood?,is-it-made-of-wood:table
+PV105,2,Is a table made of wood?,is-it-made-of-wood:table
+PV_103,3,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV_102,3,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV101,5,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV104,4,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV106,5,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV105,2,Does a tiger have whiskers?,does-it-have-whiskers:tiger
+PV_103,2,Does a swan have feathers?,does-it-have-feathers:swan
+PV_102,2,Does a swan have feathers?,does-it-have-feathers:swan
+PV101,5,Does a swan have feathers?,does-it-have-feathers:swan
+PV104,3,Does a swan have feathers?,does-it-have-feathers:swan
+PV106,5,Does a swan have feathers?,does-it-have-feathers:swan
+PV105,3,Does a swan have feathers?,does-it-have-feathers:swan
+PV_103,1,Is a table flat?,is-it-flat:table
+PV_102,2,Is a table flat?,is-it-flat:table
+PV101,5,Is a table flat?,is-it-flat:table
+PV104,1,Is a table flat?,is-it-flat:table
+PV106,5,Is a table flat?,is-it-flat:table
+PV105,1,Is a table flat?,is-it-flat:table
+PV_103,3,Does a swan have wings?,does-it-have-wings:swan
+PV_102,3,Does a swan have wings?,does-it-have-wings:swan
+PV101,4,Does a swan have wings?,does-it-have-wings:swan
+PV104,3,Does a swan have wings?,does-it-have-wings:swan
+PV106,5,Does a swan have wings?,does-it-have-wings:swan
+PV105,1,Does a swan have wings?,does-it-have-wings:swan
+PV_103,3,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV_102,3,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV101,5,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV104,3,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV106,5,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV105,3,Does a swan have a long neck?,does-it-have-a-long-neck:swan
+PV_103,3,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV_102,3,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV101,4,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV104,3,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV106,5,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV105,3,Does an alligator have jaws?,does-it-have-jaws:alligator
+PV_103,3,Does a banana have a peel?,does-it-have-a-peel:banana
+PV_102,2,Does a banana have a peel?,does-it-have-a-peel:banana
+PV101,5,Does a banana have a peel?,does-it-have-a-peel:banana
+PV104,5,Does a banana have a peel?,does-it-have-a-peel:banana
+PV106,5,Does a banana have a peel?,does-it-have-a-peel:banana
+PV105,3,Does a banana have a peel?,does-it-have-a-peel:banana
+PV_103,2,Does a camel have legs?,does-it-have-legs:camel
+PV_102,2,Does a camel have legs?,does-it-have-legs:camel
+PV101,3,Does a camel have legs?,does-it-have-legs:camel
+PV104,3,Does a camel have legs?,does-it-have-legs:camel
+PV106,5,Does a camel have legs?,does-it-have-legs:camel
+PV105,1,Does a camel have legs?,does-it-have-legs:camel
+PV_103,1,Is a jacket clothing?,is-it-clothing:jacket
+PV_102,1,Is a jacket clothing?,is-it-clothing:jacket
+PV101,4,Is a jacket clothing?,is-it-clothing:jacket
+PV104,3,Is a jacket clothing?,is-it-clothing:jacket
+PV106,5,Is a jacket clothing?,is-it-clothing:jacket
+PV105,1,Is a jacket clothing?,is-it-clothing:jacket
+PV_103,1,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV_102,2,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV101,3,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV104,3,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV106,5,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV105,3,Is a jacket worn for the rain?,is-it-worn-for-the-rain:jacket
+PV_103,1,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV_102,1,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV101,5,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV104,1,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV106,5,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV105,3,Does a giraffe eat leaves?,does-it-eat-leaves:giraffe
+PV_103,3,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV_102,1,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV101,5,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV104,3,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV106,5,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV105,3,Does a giraffe live in zoos?,does-it-live-in-zoos:giraffe
+PV_103,3,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV_102,1,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV101,5,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV104,4,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV106,5,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV105,3,Does an elephant eat peanuts?,does-it-eat-peanuts:elephant
+PV_103,1,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV_102,1,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV101,3,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV104,3,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV106,5,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV105,2,Does an elephant live in Africa?,does-it-live-in-africa:elephant
+PV_103,2,Is an elephant an animal?,is-it-an-animal:elephant
+PV_102,1,Is an elephant an animal?,is-it-an-animal:elephant
+PV101,5,Is an elephant an animal?,is-it-an-animal:elephant
+PV104,3,Is an elephant an animal?,is-it-an-animal:elephant
+PV106,5,Is an elephant an animal?,is-it-an-animal:elephant
+PV105,1,Is an elephant an animal?,is-it-an-animal:elephant
+PV_103,3,Is a donkey furry?,is-it-furry:donkey
+PV_102,2,Is a donkey furry?,is-it-furry:donkey
+PV101,5,Is a donkey furry?,is-it-furry:donkey
+PV104,3,Is a donkey furry?,is-it-furry:donkey
+PV106,5,Is a donkey furry?,is-it-furry:donkey
+PV105,2,Is a donkey furry?,is-it-furry:donkey
+PV_103,1,Is a lion an animal?,is-it-an-animal:lion
+PV_102,1,Is a lion an animal?,is-it-an-animal:lion
+PV101,4,Is a lion an animal?,is-it-an-animal:lion
+PV104,3,Is a lion an animal?,is-it-an-animal:lion
+PV106,5,Is a lion an animal?,is-it-an-animal:lion
+PV105,1,Is a lion an animal?,is-it-an-animal:lion
+PV_103,4,Does a lion roar?,does-it-roar:lion
+PV_102,1,Does a lion roar?,does-it-roar:lion
+PV101,5,Does a lion roar?,does-it-roar:lion
+PV104,3,Does a lion roar?,does-it-roar:lion
+PV106,5,Does a lion roar?,does-it-roar:lion
+PV105,1,Does a lion roar?,does-it-roar:lion
