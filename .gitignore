@@ -11,3 +11,4 @@ drive-api-creds.json
 
 # ignore venv
 lupyanlab/
+qualtrics_api.yml
