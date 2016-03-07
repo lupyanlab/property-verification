@@ -16,7 +16,25 @@ import requests
 import yaml
 
 @task
-def install_r_package_data():
+def gather_data():
+    """Gather the experiment data and put it in the R pkg."""
+    data_files = Path('experiment/data').listdir('PV*csv')
+    for data_file in data_files:
+        dest_dir = Path('propertyverificationdata/data-raw/question_first/fourth_run/data')
+        if not dest_dir.exists():
+            dest_dir.mkdir(parents=True)
+        dest = Path(dest_dir, data_file.name)
+        run('cp {src} {dest}'.format(src=data_file, dest=dest))
+        # move the subj info sheet
+        run('cp experiment/subj_info.csv {}'.format(dest_dir.parent))
+
+@task
+def compile_r_pkg():
+    run('cd propertyverificationdata && Rscript data-raw/package_data.R')
+
+
+@task
+def install_r_pkg(gather_data):
     """Install the propertyverificationdata R package."""
     # watch quotes!
     r_commands = [
@@ -27,6 +45,80 @@ def install_r_package_data():
         run("Rscript -e '{}'".format(r_command))
 
 @task
+def get_survey_data():
+    """Fetch the survey responses and format them for analysis."""
+    survey_dir = Path('individual_diffs')
+    survey_questions_file = Path(survey_dir, 'survey_questions.csv')
+    survey_data_dir = Path(survey_dir, 'survey_data')
+    survey_data_file = Path(survey_data_dir, 'property_verification.csv')
+
+    get_qualtrics_responses(output=survey_data_file)
+    survey_data = pd.read_csv(survey_data_file, skiprows=[0,])
+
+    imagery_output = Path(survey_dir, 'imagery.csv')
+    # strategy_output = Path(survey_dir, 'strategy.csv')
+
+    id_col = 'subj_id'
+
+    is_imagery_col = survey_data.columns.str.contains('imagery')
+    imagery_cols = survey_data.columns[is_imagery_col].tolist()
+    imagery = pd.melt(survey_data, id_col, imagery_cols,
+                      var_name = 'qualtrics', value_name = 'imagery')
+
+    # separate choice text
+    imagery['question_str'] = imagery.qualtrics.str.split('-').str.get(1)
+    # drop qualtrics entry for the instructions "question"
+    imagery = imagery.ix[imagery.question_str != 'text']
+    imagery.drop('qualtrics', axis=1, inplace=True)
+
+    # read in the map between question strings and proposition ids
+    survey_questions = pd.read_csv(survey_questions_file)
+
+    imagery = imagery.merge(survey_questions)
+    imagery.to_csv(imagery_output, index=False)
+
+def get_qualtrics_responses(name='property_verification',
+        output='individual_diffs/survey_data/property_verification.csv'):
+    """Get the survey data."""
+    qualtrics_api_creds = Path('individual_diffs', 'qualtrics_api.yml')
+    creds = yaml.load(open(qualtrics_api_creds))
+    qualtrics = Qualtrics(**creds)
+    responses = qualtrics.get_survey_responses(name)
+    responses.to_csv(output, index=False)
+
+class Qualtrics:
+    def __init__(self, user, token):
+        self.root_url = 'https://survey.qualtrics.com/WRAPI/ControlPanel/api.php'
+        self.base_params = dict(
+            API_SELECT='ControlPanel',
+            Version=2.5,
+            User=user,
+            Token=token,
+        )
+
+    def get_survey_id(self, name):
+        """Get the survey id assigned by Qualtrics given the survey name."""
+        response = self.get(Request='getSurveys', Format='JSON')
+        surveys = response.json()['Result']['Surveys']
+        for survey in surveys:
+            if survey['SurveyName'] == name:
+                return survey['SurveyID']
+        raise AssertionError('survey {} not found'.format(name))
+
+    def get_survey_responses(self, name):
+        """Get the survey data."""
+        survey_id = self.get_survey_id(name)
+        response = self.get(Request='getLegacyResponseData', Format='CSV',
+                            SurveyID=survey_id)
+        response_csv = StringIO(response.content)
+        survey_data = pd.DataFrame.from_csv(response_csv)
+        return survey_data
+
+    def get(self, **kwargs):
+        params = self.base_params.copy()
+        params.update(kwargs)
+        return requests.get(self.root_url, params=params)
+
 def replace_propositions():
     """Move the selected propositions into experiment/stimuli."""
     src = 'reports/propositions/balanced_propositions.csv'
@@ -45,7 +137,6 @@ def replace_propositions():
 
     selected_propositions.to_csv(dst, index=False)
 
-@task(replace_propositions)
 def create_survey_questions():
     """Format propositions as questions to use in the Qualtrics survey."""
     propositions = pd.read_csv('experiment/stimuli/propositions.csv')
@@ -75,7 +166,6 @@ def format_question(cue_questions):
 
     return cue_questions
 
-@task
 def build_survey():
     """Insert question strings as items in the template survey."""
     survey_dir = 'individual_diffs'
@@ -122,87 +212,3 @@ def pluck(items, search_term):
             if search_term in values:
                 return item
     raise AssertionError('search term {} not found'.format(search_term))
-
-@task
-def compile_survey_data():
-    """Transform the raw output from qualtrics to a format for analysis."""
-    survey_dir = Path('individual_diffs')
-    survey_questions_file = Path(survey_dir, 'survey_questions.csv')
-    survey_data_dir = Path(survey_dir, 'survey_data')
-    survey_data_file = Path(survey_data_dir, 'property_verification.csv')
-    survey_data = pd.read_csv(survey_data_file, skiprows=[0,])
-
-    imagery_output = Path(survey_dir, 'imagery.csv')
-    # strategy_output = Path(survey_dir, 'strategy.csv')
-
-    id_col = 'subj_id'
-
-    is_imagery_col = survey_data.columns.str.contains('imagery')
-    imagery_cols = survey_data.columns[is_imagery_col].tolist()
-    imagery = pd.melt(survey_data, id_col, imagery_cols,
-                      var_name = 'qualtrics', value_name = 'imagery')
-
-    # separate choice text
-    imagery['question_str'] = imagery.qualtrics.str.split('-').str.get(1)
-    # drop qualtrics entry for the instructions "question"
-    imagery = imagery.ix[imagery.question_str != 'text']
-    imagery.drop('qualtrics', axis=1, inplace=True)
-
-    # read in the map between question strings and proposition ids
-    survey_questions = pd.read_csv(survey_questions_file)
-
-    imagery = imagery.merge(survey_questions)
-    imagery.to_csv(imagery_output, index=False)
-
-@task
-def get_qualtrics_responses(name='property_verification',
-        output='individual_diffs/survey_data/property_verification.csv'):
-    """Get the survey data."""
-    qualtrics_api_creds = Path('individual_diffs', 'qualtrics_api.yml')
-    creds = yaml.load(open(qualtrics_api_creds))
-    qualtrics = Qualtrics(**creds)
-    responses = qualtrics.get_survey_responses(name)
-    responses.to_csv(output, index=False)
-
-def get_survey_id(name):
-    """Given the name of the survey, get the survey id."""
-    get_surveys_kwargs = dict(Request='getSurveys', Format='JSON')
-    get_surveys_kwargs.update(generic_kwargs)
-    response = requests.get(qualtrics_url_root, params = get_surveys_kwargs)
-    surveys = response.json()['Result']['Surveys']
-    for survey in surveys:
-        if survey['SurveyName'] == name:
-            return survey['SurveyID']
-
-class Qualtrics:
-    def __init__(self, user, token):
-        self.root_url = 'https://survey.qualtrics.com/WRAPI/ControlPanel/api.php'
-        self.base_params = dict(
-            API_SELECT='ControlPanel',
-            Version=2.5,
-            User=user,
-            Token=token,
-        )
-
-    def get_survey_id(self, name):
-        """Get the survey id assigned by Qualtrics given the survey name."""
-        response = self.get(Request='getSurveys', Format='JSON')
-        surveys = response.json()['Result']['Surveys']
-        for survey in surveys:
-            if survey['SurveyName'] == name:
-                return survey['SurveyID']
-        raise AssertionError('survey {} not found'.format(name))
-
-    def get_survey_responses(self, name):
-        """Get the survey data."""
-        survey_id = self.get_survey_id(name)
-        response = self.get(Request='getLegacyResponseData', Format='CSV',
-                            SurveyID=survey_id)
-        response_csv = StringIO(response.content)
-        survey_data = pd.DataFrame.from_csv(response_csv)
-        return survey_data
-
-    def get(self, **kwargs):
-        params = self.base_params.copy()
-        params.update(kwargs)
-        return requests.get(self.root_url, params=params)

@@ -86,7 +86,7 @@ summary(rt_mod)
 plot_rt(property_verification)
 
 # ---- error
-error_mod <- lmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
-                  family = "binomial", data = property_verification)
+error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
+                   family = "binomial", data = property_verification)
 summary(error_mod)
 plot_error(property_verification)

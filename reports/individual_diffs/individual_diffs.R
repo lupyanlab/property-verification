@@ -31,7 +31,7 @@ individual_diffs <- read.csv("individual_diffs/imagery.csv") %>%
 property_verification <- property_verification %>%
   left_join(individual_diffs)
 
-individual_diffs_mod <- glmer(is_error ~ imagery * mask_c + (imagery * mask_c|subj_id) + (mask_c|proposition_id),
+individual_diffs_mod <- glmer(is_error ~ imagery * mask_c + (imagery * mask_c|subj_id),
                               family = "binomial", data = property_verification)
 summary(individual_diffs_mod)
 

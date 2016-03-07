@@ -22,7 +22,12 @@ compile_question_first <- function() {
 
   third_run <- compile("data-raw/question_first/third_run/data/", regex_key = "MWPR") %>%
     mutate(exp_run = 3)
-  question_first <- rbind_list(question_first, third_run)
+
+  fourth_run <- compile("data-raw/question_first/fourth_run/data/", regex_key = "PV") %>%
+    mutate(exp_run = 4) %>%
+    select(-experimenter)
+
+  question_first <- rbind_list(question_first, third_run, fourth_run)
 
   question_first
 }
