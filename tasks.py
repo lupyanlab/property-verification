@@ -32,9 +32,8 @@ def gather_data():
 def compile_r_pkg():
     run('cd propertyverificationdata && Rscript data-raw/package_data.R')
 
-
 @task
-def install_r_pkg(gather_data):
+def install_r_pkg():
     """Install the propertyverificationdata R package."""
     # watch quotes!
     r_commands = [
