@@ -25,9 +25,14 @@ read_chunk("individual_diffs.R")
 ```{r, data}
 ```
 
-# Model
+# Models
 
 ```{r, individual-diffs-mod}
+```
+
+Summarize each subject with an overall imagery score and use that to predict their interaction.
+
+```{r, imagery-subjs}
 ```
 
 # Predict mask effect

@@ -50,29 +50,6 @@ question_first <- question_first %>%
   recode_mask_type %>%
   filter(exp_run == 4)
 
-# ---- outliers 
-Z_SCORE_CUTOFF <- 2.0
-
-subj_mods <- question_first %>%
-  group_by(subj_id) %>%
-  do(mod = glm(is_error ~ feat_c * mask_c, family = "binomial", data = .))
-
-subj_effects <- subj_mods %>%
-  tidy(mod) %>%
-  filter(term == "feat_c:mask_c")
-
-# Label outliers
-z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
-subj_effects$estimate_z <- z_score(subj_effects$estimate)
-subj_effects$is_outlier <- ifelse(abs(subj_effects$estimate_z) > Z_SCORE_CUTOFF, 1, 0)
-outlier_labels <- select(subj_effects, subj_id, is_outlier)
-question_first <- left_join(question_first, outlier_labels)
-
-table(outlier_labels$is_outlier)
-
-# drop any outlier subjects for the rest of the script
-question_first <- filter(question_first, is_outlier != 1)
-
 # ---- rt
 rt_mod <- lmer(rt ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
                data = question_first)

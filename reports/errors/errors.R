@@ -102,6 +102,13 @@ glmer_effects <- tidy(error_mod, effects = "random") %>%
   filter(term == "feat_c:mask_c")
 plot_effect_density(glmer_effects)
 
+# ---- glmer-mod-slopes-only
+slopes_mod <- glmer(is_error ~ 1 + (feat_c * mask_c|subj_id),
+                    family = "binomial", data = question_first)
+slopes_effects <- tidy(slopes_mod, effects = "random") %>%
+  filter(term == "feat_c:mask_c")
+plot_effect_density(slopes_effects)
+
 # ---- glmer-prop-mod
 prop_error_mod <- glmer(is_error ~ imagery_z * mask_c + (mask_c|proposition_id),
                         family = "binomial", data = question_first)

@@ -17,6 +17,24 @@ question_first <- question_first %>%
   recode_mask_type %>%
   left_join(individual_diffs)
 
+# ---- imagery-subjs
+subj_mod <- glmer(is_error ~ 1 + (feat_c * mask_c|subj_id),
+                  family = "binomial", data = question_first)
+
+subj_effects <- subj_mod %>%
+  tidy(effects = "random") %>%
+  filter(term == "feat_c:mask_c") %>%
+  select(subj_id = level, interaction = estimate)
+
+subj_imagery <- individual_diffs %>%
+  group_by(subj_id) %>%
+  summarize(imagery = mean(imagery, na.rm = TRUE))
+
+subjs <- left_join(subj_effects, subj_imagery)
+
+ggplot(subjs, aes(x = imagery, y = interaction)) +
+  geom_point()
+
 # ---- individual-diffs-mod
 individual_diffs_mod <- glmer(is_error ~ imagery * mask_c + (imagery * mask_c|subj_id),
                               family = "binomial", data = question_first)
