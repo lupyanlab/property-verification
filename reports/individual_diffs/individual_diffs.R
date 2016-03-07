@@ -8,34 +8,22 @@ options(stringsAsFactors = FALSE)
 
 # ---- data
 library(propertyverificationdata)
-property_verification <- compile("experiment/data/", regex_key="PV*") %>%
-  filter(block_type != "practice") %>%
-  mutate(
-    # only measure errors of comission
-    is_correct = ifelse(response == "timeout", NA, is_correct),
-    
-    # only measure rt on correct responses
-    rt = ifelse(is_correct == 1, rt, NA),
-    
-    # invert correctness to get error
-    is_error = 1 - is_correct
-  ) %>%
-  # create new columns for modeling and graphing
+data(question_first)
+data(individual_diffs)
+
+question_first <- question_first %>%
+  tidy_property_verification_data %>%
   recode_feat_type %>%
-  recode_mask_type
-
-individual_diffs <- read.csv("individual_diffs/imagery.csv") %>%
-  select(subj_id, proposition_id, imagery)
-
-# ----
-property_verification <- property_verification %>%
+  recode_mask_type %>%
   left_join(individual_diffs)
 
+# ---- individual-diffs-mod
 individual_diffs_mod <- glmer(is_error ~ imagery * mask_c + (imagery * mask_c|subj_id),
-                              family = "binomial", data = property_verification)
+                              family = "binomial", data = question_first)
 summary(individual_diffs_mod)
 
-proposition_mods <- property_verification %>%
+# ---- predict-mask-effect
+proposition_mods <- question_first %>%
   group_by(proposition_id) %>%
   do(mod = glm(is_error ~ mask_c, family = "binomial", data = .))
 
@@ -47,6 +35,11 @@ proposition_effects <- proposition_mods %>%
 individual_diffs <- individual_diffs %>%
   left_join(proposition_effects)
 
+ggplot(individual_diffs, aes(x = imagery, y = effect_of_mask)) +
+  geom_point(position = position_jitter(width = 0.1)) +
+  geom_smooth(aes(group = 1), method = "lm")
+
+# ---- predict-mask-effect-by-subj
 ggplot(individual_diffs, aes(x = imagery, y = effect_of_mask)) +
   geom_point(position = position_jitter(width = 0.1)) +
   geom_smooth(aes(group = subj_id), method = "lm") +

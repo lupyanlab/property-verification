@@ -43,26 +43,17 @@ plot_error <- function(frame) {
 
 # ---- data
 library(propertyverificationdata)
-property_verification <- compile("experiment/data/", regex_key="PV*") %>%
-    filter(block_type != "practice") %>%
-    mutate(
-      # only measure errors of comission
-      is_correct = ifelse(response == "timeout", NA, is_correct),
+data(question_first)
+question_first <- question_first %>%
+  tidy_property_verification_data %>%
+  recode_feat_type %>%
+  recode_mask_type %>%
+  filter(exp_run == 4)
 
-      # only measure rt on correct responses
-      rt = ifelse(is_correct == 1, rt, NA),
-
-      # invert correctness to get error
-      is_error = 1 - is_correct
-    ) %>%
-    # create new columns for modeling and graphing
-    recode_feat_type %>%
-    recode_mask_type
-
-# ---- outliers
+# ---- outliers 
 Z_SCORE_CUTOFF <- 2.0
 
-subj_mods <- property_verification %>%
+subj_mods <- question_first %>%
   group_by(subj_id) %>%
   do(mod = glm(is_error ~ feat_c * mask_c, family = "binomial", data = .))
 
@@ -70,23 +61,26 @@ subj_effects <- subj_mods %>%
   tidy(mod) %>%
   filter(term == "feat_c:mask_c")
 
+# Label outliers
 z_score <- function(x) (x - mean(x, na.rm = TRUE))/sd(x, na.rm = TRUE)
 subj_effects$estimate_z <- z_score(subj_effects$estimate)
 subj_effects$is_outlier <- ifelse(abs(subj_effects$estimate_z) > Z_SCORE_CUTOFF, 1, 0)
 outlier_labels <- select(subj_effects, subj_id, is_outlier)
+question_first <- left_join(question_first, outlier_labels)
 
-# drop any outlier subjects
-property_verification <- left_join(property_verification, outlier_labels) %>%
-  filter(is_outlier != 1)
+table(outlier_labels$is_outlier)
+
+# drop any outlier subjects for the rest of the script
+question_first <- filter(question_first, is_outlier != 1)
 
 # ---- rt
 rt_mod <- lmer(rt ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
-               data = property_verification)
+               data = question_first)
 summary(rt_mod)
-plot_rt(property_verification)
+plot_rt(question_first)
 
 # ---- error
 error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
-                   family = "binomial", data = property_verification)
+                   family = "binomial", data = question_first)
 summary(error_mod)
-plot_error(property_verification)
+plot_error(question_first)

@@ -1,5 +1,5 @@
 ---
-title: "The effect of visual interference on visual knowledge"
+title: "Differences between computers"
 author: "Pierce Edmiston"
 output:
   html_document:
@@ -14,7 +14,7 @@ opts_chunk$set(
   warning = FALSE,
   message = FALSE
 )
-read_chunk("main_hypothesis.R")
+read_chunk("computers.R")
 ```
 
 ```{r, setup}
@@ -25,17 +25,12 @@ read_chunk("main_hypothesis.R")
 ```{r, data, echo = TRUE}
 ```
 
-# Outliers
+# Subject effects
 
-```{r, outliers}
+```{r, subj-effects}
 ```
 
-# RT
+# Subject effects by computer
 
-```{r, rt, cache = TRUE}
-```
-
-# Error
-
-```{r, error, cache = TRUE}
+```{r, subj-effects-by-computer}
 ```

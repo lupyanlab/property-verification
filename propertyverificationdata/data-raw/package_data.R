@@ -4,6 +4,8 @@
 library(stringr)
 library(dplyr)
 
+options(stringsAsFactors = FALSE)
+
 # Load the compile function.
 # Don't load the package because that would load the data you are compiling.
 source("R/compile.R")
@@ -133,14 +135,17 @@ norms_responses <- compile_norms_responses()
 subj_info <- compile_subj_info()
 survey <- compile_survey()
 coded_strategies <- read.csv("data-raw/question_first/coded_strategies.csv",
-                             stringsAsFactors = FALSE,
                              na.strings = "")
 
 cue_first$exp <- "cue_first"
 question_first$exp <- "question_first"
 property_verification <- rbind(cue_first, question_first)
 
+# Individual diffs
+individual_diffs <- read.csv("data-raw/individual_diffs/imagery.csv")
+
 devtools::use_data(property_verification, cue_first, question_first,
                    norms, norms_responses,
                    subj_info, survey, coded_strategies,
+                   individual_diffs,
                    overwrite = TRUE)

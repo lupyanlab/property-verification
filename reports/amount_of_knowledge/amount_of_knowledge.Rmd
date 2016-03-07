@@ -1,0 +1,42 @@
+---
+title: "The effect of visual interference on continuous measures of visual knowledge"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE
+)
+read_chunk("amount_of_knowledge.R")
+```
+
+```{r, setup}
+```
+
+# Data
+
+```{r, data, echo = TRUE}
+```
+
+# Amount of visual knowledge
+
+```{r, amount-of-visual}
+```
+
+```{r, amount-of-visual-by-exp, fig.height = 10}
+```
+
+# Amount of encyclopedic knowledge
+
+```{r, amount-of-nonvisual}
+```
+
+```{r, amount-of-nonvisual-by-exp, fig.height = 10}
+```
