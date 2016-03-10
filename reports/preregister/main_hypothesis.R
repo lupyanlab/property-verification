@@ -57,7 +57,7 @@ summary(rt_mod)
 plot_rt(question_first)
 
 # ---- error
-error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
+error_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
                    family = "binomial", data = question_first)
 summary(error_mod)
 plot_error(question_first)

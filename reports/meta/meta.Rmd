@@ -1,0 +1,58 @@
+---
+title: "Meta-analysis of four experiment runs"
+author: "Pierce Edmiston"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  fig.path = "meta-fig/"
+)
+
+read_chunk("meta.R")
+```
+
+```{r, setup}
+```
+
+```{r, data, echo = TRUE}
+```
+
+# Sample
+
+```{r, sample}
+```
+
+# Model
+
+```{r, subj-effects-mod, echo = TRUE, cache = TRUE}
+```
+
+```{r, subj-effects}
+```
+
+# Effects by subject
+
+```{r, subj-effects-plot}
+```
+
+# Effects by experiment run
+
+```{r, exp-effects-plot}
+```
+
+# Effects by computer
+
+```{r, computer-effects-plot}
+```
+
+```{r, computer-effects-plot-by-exp, fig.height = 4, fig.width = 10}
+```
