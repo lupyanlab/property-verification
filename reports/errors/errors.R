@@ -93,7 +93,7 @@ ggplot(error_counts, aes(x = feat_type, y = num_errors, fill = mask_type)) +
   facet_wrap("group", nrow = 1)
 
 # ---- glmer-mod
-error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id),
+error_mod <- glmer(is_error ~ 1 + (feat_c * mask_c|subj_id),
                    family = "binomial", data = question_first)
 summary(error_mod)
 
@@ -102,12 +102,8 @@ glmer_effects <- tidy(error_mod, effects = "random") %>%
   filter(term == "feat_c:mask_c")
 plot_effect_density(glmer_effects)
 
-# ---- glmer-mod-slopes-only
-slopes_mod <- glmer(is_error ~ 1 + (feat_c * mask_c|subj_id),
-                    family = "binomial", data = question_first)
-slopes_effects <- tidy(slopes_mod, effects = "random") %>%
-  filter(term == "feat_c:mask_c")
-plot_effect_density(slopes_effects)
+plot_effect_density(glmer_effects) + 
+  coord_cartesian(xlim = c(-5, 5))
 
 # ---- glmer-prop-mod
 prop_error_mod <- glmer(is_error ~ imagery_z * mask_c + (mask_c|proposition_id),
