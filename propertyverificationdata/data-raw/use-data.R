@@ -7,7 +7,7 @@ library(dplyr)
 options(stringsAsFactors = FALSE)
 
 # Load the compile function.
-# Don't load the package because that would load the data you are compiling.
+# Don't load the package because that would load the data that is being compiled.
 source("R/compile.R")
 
 compile_question_first <- function() {
@@ -28,6 +28,14 @@ compile_question_first <- function() {
   fourth_run <- compile("data-raw/question_first/fourth_run/data/", regex_key = "PV") %>%
     mutate(exp_run = 4) %>%
     select(-experimenter)
+
+  # Drop participants in George that were under the incorrect monitor conditions
+  wrong_conditions <- filter(fourth_run, computer == "LL-George", seed < 137) %>%
+    .$subj_id %>% unique
+  fourth_run <- filter(fourth_run, !(subj_id %in% wrong_conditions))
+
+  # Drop participant that was snapchatting
+  fourth_run <- filter(fourth_run, subj_id != "PV123")
 
   question_first <- rbind_list(question_first, third_run, fourth_run)
 
