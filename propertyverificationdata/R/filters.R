@@ -1,27 +1,24 @@
-#' Label the outlier subjects in the sample.
-#'
-#' @import dplyr
-#' @importFrom broom tidy
+#' Create a map of subjects to outliers.
 #' @export
-label_outlier_subjects <- function(frame) {
-  data(question_first)
+create_outlier_map <- function(frame) {
+  subj_mods <- frame %>%
+    filter(mask_type == "nomask") %>%
+    group_by(exp_run, subj_id) %>%
+    do(error_mod = glm(is_error ~ 1, family = binomial, data = .))
 
-  subj_mods <- question_first %>%
-    tidy_property_verification_data %>%
-    recode_feat_type %>%
-    recode_mask_type %>%
-    group_by(subj_id) %>%
-    do(error_mod = glm(is_error ~ feat_c * mask_c, family = binomial, data = .))
+  z_score <- function(x) (x - mean(x))/sd(x)
 
   subj_effects <- subj_mods %>%
     tidy(error_mod) %>%
-    ungroup
+    ungroup %>%
+    select(exp_run, subj_id, baseline_error = estimate) %>%
+    mutate(baseline_error_z = z_score(baseline_error))
 
   outlier_map <- subj_effects %>%
     group_by(subj_id) %>%
-    summarize(outlier = any(abs(estimate) > 5))
+    summarize(outlier = abs(baseline_error_z) > 2)
 
-  frame %>% left_join(outlier_map)
+  outlier_map
 }
 
 #' Label the ambiguity of propositions based on norming data.
