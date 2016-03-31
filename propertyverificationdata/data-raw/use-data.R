@@ -39,6 +39,14 @@ compile_question_first <- function() {
 
   question_first <- rbind_list(question_first, third_run, fourth_run)
 
+  # Drop participants
+  # Participants that the RAs reported bad compliance
+  bad_compliance <- c("MWPF320", "MWPF323", "MWPF326")
+  # Participants who reported not understanding some of the questions
+  not_understand <- c("MWPR127", "MWPR145")
+
+  question_first <- filter(question_first, !(subj_id %in% c(bad_compliance, not_understand)))
+
   question_first
 }
 
