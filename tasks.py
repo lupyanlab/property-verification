@@ -16,24 +16,29 @@ import requests
 import yaml
 
 @task
-def gather_data():
-    """Gather the experiment data and put it in the R pkg."""
+def gather():
+    """Gather the experiment data and put it in the R pkg data-raw folder.
+    
+    Currently set to get the fourth run experiment data.
+    """
+    dest_dir = Path('propertyverificationdata', 'data-raw', 'question_first',
+                    'fourth_run', 'data')
+    if not dest_dir.exists():
+        dest_dir.mkdir(parents=True)
     data_files = Path('experiment/data').listdir('PV*csv')
     for data_file in data_files:
-        dest_dir = Path('propertyverificationdata/data-raw/question_first/fourth_run/data')
-        if not dest_dir.exists():
-            dest_dir.mkdir(parents=True)
         dest = Path(dest_dir, data_file.name)
         run('cp {src} {dest}'.format(src=data_file, dest=dest))
         # move the subj info sheet
         run('cp experiment/subj_info.csv {}'.format(dest_dir.parent))
 
 @task
-def compile_r_pkg():
-    run('cd propertyverificationdata && Rscript data-raw/package_data.R')
+def compile():
+    """Run the use-data.R script to compile raw data to .rda files."""
+    run('cd propertyverificationdata && Rscript data-raw/use-data.R')
 
 @task
-def install_r_pkg():
+def install():
     """Install the propertyverificationdata R package."""
     # watch quotes!
     r_commands = [
