@@ -1,24 +1,35 @@
+
+
 #' Create a map of subjects to outliers.
 #' @export
 create_outlier_map <- function(frame) {
-  subj_mods <- frame %>%
-    filter(mask_type == "nomask") %>%
-    group_by(exp_run, subj_id) %>%
-    do(error_mod = glm(is_error ~ 1, family = binomial, data = .))
+  outliers <- unique(frame[, c("subj_id")])
+  
+  outliers$is_outlier <- 0
+  outliers$reason <- ""
+  
+  label_outliers <- function(outlier_ids, reason) {
+    outliers[outliers$subj_id %in% outlier_ids, "is_outlier"] <- 1
+    outliers[outliers$subj_id %in% outlier_ids, "reason"] <- reason
+  }
+  
+  wrong_conditions <- frame %>%
+    filter(exp_run == 4, computer == "LL-George", seed < 137) %>%
+    .$subj_id %>%
+    unique
+  label_outliers(wrong_conditions, "Monitor settings were incorrect.")
+  
+  bad_compliance <- c(
+    "PV123",
+    "MWPF320",
+    "MWPF323",
+    "MWPF326"
+  )
+  label_outliers(bad_compliance, "RAs reported bad compliance.")
 
-  z_score <- function(x) (x - mean(x))/sd(x)
-
-  subj_effects <- subj_mods %>%
-    tidy(error_mod) %>%
-    ungroup %>%
-    select(exp_run, subj_id, baseline_error = estimate) %>%
-    mutate(baseline_error_z = z_score(baseline_error))
-
-  outlier_map <- subj_effects %>%
-    group_by(subj_id) %>%
-    summarize(outlier = abs(baseline_error_z) > 2)
-
-  outlier_map
+  not_understand <- c("MWPR127", "MWPR145")
+  
+  outliers
 }
 
 #' Label the ambiguity of propositions based on norming data.
