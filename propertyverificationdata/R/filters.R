@@ -3,22 +3,23 @@
 #' Create a map of subjects to outliers.
 #' @export
 create_outlier_map <- function(frame) {
-  outliers <- unique(frame[, c("subj_id")])
-  
+  outliers <- data.frame(subj_id = unique(frame$subj_id),
+                         stringsAsFactors = FALSE)
+
   outliers$is_outlier <- 0
   outliers$reason <- ""
-  
+
   label_outliers <- function(outlier_ids, reason) {
     outliers[outliers$subj_id %in% outlier_ids, "is_outlier"] <- 1
     outliers[outliers$subj_id %in% outlier_ids, "reason"] <- reason
   }
-  
+
   wrong_conditions <- frame %>%
     filter(exp_run == 4, computer == "LL-George", seed < 137) %>%
     .$subj_id %>%
     unique
   label_outliers(wrong_conditions, "Monitor settings were incorrect.")
-  
+
   bad_compliance <- c(
     "PV123",
     "MWPF320",
@@ -28,7 +29,7 @@ create_outlier_map <- function(frame) {
   label_outliers(bad_compliance, "RAs reported bad compliance.")
 
   not_understand <- c("MWPR127", "MWPR145")
-  
+
   outliers
 }
 

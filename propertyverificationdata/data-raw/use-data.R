@@ -23,11 +23,13 @@ compile_question_first <- function() {
     rename_old_experiment_vars
 
   third_run <- compile("data-raw/question_first/third_run/data/", regex_key = "MWPR") %>%
-    mutate(exp_run = 3)
+    mutate(exp_run = 3, initials = "")
 
   fourth_run <- compile("data-raw/question_first/fourth_run/data/", regex_key = "PV") %>%
     mutate(exp_run = 4) %>%
-    select(-experimenter)
+    rename(initials = experimenter)
+
+  question_first <- rbind(question_first, third_run, fourth_run)
 
   question_first
 }
