@@ -2,7 +2,7 @@
 
 export("%nin%")
 export(compile)
-export(create_outlier_map)
+export(create_subj_map)
 export(label_ambiguous_propositions)
 export(label_bad_baseline_performance)
 export(label_duplicates)

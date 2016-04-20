@@ -1,24 +1,23 @@
-
-
 #' Create a map of subjects to outliers.
 #' @export
-create_outlier_map <- function(frame) {
-  outliers <- data.frame(subj_id = unique(frame$subj_id),
-                         stringsAsFactors = FALSE)
+create_subj_map <- function(frame) {
+  subjs <- data.frame(subj_id = unique(frame$subj_id),
+                      stringsAsFactors = FALSE)
 
-  outliers$is_outlier <- 0
-  outliers$reason <- ""
+  subjs$is_outlier <- 0
+  subjs$reason <- ""
 
-  label_outliers <- function(outlier_ids, reason) {
-    outliers[outliers$subj_id %in% outlier_ids, "is_outlier"] <- 1
-    outliers[outliers$subj_id %in% outlier_ids, "reason"] <- reason
+  label_outliers <- function(subjs, outlier_ids, reason) {
+    is_outlier <- subjs$subj_id %in% outlier_ids
+    subjs[is_outlier, "is_outlier"] <- 1
+    subjs[is_outlier, "reason"] <- reason
+    subjs
   }
 
   wrong_conditions <- frame %>%
     filter(exp_run == 4, computer == "LL-George", seed < 137) %>%
     .$subj_id %>%
     unique
-  label_outliers(wrong_conditions, "Monitor settings were incorrect.")
 
   bad_compliance <- c(
     "PV123",
@@ -26,11 +25,15 @@ create_outlier_map <- function(frame) {
     "MWPF323",
     "MWPF326"
   )
-  label_outliers(bad_compliance, "RAs reported bad compliance.")
 
   not_understand <- c("MWPR127", "MWPR145")
 
-  outliers
+  subjs <- subjs %>%
+    label_outliers(wrong_conditions, "Monitor settings were incorrect.") %>%
+    label_outliers(bad_compliance, "RAs reported bad compliance.") %>%
+    label_outliers(not_understand, "Reported not understanding some questions.")
+
+  subjs
 }
 
 #' Label the ambiguity of propositions based on norming data.
