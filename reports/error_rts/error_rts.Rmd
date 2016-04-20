@@ -1,0 +1,30 @@
+---
+title: "Error rates by RTs"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE
+)
+
+read_chunk("error_rts.R")
+```
+
+```{r, setup}
+```
+
+```{r, theme}
+```
+
+```{r, data}
+```
+
+```{r, rt-hist}
+```
