@@ -11,7 +11,10 @@ output:
 library(knitr)
 opts_chunk$set(
   echo = FALSE,
-  warning = FALSE
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 4,
+  fig.height = 4
 )
 
 read_chunk("error_rts.R")
@@ -26,5 +29,56 @@ read_chunk("error_rts.R")
 ```{r, data}
 ```
 
+# RT distributions
+
 ```{r, rt-hist}
+```
+
+```{r, rt-hist-by-exp, fig.height = 8}
+```
+
+# Normalized RTs
+
+```{r, rt-z-hist}
+```
+
+# RT bins
+
+```{r, rt-bins}
+```
+
+# Error by RT bin
+
+```{r, error-by-bin}
+```
+
+# Effects by RT bin
+
+## Interaction effect by RT bin
+
+`is_error ~ feat_c * mask_c`
+
+```{r, effect-by-bin}
+```
+
+## Effect of mask by RT bin
+
+`is_error ~ mask_c`
+
+```{r, mask-by-bin}
+```
+
+## Difference between knowledge types by RT bin
+
+`is_error ~ feat_c`
+
+```{r, feat-by-bin}
+```
+
+# Effect in the last bin RTs
+
+```{r, last-bin-means}
+```
+
+```{r, last-bin-means-by-exp, fig.height = 8}
 ```
