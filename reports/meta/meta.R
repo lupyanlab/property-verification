@@ -3,6 +3,7 @@ library(dplyr)
 library(broom)
 library(ggplot2)
 library(grid)
+library(scales)
 library(lme4)
 library(stringr)
 
@@ -151,3 +152,32 @@ ggplot(subj_effects, aes(x = term_label, y = estimate_z)) +
   scale_y_estimate_z +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   facet_wrap("exp_run_label", nrow = 1)
+
+# ---- exp-means
+question_first <- question_first %>%
+  group_by(subj_id) %>%
+  mutate(rt_c = rt - mean(rt, na.rm = TRUE)) %>%
+  ungroup()
+
+base_plot <- ggplot(question_first, aes(x = mask_c)) +
+  facet_wrap("feat_label") +
+  scale_x_continuous("", breaks = c(-0.5, 0.5), labels = c("No mask", "Mask")) +
+  scale_color_discrete("") +
+  theme_minimal(base_size = 16) +
+  theme(
+    legend.position = "top",
+    axis.ticks = element_blank(),
+    panel.margin = unit(3, "lines")
+  )
+
+base_plot +
+  geom_line(aes(y = is_error, color = factor(exp_run)),
+            stat = "summary", fun.y = "mean",
+            size = 1.5) +
+  scale_y_continuous("Error rate", labels = percent)
+
+base_plot +
+  geom_line(aes(y = rt_c, color = factor(exp_run)),
+            stat = "summary", fun.y = "mean",
+            size = 1.5) +
+  scale_y_continuous("Mean-centered RT (ms)")

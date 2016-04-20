@@ -31,6 +31,11 @@ read_chunk("meta.R")
 ```{r, sample}
 ```
 
+# Means
+
+```{r, exp-means}
+```
+
 # Model
 
 ```{r, subj-effects-mod, echo = TRUE, cache = TRUE}
