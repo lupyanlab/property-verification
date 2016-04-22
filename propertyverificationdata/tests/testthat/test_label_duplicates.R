@@ -5,6 +5,18 @@ load_all()
 
 context("Label duplicated questions")
 
+test_that("duplicated questions are labeled", {
+  subj <- data_frame(
+    subj_id = "Jed",
+    question = c("a", "a", "b", "a", "b")
+  )
+  labeled <- label_exposure_order(subj)
+  expect_equal(labeled$exposure_order, c(1, 2, 1, 3, 2))
+})
+
+
+context("Label duplicated propositions")
+
 test_that("second occurrences are labeled", {
   is_duplicate <- label_duplicates(c("a", "a"))
   expect_equal(is_duplicate, c(FALSE, TRUE))
