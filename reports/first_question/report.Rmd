@@ -1,0 +1,38 @@
+---
+title: "Error rates by exposure to questions"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.width = 4
+)
+
+read_chunk("first_question.R")
+```
+
+```{r, setup}
+```
+
+```{r, data}
+```
+
+```{r, first-question}
+```
+
+```{r, exposure-model, echo = 1, cache = TRUE}
+```
+
+```{r, exposure-models}
+```
+
+```{r, first-five-generations, fig.height = 8}
+```
