@@ -51,13 +51,13 @@ question_first <- question_first %>%
   filter(exp_run == 4)
 
 # ---- rt
-rt_mod <- lmer(rt ~ feat_c * mask_c + (feat_c * mask_c|subj_id) + (mask_c|proposition_id),
+rt_mod <- lmer(rt ~ feat_c * mask_c + (feat_c * mask_c|subj_id),
                data = question_first)
 summary(rt_mod)
 plot_rt(question_first)
 
 # ---- error
-error_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
+error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id),
                    family = "binomial", data = question_first)
 summary(error_mod)
 plot_error(question_first)
