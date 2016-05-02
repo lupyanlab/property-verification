@@ -2,7 +2,7 @@
 #'
 #' @param data_dir Name of directory
 #' @param regex_key Optional regular expression to specify matches
-#'  (e.g., "MWP1*")
+#'        (e.g., "MWP1*")
 #' @param header_file Optional file containing column headers
 #' @export
 compile <- function(data_dir, regex_key, header_file) {

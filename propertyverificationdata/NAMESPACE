@@ -2,11 +2,11 @@
 
 export("%nin%")
 export(compile)
+export(create_prop_map)
 export(create_subj_map)
-export(label_ambiguous_propositions)
-export(label_bad_baseline_performance)
 export(label_duplicates)
 export(label_exposure_order)
+export(label_outliers)
 export(recode_correct_response)
 export(recode_exp_run)
 export(recode_feat_type)
