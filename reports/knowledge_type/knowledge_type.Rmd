@@ -1,0 +1,56 @@
+---
+title: "The effect of visual interference on visual and nonvisual knowledge"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.path = "figs/",
+  cache.path = ".cache/"
+)
+
+read_chunk("knowledge_type.R")
+```
+
+```{r, setup}
+```
+
+# Data
+
+```{r, data}
+```
+
+# Error
+
+```{r, error-mod, echo = 1, cache = TRUE}
+```
+
+```{r}
+tidy(error_mod, effects = "fixed")
+```
+
+```{r, error-plot}
+```
+
+```{r, error-by-exp}
+```
+
+# RTs
+
+```{r, rt-mod, echo = 1, cache = TRUE}
+```
+
+```{r}
+tidy(rt_mod, effects = "fixed")
+```
+
+```{r, rt-plot}
+```
