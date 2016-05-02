@@ -1,5 +1,5 @@
-
 #' Recode variables for models and plots.
+#'
 #' @export
 recode_property_verification_data <- function(frame) {
   frame %>%
@@ -49,10 +49,10 @@ recode_trial_type <- function(frame) {
 #' Recode experiment run variable.
 #' @export
 recode_exp_run <- function(frame) {
-  exp_labels <- c("First run", "Second run", "Third run", "Fourth run")
+  exp_labels <- c("Original", "Replication", "Replication", "Preregistered")
   exp_run_map <- dplyr::data_frame(
     exp_run = c(1, 2, 3, 4),
-    exp_run_label = factor(exp_labels, levels = exp_labels)
+    exp_run_label = factor(exp_labels, levels = unique(exp_labels))
   )
   try(frame <- dplyr::left_join(frame, exp_run_map))
   frame
