@@ -15,6 +15,8 @@ from unipath import Path
 import requests
 import yaml
 
+proj_root = Path(__file__).absolute().parent
+
 @task
 def gather():
     """Gather the experiment data and put it in the R pkg data-raw folder.
@@ -46,7 +48,7 @@ def install():
         'devtools::install("propertyverificationdata")',
     ]
     for r_command in r_commands:
-        run("Rscript -e '{}'".format(r_command))
+        run("cd {} && Rscript -e '{}'".format(proj_root, r_command))
 
 @task
 def get_survey_data():
