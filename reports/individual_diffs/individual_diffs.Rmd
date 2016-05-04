@@ -1,0 +1,56 @@
+---
+title: "Individual differences in proposition imagery"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+read_chunk("individual_diffs.R")
+```
+
+```{r, setup}
+```
+
+# Data
+
+```{r, data, echo = TRUE}
+```
+
+# Imagery by proposition_id
+
+```{r, proposition-imagery-mod, echo = TRUE, cache = TRUE}
+```
+
+```{r}
+tidy(proposition_imagery_mod, effects = "fixed")
+```
+
+# Imagery by question_id
+
+```{r, question-imagery-mod, echo = TRUE, cache = TRUE}
+```
+
+```{r}
+tidy(question_imagery_mod, effects = "fixed")
+```
+
+# Correlations
+
+Correlation between lab subjects and norming participants in imagery ratings.
+
+```{r, cor}
+```
+
+Correlation between proposition and question imagery ratings.
+
+```{r, cor-prop-quest}
+```
