@@ -36,7 +36,7 @@ plot_rt <- function(frame) {
 
 plot_error <- function(frame) {
   scale_y_error <- scale_y_continuous("Error rate", labels = percent)
-  coord_ylim_error <- c(0, 0.14)
+  coord_ylim_error <- c(0, 0.09)
   plot_interaction(frame, "is_error",
                    scale_y = scale_y_error,
                    coord_ylim = coord_ylim_error)
@@ -47,10 +47,12 @@ library(propertyverificationdata)
 data(question_first)
 question_first <- question_first %>%
   tidy_property_verification_data %>%
-  recode_property_verification_data
+  recode_property_verification_data %>%
+  label_outliers %>%
+  filter(is_outlier == 0)
 
 # ---- error-mod
-error_mod <- glmer(is_error ~ feat_c * mask_c + (feat_c * mask_c|subj_id),
+error_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
                    family = "binomial", data = question_first)
 
 # ---- error-plot
