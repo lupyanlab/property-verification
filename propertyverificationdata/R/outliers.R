@@ -13,7 +13,7 @@ label_outliers <- function(frame) {
   frame %>%
     left_join(subj_map) %>%
     left_join(prop_map) %>%
-    mutate(is_outlier = any(is_subj_outlier, is_prop_outlier))
+    mutate(is_outlier = as.numeric(is_subj_outlier | is_prop_outlier))
 }
 
 #' Create a map of subjects to outlier status.
