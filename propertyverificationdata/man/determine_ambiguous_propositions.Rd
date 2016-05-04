@@ -7,6 +7,6 @@
 determine_ambiguous_propositions()
 }
 \description{
-Warning! Anything named `norms_responses` may be clobbered from the env.
+Warning! Anything named `norms_responses` is clobbered from the env.
 }
 

@@ -7,8 +7,8 @@
 #'
 #' @export
 label_outliers <- function(frame) {
-  subj_map <- create_subj_map(frame)
-  prop_map <- create_prop_map(frame)
+  subj_map <- create_subj_map()
+  prop_map <- create_prop_map()
 
   frame %>%
     left_join(subj_map) %>%
@@ -18,8 +18,12 @@ label_outliers <- function(frame) {
 
 #' Create a map of subjects to outlier status.
 #' @export
-create_subj_map <- function(frame) {
-  subjs <- data.frame(subj_id = unique(frame$subj_id),
+create_subj_map <- function() {
+  cache_data <- exists("question_first")
+  if(cache_data) temp <- question_first
+  data(question_first)
+
+  subjs <- data.frame(subj_id = unique(question_first$subj_id),
                       stringsAsFactors = FALSE)
 
   # Innocent until proven guilty.
@@ -27,7 +31,7 @@ create_subj_map <- function(frame) {
   subjs$subj_outlier_reason <- ""
 
   # These subjects had or might have had incorrect monitor settings.
-  wrong_conditions <- frame %>%
+  wrong_conditions <- question_first %>%
     filter(exp_run == 4, computer == "LL-George", seed < 137) %>%
     .$subj_id %>%
     unique
@@ -52,6 +56,9 @@ create_subj_map <- function(frame) {
     label_outlier_subjs(bad_compliance, "RAs reported bad compliance.") %>%
     label_outlier_subjs(not_understand, "Reported not understanding some questions.")
 
+  rm(question_first)
+  if(cache_data) question_first <- temp
+
   subjs
 }
 
@@ -59,8 +66,13 @@ create_subj_map <- function(frame) {
 #'
 #' @import dplyr
 #' @export
-create_prop_map <- function(frame) {
-  props <- data.frame(proposition_id = unique(frame$proposition_id),
+create_prop_map <- function() {
+  cache_data <- exists("question_first")
+  if(cache_data) temp <- question_first
+  data(question_first)
+  question_first <- tidy_property_verification_data(question_first)
+
+  props <- data.frame(proposition_id = unique(question_first$proposition_id),
                       stringsAsFactors = FALSE)
 
   # Innocent until proven guilty.
@@ -68,7 +80,7 @@ create_prop_map <- function(frame) {
   props$prop_outlier_reason <- ""
 
   ambiguous_propositions <- determine_ambiguous_propositions()
-  bad_baseline_performance <- determine_bad_baseline_performance(frame)
+  bad_baseline_performance <- determine_bad_baseline_performance(question_first)
 
   # Label the outliers with reasons.
   # For propositions labeled outliers for multiple reasons
@@ -77,12 +89,15 @@ create_prop_map <- function(frame) {
     label_outlier_props(bad_baseline_performance, "Bad baseline performance") %>%
     label_outlier_props(ambiguous_propositions, "Proposition was ambiguous")
 
+  rm(question_first)
+  if(cache_data) question_first <- temp
+
   props
 }
 
 #' Determine which propositions were ambiguous based on norming responses.
 #'
-#' Warning! Anything named `norms_responses` may be clobbered from the env.
+#' Warning! Anything named `norms_responses` is clobbered from the env.
 #'
 #' @import dplyr
 #' @importFrom broom tidy

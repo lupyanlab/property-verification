@@ -4,7 +4,7 @@
 \alias{create_prop_map}
 \title{Create a map of propositions to outlier status.}
 \usage{
-create_prop_map(frame)
+create_prop_map()
 }
 \description{
 Create a map of propositions to outlier status.

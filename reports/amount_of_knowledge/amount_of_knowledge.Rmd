@@ -27,13 +27,58 @@ read_chunk("amount_of_knowledge.R")
 
 # Amount of visual knowledge
 
+```{r, imagery-mod, echo = TRUE, cache = TRUE}
+```
+
+```{r}
+tidy(imagery_mod, effects = "fixed")
+```
+
 ```{r, amount-of-visual}
 ```
+
+## By experiment
 
 ```{r, amount-of-visual-by-exp, fig.height = 10}
 ```
 
+## Outlier propositions had high imagery scores
+
+Why isn't the effect visible in the original experiment? Because
+outlier propositions had higher imagery scores, and without
+propositions with high imagery scores, the range of the norming
+data is too narrow.
+
+```{r, cor}
+```
+
+```{r, data}
+# HACK!!! Load the data again because `cor` chunk clobbers namespace
+```
+
+## Reanalyze with outlier propositions
+
+```{r, imagery-mod-all, echo = TRUE, cache = TRUE}
+```
+
+```{r}
+tidy(imagery_mod_all, effects = "fixed")
+```
+
+```{r, amount-of-visual-all-props}
+```
+
+```{r, amount-of-visual-all-props-by-exp, fig.height = 10}
+```
+
 # Amount of encyclopedic knowledge
+
+```{r, facts-mod, echo = TRUE, cache = TRUE}
+```
+
+```{r}
+tidy(facts_mod, effects = "fixed")
+```
 
 ```{r, amount-of-nonvisual}
 ```

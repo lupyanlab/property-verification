@@ -4,7 +4,7 @@
 \alias{create_subj_map}
 \title{Create a map of subjects to outlier status.}
 \usage{
-create_subj_map(frame)
+create_subj_map()
 }
 \description{
 Create a map of subjects to outlier status.
