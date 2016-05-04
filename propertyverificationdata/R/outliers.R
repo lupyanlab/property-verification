@@ -1,4 +1,10 @@
 #' Label the outlier subjects and items in the data.
+#'
+#' Outliers are labeled but no values are changed or dropped. To remove
+#' outliers, filter them out.
+#'
+#' > label_outliers(question_first) %>% filter(is_outlier == FALSE)
+#'
 #' @export
 label_outliers <- function(frame) {
   subj_map <- create_subj_map(frame)
@@ -6,7 +12,8 @@ label_outliers <- function(frame) {
 
   frame %>%
     left_join(subj_map) %>%
-    left_join(prop_map)
+    left_join(prop_map) %>%
+    mutate(is_outlier = any(is_subj_outlier, is_prop_outlier))
 }
 
 #' Create a map of subjects to outlier status.
@@ -15,14 +22,17 @@ create_subj_map <- function(frame) {
   subjs <- data.frame(subj_id = unique(frame$subj_id),
                       stringsAsFactors = FALSE)
 
+  # Innocent until proven guilty.
   subjs$is_subj_outlier <- 0
   subjs$subj_outlier_reason <- ""
 
+  # These subjects had or might have had incorrect monitor settings.
   wrong_conditions <- frame %>%
     filter(exp_run == 4, computer == "LL-George", seed < 137) %>%
     .$subj_id %>%
     unique
 
+  # The RAs reported that these subjects were not compliant.
   bad_compliance <- c(
     "PV123",
     "MWPF320",
@@ -30,14 +40,13 @@ create_subj_map <- function(frame) {
     "MWPF326"
   )
 
+  # These subjects responded in the questionnaire that they didn't
+  # understand some of the questions.
   not_understand <- c("MWPR127", "MWPR145")
 
-  label_outlier_subjs <- function(subjs, outlier_subjs, reason) {
-    label_outliers(subjs, "subj_id", outlier_subjs, reason,
-                   outlier_col = "is_subj_outlier",
-                   reason_col = "subj_outlier_reason")
-  }
-
+  # Label the outliers with reasons.
+  # For subjects labeled outliers for multiple reasons
+  # only the last reason is kept.
   subjs <- subjs %>%
     label_outlier_subjs(wrong_conditions, "Monitor settings were incorrect.") %>%
     label_outlier_subjs(bad_compliance, "RAs reported bad compliance.") %>%
@@ -47,28 +56,33 @@ create_subj_map <- function(frame) {
 }
 
 #' Create a map of propositions to outlier status.
+#'
+#' @import dplyr
 #' @export
 create_prop_map <- function(frame) {
   props <- data.frame(proposition_id = unique(frame$proposition_id),
                       stringsAsFactors = FALSE)
 
+  # Innocent until proven guilty.
+  props$is_prop_outlier <- 0
+  props$prop_outlier_reason <- ""
+
   ambiguous_propositions <- determine_ambiguous_propositions()
   bad_baseline_performance <- determine_bad_baseline_performance(frame)
 
-  label_outlier_props <- function(props, prop_ids, reason) {
-    label_outliers(props, "proposition_id", prop_ids, reason,
-                   outlier_col = "is_prop_outlier",
-                   reason_col = "prop_outlier_reason")
-  }
-
+  # Label the outliers with reasons.
+  # For propositions labeled outliers for multiple reasons
+  # only the last reason is kept.
   props <- props %>%
-    label_outlier_props(ambiguous, "Proposition was ambiguous") %>%
-    label_outlier_props(bad_baseline_performance, "Bad baseline performance")
+    label_outlier_props(bad_baseline_performance, "Bad baseline performance") %>%
+    label_outlier_props(ambiguous_propositions, "Proposition was ambiguous")
 
   props
 }
 
 #' Determine which propositions were ambiguous based on norming responses.
+#'
+#' Warning! Anything named `norms_responses` may be clobbered from the env.
 #'
 #' @import dplyr
 #' @importFrom broom tidy
@@ -84,18 +98,22 @@ determine_ambiguous_propositions <- function() {
     group_by(proposition_id) %>%
     do(diff_mod = lm(truth ~ 1, data = .))
 
-  # classify the results of the models based on whether people agree
-  # with the classification or they find the proposition ambiguous
-  proposition_classification <- norms_mods %>%
+  # Identify ambiguous propositions as those that do not differ
+  # significantly from the center of the truth scale.
+  ambiguous_propositions <- norms_mods %>%
     tidy(diff_mod) %>%
     ungroup %>%
-    mutate(ambiguity = ifelse(p.value < 0.05, "agree", "ambiguous")) %>%
-    select(proposition_id, ambiguity)
+    filter(p.value > 0.05) %>%
+    .$proposition_id
 
-  proposition_classification
+  rm(norms_responses)
+
+  ambiguous_propositions
 }
 
 #' Determine which propositions had bad baseline performance.
+#'
+#' @param question_first The question_first data in tidy format.
 #'
 #' @import dplyr
 #' @importFrom broom tidy
@@ -114,16 +132,35 @@ determine_bad_baseline_performance <- function(question_first) {
         ifelse((estimate > 0) | (p.value > 0.05), "too_hard", "easy")
       )
     ) %>%
-    select(proposition_id, baseline_difficulty)
+    filter(baseline_difficulty == "too_hard") %>%
+    .$proposition_id
 
   baseline_performance
 }
 
-label_outliers <- function(map, id_col, outlier_ids, reason,
-                           outlier_col = "is_outlier",
-                           reason_col = "reason") {
+
+#' Label the outlier rows in a data.frame of subjects or items with reasons.
+label_outlier_map <- function(map, id_col, outlier_ids, reason,
+                              outlier_col = "is_outlier",
+                              reason_col = "reason") {
   is_outlier <- map[[id_col]] %in% outlier_ids
   map[is_outlier, outlier_col] <- 1
   map[is_outlier, reason_col] <- reason
   map
+}
+
+
+#' Partial wrapper around `label_outlier_map` for subjects.
+label_outlier_subjs <- function(subjs, outlier_subjs, reason) {
+  label_outlier_map(subjs, "subj_id", outlier_subjs, reason,
+                    outlier_col = "is_subj_outlier",
+                    reason_col = "subj_outlier_reason")
+}
+
+
+#' Partial wrapper around `label_outlier_map` for propositions.
+label_outlier_props <- function(props, prop_ids, reason) {
+  label_outlier_map(props, "proposition_id", prop_ids, reason,
+                    outlier_col = "is_prop_outlier",
+                    reason_col = "prop_outlier_reason")
 }

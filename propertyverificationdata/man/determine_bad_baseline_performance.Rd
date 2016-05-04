@@ -6,6 +6,9 @@
 \usage{
 determine_bad_baseline_performance(question_first)
 }
+\arguments{
+\item{question_first}{The question_first data in tidy format.}
+}
 \description{
 Determine which propositions had bad baseline performance.
 }

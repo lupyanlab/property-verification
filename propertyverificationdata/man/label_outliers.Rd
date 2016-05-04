@@ -4,10 +4,13 @@
 \alias{label_outliers}
 \title{Label the outlier subjects and items in the data.}
 \usage{
-label_outliers(map, id_col, outlier_ids, reason, outlier_col = "is_outlier",
-  reason_col = "reason")
+label_outliers(frame)
 }
 \description{
-Label the outlier subjects and items in the data.
+Outliers are labeled but no values are changed or dropped. To remove
+outliers, filter them out.
+}
+\details{
+> label_outliers(question_first) %>% filter(is_outlier == FALSE)
 }
 

@@ -7,6 +7,6 @@
 determine_ambiguous_propositions()
 }
 \description{
-Determine which propositions were ambiguous based on norming responses.
+Warning! Anything named `norms_responses` may be clobbered from the env.
 }
 

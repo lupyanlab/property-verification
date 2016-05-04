@@ -1,0 +1,65 @@
+---
+title: "Outlier subjects and propositions"
+author: "Pierce Edmiston"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+---
+
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+```
+
+```{r}
+# ---- setup
+library(dplyr)
+library(ggplot2)
+
+# ---- data
+library(propertyverificationdata)
+data(question_first)
+
+question_first <- question_first %>%
+  tidy_property_verification_data
+
+subjs <- create_subj_map(question_first)
+props <- create_prop_map(question_first)
+
+# --- tables
+summarize_item <- function(frame, grouper) {
+  frame %>% group_by_(grouper) %>% summarize(n = n()) %>% mutate(pct = n/sum(n))
+}
+
+# ---- plots
+base <- ggplot() +
+  scale_x_discrete("") +
+  theme_minimal() +
+  theme(
+    axis.ticks = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
+## Subject outliers
+
+```{r}
+summarize_item(subjs, "is_subj_outlier")
+outlier_subjs <- subjs %>% filter(is_subj_outlier == TRUE)
+base + geom_histogram(aes(x = subj_outlier_reason), data = outlier_subjs) +
+  ggtitle("Subject outlier reasons")
+```
+
+## Proposition outliers
+
+```{r}
+summarize_item(props, "is_prop_outlier")
+outlier_props <- props %>% filter(is_prop_outlier == TRUE)
+base + geom_histogram(aes(x = prop_outlier_reason), data = outlier_props) +
+  ggtitle("Proposition outlier reasons")
+```

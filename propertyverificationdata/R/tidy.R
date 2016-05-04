@@ -16,7 +16,7 @@ tidy_property_verification_data <- function(frame) {
     ) %>%
     # put the columns in the correct order
     dplyr::select(
-      subj_id, computer, exp_run,
+      subj_id, computer, exp_run, seed,
       block, trial,
       question, cue, proposition_id,
       mask_type, feat_type,
