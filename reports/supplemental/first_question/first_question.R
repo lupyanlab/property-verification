@@ -29,7 +29,9 @@ question_first <- question_first %>%
   recode_property_verification_data
 
 # Label exposure order
-question_first <- label_exposure_order(question_first)
+question_first <- label_exposure_order(question_first) %>%
+  label_outliers %>%
+  filter(is_outlier == 0)
 
 # ---- first-question
 first_question_plot <- ggplot(filter(question_first, exposure_order == 1),
@@ -49,9 +51,8 @@ first_question_plot <- ggplot(filter(question_first, exposure_order == 1),
 first_question_plot
 
 # ---- exposure-model
-exposure_mod <- glmer(is_error ~ feat_c * mask_c * exposure_order + (1|subj_id),
-                      family = "binomial", 
-                      data = filter(question_first, exposure_order < 6))
+exposure_mod <- glmer(is_error ~ feat_c * mask_c * exposure_c_first + (1|subj_id),
+                      family = "binomial", data = question_first)
 tidy(exposure_mod, effects = "fixed")
 
 # ---- exposure-models

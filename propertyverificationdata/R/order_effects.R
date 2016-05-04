@@ -5,7 +5,11 @@
 label_exposure_order <- function(frame) {
   frame %>%
     group_by(subj_id, question) %>%
-    mutate(exposure_order = seq_along(question))
+    mutate(
+      exposure_order = seq_along(question),
+      exposure_split = ifelse(exposure_order == 1, "first", "duplicate"),
+      exposure_c_first = ifelse(exposure_split == "first", 0, 1)
+    )
 }
 
 #' Label the first appearance of unique values in a vector.

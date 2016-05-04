@@ -14,6 +14,24 @@ test_that("duplicated questions are labeled", {
   expect_equal(labeled$exposure_order, c(1, 2, 1, 3, 2))
 })
 
+test_that("exposure order is split into a factor", {
+  subj <- data_frame(
+    subj_id = "Jed",
+    question = c("a", "a", "b", "a", "b")
+  )
+  labeled <- label_exposure_order(subj)
+  expect_equal(labeled$exposure_split, c("first", "duplicate", "first", "duplicate", "duplicate"))
+})
+
+test_that("exposure order is centered on first exposure", {
+  subj <- data_frame(
+    subj_id = "Jed",
+    question = c("a", "a", "b", "a", "b")
+  )
+  labeled <- label_exposure_order(subj)
+  expect_equal(labeled$exposure_c_first, c(0, 1, 0, 1, 1))
+})
+
 
 context("Label duplicated propositions")
 
