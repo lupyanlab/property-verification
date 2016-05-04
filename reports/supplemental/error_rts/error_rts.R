@@ -18,6 +18,7 @@ base_theme <- theme_minimal(base_size = 14) +
 # ---- data
 library(propertyverificationdata)
 data(question_first)
+data(norms)
 
 # Select observations
 question_first <- question_first %>%
@@ -30,7 +31,8 @@ question_first <- question_first %>%
   # Drop any missing RTs
   filter(!is.na(rt)) %>%
   label_outliers %>%
-  filter(is_outlier == 0)
+  filter(is_outlier == 0) %>%
+  left_join(norms)
 
 # Recode variables
 question_first <- question_first %>%
@@ -61,12 +63,12 @@ gg_rt_hist +
 # ---- rt-hist-by-exp
 gg_rt_hist +
   geom_density() +
-  facet_wrap("exp_run", ncol = 1) +
+  facet_wrap("exp_run_label", ncol = 1) +
   ggtitle("RTs by experiment")
 
 gg_rt_hist +
   geom_density(aes(color = factor(is_correct))) +
-  facet_grid(exp_run ~ correct_response) +
+  facet_grid(exp_run_label ~ correct_response) +
   ggtitle("RTs by actual and expected\nresponse for each experiment")
 
 # ---- rt-z-hist
@@ -79,7 +81,7 @@ question_first <- question_first %>%
   ungroup()
 
 ggplot(question_first, aes(x = rt_c)) +
-  geom_density(aes(color = factor(exp_run))) +
+  geom_density(aes(color = exp_run_label)) +
   base_theme +
   ggtitle("Normalized RTs by experiment")
 
@@ -107,7 +109,7 @@ gg_error_by_bin +
   geom_bar(stat = "summary", fun.y = "mean")
 
 gg_error_by_bin +
-  geom_bar(aes(fill = factor(exp_run)), position = "dodge",
+  geom_bar(aes(fill = exp_run_label), position = "dodge",
            stat = "summary", fun.y = "mean")
 
 # ---- effect-by-bin
@@ -135,10 +137,10 @@ gg_effect_by_bin(effects_by_bin) +
 
 
 exp_effects_by_bin <- question_first %>%
-  group_by(exp_run, rt_bin) %>%
+  group_by(exp_run_label, rt_bin) %>%
   summarize_effect(is_error ~ feat_c * mask_c, "feat_c:mask_c")
 gg_effect_by_bin(exp_effects_by_bin) +
-  geom_bar(aes(fill = factor(exp_run)), stat = "identity", position = "dodge") +
+  geom_bar(aes(fill = factor(exp_run_label)), stat = "identity", position = "dodge") +
   ggtitle("Effect by RT bin\nin each experiment")
 
 # ---- mask-by-bin
@@ -151,10 +153,10 @@ gg_effect_by_bin(effects_by_mask) +
 
 
 exp_effects_by_mask <- question_first %>%
-  group_by(rt_bin, exp_run) %>%
+  group_by(rt_bin, exp_run_label) %>%
   summarize_effect(is_error ~ mask_c, "mask_c")
 gg_effect_by_bin(exp_effects_by_mask) +
-  geom_bar(aes(fill = factor(exp_run)), stat = "identity", position = "dodge") +
+  geom_bar(aes(fill = factor(exp_run_label)), stat = "identity", position = "dodge") +
   ggtitle("Effect of mask by RT bin\nin each experiment")
 
 
@@ -168,10 +170,10 @@ gg_effect_by_bin(effects_by_feat) +
 
 
 exp_effects_by_feat <- question_first %>%
-  group_by(rt_bin, exp_run) %>%
+  group_by(rt_bin, exp_run_label) %>%
   summarize_effect(is_error ~ feat_c, "feat_c")
 gg_effect_by_bin(exp_effects_by_feat) +
-  geom_bar(aes(fill = factor(exp_run)), stat = "identity", position = "dodge") +
+  geom_bar(aes(fill = factor(exp_run_label)), stat = "identity", position = "dodge") +
   ggtitle("Diff between knowledge types\nin each experiment")
 
 
@@ -198,7 +200,7 @@ gg_interaction_rt
 
 # ---- last-bin-means-by-exp
 gg_interaction_error +
-  facet_grid(exp_run ~ feat_label)
+  facet_grid(exp_run_label ~ feat_label)
 
 gg_interaction_rt +
-  facet_grid(exp_run ~ feat_label)
+  facet_grid(exp_run_label ~ feat_label)
