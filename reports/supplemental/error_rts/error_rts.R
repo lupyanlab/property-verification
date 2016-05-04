@@ -28,7 +28,9 @@ question_first <- question_first %>%
   # Exclude weirdly long RTs
   mutate(rt = ifelse(rt > 2000.0, NA, rt)) %>%
   # Drop any missing RTs
-  filter(!is.na(rt))
+  filter(!is.na(rt)) %>%
+  label_outliers %>%
+  filter(is_outlier == 0)
 
 # Recode variables
 question_first <- question_first %>%
