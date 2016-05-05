@@ -1,5 +1,5 @@
 ---
-title: "The effect of visual interference on visual and nonvisual knowledge"
+title: "Effect of visual interference on visual knowledge"
 author: "Pierce Edmiston"
 output:
   html_document:
@@ -23,19 +23,39 @@ read_chunk("knowledge_type.R")
 ```{r, setup}
 ```
 
-# Data
-
 ```{r, data}
 ```
 
-# Error
+# Results
 
-```{r, error-mod, echo = 1, cache = TRUE}
+```{r, error-mods, echo = 1, cache = TRUE}
 ```
 
-```{r}
+```{r, error-mods-results, cache = TRUE}
+error_rate <- function(x) {
+  to_pct <- function(y) y * 100
+  mean(x, na.rm = TRUE) %>%
+    to_pct %>%
+    round(digits = 1) %>%
+    paste0("%")
+}
+means <- question_first %>%
+  group_by(feat_type, mask_type) %>%
+  summarize(error = error_rate(is_error)) %>%
+  spread(mask_type, error)
+means
+
+results <- list(
+  feat_type = report_glmer_effect(feat_type_mod, "feat_c"),
+  vis_mask = report_glmer_effect(vis_mask_mod, "mask_c"),
+  non_mask = report_glmer_effect(non_mask_mod, "mask_c"),
+  interaction = report_glmer_effect(error_mod, "feat_c:mask_c")
+)
+
 tidy(error_mod, effects = "fixed")
 ```
+
+Without visual interference, participants were just as likely to make an error on visual questions as they were on nonvisual questions, `r results["feat_type"]`. With visual interference, errors became significantly more likely on visual questions, `r results["vis_mask"]`, but not on nonvisual questions, `r results["non_mask"]`, resulting in a marginal _interference x question type_ interaction, `r results["interaction"]`.
 
 ```{r, error-plot}
 ```

@@ -2,6 +2,7 @@
 library(dplyr)
 library(lme4)
 library(broom)
+library(tidyr)
 library(ggplot2)
 library(grid)
 library(scales)
@@ -51,9 +52,22 @@ question_first <- question_first %>%
   label_outliers %>%
   filter(is_outlier == 0)
 
-# ---- error-mod
+
+# ---- error-mods
 error_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id),
                    family = "binomial", data = question_first)
+
+feat_type_mod <- glmer(is_error ~ feat_c + (1|subj_id),
+                       family = "binomial",
+                       data = filter(question_first, mask_type == "nomask"))
+
+vis_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id),
+                      family = "binomial",
+                      data = filter(question_first, feat_type == "visual"))
+
+non_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id),
+                      family = "binomial",
+                      data = filter(question_first, feat_type == "nonvisual"))
 
 # ---- error-plot
 plot_error(question_first)
