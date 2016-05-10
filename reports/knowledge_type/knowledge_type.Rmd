@@ -53,10 +53,10 @@ results <- list(
   feat_type = report_glmer_effect(feat_type_mod, "feat_c"),
   vis_mask = report_glmer_effect(vis_mask_mod, "mask_c"),
   non_mask = report_glmer_effect(non_mask_mod, "mask_c"),
-  interaction = report_glmer_effect(error_mod, "feat_c:mask_c")
+  interaction = report_glmer_effect(overall_mod, "feat_c:mask_c")
 )
 
-tidy(error_mod, effects = "fixed")
+tidy(overall_mod, effects = "fixed")
 ```
 
 Without visual interference, participants were just as likely to make an error on visual questions as they were on nonvisual questions, `r results["feat_type"]`. With visual interference, errors became significantly more likely on visual questions, `r results["vis_mask"]`, but not on nonvisual questions, `r results["non_mask"]`, resulting in a marginal _interference x question type_ interaction, `r results["interaction"]`.
@@ -66,10 +66,29 @@ Without visual interference, participants were just as likely to make an error o
 
 # Replications
 
+```{r, replication-results, cache = TRUE}
+replications <- list(
+  original = report_glmer_effect(original_mod, "feat_c:mask_c"),
+  replication = report_glmer_effect(replication_mod, "feat_c:mask_c"),
+  preregistered = report_glmer_effect(preregistered_mod, "feat_c:mask_c")
+)
+```
+
+We next report the results of the hypothesized _interference x question type_ interaction across experiment runs (**Fig. 3C**). In the original experiment, our main hypothesis was supported by a reliable interaction effect such that the effect of visual interference was greater for visual questions than for nonvisual questions, `r replications["original"]`. When we conducted the same experiment again one year later, we failed to replicate the original findings, `r replications["replication"]`, prompting a careful review of our methods. We identified potential problems with response biases in the original design (see **Preregistered replication**, above) and also systematically removed ambiguous propositions from the set of all possible questions. We believe these slight modifications improved our chances of detecting an effect without changing our primary hypothesis. As expected, in the preregistered replication, the _interference x question type_ interaction was once again reliable and in the expected direction, `r replications["preregistered"]`.
+
 ```{r, error-by-exp}
 ```
 
-# Outliers
+# Ambiguous propositions
+
+```{r, ambiguous-results, cache = TRUE}
+ambiguous <- list(
+  excluded = report_glmer_effect(overall_mod, "feat_c:mask_c"),
+  included = report_glmer_effect(overall_w_outliers, "feat_c:mask_c")
+)
+```
+
+The impact of the ambiguous propositions is visible in **Fig. 3D**. Overall the _interference x question type_ interaction was stronger when ambiguous propositions were excluded, `r ambiguous["excluded"]`, then when they were included, `r ambiguous["included"]`. Given that the correctness of ambiguous propositions by definition cannot be determined, we excluded these propositions in the preregistered replication attempt. Without any ambiguous propositions, visual interference affects performance on visual questions only, `r replications["preregistered"]`.
 
 ```{r, outliers}
 ```
