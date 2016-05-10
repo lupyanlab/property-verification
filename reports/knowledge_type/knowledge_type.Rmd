@@ -17,7 +17,11 @@ opts_chunk$set(
   cache.path = ".cache/"
 )
 
+read_chunk("utils.R")
 read_chunk("knowledge_type.R")
+```
+
+```{r, png-to-grob}
 ```
 
 ```{r, setup}
@@ -26,9 +30,9 @@ read_chunk("knowledge_type.R")
 ```{r, data}
 ```
 
-# Results
+# Overall
 
-```{r, error-mods, echo = 1, cache = TRUE}
+```{r, error-mods, cache = TRUE}
 ```
 
 ```{r, error-mods-results, cache = TRUE}
@@ -60,17 +64,17 @@ Without visual interference, participants were just as likely to make an error o
 ```{r, error-plot}
 ```
 
+# Replications
+
 ```{r, error-by-exp}
 ```
 
-# RTs
+# Outliers
 
-```{r, rt-mod, echo = 1, cache = TRUE}
+```{r, outliers}
 ```
 
-```{r}
-tidy(rt_mod, effects = "fixed")
-```
+# Fig. 3
 
-```{r, rt-plot}
+```{r, fig3, fig.width = 8, fig.height = 6, dpi = 150}
 ```

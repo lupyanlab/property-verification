@@ -60,6 +60,26 @@ rt_diff <- glmer(is_error ~ mask_c * difficulty_exp_rt + (1|subj_id),
 summary(rt_diff)
 report_glmer_effect(rt_diff, "mask_c:difficulty_exp_rt")
 
+# ---- error
+error_diff <- glmer(is_error ~ mask_c * difficulty_exp_error + (1|subj_id),
+                    family = "binomial", data = question_first)
+summary(error_diff)
+report_glmer_effect(error_diff, "mask_c:difficulty_exp_error")
+
+# ---- covariates
+norms_diff_cov <- glmer(is_error ~ mask_c * feat_c + difficulty_norms + (1|subj_id),
+                        family = "binomial", data = question_first)
+summary(norms_diff_cov)
+
+exp_rt_cov <- glmer(is_error ~ mask_c * feat_c + difficulty_exp_rt + (1|subj_id),
+                    family = "binomial", data = question_first)
+summary(exp_rt_cov)
+
+exp_error_cov <- glmer(is_error ~ mask_c * feat_c + difficulty_exp_error + (1|subj_id),
+                        family = "binomial", data = question_first)
+summary(exp_error_cov)
+report_glmer_effect(exp_error_cov, "mask_c:feat_c")
+
 # ---- abstract
 abstract_mod <- glmer(is_error ~ mask_c * senses_z + (1|subj_id),
                       family = "binomial", data = question_first)
