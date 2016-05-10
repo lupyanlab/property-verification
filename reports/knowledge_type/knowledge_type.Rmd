@@ -21,7 +21,7 @@ read_chunk("utils.R")
 read_chunk("knowledge_type.R")
 ```
 
-```{r, png-to-grob}
+```{r, utils}
 ```
 
 ```{r, setup}
@@ -30,41 +30,27 @@ read_chunk("knowledge_type.R")
 ```{r, data}
 ```
 
-# Overall
-
 ```{r, error-mods, cache = TRUE}
 ```
 
 ```{r, error-mods-results, cache = TRUE}
-error_rate <- function(x) {
-  to_pct <- function(y) y * 100
-  mean(x, na.rm = TRUE) %>%
-    to_pct %>%
-    round(digits = 1) %>%
-    paste0("%")
-}
-means <- question_first %>%
-  group_by(feat_type, mask_type) %>%
-  summarize(error = error_rate(is_error)) %>%
-  spread(mask_type, error)
-means
-
 results <- list(
   feat_type = report_glmer_effect(feat_type_mod, "feat_c"),
   vis_mask = report_glmer_effect(vis_mask_mod, "mask_c"),
   non_mask = report_glmer_effect(non_mask_mod, "mask_c"),
   interaction = report_glmer_effect(overall_mod, "feat_c:mask_c")
 )
-
-tidy(overall_mod, effects = "fixed")
 ```
 
-Without visual interference, participants were just as likely to make an error on visual questions as they were on nonvisual questions, `r results["feat_type"]`. With visual interference, errors became significantly more likely on visual questions, `r results["vis_mask"]`, but not on nonvisual questions, `r results["non_mask"]`, resulting in a marginal _interference x question type_ interaction, `r results["interaction"]`.
-
-```{r, error-plot}
+```{r, original-results, cache = TRUE}
+original_results <- list(
+  feat_type = report_glmer_effect(original_feat_type_mod, "feat_c"),
+  vis_mask = report_glmer_effect(original_vis_mask_mod, "mask_c"),
+  non_mask = report_glmer_effect(original_non_mask_mod, "mask_c"),
+  interaction = report_glmer_effect(original_mod, "feat_c:mask_c"),
+  interaction_w_outliers = report_glmer_effect(original_w_outliers, "feat_c:mask_c")
+)
 ```
-
-# Replications
 
 ```{r, replication-results, cache = TRUE}
 replications <- list(
@@ -74,13 +60,6 @@ replications <- list(
 )
 ```
 
-We next report the results of the hypothesized _interference x question type_ interaction across experiment runs (**Fig. 3C**). In the original experiment, our main hypothesis was supported by a reliable interaction effect such that the effect of visual interference was greater for visual questions than for nonvisual questions, `r replications["original"]`. When we conducted the same experiment again one year later, we failed to replicate the original findings, `r replications["replication"]`, prompting a careful review of our methods. We identified potential problems with response biases in the original design (see **Preregistered replication**, above) and also systematically removed ambiguous propositions from the set of all possible questions. We believe these slight modifications improved our chances of detecting an effect without changing our primary hypothesis. As expected, in the preregistered replication, the _interference x question type_ interaction was once again reliable and in the expected direction, `r replications["preregistered"]`.
-
-```{r, error-by-exp}
-```
-
-# Ambiguous propositions
-
 ```{r, ambiguous-results, cache = TRUE}
 ambiguous <- list(
   excluded = report_glmer_effect(overall_mod, "feat_c:mask_c"),
@@ -88,7 +67,61 @@ ambiguous <- list(
 )
 ```
 
+# Experiment runs
+
+```{r, error-by-exp}
+```
+
+In the original sample, without visual interference, participants were just as likely to make an error on visual questions as they were on nonvisual questions, `r original_results["feat_type"]`. With visual interference, errors became significantly more likely on visual questions, `r original_results["vis_mask"]`, but not on nonvisual questions, `r original_results["non_mask"]`, resulting in a reliable _interference x question type_ interaction, `r original_results["interaction"]`. Including the ambiguous propositions did not change this interaction, `r original_results["interaction_w_outliers"]`.
+
+When we conducted the same experiment again one year later, we failed to replicate the original findings, `r replications["replication"]`, prompting a careful review of our methods. We identified potential problems with response biases in the original design (see **Preregistered replication**, above) and also systematically removed ambiguous propositions from the set of all possible questions. We believe these slight modifications improved our chances of detecting an effect without changing our primary hypothesis. As expected, in the preregistered replication, the _interference x question type_ interaction was once again reliable and in the expected direction, `r replications["preregistered"]`.
+
+Collapsing across all runs of the experiment supports the main conclusions drawn from the original sample and the preregistered replication. Participants were just as likely to make an error on visual questions as they were on nonvisual questions, `r results["feat_type"]`. With visual interference, errors became significantly more likely on visual questions, `r results["vis_mask"]`, but not on nonvisual questions, `r results["non_mask"]`, resulting in a marginal _interference x question type_ interaction, `r results["interaction"]`.
+
 The impact of the ambiguous propositions is visible in **Fig. 3D**. Overall the _interference x question type_ interaction was stronger when ambiguous propositions were excluded, `r ambiguous["excluded"]`, then when they were included, `r ambiguous["included"]`. Given that the correctness of ambiguous propositions by definition cannot be determined, we excluded these propositions in the preregistered replication attempt. Without any ambiguous propositions, visual interference affects performance on visual questions only, `r replications["preregistered"]`.
+
+```{r}
+summarize_error_rates <- function(frame) {
+  frame %>%
+    summarize(error = error_rate(is_error)) %>%
+    spread(mask_type, error)
+}
+
+question_first %>%
+  group_by(feat_type, mask_type) %>%
+  summarize_error_rates %>%
+  select(feat_type, nomask, mask) %>%
+  arrange(desc(feat_type))
+
+question_first %>%
+  group_by(exp_run_label, feat_type, mask_type) %>%
+  summarize_error_rates %>%
+  select(exp_run_label, feat_type, nomask, mask) %>%
+  arrange(exp_run_label, desc(feat_type))
+```
+
+## Original
+```{r}
+tidy(original_mod, effects = "fixed")
+```
+
+## Replication
+```{r}
+tidy(replication_mod, effects = "fixed")
+```
+
+## Preregistered
+```{r}
+tidy(preregistered_mod, effects = "fixed")
+```
+
+# Overall
+```{r}
+tidy(overall_mod, effects = "fixed")
+```
+
+```{r, error-plot}
+```
 
 ```{r, outliers}
 ```

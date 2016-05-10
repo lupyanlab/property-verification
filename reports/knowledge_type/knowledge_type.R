@@ -44,11 +44,6 @@ question_first_all_props <- question_first
 question_first <- filter(question_first, is_prop_outlier == 0)
 
 # ---- error-mods
-fit_error_mod <- function(fragment, observations) {
-  f <- paste0("is_error ~ ", fragment, " + (1|subj_id)") %>% as.formula(env = globalenv)
-  glmer(f, family = "binomial", data = observations)
-}
-
 overall_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = question_first)
 feat_type_mod <- glmer(is_error ~ feat_c + (1|subj_id), family = "binomial", data = filter(question_first, mask_type == "nomask"))
 vis_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id), family = "binomial", data = filter(question_first, feat_type == "visual"))
@@ -57,6 +52,10 @@ non_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id), family = "binomial", data
 original_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run == 1))
 replication_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run %in% c(2, 3)))
 preregistered_mod <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run == 4))
+
+original_feat_type_mod <- glmer(is_error ~ feat_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run == 1, mask_type == "nomask"))
+original_vis_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run == 1, feat_type == "visual"))
+original_non_mask_mod <- glmer(is_error ~ mask_c + (1|subj_id), family = "binomial", data = filter(question_first, exp_run == 1, feat_type == "nonvisual"))
 
 overall_w_outliers <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = question_first_all_props)
 original_w_outliers <- glmer(is_error ~ feat_c * mask_c + (1|subj_id), family = "binomial", data = filter(question_first_all_props, exp_run == 1))

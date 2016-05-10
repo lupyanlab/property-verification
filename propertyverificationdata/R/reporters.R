@@ -6,16 +6,18 @@ report_glmer_effect <- function(mod, param) {
     broom::tidy(effects = "fixed") %>%
     dplyr::filter(term == param)
   estimate <- parameter_stats$estimate
+  z_value <- parameter_stats$statistic
   p_value <- parameter_stats$p.value
 
   interval <- confint(mod)[param, ]
   lwr <- interval[1]
   upr <- interval[2]
 
-  sprintf("%.2f log-odds, 95%% CI [%.2f, %.2f], p = %.4f",
+  sprintf("%.2f log-odds, 95%% CI [%.2f, %.2f], _z_ = %.4f, _p_ = %.4f",
           estimate,
           lwr,
           upr,
+          z_value,
           p_value)
 }
 
