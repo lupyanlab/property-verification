@@ -8,6 +8,7 @@ tidy_property_verification_data <- function(frame) {
       # only measure errors of commission
       is_correct = ifelse(response == "timeout", NA, is_correct),
 
+      raw_rt = rt,
       # only measure rt on correct responses
       rt = ifelse(is_correct == 1, rt, NA),
 
@@ -21,7 +22,7 @@ tidy_property_verification_data <- function(frame) {
       question, cue, proposition_id,
       mask_type, feat_type,
       correct_response,
-      response, rt, is_correct, is_error) %>%
+      response, raw_rt, rt, is_correct, is_error) %>%
     # sort the trials
     dplyr::arrange(exp_run, subj_id, block, trial)
 }
