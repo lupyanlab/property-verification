@@ -15,13 +15,13 @@ rt_mask <- lmerTest::lmer(rt ~ mask_c + (1|subj_id),
                 data = filter(question_first, response_window == "after_mask"))
 summary(rt_mask)
 report_lmerTest_effect(rt_mask, "mask_c")
-# -13.36 ms., 95% CI [-21.66, -5.06], p = 0.0016
+# -13.36 ms., 95% CI [-21.66, -5.06], z = -3.2, p = 0.0016
 
 rt_mask <- lmerTest::lmer(rt ~ mask_c + (1|subj_id),
                           data = filter(question_first, response_window == "during_mask"))
 summary(rt_mask)
 report_lmerTest_effect(rt_mask, "mask_c")
-# -32.74 ms., 95% CI [-43, 22], p < -0.001
+# -32.74 ms., 95% CI [-43, 22], z = -6.0, p < -0.001
 
 rt_mask <- lmerTest::lmer(rt ~ mask_c * + (1|subj_id) + (1|response_window),
                           data = question_first)

@@ -2,6 +2,7 @@
 title: "The effect of visual interference on continuous measures of visual knowledge"
 author: "Pierce Edmiston"
 output:
+  word_document: null
   html_document:
     theme: flatly
     toc: true
@@ -12,8 +13,12 @@ library(knitr)
 opts_chunk$set(
   echo = FALSE,
   warning = FALSE,
-  message = FALSE
+  message = FALSE,
+  comment = NA
 )
+```
+
+```{r, loaders}
 read_chunk("amount_of_knowledge.R")
 ```
 

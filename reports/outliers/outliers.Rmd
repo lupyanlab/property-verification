@@ -2,6 +2,7 @@
 title: "Outlier subjects and propositions"
 author: "Pierce Edmiston"
 output:
+  word_document: null
   html_document:
     theme: flatly
     toc: true
@@ -28,8 +29,8 @@ data(question_first)
 question_first <- question_first %>%
   tidy_property_verification_data
 
-subjs <- create_subj_map(question_first)
-props <- create_prop_map(question_first)
+subjs <- create_subj_map()
+props <- create_prop_map()
 
 # --- tables
 summarize_item <- function(frame, grouper) {

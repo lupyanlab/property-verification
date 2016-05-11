@@ -2,9 +2,10 @@
 title: "Effect of visual interference on visual knowledge"
 author: "Pierce Edmiston"
 output:
+  word_document: null
   html_document:
     theme: flatly
-    toc: true
+    toc: yes
 ---
 
 ```{r, config, echo = FALSE}
@@ -14,9 +15,12 @@ opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   fig.path = "figs/",
-  cache.path = ".cache/"
+  cache.path = ".cache/",
+  comment = NA
 )
+```
 
+```{r, loaders}
 read_chunk("utils.R")
 read_chunk("knowledge_type.R")
 ```
@@ -105,9 +109,19 @@ question_first %>%
 tidy(original_mod, effects = "fixed")
 ```
 
+## Original with ambiguous propositions
+```{r}
+tidy(original_w_outliers, effects = "fixed")
+```
+
 ## Replication
 ```{r}
 tidy(replication_mod, effects = "fixed")
+```
+
+## Replication with ambiguous propositions
+```{r}
+tidy(replication_w_outliers, effects = "fixed")
 ```
 
 ## Preregistered
@@ -118,6 +132,11 @@ tidy(preregistered_mod, effects = "fixed")
 # Overall
 ```{r}
 tidy(overall_mod, effects = "fixed")
+```
+
+## Overall with ambiguous propositions
+```{r}
+tidy(overall_w_outliers, effects = "fixed")
 ```
 
 ```{r, error-plot}
