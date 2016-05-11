@@ -26,7 +26,7 @@ system::
 
 To download the data in this repo as an R package, you need to have the
 devtools package installed, and then you can run this command in R to
-download the data.
+download the data::
 
     > devtools::install_github("lupyanlab", "property-verification",
                                subdir = "propertyverificationdata")
