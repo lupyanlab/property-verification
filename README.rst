@@ -22,7 +22,7 @@ system::
     (property)$ git clone https://github.com/lupyanlab/property-verification.git
     (property)$ cd property-verification/experiment
     (property)$ pip install -r requirements.txt
-    (property)$ python run.py  # runs the question first experiment
+    (property)$ python run.py  # Run the question first experiment
 
 To download the data in this repo as an R package, you need to have the
 devtools package installed, and then you can run this command in R to
