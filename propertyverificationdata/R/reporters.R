@@ -8,8 +8,16 @@ report_glmer_effect <- function(mod, param) {
   estimate <- parameter_stats$estimate
   z_value <- parameter_stats$statistic
   p_value <- parameter_stats$p.value
+  
+  tryCatch(
+    interval <- confint(mod, param),
+    error = function (e) {
+      print(e)
+      print("using Wald method")
+      interval <- confint(mod, param, method = "Wald")
+    }
+  )
 
-  interval <- confint(mod)[param, ]
   lwr <- interval[1]
   upr <- interval[2]
 
@@ -27,8 +35,16 @@ report_lmerTest_effect <- function(mod, param) {
   parameter_stats <- summary(mod)$coefficients[param, ] %>% as.data.frame
   estimate <- parameter_stats["Estimate", ]
   p_value <- parameter_stats["Pr(>|t|)", ]
+  
+  tryCatch(
+    interval <- confint(mod, param),
+    error = function (e) {
+      print(e)
+      print("using Wald method")
+      interval <- confint(mod, param, method = "Wald")
+    }
+  )
 
-  interval <- confint(mod)[param, ]
   lwr <- interval[1]
   upr <- interval[2]
 
