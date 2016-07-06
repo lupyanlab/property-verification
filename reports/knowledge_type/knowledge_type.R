@@ -14,6 +14,8 @@ library(ggplot2)
 library(grid)
 library(gridExtra)
 library(scales)
+library(extrafont)
+loadfonts()
 
 colors <- RColorBrewer::brewer.pal(3, "Set2")
 names(colors) <- c("green", "orange", "blue")
@@ -27,9 +29,12 @@ scale_alpha_mask <- scale_alpha_manual(values = c(0.5, 0.9))
 coord_ylim_error <- c(0, 0.081)
 
 base_theme <- theme_minimal(base_size = 10) +
-  theme(axis.ticks = element_blank(),
-        legend.position = "none",
-        panel.margin = unit(0, "lines"))
+  theme(
+    text = element_text("Arial"),
+    axis.ticks = element_blank(),
+    legend.position = "none",
+    panel.margin = unit(0, "lines")
+  )
 
 # ---- data
 library(propertyverificationdata)
@@ -85,7 +90,11 @@ overall_plot <- ggplot(overall_preds, aes(x = mask_c, y = is_error)) +
   coord_cartesian(ylim = coord_ylim_error) +
   annotation_custom(blank_icon, xmin = -0.5 - icon_width, xmax = -0.5 + icon_width, ymin = icon_y) +
   annotation_custom(mask_icon, xmin = 0.5 - icon_width, xmax = 0.5 + icon_width, ymin = icon_y) +
-  base_theme
+  base_theme +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
 overall_plot
 
 # ---- error-by-exp
@@ -105,7 +114,8 @@ exp_plot <- ggplot(error_by_exp, aes(x = mask_c, y = is_error)) +
   base_theme +
   theme(
     legend.position = "top",
-    panel.margin = unit(4, "lines")
+    panel.margin = unit(4, "lines"),
+    panel.grid.minor.x = element_blank()
   )
 exp_plot
 
@@ -151,7 +161,8 @@ outlier_comparison <- rbind(
   recode_exp_label
 
 outliers_plot <- ggplot(outlier_comparison, aes(x = exp_label_x, y = estimate, color = outlier_label)) +
-  geom_pointrange(aes(ymin = estimate - std.error, ymax = estimate + std.error),
+  geom_point(size = 2) +
+  geom_linerange(aes(ymin = estimate - std.error, ymax = estimate + std.error),
                   size = 0.8) +
   geom_hline(yintercept = 0.0, lty = 2) +
   coord_flip() +
@@ -160,8 +171,20 @@ outliers_plot <- ggplot(outlier_comparison, aes(x = exp_label_x, y = estimate, c
   scale_color_manual("Ambiguous propositions", labels = c("Excluded", "Included"),
                      values = unname(feat_type_colors)) +
   base_theme +
-  theme(legend.position = "top", legend.text = element_text(size = 8))
+  theme(
+    legend.position = "top",
+    legend.key.size = unit(2, "lines"),
+    legend.key.width = unit(1, "lines"),
+    legend.text = element_text(size = 6),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
 outliers_plot
 
 # ---- fig3
 grid.arrange(trial, overall_plot, exp_plot, outliers_plot, nrow = 2)
+
+# ---- savefig3
+pdf("Fig3.pdf")
+grid.arrange(trial, overall_plot, exp_plot, outliers_plot, nrow = 2)
+dev.off()

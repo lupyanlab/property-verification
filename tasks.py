@@ -18,9 +18,9 @@ import yaml
 proj_root = Path(__file__).absolute().parent
 
 @task
-def gather():
+def gather(ctx):
     """Gather the experiment data and put it in the R pkg data-raw folder.
-    
+
     Currently set to get the fourth run experiment data.
     """
     dest_dir = Path('propertyverificationdata', 'data-raw', 'question_first',
@@ -35,12 +35,12 @@ def gather():
         run('cp experiment/subj_info.csv {}'.format(dest_dir.parent))
 
 @task
-def compile():
+def compile(ctx):
     """Run the use-data.R script to compile raw data to .rda files."""
     run('cd propertyverificationdata && Rscript data-raw/use-data.R')
 
 @task
-def install():
+def install(ctx):
     """Install the propertyverificationdata R package."""
     # watch quotes!
     r_commands = [
@@ -51,7 +51,7 @@ def install():
         run("cd {} && Rscript -e '{}'".format(proj_root, r_command))
 
 @task
-def get_survey_data():
+def get_survey_data(ctx):
     """Fetch the survey responses and format them for analysis."""
     survey_dir = Path('individual_diffs')
     survey_questions_file = Path(survey_dir, 'survey_questions.csv')

@@ -2,7 +2,6 @@
 title: "Effect of visual interference on visual knowledge"
 author: "Pierce Edmiston"
 output:
-  word_document: null
   html_document:
     theme: flatly
     toc: yes
@@ -14,8 +13,9 @@ opts_chunk$set(
   echo = FALSE,
   message = FALSE,
   warning = FALSE,
+  dev = "pdf",
   fig.path = "figs/",
-  cache.path = ".cache/",
+  cache.path = "cache/",
   comment = NA
 )
 ```
@@ -39,35 +39,35 @@ read_chunk("knowledge_type.R")
 
 ```{r, error-mods-results, cache = TRUE}
 results <- list(
-  feat_type = report_glmer_effect(feat_type_mod, "feat_c"),
-  vis_mask = report_glmer_effect(vis_mask_mod, "mask_c"),
-  non_mask = report_glmer_effect(non_mask_mod, "mask_c"),
-  interaction = report_glmer_effect(overall_mod, "feat_c:mask_c")
+  feat_type = report_glmer_effect(feat_type_mod, "feat_c", method = "Wald"),
+  vis_mask = report_glmer_effect(vis_mask_mod, "mask_c", method = "Wald"),
+  non_mask = report_glmer_effect(non_mask_mod, "mask_c", method = "Wald"),
+  interaction = report_glmer_effect(overall_mod, "feat_c:mask_c", method = "Wald")
 )
 ```
 
 ```{r, original-results, cache = TRUE}
 original_results <- list(
-  feat_type = report_glmer_effect(original_feat_type_mod, "feat_c"),
-  vis_mask = report_glmer_effect(original_vis_mask_mod, "mask_c"),
-  non_mask = report_glmer_effect(original_non_mask_mod, "mask_c"),
-  interaction = report_glmer_effect(original_mod, "feat_c:mask_c"),
-  interaction_w_outliers = report_glmer_effect(original_w_outliers, "feat_c:mask_c")
+  feat_type = report_glmer_effect(original_feat_type_mod, "feat_c", method = "Wald"),
+  vis_mask = report_glmer_effect(original_vis_mask_mod, "mask_c", method = "Wald"),
+  non_mask = report_glmer_effect(original_non_mask_mod, "mask_c", method = "Wald"),
+  interaction = report_glmer_effect(original_mod, "feat_c:mask_c", method = "Wald"),
+  interaction_w_outliers = report_glmer_effect(original_w_outliers, "feat_c:mask_c", method = "Wald")
 )
 ```
 
 ```{r, replication-results, cache = TRUE}
 replications <- list(
-  original = report_glmer_effect(original_mod, "feat_c:mask_c"),
-  replication = report_glmer_effect(replication_mod, "feat_c:mask_c"),
-  preregistered = report_glmer_effect(preregistered_mod, "feat_c:mask_c")
+  original = report_glmer_effect(original_mod, "feat_c:mask_c", method = "Wald"),
+  replication = report_glmer_effect(replication_mod, "feat_c:mask_c", method = "Wald"),
+  preregistered = report_glmer_effect(preregistered_mod, "feat_c:mask_c", method = "Wald")
 )
 ```
 
 ```{r, ambiguous-results, cache = TRUE}
 ambiguous <- list(
-  excluded = report_glmer_effect(overall_mod, "feat_c:mask_c"),
-  included = report_glmer_effect(overall_w_outliers, "feat_c:mask_c")
+  excluded = report_glmer_effect(overall_mod, "feat_c:mask_c", method = "Wald"),
+  included = report_glmer_effect(overall_w_outliers, "feat_c:mask_c", method = "Wald")
 )
 ```
 
