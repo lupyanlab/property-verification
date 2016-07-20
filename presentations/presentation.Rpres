@@ -1,0 +1,58 @@
+Property verification
+=====================
+author: Pierce Edmiston
+date: 3/31/16
+css: theme.css
+```{r, config, echo = FALSE}
+options(width = 80)
+
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.width = 12,
+  fig.height = 8
+)
+
+library(dplyr)
+
+library(propertyverificationdata)
+data("question_first")
+
+property <- question_first %>%
+  tidy_property_verification_data %>%
+  recode_feat_type %>%
+  recode_mask_type
+```
+
+Experiment
+==========
+type: center
+
+> Does visual knowledge depend on visual mechanisms?
+
+<img src="img/question-first.png" style="display: block; margin: auto;"></img>
+
+IV: Feature type
+================
+Is the question asking about
+a visual feature or a nonvisual feature? Nonvisual features are
+more accurately described as _encyclopedic features_.
+```{r}
+unique(property[, c("feat_type", "feat_c", "feat_label")])
+```
+
+IV: Mask type
+=============
+Whether or not visual interference, aka the _mask_, was present
+on the trial. Nomask trials are more accurately described as _Blank
+screen_ trials.
+```{r}
+unique(property[, c("mask_type", "mask_c")]) %>%
+  arrange(mask_c) %>%
+  mutate(mask_label = c("Blank screen", "Visual interference"))
+```
+
+IV: Truth
+=========
+Is the correct answer to the question "yes" or "no"?
