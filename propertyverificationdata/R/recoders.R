@@ -84,7 +84,7 @@ recode_norms <- function(frame) {
   frame %>% mutate(
     imagery_mean = imagery_mean + 1,
     facts_mean = facts_mean + 1,
-    difficulty = difficulty + 3,
-    truth = truth + 3
+    difficulty_mean = difficulty_mean + 3,
+    truth_mean = truth_mean + 3
   )
 }

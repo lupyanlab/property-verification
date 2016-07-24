@@ -1,0 +1,16 @@
+---
+title: "Norming results"
+output:
+  html_document:
+    theme: flatly
+---
+
+```{r, echo = FALSE}
+library(knitr)
+read_chunk("norms.R")
+
+library(printr)
+```
+
+```{r norms}
+```
