@@ -77,3 +77,14 @@ recode_exp <- function(frame) {
   try(frame <- dplyr::left_join(frame, experiment_map))
   frame
 }
+
+#' Recode norms to use the same min and max values
+#' @export
+recode_norms <- function(frame) {
+  frame %>% mutate(
+    imagery_mean = imagery_mean + 1,
+    facts_mean = facts_mean + 1,
+    difficulty = difficulty + 3,
+    truth = truth + 3
+  )
+}

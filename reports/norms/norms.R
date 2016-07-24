@@ -5,7 +5,8 @@ library(propertyverificationdata)
 data("norms")
 
 norms <- norms %>%
-  recode_feat_type
+  recode_feat_type %>%
+  recode_norms
 
 norms %>%
   group_by(feat_type) %>%
